@@ -22,7 +22,7 @@ namespace CarRentalManager
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }
