@@ -22,7 +22,7 @@ namespace CarRentalManager
     {
         public MainWindow()
         {
-            //ez egy proba
+            //ez egy proba44545534
             this.InitializeComponent();
         }
     }
