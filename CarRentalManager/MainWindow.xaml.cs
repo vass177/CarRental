@@ -22,7 +22,6 @@ namespace CarRentalManager
     {
         public MainWindow()
         {
-            //test commit by Franci
             this.InitializeComponent();
         }
     }
