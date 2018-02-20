@@ -22,6 +22,7 @@ namespace CarRentalManager
     {
         public MainWindow()
         {
+            //mi legyen itt?
             this.InitializeComponent();
         }
     }
