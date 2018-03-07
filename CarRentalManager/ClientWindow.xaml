@@ -41,6 +41,12 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Controls:Tile>
-
+        <Controls:Tile Title="Contact" Width="200" Height="80" Grid.Column="0" Grid.Row="3">
+            <Rectangle Fill="White" Height="30" Width="30" VerticalAlignment="Top" >
+                <Rectangle.OpacityMask>
+                    <VisualBrush Visual="{StaticResource appbar_customerservice}" Stretch="Fill" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Controls:Tile>
     </Grid>
 </Controls:MetroWindow>
