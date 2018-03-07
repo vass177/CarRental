@@ -20,6 +20,13 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        <Controls:Tile Title="Client" Width="200" Height="40" Grid.Column="0" Grid.Row="0">
+            <Rectangle Fill="White" Height="20" Width="20" HorizontalAlignment="Right" >
+                <Rectangle.OpacityMask>
+                    <VisualBrush Visual="{StaticResource appbar_user}" Stretch="Fill" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Controls:Tile>
 
     </Grid>
 </Controls:MetroWindow>
