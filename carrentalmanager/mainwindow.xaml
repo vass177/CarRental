@@ -1,0 +1,13 @@
+﻿<Controls:MetroWindow x:Class="CarRentalManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:CarRentalManager"
+        mc:Ignorable="d"
+        Title="CRM - Car Rental Manager" Height="700" Width="1000" MinHeight="700" MinWidth="1000">
+    <Grid>
+        
+    </Grid>
+</Controls:MetroWindow>
