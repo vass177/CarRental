@@ -6,8 +6,21 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:CarRentalManager"
         mc:Ignorable="d"
-        Title="Car Rental Manager" Height="550" Width="550" WindowState="Maximized">
+        Title="CRM - Car Rental Manager" Height="700" Width="1000" MinHeight="700" MinWidth="1000">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="background2eff.jpg" Stretch="Fill"></ImageBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
     </Grid>
 </Controls:MetroWindow>
