@@ -27,6 +27,12 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Controls:Tile>
-
+        <Controls:Tile Title="New rental" Width="200" Height="80" Grid.Column="0" Grid.Row="1">
+            <Rectangle Fill="White" Height="30" Width="30" VerticalAlignment="Top" >
+                <Rectangle.OpacityMask>
+                    <VisualBrush Visual="{StaticResource appbar_transit_car}" Stretch="Fill" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Controls:Tile>
     </Grid>
 </Controls:MetroWindow>
