@@ -1,6 +1,4 @@
-﻿using CarRentalManager.Controls;
-using MahApps.Metro.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,21 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CarRentalManager
+
+namespace CarRentalManager.Controls
 {
     /// <summary>
-    /// Interaction logic for ClientWindow.xaml
+    /// Interaction logic for MapControl.xaml
     /// </summary>
-    public partial class ClientWindow : MetroWindow
+    public partial class MapControl : UserControl
     {
-        public ClientWindow()
+        public MapControl()
         {
-            this.InitializeComponent();
-
-            MapControl mapControl = new MapControl();
-            this.mapFrame.Content = mapControl;
+            InitializeComponent();
+            
         }
     }
 }

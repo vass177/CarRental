@@ -48,5 +48,7 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Controls:Tile>
+        <Frame x:Name="mapFrame"  Grid.Column="1" HorizontalAlignment="Left" Height="404" Margin="120,90,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="546"/>
+        <Label Content="ez csak egy próba Frame, nem ebben az ablakban lesz a helye, a térképet betölteni úgy tudjuk, hogy a .cs file-ban a frame content-jeként példányosítjuk a MapControl osztályt" HorizontalAlignment="Left" Margin="96,54,0,0" Grid.Row="1" VerticalAlignment="Top" Height="72" Width="644" Grid.Column="1" FontSize="8"/>
     </Grid>
 </Controls:MetroWindow>

@@ -116,5 +116,6 @@
                 </Grid>
             </StackPanel>
         </Border>
+        <Button Content="proba" HorizontalAlignment="Left" Margin="291,0,0,38" Grid.Row="1" VerticalAlignment="Bottom" Width="100" Click="Button_Click" Grid.Column="1" Height="32"/>
     </Grid>
 </Controls:MetroWindow>
