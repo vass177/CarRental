@@ -24,9 +24,6 @@ namespace CarRentalManager
         public ClientWindow()
         {
             this.InitializeComponent();
-
-            MapControl mapControl = new MapControl();
-            this.mapFrame.Content = mapControl;
         }
     }
 }
