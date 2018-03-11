@@ -51,8 +51,17 @@
     <CodeAnalysisRuleSet>oenik.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -71,6 +80,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Car.cs">
+      <DependentUpon>RentalEntityMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client.cs">
+      <DependentUpon>RentalEntityMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Rental.cs">
+      <DependentUpon>RentalEntityMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RentalEntityMode.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentalEntityMode.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RentalEntityMode.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentalEntityMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RentalEntityMode.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentalEntityMode.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="RentalServiceJoin.cs">
+      <DependentUpon>RentalEntityMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs">
+      <DependentUpon>RentalEntityMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>RentalEntityMode.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,6 +151,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <EntityDeploy Include="RentalEntityMode.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RentalEntityMode.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="RentalEntityMode.edmx.diagram">
+      <DependentUpon>RentalEntityMode.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -125,6 +174,16 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>RentalDatabase.mdf</DependentUpon>
     </Content>
+    <Content Include="RentalEntityMode.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RentalEntityMode.edmx</DependentUpon>
+      <LastGenOutput>RentalEntityMode.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="RentalEntityMode.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RentalEntityMode.edmx</DependentUpon>
+      <LastGenOutput>RentalEntityMode.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -137,6 +196,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
