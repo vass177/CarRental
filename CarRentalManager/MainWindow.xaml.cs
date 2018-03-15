@@ -1,5 +1,5 @@
 ﻿using CarRentalManager.Data;
-using CarRentalManager.Exceptions;
+using BusinessLogic.Exceptions;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Data.DataHandling;
+using Data;
 
 namespace CarRentalManager
 {
@@ -45,8 +47,8 @@ namespace CarRentalManager
                 User u1 = (User)userHandler.Select(UserAttributeType.UserName, "atoth");
                 //u1.UserPassword = "mégvalami";
                 //userHandler.Update(u1);
-                User u2 = (User)userHandler.Select(UserAttributeType.UserName, "atoth");
-                Console.WriteLine(u2.UserPassword);
+                //User u2 = (User)userHandler.Select(UserAttributeType.UserName, "atoth");
+                Console.WriteLine(u1.UserPassword);
 
                 IQueryable<User> userList = (IQueryable<User>)userHandler.SelectMore(UserAttributeType.IsClient, "M");
                 foreach (User item in userList)
@@ -57,7 +59,7 @@ namespace CarRentalManager
             catch (EntryNotFoundException e)
             {
                 Console.WriteLine("Entry not found in table Users");
-            }            
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

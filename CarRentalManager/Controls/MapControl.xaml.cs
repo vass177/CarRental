@@ -24,7 +24,6 @@ namespace CarRentalManager.Controls
         public MapControl()
         {
             InitializeComponent();
-            
         }
     }
 }

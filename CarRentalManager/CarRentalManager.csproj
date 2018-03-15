@@ -95,47 +95,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Car.cs">
-      <DependentUpon>RentalEntityMode.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Client.cs">
-      <DependentUpon>RentalEntityMode.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\CarDataHandler.cs" />
-    <Compile Include="Data\ClientDataHandler.cs" />
-    <Compile Include="Data\IDataBase.cs" />
-    <Compile Include="Data\RentalDataHandler.cs" />
-    <Compile Include="Data\RentalServiceJoinDataHandler.cs" />
-    <Compile Include="Data\ServiceDataHandler.cs" />
-    <Compile Include="Data\UserDataHandler.cs" />
-    <Compile Include="Exceptions\EntryNotFoundException.cs" />
-    <Compile Include="Rental.cs">
-      <DependentUpon>RentalEntityMode.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RentalEntityMode.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RentalEntityMode.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RentalEntityMode.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RentalEntityMode.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RentalEntityMode.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RentalEntityMode.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="RentalServiceJoin.cs">
-      <DependentUpon>RentalEntityMode.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Service.cs">
-      <DependentUpon>RentalEntityMode.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>RentalEntityMode.tt</DependentUpon>
-    </Compile>
     <Page Include="ClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -197,13 +156,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Resource Include="Resources\Entypo.ttf" />
-    <EntityDeploy Include="RentalEntityMode.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RentalEntityMode.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="RentalEntityMode.edmx.diagram">
-      <DependentUpon>RentalEntityMode.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -211,25 +163,6 @@
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="RentalDatabase.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="RentalDatabase_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DependentUpon>RentalDatabase.mdf</DependentUpon>
-    </Content>
-    <Content Include="RentalEntityMode.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RentalEntityMode.edmx</DependentUpon>
-      <LastGenOutput>RentalEntityMode.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="RentalEntityMode.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RentalEntityMode.edmx</DependentUpon>
-      <LastGenOutput>RentalEntityMode.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -252,7 +185,16 @@
   <ItemGroup>
     <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{3ef88a11-edff-40f6-956a-2106b3c95bdb}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{15d88275-ac2a-4b20-b9eb-30c15f71436a}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\background2eff.jpg" />
     <Resource Include="Images\logo.png" />
