@@ -101,7 +101,13 @@
     <Compile Include="Client.cs">
       <DependentUpon>RentalEntityMode.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\CarDataHandler.cs" />
+    <Compile Include="Data\ClientDataHandler.cs" />
     <Compile Include="Data\IDataBase.cs" />
+    <Compile Include="Data\RentalDataHandler.cs" />
+    <Compile Include="Data\RentalServiceJoinDataHandler.cs" />
+    <Compile Include="Data\ServiceDataHandler.cs" />
+    <Compile Include="Data\UserDataHandler.cs" />
     <Compile Include="Rental.cs">
       <DependentUpon>RentalEntityMode.tt</DependentUpon>
     </Compile>
