@@ -1,0 +1,198 @@
+﻿<Controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:CarRentalManager"
+        xmlns:Controls1="clr-namespace:CarRentalManager.Controls" x:Class="CarRentalManager.ClientWindow"
+        mc:Ignorable="d"
+        Title="CRM - CLIENT WINDOW" Height="700" Width="1000" MinHeight="700" MinWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <!--<ColumnDefinition Width="4*"/>-->
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <!--<RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition/>
+            <RowDefinition/>-->
+        </Grid.RowDefinitions>
+
+        <Controls:MetroTabControl TabStripPlacement="Left" Margin="0,12,0,0" SelectedIndex="0">
+            <Controls:MetroTabControl.Resources>
+                <Style TargetType="{x:Type Controls:MetroTabItem}">
+                        <Setter Property="Template" >
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Grid>
+                                    <Border Name="Border" Background="#41b1e1" BorderBrush="Black" BorderThickness="1,1,1,1">
+                                        <ContentPresenter x:Name="TitleContent" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="12,2,12,2"/>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="#41b1e1" />
+                                        <Setter Property="FontSize" Value="16"/>
+                                        <Setter Property="Height" Value="180"/>
+                                        <Setter Property="Width" Value="220"/>
+                                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter TargetName="Border" Property="Background" Value="#41b1e1" />
+                                        <Setter Property="Height" Value="160"/>
+                                        <Setter Property="Width" Value="200"/>
+                                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="#1d8bba" />
+                                        <Setter Property="Foreground" Value="White" />
+                                        
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Controls:MetroTabControl.Resources>
+            <Controls:MetroTabItem Background="#41b1e1" Margin="0,2,0,0" >
+                <Controls:MetroTabItem.Header>
+                    <StackPanel>
+                        <Rectangle Fill="Black" Height="100" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_user}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <TextBlock Text="Client" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
+                    </StackPanel>
+                </Controls:MetroTabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Content="Client" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
+                </Grid>
+            </Controls:MetroTabItem>
+            <Controls:MetroTabItem Background="#41b1e1" Margin="0,2,0,0">
+                <Controls:MetroTabItem.Header>
+                    <StackPanel>
+                        <Rectangle Fill="Black" Height="100" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_transit_car}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <TextBlock Text="New rental" FontSize="24" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </Controls:MetroTabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Content="New rental" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
+                </Grid>
+            </Controls:MetroTabItem>
+            <Controls:MetroTabItem Background="#41b1e1" Margin="0,2,0,0">
+                <Controls:MetroTabItem.Header>
+                    <StackPanel>
+                        <Rectangle Fill="Black" Height="100" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_transit_congestion}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <TextBlock Text="My rentals" FontSize="24" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </Controls:MetroTabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Content="My rentals" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
+                </Grid>
+            </Controls:MetroTabItem>
+            <Controls:MetroTabItem Background="#41b1e1" Margin="0,2,0,0">
+                <Controls:MetroTabItem.Header>
+                    <StackPanel>
+                        <Rectangle Fill="Black" Height="100" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_customerservice}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <TextBlock Text="Contact" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
+                    </StackPanel>
+                </Controls:MetroTabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Content="Map" Grid.Row="2" Grid.Column="1" FontSize="28"></Label>
+                    <Controls1:MapControl Grid.Column="1" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="200" Width="300"></Controls1:MapControl>
+                    <Label Content="Contact" Grid.Row="2" Grid.Column="0" FontSize="28"></Label>
+                    <TextBlock FontSize="16" Grid.Row="3" Grid.Column="0">Phone number: +0 1 234 56 78 <LineBreak></LineBreak>
+                    E-mail: abcdef@xyzzs.com <LineBreak></LineBreak>
+                    Address: 1000 City, Blabla 10/a    
+                    </TextBlock>
+                </Grid>
+            </Controls:MetroTabItem>
+        </Controls:MetroTabControl>
+
+        <!--<Controls:Tile Title="Client" Width="200" Height="40" Grid.Column="0" Grid.Row="0">
+            <Rectangle Fill="White" Height="20" Width="20" HorizontalAlignment="Right" >
+                <Rectangle.OpacityMask>
+                    <VisualBrush Visual="{StaticResource appbar_user}" Stretch="Fill" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Controls:Tile>
+        <Controls:Tile Title="New rental" Width="200" Height="80" Grid.Column="0" Grid.Row="1">
+            <Rectangle Fill="White" Height="30" Width="30" VerticalAlignment="Top" >
+                <Rectangle.OpacityMask>
+                    <VisualBrush Visual="{StaticResource appbar_transit_car}" Stretch="Fill" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Controls:Tile>
+        <Controls:Tile Title="My rentals" Width="200" Height="80" Grid.Column="0" Grid.Row="2">
+            <Rectangle Fill="White" Height="30" Width="30" VerticalAlignment="Top">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Visual="{StaticResource appbar_transit_congestion}" Stretch="Fill" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Controls:Tile>
+        <Controls:Tile Title="Contact" Width="200" Height="80" Grid.Column="0" Grid.Row="3">
+            <Rectangle Fill="White" Height="30" Width="30" VerticalAlignment="Top" >
+                <Rectangle.OpacityMask>
+                    <VisualBrush Visual="{StaticResource appbar_customerservice}" Stretch="Fill" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Controls:Tile>-->
+    </Grid>
+</Controls:MetroWindow>

@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="CarRentalManager.Controls.MapControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="500">
+    <Grid>
+        <m:Map Center="47.4329711,19.26" ZoomLevel="13" CredentialsProvider="Ai5jBedZ2T2KPuCcQjsomqBdjUJIxFOTg2iCf8sKveMD2a-wkxVizKARjMR21NwA" Cursor="Hand" AnimationLevel="Full">
+            <m:Pushpin Location="47.4329711,19.26" Background="#FFE51010"></m:Pushpin>       
+                     
+        </m:Map>
+    </Grid>
+</UserControl>
