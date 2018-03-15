@@ -108,6 +108,7 @@
     <Compile Include="Data\RentalServiceJoinDataHandler.cs" />
     <Compile Include="Data\ServiceDataHandler.cs" />
     <Compile Include="Data\UserDataHandler.cs" />
+    <Compile Include="Exceptions\EntryNotFoundException.cs" />
     <Compile Include="Rental.cs">
       <DependentUpon>RentalEntityMode.tt</DependentUpon>
     </Compile>
@@ -213,10 +214,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="RentalDatabase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="RentalDatabase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>RentalDatabase.mdf</DependentUpon>
     </Content>
     <Content Include="RentalEntityMode.Context.tt">

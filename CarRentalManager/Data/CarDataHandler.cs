@@ -26,6 +26,13 @@ namespace CarRentalManager.Data
 
     public class CarDataHandler : IDataBase
     {
+        private RentalDatabaseEntities database;
+
+        public CarDataHandler()
+        {
+            this.database = new RentalDatabaseEntities();
+        }
+
         public void Delete(object deletableItem)
         {
             throw new NotImplementedException();
@@ -33,12 +40,41 @@ namespace CarRentalManager.Data
 
         public void Insert(object newItem)
         {
-            throw new NotImplementedException();
+            this.database.Cars.Add((Car)newItem);
+            this.database.SaveChanges();
         }
 
         public object Select(object attributeType, object attributeValue)
         {
-            throw new NotImplementedException();
+            CarAttributeType attribute = (CarAttributeType)attributeType;
+
+            switch (attribute)
+            {
+                case CarAttributeType.CarType:
+                    break;
+                case CarAttributeType.CarPhotoPath:
+                    break;
+                case CarAttributeType.CarHorsePower:
+                    break;
+                case CarAttributeType.CarCapacity:
+                    break;
+                case CarAttributeType.CarMotorcode:
+                    break;
+                case CarAttributeType.CarRentalPrice:
+                    break;
+                case CarAttributeType.CarQuantity:
+                    break;
+                case CarAttributeType.CarCategory:
+                    break;
+                case CarAttributeType.CoordLat:
+                    break;
+                case CarAttributeType.CoordLong:
+                    break;
+                default:
+                    break;
+            }
+
+            return null;
         }
 
         public void Update(object updatableItem)

@@ -29,6 +29,18 @@ namespace CarRentalManager
             this.InitializeComponent();
 
             this.passwordValid = false;
+
+            UserDataHandler userHandler = new UserDataHandler();
+            var user = new User
+            {
+                UserName = "atoth",
+                UserPassword = "ccc",
+                IsClient = "C"
+            };
+            userHandler.Insert(user);
+
+            User u1 = (User)userHandler.Select(UserAttributeType.UserName, "atoth");
+            Console.WriteLine(u1.UserPassword);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
