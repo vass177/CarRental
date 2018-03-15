@@ -101,6 +101,7 @@
     <Compile Include="Client.cs">
       <DependentUpon>RentalEntityMode.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\IDataBase.cs" />
     <Compile Include="Rental.cs">
       <DependentUpon>RentalEntityMode.tt</DependentUpon>
     </Compile>
