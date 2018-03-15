@@ -16,8 +16,10 @@ namespace CarRentalManager.Data
 
         void Delete(object deletableItem);
 
-        void Update(object updatableItem);
+        void Update();
 
         object Select(object attributeType, object attributeValue);
+
+        object SelectMore(object attributeType, object attributeValue);
     }
 }

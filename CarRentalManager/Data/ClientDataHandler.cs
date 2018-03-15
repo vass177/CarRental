@@ -36,7 +36,12 @@ namespace CarRentalManager.Data
             throw new NotImplementedException();
         }
 
-        public void Update(object updatableItem)
+        public object SelectMore(object attributeType, object attributeValue)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
         {
             throw new NotImplementedException();
         }

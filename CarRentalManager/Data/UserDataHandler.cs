@@ -1,11 +1,15 @@
-﻿namespace CarRentalManager.Data
+﻿// <copyright file="UserDataHandler.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace CarRentalManager.Data
 {
-    using CarRentalManager.Exceptions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using CarRentalManager.Exceptions;
 
     public enum UserAttributeType
     {
@@ -39,22 +43,47 @@
         {
             UserAttributeType attribute = (UserAttributeType)attributeType;
 
-            switch (attribute)
+            try
             {
-                case UserAttributeType.UserName:
-                    return this.database.Users.Single(x => x.UserName == (string)attributeValue);
-                case UserAttributeType.UserPassword:
-                    return this.database.Users.Single(x => x.UserPassword == (string)attributeValue);
-                case UserAttributeType.IsClient:
-                    return this.database.Users.Single(x => x.IsClient == (string)attributeValue);
-                default:
-                    throw new EntryNotFoundException("user");
+                switch (attribute)
+                {
+                    case UserAttributeType.UserName:
+                        return this.database.Users.Single(x => x.UserName.Equals((string)attributeValue));
+                    case UserAttributeType.UserPassword:
+                        return this.database.Users.Single(x => x.UserPassword.Equals((string)attributeValue));
+                    case UserAttributeType.IsClient:
+                        return this.database.Users.Single(x => x.IsClient.Equals((string)attributeValue));
+                    default:
+                        return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw new EntryNotFoundException("User");
             }
         }
 
-        public void Update(object updatableItem)
+        public object SelectMore(object attributeType, object attributeValue)
         {
-            throw new NotImplementedException();
+            UserAttributeType attribute = (UserAttributeType)attributeType;
+
+            switch (attribute)
+            {
+                case UserAttributeType.UserName:
+                    return this.database.Users.Where(x => x.UserName.Equals((string)attributeValue));
+                case UserAttributeType.UserPassword:
+                    return this.database.Users.Where(x => x.UserPassword.Equals((string)attributeValue));
+                case UserAttributeType.IsClient:
+                    return this.database.Users.Where(x => x.IsClient.Equals((string)attributeValue));
+                default:
+                    return null;
+            }
+        }
+
+        public void Update()
+        {
+            this.database.SaveChanges();
         }
     }
 }
