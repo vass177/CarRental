@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace CarRentalManager.Data
+namespace BusinessLogic
 {
     using System;
     using System.Collections.Generic;
@@ -10,22 +10,19 @@ namespace CarRentalManager.Data
     using System.Security.Cryptography;
     using System.Text;
     using System.Threading.Tasks;
+    using Data;
+    using Data.DataHandling;
+    using Data.Exceptions;
 
     public class LoginAuthentication
     {
-        private string user;
-        private string passwordHash;
-        private List<string> userList;
+        private string userName;
+        private User user;
+        private UserDataHandler userDataHandler;
 
         public LoginAuthentication()
         {
-            this.userList = new List<string>();
-        }
-
-        public List<string> UserList
-        {
-            get { return this.userList; }
-            set { this.userList = value; }
+            userDataHandler = new UserDataHandler();
         }
 
         public bool CheckLoginCredentials(string user, string password)
@@ -33,10 +30,8 @@ namespace CarRentalManager.Data
             if (this.UserExists(user))
             {
                 string inputPassword = this.EncodePassword(password);
-                Console.WriteLine(inputPassword);
-                Console.WriteLine(this.passwordHash);
-                if (inputPassword.Equals(this.passwordHash))
-                {
+                if (inputPassword.Equals(this.user.UserPassword))
+                {                    
                     return true;
                 }
                 else
@@ -52,16 +47,14 @@ namespace CarRentalManager.Data
 
         private bool UserExists(string u)
         {
-            this.user = u;
+            this.userName = u;
 
-            // it will iterate through the database, and collect all the usernames
-            if (this.userList.Contains(this.user))
-            {
-                // if user exists, we get passwordHash from the user database
-                this.passwordHash = this.EncodePassword("jelszo");
+            try
+            {                
+                this.user=(User)userDataHandler.Select(UserAttributeType.UserName, this.userName);
                 return true;
             }
-            else
+            catch(EntryNotFoundException e)
             {
                 return false;
             }

@@ -9,7 +9,7 @@ namespace Data.DataHandling
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using BusinessLogic.Exceptions;
+    using Data.Exceptions;
 
     public enum CarAttributeType
     {
@@ -54,23 +54,23 @@ namespace Data.DataHandling
                 switch (attribute)
                 {
                     case CarAttributeType.CarType:
-                        return this.database.Cars.Single(x => x.CarType.Equals((string)attributeValue));
+                        return this.database.Cars.Single(x => x.CarType==(string)attributeValue);
                     case CarAttributeType.CarHorsePower:
-                        return this.database.Cars.Single(x => x.CarHorsepower.Equals((decimal)attributeValue));
+                        return this.database.Cars.Single(x => x.CarHorsepower==(decimal)attributeValue);
                     case CarAttributeType.CarCapacity:
-                        return this.database.Cars.Single(x => x.CarCapacity.Equals((decimal)attributeValue));
+                        return this.database.Cars.Single(x => x.CarCapacity==(decimal)attributeValue);
                     case CarAttributeType.CarMotorcode:
-                        return this.database.Cars.Single(x => x.CarMotorcode.Equals((string)attributeValue));
+                        return this.database.Cars.Single(x => x.CarMotorcode==(string)attributeValue);
                     case CarAttributeType.CarRentalPrice:
-                        return this.database.Cars.Single(x => x.CarRentalPrice.Equals((decimal)attributeValue));
+                        return this.database.Cars.Single(x => x.CarRentalPrice==(decimal)attributeValue);
                     case CarAttributeType.CarQuantity:
-                        return this.database.Cars.Single(x => x.CarQuantity.Equals((decimal)attributeValue));
+                        return this.database.Cars.Single(x => x.CarQuantity==(decimal)attributeValue);
                     case CarAttributeType.CarCategory:
-                        return this.database.Cars.Single(x => x.CarCategory.Equals((string)attributeValue));
+                        return this.database.Cars.Single(x => x.CarCategory==(string)attributeValue);
                     case CarAttributeType.CoordLat:
-                        return this.database.Cars.Single(x => x.CoordLat.Equals((decimal)attributeValue));
+                        return this.database.Cars.Single(x => x.CoordLat==(decimal)attributeValue);
                     case CarAttributeType.CoordLong:
-                        return this.database.Cars.Single(x => x.CoordLong.Equals((decimal)attributeValue));
+                        return this.database.Cars.Single(x => x.CoordLong==(decimal)attributeValue);
                     default:
                         return null;
                 }

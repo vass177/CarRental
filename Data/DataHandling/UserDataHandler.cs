@@ -9,7 +9,7 @@ namespace Data.DataHandling
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using BusinessLogic.Exceptions;
+    using Data.Exceptions;
 
     public enum UserAttributeType
     {
@@ -48,11 +48,11 @@ namespace Data.DataHandling
                 switch (attribute)
                 {
                     case UserAttributeType.UserName:
-                        return this.database.Users.Single(x => x.UserName.Equals((string)attributeValue));
+                        return this.database.Users.Single(x => x.UserName==(string)attributeValue);
                     case UserAttributeType.UserPassword:
-                        return this.database.Users.Single(x => x.UserPassword.Equals((string)attributeValue));
+                        return this.database.Users.Single(x => x.UserPassword==(string)attributeValue);
                     case UserAttributeType.IsClient:
-                        return this.database.Users.Single(x => x.IsClient.Equals((string)attributeValue));
+                        return this.database.Users.Single(x => x.IsClient==(string)attributeValue);
                     default:
                         return null;
                 }

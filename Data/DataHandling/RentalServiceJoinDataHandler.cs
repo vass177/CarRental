@@ -9,7 +9,7 @@ namespace Data.DataHandling
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using BusinessLogic.Exceptions;
+    using Data.Exceptions;
 
     public enum RentalServiceAttributeType
     {

@@ -1,6 +1,4 @@
-﻿using CarRentalManager.Data;
-using BusinessLogic.Exceptions;
-using MahApps.Metro.Controls;
+﻿using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Data.DataHandling;
+using Data.Exceptions;
 using Data;
+using BusinessLogic;
 
 namespace CarRentalManager
 {
@@ -32,6 +32,14 @@ namespace CarRentalManager
             this.InitializeComponent();
 
             this.passwordValid = false;
+
+            //testing Login validation
+            LoginAuthentication loginAuthentication = new LoginAuthentication();
+            Console.WriteLine("Ez rossz kell legyen: "+loginAuthentication.CheckLoginCredentials("akovacs", "nemjojelszo"));
+            Console.WriteLine("Ez jó kell legyen: "+loginAuthentication.CheckLoginCredentials("akovacs", "Szofttech1?"));
+            Console.WriteLine("Ez jó kell legyen: " + loginAuthentication.CheckLoginCredentials("okiss", "Proba123%%"));
+            Console.WriteLine("Ez rossz kell legyen, mert nincs ilyen user: " + loginAuthentication.CheckLoginCredentials("iproba", "nemjojelszo"));
+            //
 
             UserDataHandler userHandler = new UserDataHandler();
             var user = new User
