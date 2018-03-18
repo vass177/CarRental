@@ -72,7 +72,7 @@ namespace BusinessLogic
             }
         }
 
-        private string EncodePassword(string password)
+        public string EncodePassword(string password)
         {
             byte[] bytes = Encoding.Unicode.GetBytes(password);
             byte[] inArray = HashAlgorithm.Create("SHA256").ComputeHash(bytes);
