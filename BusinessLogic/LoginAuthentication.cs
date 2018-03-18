@@ -45,6 +45,18 @@ namespace BusinessLogic
             }
         }
 
+        public bool IsClient()
+        {
+            if (user.IsClient=="Y")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private bool UserExists(string u)
         {
             this.userName = u;

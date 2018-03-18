@@ -39,35 +39,6 @@ namespace CarRentalManager
             Console.WriteLine("Ez jó kell legyen: "+loginAuthentication.CheckLoginCredentials("akovacs", "Szofttech1?"));
             Console.WriteLine("Ez jó kell legyen: " + loginAuthentication.CheckLoginCredentials("okiss", "Proba123%%"));
             Console.WriteLine("Ez rossz kell legyen, mert nincs ilyen user: " + loginAuthentication.CheckLoginCredentials("iproba", "nemjojelszo"));
-            //
-
-            UserDataHandler userHandler = new UserDataHandler();
-            var user = new User
-            {
-                UserName = "atoth",
-                UserPassword = "ccc",
-                IsClient = "C"
-            };
-            //userHandler.Insert(user);
-
-            try
-            {
-                User u1 = (User)userHandler.Select(UserAttributeType.UserName, "atoth");
-                //u1.UserPassword = "mégvalami";
-                //userHandler.Update(u1);
-                //User u2 = (User)userHandler.Select(UserAttributeType.UserName, "atoth");
-                Console.WriteLine(u1.UserPassword);
-
-                IQueryable<User> userList = (IQueryable<User>)userHandler.SelectMore(UserAttributeType.IsClient, "M");
-                foreach (User item in userList)
-                {
-                    Console.WriteLine(item.UserName);
-                }
-            }
-            catch (EntryNotFoundException e)
-            {
-                Console.WriteLine("Entry not found in table Users");
-            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
