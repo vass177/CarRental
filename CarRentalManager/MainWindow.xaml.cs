@@ -17,6 +17,7 @@ using Data.DataHandling;
 using Data.Exceptions;
 using Data;
 using BusinessLogic;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace CarRentalManager
 {
@@ -111,6 +112,36 @@ namespace CarRentalManager
             }
 
             return false;
+        }
+
+
+        private async void Login_ButtonClickAsync(object sender, RoutedEventArgs e)
+        {
+            LoginAuthentication loginAuthentication = new LoginAuthentication();
+            if (loginAuthentication.CheckLoginCredentials(LoginName_TextBox.Text, LoginPassword_TextBox.Password) == true)
+            {
+                await this.ShowMessageAsync("Login message", "Successfull");
+                if (loginAuthentication.IsClient() == true)
+                {
+                    LoginName_TextBox.Text = "";
+                    LoginPassword_TextBox.Password = "";
+                    ClientWindow cw = new ClientWindow();
+                    cw.ShowDialog();
+                }
+                else
+                {
+                    LoginName_TextBox.Text = "";
+                    LoginPassword_TextBox.Password = "";
+                    AdminWindow aw = new AdminWindow();
+                    aw.ShowDialog();
+                }
+            }
+            else
+            {
+                LoginName_TextBox.Text = "";
+                LoginPassword_TextBox.Password = "";
+                await this.ShowMessageAsync("Login message", "Unsuccessfull");
+            }
         }
     }
 }
