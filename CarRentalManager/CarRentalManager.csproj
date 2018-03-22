@@ -205,5 +205,12 @@
     <Resource Include="Images\background2eff.jpg" />
     <Resource Include="Images\logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ferrari.jpg" />
+    <Resource Include="Images\lada.jpg" />
+    <Resource Include="Images\opel.jpg" />
+    <Resource Include="Images\smart.jpg" />
+    <Resource Include="Images\suzuki.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
