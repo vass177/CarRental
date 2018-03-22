@@ -95,17 +95,150 @@
                     </StackPanel>
                 </Controls:MetroTabItem.Header>
                 <Grid>
-                    <Grid.ColumnDefinitions>
+                    <!--<Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="4*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Label Content="New rental" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
+                    </Grid.RowDefinitions>-->
+                    <!--<Label Content="New rental" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>-->
+                    <TabControl x:Name="NewRentalTabControl">
+                        <TabItem Header="Client data">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label Content="Client name" FontSize="20" Grid.Column="0" Grid.Row="0"></Label>
+                                <Label Content="E-mail" FontSize="20" Grid.Column="0" Grid.Row="1"></Label>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Client_TabButton">
+                                    <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Button>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Car select" x:Name="CarSelect_TabItem">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Car_TabButton">
+                                    <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Button>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Date" x:Name="Date_TabItem">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label Content="Start date" FontSize="20" Grid.Column="0" Grid.Row="1"></Label>
+                                <Label Content="End date" FontSize="20" Grid.Column="0" Grid.Row="4"></Label>
+                                <DatePicker Grid.Column="1" Grid.Row="1" FontSize="20"></DatePicker>
+                                <DatePicker Grid.Column="1" Grid.Row="4" FontSize="20"></DatePicker>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Date_TabButton">
+                                    <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Button>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Services" x:Name="Services_TabItem">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Service_TabButton">
+                                    <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Button>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Confirm" x:Name="Confirm_Tabitem">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Confirm_TabButtonAsync">
+                                    <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Button>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
                 </Grid>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem Background="#41b1e1" Margin="0,2,0,0">

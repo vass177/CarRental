@@ -50,7 +50,6 @@
                                     <Trigger Property="IsSelected" Value="True">
                                         <Setter TargetName="Border" Property="Background" Value="#1d8bba" />
                                         <Setter Property="Foreground" Value="White" />
-                                        
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
