@@ -138,18 +138,32 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.2*"></RowDefinition>
                                     <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="0.2*"></RowDefinition>
+                                    <RowDefinition Height="0.3*"></RowDefinition>
                                 </Grid.RowDefinitions>
+                                <Controls:FlipView Grid.Column="1" Grid.Row="1" BannerText="CARS">
+                                    <Controls:FlipViewItem >
+                                        <Image Source="Images\opel.jpg"></Image>
+                                    </Controls:FlipViewItem>
+                                    <Controls:FlipViewItem>
+                                        <Image Source="Images\lada.jpg"></Image>
+                                    </Controls:FlipViewItem>
+                                    <Controls:FlipViewItem>
+                                        <Image Source="Images\ferrari.jpg"></Image>
+                                    </Controls:FlipViewItem>
+                                    <Controls:FlipViewItem>
+                                        <Image Source="Images\smart.jpg"></Image>
+                                    </Controls:FlipViewItem>
+                                    <Controls:FlipViewItem>
+                                        <Image Source="Images\suzuki.jpg"></Image>
+                                    </Controls:FlipViewItem>
+                                </Controls:FlipView>
                                 <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Car_TabButton">
                                     <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
