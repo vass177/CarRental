@@ -34,6 +34,9 @@ namespace CarRentalManager
 
             this.passwordValid = false;
 
+            UserClientRegistration registration = new UserClientRegistration();
+            //registration.AddNewUser("bnagy", "Nagy Béla", "admin", "1054 Budapest, Váci 7", "bnagy@gmail.com", "Y");
+
             //testing Login validation
             LoginAuthentication loginAuthentication = new LoginAuthentication();
             Console.WriteLine("Ez rossz kell legyen: "+loginAuthentication.CheckLoginCredentials("akovacs", "nemjojelszo"));

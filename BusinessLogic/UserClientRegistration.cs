@@ -8,7 +8,7 @@ using Data;
 
 namespace BusinessLogic
 {
-    class UserClientRegistration
+    public class UserClientRegistration
     {
         private ClientDataHandler clientHandler;
         private UserDataHandler userHandler;
