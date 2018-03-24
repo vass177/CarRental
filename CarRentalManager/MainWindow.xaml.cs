@@ -164,11 +164,18 @@ namespace CarRentalManager
             }
             if (Name_Textbox.Text.Length < 5 && Fullname_Textbox.Text.Length < 5 && Address_Textbox.Text.Length < 5 && Email_Textbox.Text.Length < 5)
             {
+                Pw_Textbox.Clear();
                 await this.ShowMessageAsync("Registration message", "Unsuccessfull, too short, min. 5 char in every field");
             }
             else
             {
-                userClientRegistration.AddNewUser(Name_Textbox.Text, Fullname_Textbox.Text, Pw_Textbox.Text, Address_Textbox.Text, Email_Textbox.Text, usertype);
+                userClientRegistration.AddNewUser(Name_Textbox.Text, Fullname_Textbox.Text, Pw_Textbox.Password, Address_Textbox.Text, Email_Textbox.Text, usertype);
+                //Registration_Grid.Children.Clear();
+                Name_Textbox.Text = "";
+                Fullname_Textbox.Text = "";
+                Pw_Textbox.Password = "";
+                Address_Textbox.Text = "";
+                Email_Textbox.Text = "";
                 await this.ShowMessageAsync("Registration message", Name_Textbox.Text + " user is created as " + usertypename);
             }
         }

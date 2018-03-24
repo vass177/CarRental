@@ -66,7 +66,7 @@
                             </Grid>
                         </Controls:MetroTabItem>
                         <Controls:MetroTabItem Header="Registration">
-                            <Grid>
+                            <Grid x:Name="Registration_Grid">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -103,7 +103,7 @@
                                         </ToolTip>
                                     </TextBox.ToolTip>
                                 </TextBox>
-                                <TextBox x:Name="Pw_Textbox" Grid.Column="1" Grid.Row="2" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200"></TextBox>
+                                <PasswordBox x:Name="Pw_Textbox" Grid.Column="1" Grid.Row="2" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200"></PasswordBox>
                                 <TextBox x:Name="Address_Textbox" Grid.Column="1" Grid.Row="3" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200"></TextBox>
                                 <TextBox x:Name="Email_Textbox" Grid.Column="1" Grid.Row="4" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200"></TextBox>
                                 <Controls:ToggleSwitch Width="160" x:Name="UserType_ToggleSwitch" Header="User type" OnLabel="Client" OffLabel="Admin" Grid.Column="1" Grid.Row="5"></Controls:ToggleSwitch>
