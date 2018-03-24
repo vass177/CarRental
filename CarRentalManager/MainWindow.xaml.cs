@@ -27,11 +27,11 @@ namespace CarRentalManager
     public partial class MainWindow : MetroWindow
     {
         private bool passwordValid;
-
+        ViewModel VM;
         public MainWindow()
         {
             this.InitializeComponent();
-
+            VM = new ViewModel();
             this.passwordValid = false;
 
             UserClientRegistration registration = new UserClientRegistration();
@@ -45,11 +45,11 @@ namespace CarRentalManager
             Console.WriteLine("Ez rossz kell legyen, mert nincs ilyen user: " + loginAuthentication.CheckLoginCredentials("iproba", "nemjojelszo"));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ClientWindow clientWindow = new ClientWindow();
-            clientWindow.Show();
-        }
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ClientWindow clientWindow = new ClientWindow();
+        //    clientWindow.Show();
+        //}
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -113,7 +113,7 @@ namespace CarRentalManager
                     return true;
                 }
             }
-
+            
             return false;
         }
 
@@ -144,6 +144,32 @@ namespace CarRentalManager
                 LoginName_TextBox.Text = "";
                 LoginPassword_TextBox.Password = "";
                 await this.ShowMessageAsync("Login message", "Unsuccessfull");
+            }
+        }
+
+        private async void Registration_ButtonAsync(object sender, RoutedEventArgs e)
+        {
+            UserClientRegistration userClientRegistration = new UserClientRegistration();
+            string usertype;
+            string usertypename;
+            if (UserType_ToggleSwitch.IsChecked == true)
+            {
+                usertype = "Y";
+                usertypename = "client";
+            }
+            else
+            {
+                usertype = "N";
+                usertypename = "admin";
+            }
+            if (Name_Textbox.Text.Length < 5 && Fullname_Textbox.Text.Length < 5 && Address_Textbox.Text.Length < 5 && Email_Textbox.Text.Length < 5)
+            {
+                await this.ShowMessageAsync("Registration message", "Unsuccessfull, too short, min. 5 char in every field");
+            }
+            else
+            {
+                userClientRegistration.AddNewUser(Name_Textbox.Text, Fullname_Textbox.Text, Pw_Textbox.Text, Address_Textbox.Text, Email_Textbox.Text, usertype);
+                await this.ShowMessageAsync("Registration message", Name_Textbox.Text + " user is created as " + usertypename);
             }
         }
     }
