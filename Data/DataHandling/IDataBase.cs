@@ -22,6 +22,8 @@ namespace Data.DataHandling
         object Select(object attributeType, object attributeValue);
 
         object SelectMore(object attributeType, object attributeValue);
+
+        object GetAll();
     }
 }
 

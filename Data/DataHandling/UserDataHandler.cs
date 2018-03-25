@@ -14,7 +14,6 @@ namespace Data.DataHandling
     public enum UserAttributeType
     {
         UserName,
-        UserPassword,
         IsClient
     }
 
@@ -33,6 +32,11 @@ namespace Data.DataHandling
             this.database.SaveChanges();
         }
 
+        public object GetAll()
+        {
+            return database.Users;
+        }
+
         public void Insert(object newItem)
         {
             this.database.Users.Add((User)newItem);
@@ -41,21 +45,13 @@ namespace Data.DataHandling
 
         public object Select(object attributeType, object attributeValue)
         {
-            UserAttributeType attribute = (UserAttributeType)attributeType;
-
+            if (!((UserAttributeType)attributeType == UserAttributeType.UserName))
+            {
+                throw new InvalidSearchTypeException("UserAttributeType");
+            }
             try
             {
-                switch (attribute)
-                {
-                    case UserAttributeType.UserName:
-                        return this.database.Users.Single(x => x.UserName==(string)attributeValue);
-                    case UserAttributeType.UserPassword:
-                        return this.database.Users.Single(x => x.UserPassword==(string)attributeValue);
-                    case UserAttributeType.IsClient:
-                        return this.database.Users.Single(x => x.IsClient==(string)attributeValue);
-                    default:
-                        return null;
-                }
+                return this.database.Users.Single(x => x.UserName == (string)attributeValue);
             }
             catch (Exception e)
             {
@@ -71,11 +67,9 @@ namespace Data.DataHandling
             switch (attribute)
             {
                 case UserAttributeType.UserName:
-                    return this.database.Users.Where(x => x.UserName.Equals((string)attributeValue));
-                case UserAttributeType.UserPassword:
-                    return this.database.Users.Where(x => x.UserPassword.Equals((string)attributeValue));
+                    return this.database.Users.Where(x => x.UserName==(string)attributeValue);
                 case UserAttributeType.IsClient:
-                    return this.database.Users.Where(x => x.IsClient.Equals((string)attributeValue));
+                    return this.database.Users.Where(x => x.IsClient==(string)attributeValue);
                 default:
                     return null;
             }

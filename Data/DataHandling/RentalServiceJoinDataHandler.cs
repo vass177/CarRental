@@ -19,29 +19,53 @@ namespace Data.DataHandling
 
     public class RentalServiceJoinDataHandler : IDataBase
     {
+        private RentalDBEntities database;
+        public RentalServiceJoinDataHandler()
+        {
+            this.database = new RentalDBEntities();
+        }
         public void Delete(object deletableItem)
         {
-            throw new NotImplementedException();
+            this.database.RentalServiceJoins.Remove((RentalServiceJoin)deletableItem);
+            this.database.SaveChanges();
+        }
+
+        public object GetAll()
+        {
+            return this.database.RentalServiceJoins;
         }
 
         public void Insert(object newItem)
         {
-            throw new NotImplementedException();
+            this.database.RentalServiceJoins.Add((RentalServiceJoin)newItem);
+            this.database.SaveChanges();
         }
 
         public object Select(object attributeType, object attributeValue)
         {
-            throw new NotImplementedException();
+            // No single select available in this table
+
+            throw new InvalidSearchTypeException("RentalServiceAttributeType");
         }
 
         public object SelectMore(object attributeType, object attributeValue)
         {
-            throw new NotImplementedException();
+            RentalServiceAttributeType attribute = (RentalServiceAttributeType)attributeType;
+            
+            switch (attribute)
+            {
+                case RentalServiceAttributeType.RentalID:
+                    return this.database.RentalServiceJoins.Where(x => x.RentalID == (int)attributeValue);
+                case RentalServiceAttributeType.ServiceName:
+                    return this.database.RentalServiceJoins.Where(x => x.ServiceName == (string)attributeValue);
+                default:
+                    return null;
+            }
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            this.database.SaveChanges();
         }
     }
 }

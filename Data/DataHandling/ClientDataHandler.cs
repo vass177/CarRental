@@ -15,8 +15,6 @@ namespace Data.DataHandling
     {
         UserName,
         ClientName,
-        ClientAddress,
-        ClientEmail,
         ClientDiscountStatus
     }
 
@@ -35,6 +33,11 @@ namespace Data.DataHandling
             this.database.SaveChanges();
         }
 
+        public object GetAll()
+        {
+            return database.Clients;
+        }
+
         public void Insert(object newItem)
         {
             this.database.Clients.Add((Client)newItem);
@@ -43,33 +46,42 @@ namespace Data.DataHandling
 
         public object Select(object attributeType, object attributeValue)
         {
-            //ClientAttributeType attribute = (ClientAttributeType)attributeType;
+            if (!((ClientAttributeType)attributeType == ClientAttributeType.UserName))
+            {
+                throw new InvalidSearchTypeException("ClientAttributeType");
+            }
 
-            //try
-            //{
-            //    switch (attribute)
-            //    {
-            //        case UserAttributeType.UserName:
-            //            return this.database.Users.Single(x => x.UserName.Equals((string)attributeValue));
-            //        case UserAttributeType.UserPassword:
-            //            return this.database.Users.Single(x => x.UserPassword.Equals((string)attributeValue));
-            //        case UserAttributeType.IsClient:
-            //            return this.database.Users.Single(x => x.IsClient.Equals((string)attributeValue));
-            //        default:
-            //            return null;
-            //    }
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.StackTrace);
-            //    throw new EntryNotFoundException("User");
-            //}
-            return null;
+            try
+            {
+                return this.database.Clients.Single(x => x.UserName == (string)attributeValue);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw new EntryNotFoundException("Client");
+            }
         }
 
         public object SelectMore(object attributeType, object attributeValue)
         {
-            throw new NotImplementedException();
+            ClientAttributeType attribute = (ClientAttributeType)attributeType;
+
+            // for DiscountStatus, attributvalue will be a decimal[] array
+            decimal[] discountRange = new decimal[2];
+            if (attribute == ClientAttributeType.ClientDiscountStatus)
+            {
+                discountRange = (decimal[])attributeValue;
+            }
+
+            switch (attribute)
+            {
+                case ClientAttributeType.ClientName:
+                    return this.database.Clients.Where(x => x.ClientName == (string)attributeValue);
+                case ClientAttributeType.ClientDiscountStatus:
+                    return this.database.Clients.Where(x => (x.ClientDiscountStatus >= discountRange[0] && x.ClientDiscountStatus <= discountRange[1]));
+                default:
+                    return null;
+            }
         }
 
         public void Update()

@@ -16,12 +16,8 @@ namespace Data.DataHandling
         CarType,
         CarHorsePower,
         CarCapacity,
-        CarMotorcode,
         CarRentalPrice,
-        CarQuantity,
-        CarCategory,
-        CoordLat,
-        CoordLong
+        CarCategory
     }
 
     public class CarDataHandler : IDataBase
@@ -39,6 +35,11 @@ namespace Data.DataHandling
             this.database.SaveChanges();
         }
 
+        public object GetAll()
+        {
+            return database.Cars;
+        }
+
         public void Insert(object newItem)
         {
             this.database.Cars.Add((Car)newItem);
@@ -47,33 +48,15 @@ namespace Data.DataHandling
 
         public object Select(object attributeType, object attributeValue)
         {
-            CarAttributeType attribute = (CarAttributeType)attributeType;
+            // CarType will be unique, only one car will exist with a specific CarType
+            if (!((CarAttributeType)attributeType == CarAttributeType.CarType))
+            {
+                throw new InvalidSearchTypeException("CarAttributeType");
+            }
 
             try
             {
-                switch (attribute)
-                {
-                    case CarAttributeType.CarType:
-                        return this.database.Cars.Single(x => x.CarType==(string)attributeValue);
-                    case CarAttributeType.CarHorsePower:
-                        return this.database.Cars.Single(x => x.CarHorsepower==(decimal)attributeValue);
-                    case CarAttributeType.CarCapacity:
-                        return this.database.Cars.Single(x => x.CarCapacity==(decimal)attributeValue);
-                    case CarAttributeType.CarMotorcode:
-                        return this.database.Cars.Single(x => x.CarMotorcode==(string)attributeValue);
-                    case CarAttributeType.CarRentalPrice:
-                        return this.database.Cars.Single(x => x.CarRentalPrice==(decimal)attributeValue);
-                    case CarAttributeType.CarQuantity:
-                        return this.database.Cars.Single(x => x.CarQuantity==(decimal)attributeValue);
-                    case CarAttributeType.CarCategory:
-                        return this.database.Cars.Single(x => x.CarCategory==(string)attributeValue);
-                    case CarAttributeType.CoordLat:
-                        return this.database.Cars.Single(x => x.CoordLat==(decimal)attributeValue);
-                    case CarAttributeType.CoordLong:
-                        return this.database.Cars.Single(x => x.CoordLong==(decimal)attributeValue);
-                    default:
-                        return null;
-                }
+                return this.database.Cars.Single(x => x.CarType == (string)attributeValue);
             }
             catch (Exception e)
             {
@@ -86,26 +69,37 @@ namespace Data.DataHandling
         {
             CarAttributeType attribute = (CarAttributeType)attributeType;
 
+            // for CarHorsePower, attributvalue will be a decimal[] array
+            decimal[] hpRange = new decimal[2];
+            if (attribute == CarAttributeType.CarHorsePower)
+            {
+                hpRange = (decimal[])attributeValue;
+            }
+
+            // for CarCapacity, attributvalue will be a decimal[] array
+            decimal[] capacityRange = new decimal[2];
+            if (attribute == CarAttributeType.CarCapacity)
+            {
+                capacityRange = (decimal[])attributeValue;
+            }
+
+            // for CarRentalPrice, attributvalue will be a decimal[] array
+            decimal[] priceRange = new decimal[2];
+            if (attribute == CarAttributeType.CarRentalPrice)
+            {
+                priceRange = (decimal[])attributeValue;
+            }
+
             switch (attribute)
             {
-                case CarAttributeType.CarType:
-                    return this.database.Cars.Where(x => x.CarType.Equals((string)attributeValue));
-                case CarAttributeType.CarHorsePower:
-                    return this.database.Cars.Where(x => x.CarHorsepower.Equals((decimal)attributeValue));
-                case CarAttributeType.CarCapacity:
-                    return this.database.Cars.Where(x => x.CarCapacity.Equals((decimal)attributeValue));
-                case CarAttributeType.CarMotorcode:
-                    return this.database.Cars.Where(x => x.CarMotorcode.Equals((string)attributeValue));
-                case CarAttributeType.CarRentalPrice:
-                    return this.database.Cars.Where(x => x.CarRentalPrice.Equals((decimal)attributeValue));
-                case CarAttributeType.CarQuantity:
-                    return this.database.Cars.Where(x => x.CarQuantity.Equals((decimal)attributeValue));
                 case CarAttributeType.CarCategory:
-                    return this.database.Cars.Where(x => x.CarCategory.Equals((string)attributeValue));
-                case CarAttributeType.CoordLat:
-                    return this.database.Cars.Where(x => x.CoordLat.Equals((decimal)attributeValue));
-                case CarAttributeType.CoordLong:
-                    return this.database.Cars.Where(x => x.CoordLong.Equals((decimal)attributeValue));
+                    return this.database.Cars.Where(x => x.CarCategory == (string)attributeValue);
+                case CarAttributeType.CarRentalPrice:
+                    return this.database.Cars.Where(x => (x.CarRentalPrice >= priceRange[0] && x.CarRentalPrice <= priceRange[1]));
+                case CarAttributeType.CarHorsePower:
+                    return this.database.Cars.Where(x => (x.CarHorsepower >= hpRange[0] && x.CarRentalPrice <= hpRange[1]));
+                case CarAttributeType.CarCapacity:
+                    return this.database.Cars.Where(x => (x.CarCapacity >= capacityRange[0] && x.CarCapacity <= capacityRange[1]));
                 default:
                     return null;
             }
