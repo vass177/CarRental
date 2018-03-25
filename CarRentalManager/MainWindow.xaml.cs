@@ -51,30 +51,6 @@ namespace CarRentalManager
         //    clientWindow.Show();
         //}
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox passwordBox = (TextBox)sender;
-            string password = passwordBox.Text;
-            if (password.Length < 10)
-            {
-                passwordBox.Foreground = Brushes.Red;
-                this.passwordValid = false;
-            }
-            else
-            {
-                if (this.ContainsLowerCase(password) && this.ContainsUpperCase(password) && this.ContainsSpecialChar(password))
-                {
-                    passwordBox.Foreground = Brushes.Black;
-                    this.passwordValid = true;
-                }
-                else
-                {
-                    passwordBox.Foreground = Brushes.Red;
-                    this.passwordValid = false;
-                }
-            }
-        }
-
         private bool ContainsLowerCase(string text)
         {
             foreach (char c in text)
@@ -113,7 +89,7 @@ namespace CarRentalManager
                     return true;
                 }
             }
-            
+
             return false;
         }
 
@@ -149,34 +125,65 @@ namespace CarRentalManager
 
         private async void Registration_ButtonAsync(object sender, RoutedEventArgs e)
         {
-            UserClientRegistration userClientRegistration = new UserClientRegistration();
-            string usertype;
-            string usertypename;
-            if (UserType_ToggleSwitch.IsChecked == true)
+            if (this.passwordValid)
             {
-                usertype = "Y";
-                usertypename = "client";
+                UserClientRegistration userClientRegistration = new UserClientRegistration();
+                string usertype;
+                string usertypename;
+                if (UserType_ToggleSwitch.IsChecked == true)
+                {
+                    usertype = "Y";
+                    usertypename = "client";
+                }
+                else
+                {
+                    usertype = "N";
+                    usertypename = "admin";
+                }
+                if (Name_Textbox.Text.Length < 5 && Fullname_Textbox.Text.Length < 5 && Address_Textbox.Text.Length < 5 && Email_Textbox.Text.Length < 5)
+                {
+                    Pw_Textbox.Clear();
+                    await this.ShowMessageAsync("Registration message", "Unsuccessfull, too short, min. 5 char in every field");
+                }
+                else
+                {
+                    userClientRegistration.AddNewUser(Name_Textbox.Text, Fullname_Textbox.Text, Pw_Textbox.Password, Address_Textbox.Text, Email_Textbox.Text, usertype);
+                    //Registration_Grid.Children.Clear();
+                    Name_Textbox.Text = "";
+                    Fullname_Textbox.Text = "";
+                    Pw_Textbox.Password = "";
+                    Address_Textbox.Text = "";
+                    Email_Textbox.Text = "";
+                    await this.ShowMessageAsync("Registration message", Name_Textbox.Text + " user is created as " + usertypename);
+                }
+            }
+        }
+        /// <summary>
+        /// This method checks after every change in the PasswordBox, whether it is valid or not
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            PasswordBox passwordBox = (PasswordBox)sender;
+            string password = passwordBox.Password;
+            if (password.Length < 10)
+            {
+                passwordBox.Background = Brushes.Yellow;
+                this.passwordValid = false;
             }
             else
             {
-                usertype = "N";
-                usertypename = "admin";
-            }
-            if (Name_Textbox.Text.Length < 5 && Fullname_Textbox.Text.Length < 5 && Address_Textbox.Text.Length < 5 && Email_Textbox.Text.Length < 5)
-            {
-                Pw_Textbox.Clear();
-                await this.ShowMessageAsync("Registration message", "Unsuccessfull, too short, min. 5 char in every field");
-            }
-            else
-            {
-                userClientRegistration.AddNewUser(Name_Textbox.Text, Fullname_Textbox.Text, Pw_Textbox.Password, Address_Textbox.Text, Email_Textbox.Text, usertype);
-                //Registration_Grid.Children.Clear();
-                Name_Textbox.Text = "";
-                Fullname_Textbox.Text = "";
-                Pw_Textbox.Password = "";
-                Address_Textbox.Text = "";
-                Email_Textbox.Text = "";
-                await this.ShowMessageAsync("Registration message", Name_Textbox.Text + " user is created as " + usertypename);
+                if (this.ContainsLowerCase(password) && this.ContainsUpperCase(password) && this.ContainsSpecialChar(password))
+                {
+                    passwordBox.Background = Brushes.White;
+                    this.passwordValid = true;
+                }
+                else
+                {
+                    passwordBox.Background = Brushes.Yellow;
+                    this.passwordValid = false;
+                }
             }
         }
     }
