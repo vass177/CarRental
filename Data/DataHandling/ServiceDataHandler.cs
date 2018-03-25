@@ -59,11 +59,13 @@ namespace Data.DataHandling
         {
             ServiceAttributeType attribute = (ServiceAttributeType)attributeType;
 
-            // for servicePrice, attributvalue will be an int[] array
-            int[] priceRange = new int[2];
+            // for servicePrice, attributvalue will be an decimal[] array
+            decimal priceRange1 = 0;
+            decimal priceRange2 = 0;
             if (attribute==ServiceAttributeType.ServicePrice)
             {
-                priceRange = (int[])attributeValue;
+                priceRange1 = ((decimal[])attributeValue)[0];
+                priceRange2 = ((decimal[])attributeValue)[1];
             }
 
             switch (attribute)
@@ -71,7 +73,7 @@ namespace Data.DataHandling
                 case ServiceAttributeType.ServiceName:
                     return this.database.Services.Where(x => x.ServiceName == (string)attributeValue);
                 case ServiceAttributeType.ServicePrice:
-                    return this.database.Services.Where(x => (x.ServicePrice >= priceRange[0] && x.ServicePrice <= priceRange[1]));
+                    return this.database.Services.Where(x => (x.ServicePrice >= priceRange1 && x.ServicePrice <= priceRange2));
                 default:
                     return null;
             }

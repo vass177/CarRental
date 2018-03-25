@@ -67,10 +67,12 @@ namespace Data.DataHandling
             ClientAttributeType attribute = (ClientAttributeType)attributeType;
 
             // for DiscountStatus, attributvalue will be a decimal[] array
-            decimal[] discountRange = new decimal[2];
+            decimal discountRange1 = 0;
+            decimal discountRange2 = 0;
             if (attribute == ClientAttributeType.ClientDiscountStatus)
             {
-                discountRange = (decimal[])attributeValue;
+                discountRange1 = ((decimal[])attributeValue)[0];
+                discountRange2 = ((decimal[])attributeValue)[1];
             }
 
             switch (attribute)
@@ -78,7 +80,7 @@ namespace Data.DataHandling
                 case ClientAttributeType.ClientName:
                     return this.database.Clients.Where(x => x.ClientName == (string)attributeValue);
                 case ClientAttributeType.ClientDiscountStatus:
-                    return this.database.Clients.Where(x => (x.ClientDiscountStatus >= discountRange[0] && x.ClientDiscountStatus <= discountRange[1]));
+                    return this.database.Clients.Where(x => (x.ClientDiscountStatus >= discountRange1 && x.ClientDiscountStatus <= discountRange2));
                 default:
                     return null;
             }

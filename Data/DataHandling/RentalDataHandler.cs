@@ -67,17 +67,21 @@ namespace Data.DataHandling
             RentalAttributeType attribute = (RentalAttributeType)attributeType;
 
             // for RentalDate, attributvalue will be a Date[] array
-            DateTime[] dateRange = new DateTime[2];
+            DateTime dateRange1 = new DateTime();
+            DateTime dateRange2 = new DateTime();
             if (attribute == RentalAttributeType.RentalDateInterval)
             {
-                dateRange = (DateTime[])attributeValue;
+                dateRange1 = ((DateTime[])attributeValue)[0];
+                dateRange2 = ((DateTime[])attributeValue)[1];
             }
 
             // for RentalPrice, attributvalue will be a decimal[] array
-            decimal[] priceRange = new decimal[2];
+            decimal priceRange1 = 0;
+            decimal priceRange2 = 0;
             if (attribute == RentalAttributeType.RentalPriceInterval)
             {
-                priceRange = (decimal[])attributeValue;
+                priceRange1 = ((decimal[])attributeValue)[0];
+                priceRange2 = ((decimal[])attributeValue)[1];
             }
 
             switch (attribute)
@@ -89,9 +93,9 @@ namespace Data.DataHandling
                 case RentalAttributeType.CarID:
                     return this.database.Rentals.Where(x => x.CarID == (int)attributeValue);
                 case RentalAttributeType.RentalDateInterval:
-                    return this.database.Rentals.Where(x => (x.RentalStartDate >= dateRange[0] && x.RentalStartDate <= dateRange[1]) || (x.RentalEndDate >= dateRange[0] && x.RentalEndDate <= dateRange[1]));
+                    return this.database.Rentals.Where(x => (x.RentalStartDate >= dateRange1 && x.RentalStartDate <= dateRange2) || (x.RentalEndDate >= dateRange1 && x.RentalEndDate <= dateRange2));
                 case RentalAttributeType.RentalPriceInterval:
-                    return this.database.Rentals.Where(x => (x.RentalFullPrice >= priceRange[0] && x.RentalFullPrice <= priceRange[1]));
+                    return this.database.Rentals.Where(x => (x.RentalFullPrice >= priceRange1 && x.RentalFullPrice <= priceRange2));
                 default:
                     return null;
             }

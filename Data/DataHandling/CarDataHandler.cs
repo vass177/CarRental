@@ -70,24 +70,30 @@ namespace Data.DataHandling
             CarAttributeType attribute = (CarAttributeType)attributeType;
 
             // for CarHorsePower, attributvalue will be a decimal[] array
-            decimal[] hpRange = new decimal[2];
+            decimal hpRange1 = 0;
+            decimal hpRange2 = 0;
             if (attribute == CarAttributeType.CarHorsePower)
             {
-                hpRange = (decimal[])attributeValue;
+                hpRange1 = ((decimal[])attributeValue)[0];
+                hpRange2 = ((decimal[])attributeValue)[1];
             }
 
             // for CarCapacity, attributvalue will be a decimal[] array
-            decimal[] capacityRange = new decimal[2];
+            decimal capacityRange1 = 0;
+            decimal capacityRange2 = 0;
             if (attribute == CarAttributeType.CarCapacity)
             {
-                capacityRange = (decimal[])attributeValue;
+                capacityRange1 = ((decimal[])attributeValue)[0];
+                capacityRange2 = ((decimal[])attributeValue)[1];
             }
 
             // for CarRentalPrice, attributvalue will be a decimal[] array
-            decimal[] priceRange = new decimal[2];
+            decimal priceRange1 = 0;
+            decimal priceRange2 = 0;
             if (attribute == CarAttributeType.CarRentalPrice)
             {
-                priceRange = (decimal[])attributeValue;
+                priceRange1 = ((decimal[])attributeValue)[0];
+                priceRange2 = ((decimal[])attributeValue)[1];
             }
 
             switch (attribute)
@@ -95,11 +101,11 @@ namespace Data.DataHandling
                 case CarAttributeType.CarCategory:
                     return this.database.Cars.Where(x => x.CarCategory == (string)attributeValue);
                 case CarAttributeType.CarRentalPrice:
-                    return this.database.Cars.Where(x => (x.CarRentalPrice >= priceRange[0] && x.CarRentalPrice <= priceRange[1]));
+                    return this.database.Cars.Where(x => (x.CarRentalPrice >= priceRange1 && x.CarRentalPrice <= priceRange2));
                 case CarAttributeType.CarHorsePower:
-                    return this.database.Cars.Where(x => (x.CarHorsepower >= hpRange[0] && x.CarRentalPrice <= hpRange[1]));
+                    return this.database.Cars.Where(x => (x.CarHorsepower >= hpRange1 && x.CarHorsepower <= hpRange2));
                 case CarAttributeType.CarCapacity:
-                    return this.database.Cars.Where(x => (x.CarCapacity >= capacityRange[0] && x.CarCapacity <= capacityRange[1]));
+                    return this.database.Cars.Where(x => (x.CarCapacity >= capacityRange1 && x.CarCapacity <= capacityRange2));
                 default:
                     return null;
             }

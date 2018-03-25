@@ -34,15 +34,36 @@ namespace CarRentalManager
             VM = new ViewModel();
             this.passwordValid = false;
 
-            UserClientRegistration registration = new UserClientRegistration();
-            //registration.AddNewUser("bnagy", "Nagy Béla", "admin", "1054 Budapest, Váci 7", "bnagy@gmail.com", "Y");
+            CarDataHandler carHander = new CarDataHandler();
+            Car c1 = new Car
+            {
+                CarCapacity = 2,
+                CarHorsepower = 70,
+                CarMotorcode = "ABGFDGFD3232",
+                CarCategory = "A",
+                CarPhotoPath = "images/smart.jpg",
+                CarQuantity = 5,
+                CarRentalPrice = 120000,
+                CarType = "Smart",
+                CoordLat = 0.136566m,
+                CoordLong = 0.122213m
+            };
+            carHander.Insert(c1);
 
-            //testing Login validation
-            LoginAuthentication loginAuthentication = new LoginAuthentication();
-            Console.WriteLine("Ez rossz kell legyen: "+loginAuthentication.CheckLoginCredentials("akovacs", "nemjojelszo"));
-            Console.WriteLine("Ez jó kell legyen: "+loginAuthentication.CheckLoginCredentials("akovacs", "Szofttech1?"));
-            Console.WriteLine("Ez jó kell legyen: " + loginAuthentication.CheckLoginCredentials("okiss", "Proba123%%"));
-            Console.WriteLine("Ez rossz kell legyen, mert nincs ilyen user: " + loginAuthentication.CheckLoginCredentials("iproba", "nemjojelszo"));
+            IQueryable<Car> carList = (IQueryable<Car>)carHander.GetAll();
+            foreach (Car item in carList)
+            {
+                Console.WriteLine(item.CarType+" "+item.CarHorsepower+" "+item.CarPhotoPath);
+            }
+            Console.WriteLine(" ");
+            Car opel=(Car)carHander.Select(CarAttributeType.CarType, "Opel Astra OPC");
+            Console.WriteLine(opel.CarRentalPrice+" "+opel.CarPhotoPath);
+
+            IQueryable<Car> carHPList = (IQueryable<Car>)carHander.SelectMore(CarAttributeType.CarHorsePower, new decimal[] { 60, 154 });
+            foreach (Car item in carHPList)
+            {
+                Console.WriteLine(item.CarType + " " + item.CarHorsepower + " " + item.CarPhotoPath);
+            }
         }
 
         //private void Button_Click(object sender, RoutedEventArgs e)
