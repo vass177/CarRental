@@ -51,5 +51,13 @@ namespace CarRentalManager
         {
             await this.ShowMessageAsync("Confirm message", "Successfull confirm");
         }
+        
+        private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            this.button1.Height = this.myGrid.ActualHeight / 4;
+            this.button2.Height = this.myGrid.ActualHeight / 4;
+            this.button3.Height = this.myGrid.ActualHeight / 4;
+            this.button4.Height = this.myGrid.ActualHeight / 4 * 1.05;
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace CarRentalManager
             VM = new ViewModel();
             this.passwordValid = false;
 
-            CarDataHandler carHander = new CarDataHandler();
+            /*CarDataHandler carHander = new CarDataHandler();
             Car c1 = new Car
             {
                 CarCapacity = 2,
@@ -63,14 +63,14 @@ namespace CarRentalManager
             foreach (Car item in carHPList)
             {
                 Console.WriteLine(item.CarType + " " + item.CarHorsepower + " " + item.CarPhotoPath);
-            }
+            }*/
         }
 
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ClientWindow clientWindow = new ClientWindow();
-        //    clientWindow.Show();
-        //}
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ClientWindow clientWindow = new ClientWindow();
+            clientWindow.Show();
+        }
 
         private bool ContainsLowerCase(string text)
         {

@@ -56,13 +56,14 @@
                                 <Label Grid.Column="0" Grid.Row="4" Content="" FontSize="20"></Label>
                                 <TextBox x:Name="LoginName_TextBox" Grid.Column="1" Grid.Row="0" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200"></TextBox>
                                 <PasswordBox x:Name="LoginPassword_TextBox" Grid.Column="1" Grid.Row="1" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200"></PasswordBox>
-                                <Button Height="40" Style="{StaticResource AccentedSquareButtonStyle}" Grid.Column="0" Grid.Row="5" FontSize="20" Click="Login_ButtonClickAsync">
+                                <Button Height="40" Style="{StaticResource AccentedSquareButtonStyle}" Grid.Column="0" Grid.Row="6" FontSize="20" Click="Login_ButtonClickAsync">
                                     <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
                                             <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_checkmark}" />
                                         </Rectangle.OpacityMask>
                                     </Rectangle>
                                 </Button>
+                                <Button Grid.Column="1" Margin="67,0,39,3" Grid.Row="6" Content="Proba" Click="Button_Click"/>
                             </Grid>
                         </Controls:MetroTabItem>
                         <Controls:MetroTabItem Header="Registration">
@@ -89,9 +90,8 @@
                                 <Label Grid.Column="0" Grid.Row="5" Content="" FontSize="20"></Label>
                                 <Label Grid.Column="0" Grid.Row="5" Content="" FontSize="20"></Label>
                                 <TextBox x:Name="Name_Textbox" Grid.Column="1" Grid.Row="0" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200"></TextBox>
-                                <TextBox x:Name="Fullname_Textbox" Grid.Column="1" Grid.Row="1" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200"> </TextBox>
-                                <PasswordBox x:Name="Pw_Textbox" Grid.Column="1" Grid.Row="2" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200" PasswordChanged="TextBox_TextChanged">
-                                    <PasswordBox.ToolTip>
+                                <TextBox x:Name="Fullname_Textbox" Grid.Column="1" Grid.Row="1" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200">
+                                    <TextBox.ToolTip>
                                         <ToolTip>
                                             <StackPanel>
                                                 <TextBlock FontWeight="Bold" Foreground="Red">Password requirement</TextBlock>
@@ -102,11 +102,12 @@
                                                 <TextBlock Foreground="Red">*special charachters</TextBlock>
                                             </StackPanel>
                                         </ToolTip>
-                                    </PasswordBox.ToolTip>
-                                </PasswordBox>
+                                    </TextBox.ToolTip>
+                                </TextBox>
+                                <PasswordBox x:Name="Pw_Textbox" Grid.Column="1" Grid.Row="2" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200"></PasswordBox>
                                 <TextBox x:Name="Address_Textbox" Grid.Column="1" Grid.Row="3" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200"></TextBox>
                                 <TextBox x:Name="Email_Textbox" Grid.Column="1" Grid.Row="4" FontSize="14" Height="18" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200"></TextBox>
-                                <Controls:ToggleSwitch Width="160" x:Name="UserType_ToggleSwitch" Header="User type" OnLabel="Client" OffLabel="Admin" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right"/>
+                                <Controls:ToggleSwitch Width="160" x:Name="UserType_ToggleSwitch" Header="User type" OnLabel="Client" OffLabel="Admin" Grid.Column="1" Grid.Row="5"></Controls:ToggleSwitch>
                                 <Button Height="40" Style="{StaticResource AccentedSquareButtonStyle}" Grid.Column="0" Grid.Row="5" FontSize="20" Click="Registration_ButtonAsync">
                                     <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
