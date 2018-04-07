@@ -38,5 +38,19 @@ namespace BusinessLogic
             OnClientListChanged();
         }
 
+        public void DeleteClient(Client selectedClient)
+        {
+            clientDBHandler.Delete(selectedClient);
+
+            OnClientListChanged();
+        }
+
+        public void UpdateClient()
+        {
+            clientDBHandler.Update();
+
+            OnClientListChanged();
+        }
+
     }
 }

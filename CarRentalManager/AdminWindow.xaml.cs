@@ -42,5 +42,15 @@ namespace CarRentalManager
             this.adminWindowViewModel = new AdminWindowViewModel();
             this.DataContext = this.adminWindowViewModel;
         }
+
+        private void DeleteClientClick(object sender, RoutedEventArgs e)
+        {
+            this.adminWindowViewModel.DeleteClient();
+        }
+
+        private void UpdateClientClick(object sender, RoutedEventArgs e)
+        {
+            this.adminWindowViewModel.UpdateClient();
+        }
     }
 }

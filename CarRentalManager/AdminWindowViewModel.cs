@@ -15,6 +15,7 @@ namespace CarRentalManager
     public class AdminWindowViewModel : Bindable
     {
         private IList<Client> clients;
+        private Client selectedClient;
         private ClientInformationLogic clientListLogic;
 
         public IList<Client> Clients
@@ -22,6 +23,20 @@ namespace CarRentalManager
             get
             {
                 return this.clients;
+            }
+        }
+
+        public Client SelectedClient
+        {
+            get
+            {
+                return this.selectedClient;
+            }
+
+            set
+            {
+                this.selectedClient = value;
+                this.OnPropertyChanged(nameof(this.SelectedClient));
             }
         }
 
@@ -34,6 +49,26 @@ namespace CarRentalManager
             this.clientListLogic.ClientListChanged += this.ClientListLogic_ClientListChanged;
         }
 
+        public void DeleteClient()
+        {
+            if (this.selectedClient != null)
+            {
+                this.clientListLogic.DeleteClient(this.selectedClient);
+
+                this.RefreshClientList();
+            }
+        }
+
+        public void UpdateClient()
+        {
+            if (this.selectedClient != null)
+            {
+                this.clientListLogic.UpdateClient();
+
+                this.RefreshClientList();
+            }
+        }
+
         private void ClientListLogic_ClientListChanged(object sender, EventArgs e)
         {
             this.RefreshClientList();
@@ -42,6 +77,8 @@ namespace CarRentalManager
         private void RefreshClientList()
         {
             this.clients = this.clientListLogic.GetAllClientList();
+
+            this.OnPropertyChanged(nameof(this.Clients));
         }
     }
 }
