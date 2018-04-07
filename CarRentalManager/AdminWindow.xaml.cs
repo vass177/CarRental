@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BusinessLogic;
 
 namespace CarRentalManager
 {
@@ -21,6 +22,8 @@ namespace CarRentalManager
     /// </summary>
     public partial class AdminWindow : MetroWindow
     {
+        private AdminWindowViewModel adminWindowViewModel;
+
         public AdminWindow()
         {
             this.InitializeComponent();
@@ -32,6 +35,12 @@ namespace CarRentalManager
             this.button2.Height = this.adminGrid.ActualHeight / 4;
             this.button3.Height = this.adminGrid.ActualHeight / 4;
             this.button4.Height = this.adminGrid.ActualHeight / 4 * 1.1;
+        }
+
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.adminWindowViewModel = new AdminWindowViewModel();
+            this.DataContext = this.adminWindowViewModel;
         }
     }
 }

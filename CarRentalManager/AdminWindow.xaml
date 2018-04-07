@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:CarRentalManager"
         xmlns:Controls1="clr-namespace:CarRentalManager.Controls" x:Class="CarRentalManager.AdminWindow"
         mc:Ignorable="d"
-        Title="CRM - ADMIN WINDOW" Height="700" Width="1000" MinHeight="700" MinWidth="1000" SizeChanged="MetroWindow_SizeChanged">
+        Title="CRM - ADMIN WINDOW" Height="700" Width="1000" MinHeight="700" MinWidth="1000" SizeChanged="MetroWindow_SizeChanged" Loaded="MetroWindow_Loaded">
     <Grid x:Name="adminGrid" Background="#FFDAD7D7">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -81,6 +81,7 @@
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Content="Admin" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
+                    
                 </Grid>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem x:Name="button2" Background="#41b1e1" Margin="0,2,0,0" Height="165">
@@ -106,6 +107,33 @@
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Content="Clients" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
+                    <ListBox x:Name="clientListBox" ItemsSource="{Binding Clients}" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="#66F7F7F7" Margin="0,0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Background="#198E916F" Margin="5,1,0,1" UseLayoutRounding="True" >
+                                    <StackPanel Orientation="Vertical">
+                                        <Label Content="Full name: " Foreground="Black" FontSize="20" FontWeight="Bold" />
+                                        <Label Content="User name: " Foreground="Black" FontSize="16" FontWeight="Bold"/>
+                                        
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Width="150">
+                                        <Label Content="{Binding ClientName}" Foreground="Black" FontSize="20" />
+                                        <Label Content="{Binding UserName}" Foreground="Black" FontSize="16"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Width="250">
+                                        <Label Content="Address" Foreground="Black" FontSize="20" FontWeight="Bold"/>
+                                        <Label Content="{Binding ClientAddress}" FontSize="18"/>
+                                        <Label Content="Discount: " HorizontalContentAlignment="Right" Foreground="Black" FontSize="16" FontWeight="Bold"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Width="250">
+                                        <Label Content="E-mail" Foreground="Black" FontSize="20" FontWeight="Bold"/>
+                                        <Label Content="{Binding ClientEmail}" FontSize="18"/>
+                                        <ProgressBar Maximum="100" Value="{Binding ClientDiscountStatus}" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom" Margin="0,12,0,0"></ProgressBar>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem x:Name="button3" Background="#41b1e1" Margin="0,2,0,0" Height="165">

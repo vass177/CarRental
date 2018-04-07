@@ -132,10 +132,10 @@
       <LastGenOutput>RentalDatabaseEntities.cs</LastGenOutput>
     </Content>
     <Content Include="RentalDB.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="RentalDB_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>RentalDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>
