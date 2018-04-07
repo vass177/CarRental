@@ -77,7 +77,7 @@
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Content="Client" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
+                    <Label Content="Client" Grid.Row="0" Grid.Column="0" FontSize="28" Foreground="White"></Label>
                 </Grid>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem x:Name="button2" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167">
