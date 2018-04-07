@@ -57,7 +57,7 @@ namespace CarRentalManager
             this.button1.Height = this.myGrid.ActualHeight / 4;
             this.button2.Height = this.myGrid.ActualHeight / 4;
             this.button3.Height = this.myGrid.ActualHeight / 4;
-            this.button4.Height = this.myGrid.ActualHeight / 4 * 1.05;
+            this.button4.Height = this.myGrid.ActualHeight / 4 * 1.1;
         }
     }
 }

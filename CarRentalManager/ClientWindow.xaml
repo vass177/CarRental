@@ -29,7 +29,7 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="TabItem">
                                 <Grid>
-                                    <Border Name="Border" Background="#41b1e1" BorderBrush="Black" BorderThickness="1,1,1,1">
+                                    <Border Name="Border" Background="#41b1e1" BorderBrush="Black" BorderThickness="0,0,0,0">
                                         <ContentPresenter x:Name="TitleContent" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="12,2,12,2"/>
                                     </Border>
                                 </Grid>
