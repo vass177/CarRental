@@ -59,5 +59,15 @@ namespace CarRentalManager
             this.button3.Height = this.myGrid.ActualHeight / 4;
             this.button4.Height = this.myGrid.ActualHeight / 4 * 1.1;
         }
+
+        private void MetroTabControl_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.tabControl.TabStripMargin = new Thickness(0, 0, 20, 0);
+        }
+
+        private void MetroTabControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.tabControl.TabStripMargin = new Thickness(0, 0, 0, 0);
+        }
     }
 }

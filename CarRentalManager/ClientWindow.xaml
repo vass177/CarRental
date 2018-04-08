@@ -22,10 +22,10 @@
             <RowDefinition/>-->
         </Grid.RowDefinitions>
 
-        <Controls:MetroTabControl TabStripPlacement="Left" Margin="0,0,0,0" SelectedIndex="0" Background="#FF464646">
+        <Controls:MetroTabControl x:Name="tabControl" TabStripPlacement="Left" Margin="0,0,0,0" SelectedIndex="0" Background="#FF464646" TabStripMargin="0,0,20,0" >
             <Controls:MetroTabControl.Resources>
                 <Style TargetType="{x:Type Controls:MetroTabItem}">
-                        <Setter Property="Template" >
+                    <Setter Property="Template" >
                         <Setter.Value>
                             <ControlTemplate TargetType="TabItem">
                                 <Grid>
@@ -38,16 +38,19 @@
                                         <Setter TargetName="Border" Property="Background" Value="#41b1e1" />
                                         <Setter Property="FontSize" Value="16"/>
                                         <Setter Property="Width" Value="170"/>
+                                        <!--<Setter Property="Margin" Value="20" />-->
                                         <Setter Property="HorizontalAlignment" Value="Left"/>
                                     </Trigger>
                                     <Trigger Property="IsMouseOver" Value="False">
                                         <Setter TargetName="Border" Property="Background" Value="#41b1e1" />
                                         <Setter Property="Width" Value="150"/>
+                                        <!--<Setter Property="Margin" Value="20" />-->
                                         <Setter Property="HorizontalAlignment" Value="Left"/>
                                     </Trigger>
                                     <Trigger Property="IsSelected" Value="True">
                                         <Setter TargetName="Border" Property="Background" Value="#1d8bba" />
                                         <Setter Property="Foreground" Value="White" />
+                                        <Setter Property="Width" Value="150"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -55,7 +58,7 @@
                     </Setter>
                 </Style>
             </Controls:MetroTabControl.Resources>
-            <Controls:MetroTabItem x:Name="button1" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" >
+            <Controls:MetroTabItem x:Name="button1" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
                         <Rectangle Fill="Black" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -80,7 +83,7 @@
                     <Label Content="Client" Grid.Row="0" Grid.Column="0" FontSize="28" Foreground="White"></Label>
                 </Grid>
             </Controls:MetroTabItem>
-            <Controls:MetroTabItem x:Name="button2" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167">
+            <Controls:MetroTabItem x:Name="button2" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
                         <Rectangle Fill="Black" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -252,7 +255,7 @@
                     </TabControl>
                 </Grid>
             </Controls:MetroTabItem>
-            <Controls:MetroTabItem x:Name="button3" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167">
+            <Controls:MetroTabItem x:Name="button3" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
                         <Rectangle Fill="Black" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -277,7 +280,7 @@
                     <Label Content="My rentals" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
                 </Grid>
             </Controls:MetroTabItem>
-            <Controls:MetroTabItem x:Name="button4" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167">
+            <Controls:MetroTabItem x:Name="button4" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
                         <Rectangle Fill="Black" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -304,7 +307,7 @@
                     <Label Content="Contact" Grid.Row="2" Grid.Column="0" FontSize="28"></Label>
                     <TextBlock FontSize="16" Grid.Row="3" Grid.Column="0">Phone number: +0 1 234 56 78 <LineBreak></LineBreak>
                     E-mail: abcdef@xyzzs.com <LineBreak></LineBreak>
-                    Address: 1000 City, Blabla 10/a    
+                    Address: 1000 City, Blabla 10/a
                     </TextBlock>
                 </Grid>
             </Controls:MetroTabItem>
