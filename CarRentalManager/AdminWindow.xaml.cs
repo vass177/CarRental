@@ -52,5 +52,15 @@ namespace CarRentalManager
         {
             this.adminWindowViewModel.UpdateClient();
         }
+
+        private void MetroTabControl_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.tabControl.TabStripMargin = new Thickness(0, 0, 20, 0);
+        }
+
+        private void MetroTabControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.tabControl.TabStripMargin = new Thickness(0, 0, 0, 0);
+        }
     }
 }
