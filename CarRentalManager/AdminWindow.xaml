@@ -22,7 +22,7 @@
             <RowDefinition/>-->
         </Grid.RowDefinitions>
 
-        <Controls:MetroTabControl TabStripPlacement="Left" Margin="0,0,0,0" SelectedIndex="0" Background="#FFDAD7D7">
+        <Controls:MetroTabControl x:Name="tabControl" TabStripPlacement="Left" Margin="0,0,0,0" SelectedIndex="0" Background="#FFDAD7D7">
             <Controls:MetroTabControl.Resources>
                 <Style TargetType="{x:Type Controls:MetroTabItem}">
                         <Setter Property="Template" >
@@ -58,7 +58,7 @@
                     </Setter>
                 </Style>
             </Controls:MetroTabControl.Resources>
-            <Controls:MetroTabItem x:Name="button1" Background="#FF13759E" Margin="0,2,0,0" Height="165" >
+            <Controls:MetroTabItem x:Name="button1" Background="#FF13759E" Margin="0,2,0,0" Height="165"  MouseEnter="MetroTabControl_MouseEnter" MouseLeave="MetroTabControl_MouseLeave">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
                         <Rectangle Fill="White" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -84,7 +84,7 @@
                     
                 </Grid>
             </Controls:MetroTabItem>
-            <Controls:MetroTabItem x:Name="button2" Background="#41b1e1" Margin="0,2,0,0" Height="165">
+            <Controls:MetroTabItem x:Name="button2" Background="#41b1e1" Margin="0,2,0,0" Height="165"  MouseEnter="MetroTabControl_MouseEnter" MouseLeave="MetroTabControl_MouseLeave">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
                         <Rectangle Fill="White" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -164,7 +164,7 @@
                     </Border>
                 </Grid>
             </Controls:MetroTabItem>
-            <Controls:MetroTabItem x:Name="button3" Background="#41b1e1" Margin="0,2,0,0" Height="165">
+            <Controls:MetroTabItem x:Name="button3" Background="#41b1e1" Margin="0,2,0,0" Height="165"  MouseEnter="MetroTabControl_MouseEnter" MouseLeave="MetroTabControl_MouseLeave">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
                         <Rectangle Fill="White" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -189,7 +189,7 @@
                     <Label Content="Cars" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
                 </Grid>
             </Controls:MetroTabItem>
-            <Controls:MetroTabItem x:Name="button4" Background="#41b1e1" Margin="0,2,0,0" Height="165">
+            <Controls:MetroTabItem x:Name="button4" Background="#41b1e1" Margin="0,2,0,0" Height="165"  MouseEnter="MetroTabControl_MouseEnter" MouseLeave="MetroTabControl_MouseLeave">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
                         <Rectangle Fill="White" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center" >

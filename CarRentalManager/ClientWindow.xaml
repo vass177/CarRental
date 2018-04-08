@@ -35,22 +35,24 @@
                                 </Grid>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="Border" Property="Background" Value="#41b1e1" />
+                                        <Setter TargetName="Border" Property="Background" Value="#FF115E7E"  />
                                         <Setter Property="FontSize" Value="16"/>
                                         <Setter Property="Width" Value="170"/>
                                         <!--<Setter Property="Margin" Value="20" />-->
                                         <Setter Property="HorizontalAlignment" Value="Left"/>
                                     </Trigger>
                                     <Trigger Property="IsMouseOver" Value="False">
-                                        <Setter TargetName="Border" Property="Background" Value="#41b1e1" />
+                                        <Setter TargetName="Border" Property="Background" Value="#FF115E7E"  />
                                         <Setter Property="Width" Value="150"/>
                                         <!--<Setter Property="Margin" Value="20" />-->
                                         <Setter Property="HorizontalAlignment" Value="Left"/>
                                     </Trigger>
                                     <Trigger Property="IsSelected" Value="True">
                                         <Setter TargetName="Border" Property="Background" Value="#1d8bba" />
+                                        <Setter Property="Foreground" Value="Black" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
                                         <Setter Property="Foreground" Value="White" />
-                                        <Setter Property="Width" Value="150"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -61,7 +63,7 @@
             <Controls:MetroTabItem x:Name="button1" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
-                        <Rectangle Fill="Black" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Rectangle Fill="white" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Rectangle.OpacityMask>
                                 <VisualBrush Visual="{StaticResource appbar_user}" Stretch="Fill" />
                             </Rectangle.OpacityMask>
@@ -86,7 +88,7 @@
             <Controls:MetroTabItem x:Name="button2" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
-                        <Rectangle Fill="Black" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Rectangle Fill="White" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Rectangle.OpacityMask>
                                 <VisualBrush Visual="{StaticResource appbar_transit_car}" Stretch="Fill" />
                             </Rectangle.OpacityMask>
@@ -258,7 +260,7 @@
             <Controls:MetroTabItem x:Name="button3" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
-                        <Rectangle Fill="Black" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Rectangle Fill="White" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Rectangle.OpacityMask>
                                 <VisualBrush Visual="{StaticResource appbar_transit_congestion}" Stretch="Fill" />
                             </Rectangle.OpacityMask>
@@ -283,7 +285,7 @@
             <Controls:MetroTabItem x:Name="button4" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
-                        <Rectangle Fill="Black" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        <Rectangle Fill="white" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center" >
                             <Rectangle.OpacityMask>
                                 <VisualBrush Visual="{StaticResource appbar_customerservice}" Stretch="Fill" />
                             </Rectangle.OpacityMask>
