@@ -22,7 +22,7 @@
             <RowDefinition/>-->
         </Grid.RowDefinitions>
 
-        <Controls:MetroTabControl x:Name="tabControl" TabStripPlacement="Left" Margin="0,0,0,0" SelectedIndex="0" Background="#FFDAD7D7">
+        <Controls:MetroTabControl x:Name="tabControl" TabStripPlacement="Left" Margin="0,0,0,0" SelectedIndex="0" Background="#FFDAD7D7" TabStripMargin="0,0,20,0">
             <Controls:MetroTabControl.Resources>
                 <Style TargetType="{x:Type Controls:MetroTabItem}">
                         <Setter Property="Template" >
@@ -181,12 +181,81 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="0.5*"></RowDefinition>
+                        <RowDefinition Height="5*"></RowDefinition>
+                        <!--<RowDefinition Height="0.5*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>-->
                     </Grid.RowDefinitions>
                     <Label Content="Cars" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
+                    <ListBox x:Name="carsListBox"  Grid.Row="1"  Background="#66F7F7F7" Margin="0,0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Background="#198E916F" Margin="5,1,0,1" UseLayoutRounding="True" >
+                                    <StackPanel Orientation="Vertical">
+                                        <Label Content="Car ID: " Foreground="Black" FontSize="16" FontWeight="Bold" />
+                                        <Label Content="Car type: " Foreground="Black" FontSize="16" FontWeight="Bold"/>
+                                        <Label Content="Car HP: " Foreground="Black" FontSize="16" FontWeight="Bold" />
+                                        <Label Content="Car capacity: " Foreground="Black" FontSize="16" FontWeight="Bold"/>
+                                        <Label Content="CAR rental price: " Foreground="Black" FontSize="16" FontWeight="Bold" />
+                                        <Label Content="Car quantity: " Foreground="Black" FontSize="16" FontWeight="Bold"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Width="150">
+                                        <!--<Label Content="{Binding CarID}" Foreground="Black" FontSize="16" />
+                                        <Label Content="{Binding CarType}" Foreground="Black" FontSize="16"/>
+                                        <Label Content="{Binding CarHorsepower}" Foreground="Black" FontSize="16" />
+                                        <Label Content="{Binding CarCapacity}" Foreground="Black" FontSize="16"/>
+                                        <Label Content="{Binding CarMotorcode}" Foreground="Black" FontSize="16" />
+                                        <Label Content="{Binding CarRentalPrice}" Foreground="Black" FontSize="16"/>
+                                        <Label Content="{Binding CarQuantity}" Foreground="Black" FontSize="16" />-->
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Label Content="New car" Grid.Row="0" Grid.Column="1" FontSize="26"></Label>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Content="Car type" FontSize="20" Grid.Row="0" Grid.Column="0"></Label>
+                        <Label Content="Car photo" FontSize="20" Grid.Row="1" Grid.Column="0"></Label>
+                        <Label Content="Car horsepower" FontSize="20" Grid.Row="3" Grid.Column="0"></Label>
+                        <Label Content="Car capacity" FontSize="20" Grid.Row="4" Grid.Column="0"></Label>
+                        <Label Content="Car motorcode" FontSize="20" Grid.Row="5" Grid.Column="0"></Label>
+                        <Label Content="Car rental price" FontSize="20" Grid.Row="6" Grid.Column="0"></Label>
+                        <Label Content="Car quantity" FontSize="20" Grid.Row="7" Grid.Column="0"></Label>
+                        <Label Content="Car category" FontSize="20" Grid.Row="8" Grid.Column="0"></Label>
+                        <Button Content="OK" Grid.Row="9" Grid.Column="1" FontSize="18" Height="32"></Button>
+                    </Grid>
+                    <!--<Label Content="Upload photo" Grid.Column="0" Grid.Row="2" FontSize="20"></Label>
+                    <Grid Grid.Row="3" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Content="Select a photo..." Grid.Row="0" Grid.Column="0" FontSize="16"></Label>
+                        <Button Content="Browse" Grid.Row="0" Grid.Column="1" FontSize="16" Click="BrowseCar_Click"></Button>
+                    </Grid>-->
                 </Grid>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem x:Name="button4" Background="#41b1e1" Margin="0,2,0,0" Height="165"  MouseEnter="MetroTabControl_MouseEnter" MouseLeave="MetroTabControl_MouseLeave">
