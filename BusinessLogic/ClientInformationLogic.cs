@@ -31,13 +31,6 @@ namespace BusinessLogic
             return ((IQueryable<Client>)clients).ToList();
         }
 
-        public void Save (Client client)
-        {
-            clientDBHandler.Update();
-
-            OnClientListChanged();
-        }
-
         public void DeleteClient(Client selectedClient)
         {
             clientDBHandler.Delete(selectedClient);

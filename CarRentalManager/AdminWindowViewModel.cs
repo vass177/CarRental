@@ -18,6 +18,10 @@ namespace CarRentalManager
         private Client selectedClient;
         private ClientInformationLogic clientListLogic;
 
+        private IList<Car> cars;
+        private Client selectedCar;
+        private CarHandlingLogic carHandLogic;
+
         public IList<Client> Clients
         {
             get
@@ -40,13 +44,38 @@ namespace CarRentalManager
             }
         }
 
+        public IList<Car> Cars
+        {
+            get
+            {
+                return this.cars;
+            }
+        }
+
+        public Client SelectedCar
+        {
+            get
+            {
+                return this.selectedCar;
+            }
+
+            set
+            {
+                this.selectedCar = value;
+                this.OnPropertyChanged(nameof(this.SelectedCar));
+            }
+        }
+
         public AdminWindowViewModel()
         {
             this.clientListLogic = new ClientInformationLogic();
+            this.carHandLogic = new CarHandlingLogic();
 
             this.RefreshClientList();
+            this.RefreshCarList();
 
             this.clientListLogic.ClientListChanged += this.ClientListLogic_ClientListChanged;
+            this.carHandLogic.CarListChanged += this.CarHandLogic_CarListChanged;
         }
 
         public void DeleteClient()
@@ -79,6 +108,18 @@ namespace CarRentalManager
             this.clients = this.clientListLogic.GetAllClientList();
 
             this.OnPropertyChanged(nameof(this.Clients));
+        }
+
+        private void RefreshCarList()
+        {
+            this.cars = this.carHandLogic.GetAllCarList();
+
+            this.OnPropertyChanged(nameof(this.Cars));
+        }
+
+        private void CarHandLogic_CarListChanged(object sender, EventArgs e)
+        {
+            this.RefreshCarList();
         }
     }
 }
