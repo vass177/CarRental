@@ -20,6 +20,14 @@ namespace BusinessLogic
         private User user;
         private UserDataHandler userDataHandler;
 
+        public string UserName
+        {
+            get
+            {
+                return this.user.UserName;
+            }
+        }
+
         public LoginAuthentication()
         {
             userDataHandler = new UserDataHandler();

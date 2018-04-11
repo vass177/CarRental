@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:CarRentalManager"
         xmlns:Controls1="clr-namespace:CarRentalManager.Controls" x:Name="clientWindow" x:Class="CarRentalManager.ClientWindow"
         mc:Ignorable="d"
-        Title="CRM - CLIENT WINDOW" Height="700" Width="1000" MinHeight="700" MinWidth="1000" SizeChanged="MetroWindow_SizeChanged">
+        Title="CRM - CLIENT WINDOW" Height="700" Width="1000" MinHeight="700" MinWidth="1000" SizeChanged="MetroWindow_SizeChanged" Loaded="ClientWindow_Loaded">
     <Grid x:Name="myGrid" Background="#FF464646">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -71,7 +71,7 @@
                         <TextBlock Text="Client" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
                     </StackPanel>
                 </Controls:MetroTabItem.Header>
-                <Grid>
+                <Grid Background="#FF464646">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -96,7 +96,7 @@
                         <TextBlock Text="New rental" FontSize="24" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
                     </StackPanel>
                 </Controls:MetroTabItem.Header>
-                <Grid>
+                <Grid Background="#FF464646">
                     <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -268,7 +268,7 @@
                         <TextBlock Text="My rentals" FontSize="24" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
                     </StackPanel>
                 </Controls:MetroTabItem.Header>
-                <Grid>
+                <Grid Background="#FF464646">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -293,7 +293,7 @@
                         <TextBlock Text="Contact" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
                     </StackPanel>
                 </Controls:MetroTabItem.Header>
-                <Grid>
+                <Grid Background="#FF464646">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>

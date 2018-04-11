@@ -68,7 +68,7 @@ namespace CarRentalManager
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ClientWindow clientWindow = new ClientWindow();
+            ClientWindow clientWindow = new ClientWindow("valaki");
             clientWindow.Show();
         }
 
@@ -125,7 +125,7 @@ namespace CarRentalManager
                 {
                     LoginName_TextBox.Text = "";
                     LoginPassword_TextBox.Password = "";
-                    ClientWindow cw = new ClientWindow();
+                    ClientWindow cw = new ClientWindow(loginAuthentication.UserName);
                     cw.ShowDialog();
                 }
                 else

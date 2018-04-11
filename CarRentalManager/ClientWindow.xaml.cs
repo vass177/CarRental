@@ -22,9 +22,14 @@ namespace CarRentalManager
     /// </summary>
     public partial class ClientWindow : MetroWindow
     {
-        public ClientWindow()
+        private ClientWindowViewModel clientWindowViewModel;
+        private string userName;
+
+        public ClientWindow(string userName)
         {
             this.InitializeComponent();
+
+            this.userName = userName;
         }
 
         private void Client_TabButton(object sender, RoutedEventArgs e)
@@ -68,6 +73,11 @@ namespace CarRentalManager
         private void MetroTabControl_MouseEnter(object sender, MouseEventArgs e)
         {
             this.tabControl.TabStripMargin = new Thickness(0, 0, 0, 0);
+        }
+
+        private void ClientWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.clientWindowViewModel = new ClientWindowViewModel(this.userName);
         }
     }
 }
