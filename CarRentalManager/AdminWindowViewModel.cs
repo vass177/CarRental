@@ -19,7 +19,7 @@ namespace CarRentalManager
         private ClientInformationLogic clientListLogic;
 
         private IList<Car> cars;
-        private Client selectedCar;
+        private Car selectedCar;
         private CarHandlingLogic carHandLogic;
 
         public IList<Client> Clients
