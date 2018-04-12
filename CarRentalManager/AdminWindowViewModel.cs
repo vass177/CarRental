@@ -52,7 +52,7 @@ namespace CarRentalManager
             }
         }
 
-        public Client SelectedCar
+        public Car SelectedCar
         {
             get
             {
