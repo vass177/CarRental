@@ -80,5 +80,17 @@ namespace CarRentalManager
             this.clientWindowViewModel = new ClientWindowViewModel(this.userName);
             this.DataContext = this.clientWindowViewModel;
         }
+
+        private void ButtonClick_SelectCar(object sender, RoutedEventArgs e)
+        {
+            int index = this.carFlipView.SelectedIndex;
+            Image item = (Image)this.carFlipView.SelectedItem;
+            string[] image = item.Source.ToString().Split(';');
+            string imageSource = image[1].Substring(10);
+            this.clientWindowViewModel.SelectACar(imageSource);
+
+            // calling next tab
+            this.NewRentalTabControl.SelectedItem = this.Date_TabItem;
+        }
     }
 }

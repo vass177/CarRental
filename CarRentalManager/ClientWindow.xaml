@@ -164,24 +164,14 @@
                                     <RowDefinition Height="0.2*"></RowDefinition>
                                     <RowDefinition Height="0.3*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Controls:FlipView Grid.Column="1" Grid.Row="1" BannerText="CARS">
-                                    <Controls:FlipViewItem >
-                                        <Image Source="Images\opel.jpg"></Image>
-                                    </Controls:FlipViewItem>
-                                    <Controls:FlipViewItem>
-                                        <Image Source="Images\lada.jpg"></Image>
-                                    </Controls:FlipViewItem>
-                                    <Controls:FlipViewItem>
-                                        <Image Source="Images\ferrari.jpg"></Image>
-                                    </Controls:FlipViewItem>
-                                    <Controls:FlipViewItem>
-                                        <Image Source="Images\smart.jpg"></Image>
-                                    </Controls:FlipViewItem>
-                                    <Controls:FlipViewItem>
-                                        <Image Source="Images\suzuki.jpg"></Image>
-                                    </Controls:FlipViewItem>
+                                <Controls:FlipView x:Name="carFlipView" Grid.Column="1" Grid.Row="1" BannerText="CARS">
+                                    <Image Source="Images\opel.jpg"></Image>
+                                    <Image Source="Images\lada.jpg"></Image>
+                                    <Image Source="Images\ferrari.jpg"></Image>
+                                    <Image Source="Images\smart.jpg"></Image>
+                                    <Image Source="Images\suzuki.jpg"></Image>
                                 </Controls:FlipView>
-                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Car_TabButton">
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="ButtonClick_SelectCar">
                                     <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
                                             <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
@@ -322,7 +312,7 @@
                     <Label Content="Map" Grid.Row="1" Grid.Column="1" FontSize="35" Foreground="#FFF0F0F0" FontWeight="ExtraBold" VerticalAlignment="Center"></Label>
                     <Controls1:MapControl Grid.Column="1" Grid.Row="2"  HorizontalAlignment="Center" VerticalAlignment="Top" Height="367" Width="396" BorderThickness="20" BorderBrush="#33FFFFFF" Margin="5,5,10,0"></Controls1:MapControl>
                     <Label Content="Contact" Grid.Row="1" Grid.Column="0" FontSize="35" Foreground="#FFF0F0F0" FontWeight="ExtraBold" VerticalAlignment="Center"></Label>
-                    <TextBlock FontSize="24" Grid.Row="2" Grid.Column="0" Foreground="#FFF0F0F0">Phone number: +0 1 234 56 78 <LineBreak></LineBreak>
+                    <TextBlock FontSize="24" Grid.Row="2" Grid.Column="0" Foreground="#FFF0F0F0" LineHeight="50">Phone number: +0 1 234 56 78 <LineBreak></LineBreak>
                     E-mail: abcdef@xyzzs.com <LineBreak></LineBreak>
                     Address: 1000 City, Blabla 10/a
                     </TextBlock>

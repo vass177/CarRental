@@ -12,6 +12,9 @@ namespace CarRentalManager
     {
         private Client loggedInClient;
         private ClientInformationLogic clientLogic;
+        private Car selectedCar;
+        private NewOrderHandlingLogic orderHandling;        
+
 
         public Client LoggedInClient
         {
@@ -32,6 +35,8 @@ namespace CarRentalManager
             this.clientLogic = new ClientInformationLogic();
             this.LoggedInClient = this.clientLogic.GetLoggedInClient(loggedInUser);
 
+            this.orderHandling = new NewOrderHandlingLogic(this.loggedInClient);
+
             this.clientLogic.ClientLoggedIn += ClientLogic_ClientLoggedIn;
         }
 
@@ -43,6 +48,11 @@ namespace CarRentalManager
         public void RefreshClient()
         {
             this.OnPropertyChanged(nameof(this.LoggedInClient));
+        }
+        public void SelectACar(string imageSource)
+        {
+            this.orderHandling.SelectCar(imageSource);
+
         }
     }
 }
