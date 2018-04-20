@@ -14,9 +14,16 @@ namespace BusinessLogic
 
         public event EventHandler ClientListChanged;
 
+        public event EventHandler ClientLoggedIn;
+
         public ClientInformationLogic()
         {
             this.clientDBHandler = new ClientDataHandler();
+        }
+
+        private void OnLogIn()
+        {
+            ClientLoggedIn?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnClientListChanged()
@@ -44,6 +51,12 @@ namespace BusinessLogic
 
             OnClientListChanged();
         }
+        public Client GetLoggedInClient(string userName)
+        {
+            Client loggedIn=(Client)clientDBHandler.Select(ClientAttributeType.UserName, userName);
+            return loggedIn;
+        }
+        
 
     }
 }

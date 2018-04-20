@@ -78,6 +78,7 @@ namespace CarRentalManager
         private void ClientWindow_Loaded(object sender, RoutedEventArgs e)
         {
             this.clientWindowViewModel = new ClientWindowViewModel(this.userName);
+            this.DataContext = this.clientWindowViewModel;
         }
     }
 }

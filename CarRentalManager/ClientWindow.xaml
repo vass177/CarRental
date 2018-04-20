@@ -78,11 +78,26 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Content="Client" Grid.Row="0" Grid.Column="0" FontSize="28" Foreground="White"></Label>
+                    <Label Content="Client information" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="35" Foreground="#FFDEDEDE" FontWeight="ExtraBold" HorizontalContentAlignment="Center" VerticalAlignment="Center"></Label>
+                    <Label Content="User name:" Grid.Row="1" Grid.Column="0" FontSize="28" Foreground="White"></Label>
+                    <Label Content="Client name:" Grid.Row="2" Grid.Column="0" FontSize="28" Foreground="White"></Label>
+                    <Label Content="Address:" Grid.Row="3" Grid.Column="0" FontSize="28" Foreground="White"></Label>
+                    <Label Content="Email:" Grid.Row="4" Grid.Column="0" FontSize="28" Foreground="White"></Label>
+                    <Label Content="Discount rate:" Grid.Row="5" Grid.Column="0" FontSize="28" Foreground="White"></Label>
+
+                    <Label Content="{Binding LoggedInClient.UserName}" Grid.Row="1" Grid.Column="1" FontSize="28" Foreground="White"></Label>
+                    <Label Content="{Binding LoggedInClient.ClientName}" Grid.Row="2" Grid.Column="1" FontSize="28" Foreground="White"></Label>
+                    <Label Content="{Binding LoggedInClient.ClientAddress}" Grid.Row="3" Grid.Column="1" FontSize="28" Foreground="White"></Label>
+                    <Label Content="{Binding LoggedInClient.ClientEmail}" Grid.Row="4" Grid.Column="1" FontSize="28" Foreground="White"></Label>
+                    <Label Content="{Binding LoggedInClient.ClientDiscountStatus}" Grid.Row="5" Grid.Column="1" FontSize="28" Foreground="White"></Label>
+                    
+
                 </Grid>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem x:Name="button2" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
@@ -108,7 +123,7 @@
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>-->
                     <!--<Label Content="New rental" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>-->
-                    <TabControl x:Name="NewRentalTabControl">
+                    <TabControl x:Name="NewRentalTabControl" Background="#FF464646">
                         <TabItem Header="Client data">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -299,15 +314,15 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Content="Map" Grid.Row="2" Grid.Column="1" FontSize="28"></Label>
-                    <Controls1:MapControl Grid.Column="1" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="200" Width="300"></Controls1:MapControl>
-                    <Label Content="Contact" Grid.Row="2" Grid.Column="0" FontSize="28"></Label>
-                    <TextBlock FontSize="16" Grid.Row="3" Grid.Column="0">Phone number: +0 1 234 56 78 <LineBreak></LineBreak>
+                    <Image Source="Images\logo.png"  Grid.Row="0" Grid.ColumnSpan="2" MaxHeight="200" VerticalAlignment="Top" Margin="0" RenderTransformOrigin="0,0"></Image>
+                    <Label Content="Map" Grid.Row="1" Grid.Column="1" FontSize="35" Foreground="#FFF0F0F0" FontWeight="ExtraBold" VerticalAlignment="Center"></Label>
+                    <Controls1:MapControl Grid.Column="1" Grid.Row="2"  HorizontalAlignment="Center" VerticalAlignment="Top" Height="367" Width="396" BorderThickness="20" BorderBrush="#33FFFFFF" Margin="5,5,10,0"></Controls1:MapControl>
+                    <Label Content="Contact" Grid.Row="1" Grid.Column="0" FontSize="35" Foreground="#FFF0F0F0" FontWeight="ExtraBold" VerticalAlignment="Center"></Label>
+                    <TextBlock FontSize="24" Grid.Row="2" Grid.Column="0" Foreground="#FFF0F0F0">Phone number: +0 1 234 56 78 <LineBreak></LineBreak>
                     E-mail: abcdef@xyzzs.com <LineBreak></LineBreak>
                     Address: 1000 City, Blabla 10/a
                     </TextBlock>
