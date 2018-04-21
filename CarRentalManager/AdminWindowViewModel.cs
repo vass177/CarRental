@@ -70,6 +70,7 @@ namespace CarRentalManager
         {
             this.clientListLogic = new ClientInformationLogic();
             this.carHandLogic = new CarHandlingLogic();
+            
 
             this.RefreshClientList();
             this.RefreshCarList();
