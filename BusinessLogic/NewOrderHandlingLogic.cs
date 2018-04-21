@@ -13,12 +13,15 @@ namespace BusinessLogic
         private Client client;
         private Car selectedCar;
         private bool carAvailable;
+
         private readonly CarDataHandler carDBHandler;
+        private readonly RentalDataHandler rentalDBHandler;
 
         public NewOrderHandlingLogic(Client loggedInClient)
         {
             this.client = loggedInClient;
             this.carDBHandler = new CarDataHandler();
+            this.rentalDBHandler = new RentalDataHandler();
         }
 
         public void SelectCar(string imageSource)
@@ -34,7 +37,18 @@ namespace BusinessLogic
                 this.selectedCar = selectedCarList.First();
                 Console.WriteLine(selectedCar.CarType);
             }
+        }
+        public bool CheckCarAvailibility(DateTime startDate, DateTime endDate)
+        {
+            DateTime[] dateRange = new DateTime[] { startDate, endDate };
+            IQueryable<Rental> rentals= (IQueryable<Rental>)this.rentalDBHandler.SelectMore(RentalAttributeType.RentalDateInterval, dateRange);
 
+            foreach (var item in rentals)
+            {
+                Console.WriteLine(item.UserName+"   "+item.RentalStartDate+ "   "+ item.RentalEndDate);
+            }
+
+            return false;
         }
     }
 }

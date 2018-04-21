@@ -235,6 +235,9 @@
     <Resource Include="Images\smart.png" />
     <Resource Include="Images\tesla.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lexus.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

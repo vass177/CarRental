@@ -92,5 +92,20 @@ namespace CarRentalManager
             // calling next tab
             this.NewRentalTabControl.SelectedItem = this.Date_TabItem;
         }
+
+        private void ButtonClick_SelectDate(object sender, RoutedEventArgs e)
+        {
+            if (this.startDatePicker.SelectedDate != null && this.endDatePicker.SelectedDate != null)
+            {
+                DateTime startDate = (DateTime)this.startDatePicker.SelectedDate;
+                DateTime endDate = (DateTime)this.endDatePicker.SelectedDate;
+
+                this.clientWindowViewModel.CheckDates(startDate, endDate);
+                // itt a metódus hívás a viewmodel felé
+
+            }
+            DateTime[] dates=calendar.SelectedDates.ToArray();
+            Console.WriteLine(dates[0]);
+        }
     }
 }
