@@ -164,13 +164,14 @@
                                     <RowDefinition Height="0.2*"></RowDefinition>
                                     <RowDefinition Height="0.3*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Border Margin="20,0" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="#FFF3F3F3" CornerRadius="20,20,20,20" BorderThickness="2,2,2,2">
-                                    <Controls:FlipView x:Name="carFlipView" BannerText="CARS" Margin="30,0">
-                                        <Image Source="Images\opel.jpg"></Image>
+                                <Border Margin="20,0,40,0" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="#FFF3F3F3" CornerRadius="20,20,20,20" BorderThickness="2,2,2,2">
+                                    <Controls:FlipView x:Name="carFlipView" BannerText="" Margin="30,0" Foreground="#00000000" IsBannerEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" MouseHoverBorderEnabled="False">
+                                        <Image Source="Images\opel.png"></Image>
                                         <Image Source="Images\lada.png"></Image>
-                                        <Image Source="Images\ferrari.jpg"></Image>
-                                        <Image Source="Images\smart.jpg"></Image>
-                                        <Image Source="Images\suzuki.jpg"></Image>
+                                        <Image Source="Images\ferrari.png"></Image>
+                                        <Image Source="Images\smart.png"></Image>
+                                        <Image Source="Images\civic.png"></Image>
+                                        <Image Source="Images\tesla.png"></Image>
                                     </Controls:FlipView>
                                 </Border>
                                 
