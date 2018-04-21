@@ -164,13 +164,16 @@
                                     <RowDefinition Height="0.2*"></RowDefinition>
                                     <RowDefinition Height="0.3*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Controls:FlipView x:Name="carFlipView" Grid.Column="1" Grid.Row="1" BannerText="CARS">
-                                    <Image Source="Images\opel.jpg"></Image>
-                                    <Image Source="Images\lada.jpg"></Image>
-                                    <Image Source="Images\ferrari.jpg"></Image>
-                                    <Image Source="Images\smart.jpg"></Image>
-                                    <Image Source="Images\suzuki.jpg"></Image>
-                                </Controls:FlipView>
+                                <Border Margin="20,0" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="#FFF3F3F3" CornerRadius="20,20,20,20" BorderThickness="2,2,2,2">
+                                    <Controls:FlipView x:Name="carFlipView" BannerText="CARS" Margin="30,0">
+                                        <Image Source="Images\opel.jpg"></Image>
+                                        <Image Source="Images\lada.png"></Image>
+                                        <Image Source="Images\ferrari.jpg"></Image>
+                                        <Image Source="Images\smart.jpg"></Image>
+                                        <Image Source="Images\suzuki.jpg"></Image>
+                                    </Controls:FlipView>
+                                </Border>
+                                
                                 <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="ButtonClick_SelectCar">
                                     <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
