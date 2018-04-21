@@ -48,7 +48,14 @@ namespace BusinessLogic
                 Console.WriteLine(item.UserName+"   "+item.RentalStartDate+ "   "+ item.RentalEndDate);
             }
 
-            return false;
+            foreach (var order in rentals)
+            {
+                Console.WriteLine(order.Car.CarID);
+                Console.WriteLine(selectedCar.CarID);
+                if (order.Car.CarID==selectedCar.CarID)
+                    return false;
+            }
+            return true;
         }
     }
 }

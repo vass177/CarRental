@@ -57,8 +57,7 @@ namespace CarRentalManager
 
         public bool CheckDates(DateTime startDate, DateTime endDate)
         {
-            this.orderHandling.CheckCarAvailibility(startDate, endDate);
-            return false;
+            return this.orderHandling.CheckCarAvailibility(startDate, endDate);
         }
     }
 }

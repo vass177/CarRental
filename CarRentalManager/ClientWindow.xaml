@@ -124,33 +124,6 @@
                     </Grid.RowDefinitions>-->
                     <!--<Label Content="New rental" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>-->
                     <TabControl x:Name="NewRentalTabControl" Background="#FF464646">
-                        <TabItem Header="Client data">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Label Content="Client name" FontSize="20" Grid.Column="0" Grid.Row="0"></Label>
-                                <Label Content="E-mail" FontSize="20" Grid.Column="0" Grid.Row="1"></Label>
-                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Client_TabButton">
-                                    <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                                        <Rectangle.OpacityMask>
-                                            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
-                                        </Rectangle.OpacityMask>
-                                    </Rectangle>
-                                </Button>
-                            </Grid>
-                        </TabItem>
                         <TabItem Header="Car select" x:Name="CarSelect_TabItem">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -192,7 +165,6 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -203,18 +175,19 @@
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Label Content="Start date" FontSize="20" Grid.Column="0" Grid.Row="1"></Label>
-                                <Label Content="End date" FontSize="20" Grid.Column="0" Grid.Row="4"></Label>
-                                <DatePicker x:Name="startDatePicker" Grid.Column="1" Grid.Row="1" FontSize="20"></DatePicker>
-                                <DatePicker x:Name="endDatePicker" Grid.Column="1" Grid.Row="4" FontSize="20"></DatePicker>
-                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="ButtonClick_SelectDate">
+                                <Label Content="Start date" Grid.Column="0" Grid.Row="0" FontSize="28" FontWeight="ExtraBold" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="#FFBDBDBD"></Label>
+                                <Label Content="End date" Grid.Column="2" Grid.Row="0" FontSize="28" FontWeight="ExtraBold" HorizontalAlignment="Center" Foreground="#FFBDBDBD" VerticalAlignment="Bottom"/>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="ButtonClick_SelectDate" Foreground="White">
                                     <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
                                             <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
                                         </Rectangle.OpacityMask>
                                     </Rectangle>
                                 </Button>
-                                <Calendar x:Name="calendar" HorizontalAlignment="Left" Margin="139,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="168" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="405"/>
+                                <Calendar x:Name="startDatePicker" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="1"  Background="#05FFFFFF" BorderBrush="#66DCFF00" Foreground="White" FontSize="20" BorderThickness="2" FirstDayOfWeek="Monday" SelectedDatesChanged="startDatePicker_SelectedDatesChanged" IsTodayHighlighted="False"/>
+                                <Calendar x:Name="endDatePicker" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="1"  Background="#05FFFFFF" BorderBrush="#33C3C3C3" Foreground="White" FontSize="20" BorderThickness="2" FirstDayOfWeek="Monday" Width="237" FontStretch="UltraExpanded" SelectedDatesChanged="endDatePicker_SelectedDatesChanged"/>
+                                <Label Content="Not available" Grid.Column="0" Grid.Row="5" FontSize="28" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFBDBDBD"></Label>
+                                <Label Content="Available" Grid.Column="0" Grid.Row="6" FontSize="28" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFBDBDBD"></Label>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Services" x:Name="Services_TabItem">

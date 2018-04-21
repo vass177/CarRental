@@ -97,15 +97,33 @@ namespace CarRentalManager
         {
             if (this.startDatePicker.SelectedDate != null && this.endDatePicker.SelectedDate != null)
             {
+                
+            }
+        }
+
+        private void startDatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            startDatePicker.BorderBrush = Brushes.Gray;
+            endDatePicker.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#66DCFF00"));
+        }
+
+        private void endDatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.startDatePicker.SelectedDate != null && this.startDatePicker.SelectedDate < this.endDatePicker.SelectedDate)
+            {
+                startDatePicker.Foreground = Brushes.DarkGray;
+                endDatePicker.BorderBrush = Brushes.Gray;
+
                 DateTime startDate = (DateTime)this.startDatePicker.SelectedDate;
                 DateTime endDate = (DateTime)this.endDatePicker.SelectedDate;
 
-                this.clientWindowViewModel.CheckDates(startDate, endDate);
-                // itt a metódus hívás a viewmodel felé
-
+                bool available = this.clientWindowViewModel.CheckDates(startDate, endDate);
+                Console.WriteLine(available);
             }
-            DateTime[] dates=calendar.SelectedDates.ToArray();
-            Console.WriteLine(dates[0]);
+            else
+            {
+                startDatePicker.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#66DCFF00"));
+            }
         }
     }
 }
