@@ -59,7 +59,7 @@
                     </Setter>
                 </Style>
             </Controls:MetroTabControl.Resources>
-            <Controls:MetroTabItem x:Name="button4" Background="#41b1e1" Margin="0,2,0,0" Height="165"  MouseEnter="MetroTabControl_MouseEnter" MouseLeave="MetroTabControl_MouseLeave" >
+            <Controls:MetroTabItem Loaded="Statistics_Loaded" x:Name="button4" Background="#41b1e1" Margin="0,2,0,0" Height="165"  MouseEnter="MetroTabControl_MouseEnter" MouseLeave="MetroTabControl_MouseLeave" >
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
                         <Rectangle Fill="White" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -72,8 +72,9 @@
                 </Controls:MetroTabItem.Header>
                 <Grid Background="#FFDAD7D7">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
@@ -91,6 +92,8 @@
                     </Charts:PieChart>
                     <Charts:CartesianChart x:Name="IncomeChart" Grid.Row="2" Grid.Column="0" LegendLocation="Right" >
                     </Charts:CartesianChart>
+                    <Label Grid.Row="1" Grid.Column="1" Content="Number of cars: " FontSize="24"></Label>
+                    <Label x:Name="CarSumma_Label" Grid.Row="1" Grid.Column="2" FontSize="24"></Label>
                 </Grid>
             </Controls:MetroTabItem>
             

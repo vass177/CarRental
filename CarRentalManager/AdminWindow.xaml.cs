@@ -77,5 +77,15 @@ namespace CarRentalManager
             this.tabControl.TabStripMargin = new Thickness(0, 0, 0, 0);
         }
 
+        private void Statistics_Loaded(object sender, RoutedEventArgs e)
+        {
+            adminWindowViewModel.CarSumma = 0;
+            foreach (var item in adminWindowViewModel.Cars)
+            {
+                adminWindowViewModel.CarSumma++;
+            }
+            //MessageBox.Show(adminWindowViewModel.CarSumma.ToString());
+            CarSumma_Label.Content = adminWindowViewModel.CarSumma.ToString();
+        }
     }
 }

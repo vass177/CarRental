@@ -22,6 +22,8 @@ namespace CarRentalManager
         private Car selectedCar;
         private CarHandlingLogic carHandLogic;
 
+        private int carSumma;
+
         public IList<Client> Clients
         {
             get
@@ -64,6 +66,12 @@ namespace CarRentalManager
                 this.selectedCar = value;
                 this.OnPropertyChanged(nameof(this.SelectedCar));
             }
+        }
+
+        public int CarSumma
+        {
+            get { return this.carSumma; }
+            set { this.carSumma = value; this.OnPropertyChanged(nameof(this.CarSumma)); }
         }
 
         public AdminWindowViewModel()
