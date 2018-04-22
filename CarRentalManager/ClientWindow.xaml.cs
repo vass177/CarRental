@@ -24,12 +24,14 @@ namespace CarRentalManager
     {
         private ClientWindowViewModel clientWindowViewModel;
         private string userName;
+        private bool availableCar;
 
         public ClientWindow(string userName)
         {
             this.InitializeComponent();
 
             this.userName = userName;
+            this.availableCar = false;
         }
 
         private void Client_TabButton(object sender, RoutedEventArgs e)
@@ -81,23 +83,13 @@ namespace CarRentalManager
             this.DataContext = this.clientWindowViewModel;
         }
 
-        private void ButtonClick_SelectCar(object sender, RoutedEventArgs e)
-        {
-            int index = this.carFlipView.SelectedIndex;
-            Image item = (Image)this.carFlipView.SelectedItem;
-            string[] image = item.Source.ToString().Split(';');
-            string imageSource = image[1].Substring(10);
-            this.clientWindowViewModel.SelectACar(imageSource);
-
-            // calling next tab
-            this.NewRentalTabControl.SelectedItem = this.Date_TabItem;
-        }
 
         private void ButtonClick_SelectDate(object sender, RoutedEventArgs e)
         {
-            if (this.startDatePicker.SelectedDate != null && this.endDatePicker.SelectedDate != null)
+            if (this.availableCar)
             {
-                
+                // calling services tab
+                this.NewRentalTabControl.SelectedItem = this.Services_TabItem;
             }
         }
 
@@ -117,13 +109,30 @@ namespace CarRentalManager
                 DateTime startDate = (DateTime)this.startDatePicker.SelectedDate;
                 DateTime endDate = (DateTime)this.endDatePicker.SelectedDate;
 
-                bool available = this.clientWindowViewModel.CheckDates(startDate, endDate);
-                Console.WriteLine(available);
+                availableCar = this.clientWindowViewModel.CheckDates(startDate, endDate);
+                Console.WriteLine(availableCar);
             }
             else
             {
                 startDatePicker.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#66DCFF00"));
+                availableCar = false;
             }
+        }
+
+        private void carFlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = this.carFlipView.SelectedIndex;
+            Image item = (Image)this.carFlipView.SelectedItem;
+            string[] image = item.Source.ToString().Split(';');
+            string imageSource = image[1].Substring(10);
+            this.clientWindowViewModel.SelectACar(imageSource);
+
+        }
+
+        private void ButtonClick_SelectCar(object sender, RoutedEventArgs e)
+        {           
+            // calling next tab
+            this.NewRentalTabControl.SelectedItem = this.Date_TabItem;
         }
     }
 }

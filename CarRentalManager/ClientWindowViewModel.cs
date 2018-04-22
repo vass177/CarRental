@@ -30,6 +30,20 @@ namespace CarRentalManager
             }
         }
 
+        public Car SelectedCar
+        {
+            get
+            {
+                return this.selectedCar;
+            }
+
+            set
+            {
+                this.selectedCar = value;
+                this.OnPropertyChanged(nameof(this.SelectedCar));
+            }
+        }
+
         public ClientWindowViewModel(string loggedInUser)
         {
             this.clientLogic = new ClientInformationLogic();
@@ -52,6 +66,8 @@ namespace CarRentalManager
         public void SelectACar(string imageSource)
         {
             this.orderHandling.SelectCar(imageSource);
+            this.selectedCar = this.orderHandling.SelectedCar;
+            OnPropertyChanged(nameof(this.SelectedCar));
 
         }
 

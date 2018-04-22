@@ -24,6 +24,14 @@ namespace BusinessLogic
             this.rentalDBHandler = new RentalDataHandler();
         }
 
+        public Car SelectedCar
+        {
+            get
+            {
+                return this.selectedCar;
+            }
+        }
+
         public void SelectCar(string imageSource)
         {
             IQueryable<Car> selectedCarList= (IQueryable<Car>)carDBHandler.SelectMore(CarAttributeType.CarImageSource, imageSource);

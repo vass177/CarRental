@@ -138,8 +138,10 @@
                                     <RowDefinition Height="0.3*"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Border Margin="20,0,40,0" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="#FFF3F3F3" CornerRadius="20,20,20,20" BorderThickness="2,2,2,2">
-                                    <Controls:FlipView x:Name="carFlipView" Margin="30,0" Foreground="#00000000" IsBannerEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" MouseHoverBorderEnabled="False">
+                                    <Controls:FlipView x:Name="carFlipView" Margin="30,0" Foreground="#00000000" IsBannerEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" MouseHoverBorderEnabled="False" SelectionChanged="carFlipView_SelectionChanged">
                                         <Image Source="Images\opel.png"></Image>
+                                        <Image Source="Images\alfa.png"></Image>
+                                        <Image Source="Images\s2000.png"></Image>
                                         <Image Source="Images\lada.png"></Image>
                                         <Image Source="Images\ferrari.png"></Image>
                                         <Image Source="Images\smart.png"></Image>
@@ -148,9 +150,9 @@
                                         <Image Source="Images\tesla.png"></Image>
                                     </Controls:FlipView>
                                 </Border>
-                                <Label ContentStringFormat="Type: " Content="ezt bindingolni" Grid.Row="0" Grid.Column="1" FontSize="30" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFBDBDBD" />
-                                <Label Content="A" Grid.Row="3" Grid.Column="0" FontSize="35" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFBDBDBD" />
-                                <Label Content="12000 Ft" Grid.Row="3" Grid.Column="1" FontSize="30" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFBDBDBD" />
+                                <Label Content="{Binding SelectedCar.CarType}" Grid.Row="0" Grid.Column="1" FontSize="30" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFBDBDBD" />
+                                <Label Content="{Binding SelectedCar.CarCategory}"  Grid.Row="3" Grid.Column="0" FontSize="35" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFBDBDBD" />
+                                <Label Content="{Binding SelectedCar.CarRentalPrice}" Grid.Row="3" Grid.Column="1" FontSize="30" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFBDBDBD" />
                                 <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="ButtonClick_SelectCar" Foreground="White">
                                     <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>

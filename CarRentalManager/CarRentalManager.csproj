@@ -244,6 +244,10 @@
   <ItemGroup>
     <Resource Include="Images\lexus.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\alfa.png" />
+    <Resource Include="Images\s2000.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
