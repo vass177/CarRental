@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using BusinessLogic;
+using Data;
 using Data.DataHandling;
 
 namespace TestClassLibrary1.FakedTest.Fakes
@@ -7,7 +8,15 @@ namespace TestClassLibrary1.FakedTest.Fakes
     internal class CarSelectionLogicTest_WithFakes
     {
         private Car[] cars;
-        private CarDataHandler carHandler;
+        private CarHandlingLogic carHandlingLogic;
+        [OneTimeSetup]
+        public void Setup()
+        {
 
+        }
+        private void CreateCarArray()
+        {
+
+        }
     }
 }
