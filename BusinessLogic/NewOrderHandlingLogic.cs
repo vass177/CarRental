@@ -16,12 +16,14 @@ namespace BusinessLogic
 
         private readonly CarDataHandler carDBHandler;
         private readonly RentalDataHandler rentalDBHandler;
+        private readonly ServiceDataHandler serviceDBHandler;
 
         public NewOrderHandlingLogic(Client loggedInClient)
         {
             this.client = loggedInClient;
             this.carDBHandler = new CarDataHandler();
             this.rentalDBHandler = new RentalDataHandler();
+            this.serviceDBHandler = new ServiceDataHandler();
         }
 
         public Car SelectedCar
@@ -64,6 +66,15 @@ namespace BusinessLogic
                     return false;
             }
             return true;
+        }
+
+        public void SearchSelectedServices(List<string>serviceList)
+        {
+            foreach (string service in serviceList)
+            {
+                Service selectedService= (Service)serviceDBHandler.Select(ServiceAttributeType.ServiceName, service);
+                Console.WriteLine(selectedService.ServiceName +" "+selectedService.ServicePrice);
+            }
         }
     }
 }

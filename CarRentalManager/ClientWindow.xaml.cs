@@ -49,11 +49,6 @@ namespace CarRentalManager
             NewRentalTabControl.SelectedItem = Services_TabItem;
         }
 
-        private void Service_TabButton(object sender, RoutedEventArgs e)
-        {
-            NewRentalTabControl.SelectedItem = Confirm_Tabitem;
-        }
-
         private async void Confirm_TabButtonAsync(object sender, RoutedEventArgs e)
         {
             await this.ShowMessageAsync("Confirm message", "Successfull confirm");
@@ -133,6 +128,23 @@ namespace CarRentalManager
         {           
             // calling next tab
             this.NewRentalTabControl.SelectedItem = this.Date_TabItem;
+        }
+
+        private void Service_TabButton(object sender, RoutedEventArgs e)
+        {
+            NewRentalTabControl.SelectedItem = Confirm_Tabitem;
+            List<string> services = new List<string>();
+
+            foreach (var item in this.servicesGrid.Children)
+            {
+                if (item is ToggleSwitch && (bool)(item as ToggleSwitch).IsChecked)
+                {
+                    string name = (item as ToggleSwitch).Name.Replace('_', ' ');
+                    services.Add(name);
+                }
+            }
+
+            this.clientWindowViewModel.SelectService(services);
         }
     }
 }

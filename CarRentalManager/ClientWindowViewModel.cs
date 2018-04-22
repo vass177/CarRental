@@ -75,5 +75,10 @@ namespace CarRentalManager
         {
             return this.orderHandling.CheckCarAvailibility(startDate, endDate);
         }
+
+        public void SelectService(List<string>serivceList)
+        {
+            this.orderHandling.SearchSelectedServices(serivceList);
+        }
     }
 }

@@ -139,14 +139,16 @@
                                 </Grid.RowDefinitions>
                                 <Border Margin="20,0,40,0" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="#FFF3F3F3" CornerRadius="20,20,20,20" BorderThickness="2,2,2,2">
                                     <Controls:FlipView x:Name="carFlipView" Margin="30,0" Foreground="#00000000" IsBannerEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" MouseHoverBorderEnabled="False" SelectionChanged="carFlipView_SelectionChanged">
-                                        <Image Source="Images\opel.png"></Image>
-                                        <Image Source="Images\alfa.png"></Image>
-                                        <Image Source="Images\s2000.png"></Image>
-                                        <Image Source="Images\lada.png"></Image>
-                                        <Image Source="Images\ferrari.png"></Image>
                                         <Image Source="Images\smart.png"></Image>
+                                        <Image Source="Images\s2000.png"></Image>
                                         <Image Source="Images\civic.png"></Image>
                                         <Image Source="Images\lexus.png"></Image>
+                                        <Image Source="Images\opel.png"></Image>
+                                        <Image Source="Images\alfa.png"></Image>
+                                        <Image Source="Images\ducati.png"></Image>
+                                        <Image Source="Images\lada.png"></Image>
+                                        <Image Source="Images\porsche.png"></Image>
+                                        <Image Source="Images\ferrari.png"></Image>
                                         <Image Source="Images\tesla.png"></Image>
                                     </Controls:FlipView>
                                 </Border>
@@ -193,7 +195,7 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Services" x:Name="Services_TabItem">
-                            <Grid ShowGridLines="True" >
+                            <Grid x:Name="servicesGrid" ShowGridLines="True" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="2*"></ColumnDefinition>
                                     <ColumnDefinition Width="1.5*"></ColumnDefinition>
@@ -230,15 +232,15 @@
                                 <Label Content="1700 HUF/day" Grid.Row="6" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
                                 <Label Content="3500 HUF/day" Grid.Row="7" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
                                 <Label Content="2000 HUF/day" Grid.Row="8" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
-                                <Controls:ToggleSwitch Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
-                                <Controls:ToggleSwitch Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
-                                <Controls:ToggleSwitch Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
-                                <Controls:ToggleSwitch Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
-                                <Controls:ToggleSwitch Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
-                                <Controls:ToggleSwitch Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
-                                <Controls:ToggleSwitch Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
-                                <Controls:ToggleSwitch Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
-                                <Controls:ToggleSwitch Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="8" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Additional_driver" Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Baby_Seat" Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Collision_insurance" Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Cross_border" Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="GPS_Navigation" Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Safety_Vest" Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Ski_box" Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Theft_insurance" Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Winter_tires" Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="8" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
 
 
 
