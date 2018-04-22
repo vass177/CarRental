@@ -193,10 +193,10 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Services" x:Name="Services_TabItem">
-                            <Grid>
+                            <Grid ShowGridLines="True" >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
@@ -207,8 +207,42 @@
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>                                    
+                                    <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Service_TabButton">
+                                <Label Content="Additional driver" Grid.Row="0" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Baby seat" Grid.Row="1" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Collision insurance" Grid.Row="2" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Cross border" Grid.Row="3" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="GPS Navigation" Grid.Row="4" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Safety Vest" Grid.Row="5" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Ski box" Grid.Row="6" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Theft insurance" Grid.Row="7" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Winter tires" Grid.Row="8" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+
+                                <Label Content="3000 HUF/day" Grid.Row="0" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="1000 HUF/day" Grid.Row="1" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="5000 HUF/day" Grid.Row="2" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="6000 HUF/day" Grid.Row="3" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="1500 HUF/day" Grid.Row="4" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="1000 HUF/day" Grid.Row="5" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="1700 HUF/day" Grid.Row="6" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="3500 HUF/day" Grid.Row="7" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="2000 HUF/day" Grid.Row="8" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Controls:ToggleSwitch Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="8" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+
+
+
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="16" Click="Service_TabButton" Foreground="White">
                                     <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
                                             <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
