@@ -3,7 +3,7 @@ using Data.DataHandling;
 
 namespace TestClassLibrary1.FakedTest.Fakes
 {
-    [TextFixture]
+    [TestFixture]
     internal class CarSelectionLogicTest_WithFakes
     {
         private Car[] cars;
