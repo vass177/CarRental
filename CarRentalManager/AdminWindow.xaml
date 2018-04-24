@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:Charts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:CarRentalManager"
         xmlns:Controls1="clr-namespace:CarRentalManager.Controls" x:Class="CarRentalManager.AdminWindow"
         mc:Ignorable="d"
@@ -58,32 +59,44 @@
                     </Setter>
                 </Style>
             </Controls:MetroTabControl.Resources>
-            <Controls:MetroTabItem x:Name="button1" Background="#FF13759E" Margin="0,2,0,0" Height="165"  MouseEnter="MetroTabControl_MouseEnter" MouseLeave="MetroTabControl_MouseLeave">
+            <Controls:MetroTabItem Loaded="Statistics_Loaded" x:Name="button4" Background="#41b1e1" Margin="0,2,0,0" Height="165"  MouseEnter="MetroTabControl_MouseEnter" MouseLeave="MetroTabControl_MouseLeave" >
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
-                        <Rectangle Fill="White" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Rectangle Fill="White" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center" >
                             <Rectangle.OpacityMask>
-                                <VisualBrush Visual="{StaticResource appbar_user_tie}" Stretch="Fill" />
+                                <VisualBrush Visual="{StaticResource appbar_graph_line_up}" Stretch="Fill" />
                             </Rectangle.OpacityMask>
                         </Rectangle>
-                        <TextBlock Text="Admin" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
+                        <TextBlock Text="Statistics" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
                     </StackPanel>
                 </Controls:MetroTabItem.Header>
                 <Grid Background="#FFDAD7D7">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="4*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Content="Admin" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
-                    
+                    <Label Content="Welcome Admin!" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
+                    <Charts:PieChart Grid.Row="1" Grid.Column="0" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
+                        <Charts:PieChart.Series>
+                            <Charts:PieSeries Title="Opel" Values="3" DataLabels="True"/>
+                            <Charts:PieSeries Title="Smart" Values="4" DataLabels="True" />
+                            <Charts:PieSeries Title="Lada" Values="6" DataLabels="True"/>
+                            <Charts:PieSeries Title="Tesla" Values="2" DataLabels="True" />
+                        </Charts:PieChart.Series>
+                    </Charts:PieChart>
+                    <Charts:CartesianChart x:Name="IncomeChart" Grid.Row="2" Grid.Column="0" LegendLocation="Right" >
+                    </Charts:CartesianChart>
+                    <Label Grid.Row="1" Grid.Column="1" Content="Number of cars: " FontSize="24"></Label>
+                    <Label x:Name="CarSumma_Label" Grid.Row="1" Grid.Column="2" FontSize="24"></Label>
                 </Grid>
             </Controls:MetroTabItem>
+            
             <Controls:MetroTabItem x:Name="button2" Background="#41b1e1" Margin="0,2,0,0" Height="165"  MouseEnter="MetroTabControl_MouseEnter" MouseLeave="MetroTabControl_MouseLeave">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
@@ -273,15 +286,15 @@
                     </Grid>-->
                 </Grid>
             </Controls:MetroTabItem>
-            <Controls:MetroTabItem x:Name="button4" Background="#41b1e1" Margin="0,2,0,0" Height="165"  MouseEnter="MetroTabControl_MouseEnter" MouseLeave="MetroTabControl_MouseLeave">
+            <Controls:MetroTabItem x:Name="button1" Background="#FF13759E" Margin="0,2,0,0" Height="165"  MouseEnter="MetroTabControl_MouseEnter" MouseLeave="MetroTabControl_MouseLeave">
                 <Controls:MetroTabItem.Header>
                     <StackPanel>
-                        <Rectangle Fill="White" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        <Rectangle Fill="White" Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Rectangle.OpacityMask>
-                                <VisualBrush Visual="{StaticResource appbar_graph_line_up}" Stretch="Fill" />
+                                <VisualBrush Visual="{StaticResource appbar_user_tie}" Stretch="Fill" />
                             </Rectangle.OpacityMask>
                         </Rectangle>
-                        <TextBlock Text="Statistics" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
+                        <TextBlock Text="Admin" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
                     </StackPanel>
                 </Controls:MetroTabItem.Header>
                 <Grid Background="#FFDAD7D7">
@@ -291,11 +304,22 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Content="Statistics" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
+                    <Label Content="Welcome Admin!" Grid.Column="0" Grid.Row="0" FontSize="30" FontWeight="Bold"></Label>
+                    <Label Content="See the data of clients..." Grid.Column="0" Grid.Row="4" FontSize="30"></Label>
+                    <Label Content="See the data of cars..." Grid.Column="0" Grid.Row="7" FontSize="30"></Label>
+                    <Label Content="See the statistics..." Grid.Column="0" Grid.Row="10" FontSize="30"></Label>
                 </Grid>
             </Controls:MetroTabItem>
         </Controls:MetroTabControl>

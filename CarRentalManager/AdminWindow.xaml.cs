@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BusinessLogic;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace CarRentalManager
 {
@@ -23,10 +25,11 @@ namespace CarRentalManager
     public partial class AdminWindow : MetroWindow
     {
         private AdminWindowViewModel adminWindowViewModel;
-
+        public SeriesCollection mySeries { get; set; }
         public AdminWindow()
         {
             this.InitializeComponent();
+
         }
 
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -40,7 +43,18 @@ namespace CarRentalManager
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
             this.adminWindowViewModel = new AdminWindowViewModel();
-            this.DataContext = this.adminWindowViewModel;
+
+            SeriesCollection mySeries = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "dummy",
+                    Values = new ChartValues<int>{10, 20, 5, 2, 30}
+                }
+            };
+            IncomeChart.Series = mySeries;
+
+            this.DataContext = this.adminWindowViewModel;          
         }
 
         private void DeleteClientClick(object sender, RoutedEventArgs e)
@@ -61,6 +75,17 @@ namespace CarRentalManager
         private void MetroTabControl_MouseEnter(object sender, MouseEventArgs e)
         {
             this.tabControl.TabStripMargin = new Thickness(0, 0, 0, 0);
+        }
+
+        private void Statistics_Loaded(object sender, RoutedEventArgs e)
+        {
+            adminWindowViewModel.CarSumma = 0;
+            foreach (var item in adminWindowViewModel.Cars)
+            {
+                adminWindowViewModel.CarSumma++;
+            }
+            //MessageBox.Show(adminWindowViewModel.CarSumma.ToString());
+            CarSumma_Label.Content = adminWindowViewModel.CarSumma.ToString();
         }
     }
 }

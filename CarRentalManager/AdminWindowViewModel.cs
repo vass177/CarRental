@@ -19,8 +19,10 @@ namespace CarRentalManager
         private ClientInformationLogic clientListLogic;
 
         private IList<Car> cars;
-        private Client selectedCar;
+        private Car selectedCar;
         private CarHandlingLogic carHandLogic;
+
+        private int carSumma;
 
         public IList<Client> Clients
         {
@@ -52,7 +54,7 @@ namespace CarRentalManager
             }
         }
 
-        public Client SelectedCar
+        public Car SelectedCar
         {
             get
             {
@@ -66,10 +68,17 @@ namespace CarRentalManager
             }
         }
 
+        public int CarSumma
+        {
+            get { return this.carSumma; }
+            set { this.carSumma = value; this.OnPropertyChanged(nameof(this.CarSumma)); }
+        }
+
         public AdminWindowViewModel()
         {
             this.clientListLogic = new ClientInformationLogic();
             this.carHandLogic = new CarHandlingLogic();
+            
 
             this.RefreshClientList();
             this.RefreshCarList();

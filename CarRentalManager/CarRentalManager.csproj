@@ -58,6 +58,12 @@
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.6.1.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.6.1\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
@@ -224,6 +230,27 @@
     <Resource Include="Images\opel.jpg" />
     <Resource Include="Images\smart.jpg" />
     <Resource Include="Images\suzuki.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\civic.png" />
+    <Resource Include="Images\ferrari.png" />
+    <Resource Include="Images\opel.png" />
+    <Resource Include="Images\smart.png" />
+    <Resource Include="Images\tesla.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lexus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\alfa.png" />
+    <Resource Include="Images\s2000.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ducati.png" />
+    <Resource Include="Images\porsche.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

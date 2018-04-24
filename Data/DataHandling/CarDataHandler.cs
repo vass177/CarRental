@@ -17,7 +17,8 @@ namespace Data.DataHandling
         CarHorsePower,
         CarCapacity,
         CarRentalPrice,
-        CarCategory
+        CarCategory,
+        CarImageSource
     }
 
     public class CarDataHandler : IDataBase
@@ -106,6 +107,8 @@ namespace Data.DataHandling
                     return this.database.Cars.Where(x => (x.CarHorsepower >= hpRange1 && x.CarHorsepower <= hpRange2));
                 case CarAttributeType.CarCapacity:
                     return this.database.Cars.Where(x => (x.CarCapacity >= capacityRange1 && x.CarCapacity <= capacityRange2));
+                case CarAttributeType.CarImageSource:
+                    return this.database.Cars.Where(x => x.CarPhotoPath == (string)attributeValue);
                 default:
                     return null;
             }

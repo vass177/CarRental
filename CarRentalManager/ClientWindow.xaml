@@ -78,11 +78,26 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Content="Client" Grid.Row="0" Grid.Column="0" FontSize="28" Foreground="White"></Label>
+                    <Label Content="Client information" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="35" Foreground="#FFDEDEDE" FontWeight="ExtraBold" HorizontalContentAlignment="Center" VerticalAlignment="Center"></Label>
+                    <Label Content="User name:" Grid.Row="1" Grid.Column="0" FontSize="28" Foreground="White"></Label>
+                    <Label Content="Client name:" Grid.Row="2" Grid.Column="0" FontSize="28" Foreground="White"></Label>
+                    <Label Content="Address:" Grid.Row="3" Grid.Column="0" FontSize="28" Foreground="White"></Label>
+                    <Label Content="Email:" Grid.Row="4" Grid.Column="0" FontSize="28" Foreground="White"></Label>
+                    <Label Content="Discount rate:" Grid.Row="5" Grid.Column="0" FontSize="28" Foreground="White"></Label>
+
+                    <Label Content="{Binding LoggedInClient.UserName}" Grid.Row="1" Grid.Column="1" FontSize="28" Foreground="White"></Label>
+                    <Label Content="{Binding LoggedInClient.ClientName}" Grid.Row="2" Grid.Column="1" FontSize="28" Foreground="White"></Label>
+                    <Label Content="{Binding LoggedInClient.ClientAddress}" Grid.Row="3" Grid.Column="1" FontSize="28" Foreground="White"></Label>
+                    <Label Content="{Binding LoggedInClient.ClientEmail}" Grid.Row="4" Grid.Column="1" FontSize="28" Foreground="White"></Label>
+                    <Label Content="{Binding LoggedInClient.ClientDiscountStatus}" Grid.Row="5" Grid.Column="1" FontSize="28" Foreground="White"></Label>
+
+
                 </Grid>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem x:Name="button2" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
@@ -108,34 +123,7 @@
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>-->
                     <!--<Label Content="New rental" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>-->
-                    <TabControl x:Name="NewRentalTabControl">
-                        <TabItem Header="Client data">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Label Content="Client name" FontSize="20" Grid.Column="0" Grid.Row="0"></Label>
-                                <Label Content="E-mail" FontSize="20" Grid.Column="0" Grid.Row="1"></Label>
-                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Client_TabButton">
-                                    <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                                        <Rectangle.OpacityMask>
-                                            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
-                                        </Rectangle.OpacityMask>
-                                    </Rectangle>
-                                </Button>
-                            </Grid>
-                        </TabItem>
+                    <TabControl x:Name="NewRentalTabControl" Background="#FF464646">
                         <TabItem Header="Car select" x:Name="CarSelect_TabItem">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -149,24 +137,25 @@
                                     <RowDefinition Height="0.2*"></RowDefinition>
                                     <RowDefinition Height="0.3*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Controls:FlipView Grid.Column="1" Grid.Row="1" BannerText="CARS">
-                                    <Controls:FlipViewItem >
-                                        <Image Source="Images\opel.jpg"></Image>
-                                    </Controls:FlipViewItem>
-                                    <Controls:FlipViewItem>
-                                        <Image Source="Images\lada.jpg"></Image>
-                                    </Controls:FlipViewItem>
-                                    <Controls:FlipViewItem>
-                                        <Image Source="Images\ferrari.jpg"></Image>
-                                    </Controls:FlipViewItem>
-                                    <Controls:FlipViewItem>
-                                        <Image Source="Images\smart.jpg"></Image>
-                                    </Controls:FlipViewItem>
-                                    <Controls:FlipViewItem>
-                                        <Image Source="Images\suzuki.jpg"></Image>
-                                    </Controls:FlipViewItem>
-                                </Controls:FlipView>
-                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Car_TabButton">
+                                <Border Margin="20,0,40,0" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="#FFF3F3F3" CornerRadius="20,20,20,20" BorderThickness="2,2,2,2">
+                                    <Controls:FlipView x:Name="carFlipView" Margin="30,0" Foreground="#00000000" IsBannerEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" MouseHoverBorderEnabled="False" SelectionChanged="carFlipView_SelectionChanged">
+                                        <Image Source="Images\smart.png"></Image>
+                                        <Image Source="Images\s2000.png"></Image>
+                                        <Image Source="Images\civic.png"></Image>
+                                        <Image Source="Images\lexus.png"></Image>
+                                        <Image Source="Images\opel.png"></Image>
+                                        <Image Source="Images\alfa.png"></Image>
+                                        <Image Source="Images\ducati.png"></Image>
+                                        <Image Source="Images\lada.png"></Image>
+                                        <Image Source="Images\porsche.png"></Image>
+                                        <Image Source="Images\ferrari.png"></Image>
+                                        <Image Source="Images\tesla.png"></Image>
+                                    </Controls:FlipView>
+                                </Border>
+                                <Label Content="{Binding SelectedCar.CarType}" Grid.Row="0" Grid.Column="1" FontSize="30" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFBDBDBD" />
+                                <Label Content="{Binding SelectedCar.CarCategory}"  Grid.Row="3" Grid.Column="0" FontSize="35" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFBDBDBD" />
+                                <Label Content="{Binding SelectedCar.CarRentalPrice}" Grid.Row="3" Grid.Column="1" FontSize="30" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFBDBDBD" />
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="ButtonClick_SelectCar" Foreground="White">
                                     <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
                                             <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
@@ -180,7 +169,6 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -191,24 +179,26 @@
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Label Content="Start date" FontSize="20" Grid.Column="0" Grid.Row="1"></Label>
-                                <Label Content="End date" FontSize="20" Grid.Column="0" Grid.Row="4"></Label>
-                                <DatePicker Grid.Column="1" Grid.Row="1" FontSize="20"></DatePicker>
-                                <DatePicker Grid.Column="1" Grid.Row="4" FontSize="20"></DatePicker>
-                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Date_TabButton">
+                                <Label Content="Start date" Grid.Column="0" Grid.Row="0" FontSize="28" FontWeight="ExtraBold" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="#FFBDBDBD"></Label>
+                                <Label Content="End date" Grid.Column="2" Grid.Row="0" FontSize="28" FontWeight="ExtraBold" HorizontalAlignment="Center" Foreground="#FFBDBDBD" VerticalAlignment="Bottom"/>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="ButtonClick_SelectDate" Foreground="White">
                                     <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
                                             <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
                                         </Rectangle.OpacityMask>
                                     </Rectangle>
                                 </Button>
+                                <Calendar x:Name="startDatePicker" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="1"  Background="#05FFFFFF" BorderBrush="#66DCFF00" Foreground="White" FontSize="20" BorderThickness="2" FirstDayOfWeek="Monday" SelectedDatesChanged="startDatePicker_SelectedDatesChanged" IsTodayHighlighted="False"/>
+                                <Calendar x:Name="endDatePicker" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="1"  Background="#05FFFFFF" BorderBrush="#33C3C3C3" Foreground="White" FontSize="20" BorderThickness="2" FirstDayOfWeek="Monday" Width="237" FontStretch="UltraExpanded" SelectedDatesChanged="endDatePicker_SelectedDatesChanged"/>
+                                <Label Content="Not available" Grid.Column="0" Grid.Row="5" FontSize="28" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFBDBDBD"></Label>
+                                <Label Content="Available" Grid.Column="0" Grid.Row="6" FontSize="28" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFBDBDBD"></Label>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Services" x:Name="Services_TabItem">
-                            <Grid>
+                            <Grid x:Name="servicesGrid" ShowGridLines="True" >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
@@ -219,8 +209,42 @@
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>                                    
+                                    <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Service_TabButton">
+                                <Label Content="Additional driver" Grid.Row="0" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Baby seat" Grid.Row="1" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Collision insurance" Grid.Row="2" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Cross border" Grid.Row="3" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="GPS Navigation" Grid.Row="4" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Safety Vest" Grid.Row="5" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Ski box" Grid.Row="6" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Theft insurance" Grid.Row="7" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+                                <Label Content="Winter tires" Grid.Row="8" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
+
+                                <Label Content="3000 HUF/day" Grid.Row="0" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="1000 HUF/day" Grid.Row="1" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="5000 HUF/day" Grid.Row="2" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="6000 HUF/day" Grid.Row="3" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="1500 HUF/day" Grid.Row="4" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="1000 HUF/day" Grid.Row="5" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="1700 HUF/day" Grid.Row="6" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="3500 HUF/day" Grid.Row="7" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Label Content="2000 HUF/day" Grid.Row="8" Grid.Column="1" Foreground="#FFC1C1C1" FontSize="25" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0" HorizontalAlignment="Center"/>
+                                <Controls:ToggleSwitch x:Name="Additional_driver" Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Baby_Seat" Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Collision_insurance" Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Cross_border" Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="GPS_Navigation" Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Safety_Vest" Width="100"  OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Ski_box" Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Theft_insurance" Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+                                <Controls:ToggleSwitch x:Name="Winter_tires" Width="100" OnLabel="ON" OffLabel="OFF" Grid.Column="2" Grid.Row="8" VerticalAlignment="Center" ThumbIndicatorBrush="White" Foreground="#FFE6E6E6" HorizontalAlignment="Center" FlowDirection="RightToLeft" Margin="0"></Controls:ToggleSwitch>
+
+
+
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="16" Click="Service_TabButton" Foreground="White">
                                     <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
                                             <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
@@ -299,15 +323,15 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Content="Map" Grid.Row="2" Grid.Column="1" FontSize="28"></Label>
-                    <Controls1:MapControl Grid.Column="1" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="200" Width="300"></Controls1:MapControl>
-                    <Label Content="Contact" Grid.Row="2" Grid.Column="0" FontSize="28"></Label>
-                    <TextBlock FontSize="16" Grid.Row="3" Grid.Column="0">Phone number: +0 1 234 56 78 <LineBreak></LineBreak>
+                    <Image Source="Images\logo.png"  Grid.Row="0" Grid.ColumnSpan="2" MaxHeight="200" VerticalAlignment="Top" Margin="0" RenderTransformOrigin="0,0"></Image>
+                    <Label Content="Map" Grid.Row="1" Grid.Column="1" FontSize="35" Foreground="#FFF0F0F0" FontWeight="ExtraBold" VerticalAlignment="Center"></Label>
+                    <Controls1:MapControl Grid.Column="1" Grid.Row="2"  HorizontalAlignment="Center" VerticalAlignment="Top" Height="367" Width="396" BorderThickness="20" BorderBrush="#33FFFFFF" Margin="5,5,10,0"></Controls1:MapControl>
+                    <Label Content="Contact" Grid.Row="1" Grid.Column="0" FontSize="35" Foreground="#FFF0F0F0" FontWeight="ExtraBold" VerticalAlignment="Center"></Label>
+                    <TextBlock FontSize="24" Grid.Row="2" Grid.Column="0" Foreground="#FFF0F0F0" LineHeight="50">Phone number: +0 1 234 56 78 <LineBreak></LineBreak>
                     E-mail: abcdef@xyzzs.com <LineBreak></LineBreak>
                     Address: 1000 City, Blabla 10/a
                     </TextBlock>
