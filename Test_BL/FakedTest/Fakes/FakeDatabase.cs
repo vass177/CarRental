@@ -88,13 +88,13 @@ namespace Test_BL.FakedTest.Fakes
         /// </summary>
         /// <param name="attributeType">a FakeAttibuteEnum value</param>
         /// <param name="attributeValue">can be anythig</param>
-        /// <returns></returns>
+        /// <returns>the whole Objects property or null</returns>
         public object SelectMore(object attributeType, object attributeValue)
         {
             if ((FakeAttributeEnum)attributeType == FakeAttributeEnum.Type1 ||
                 (FakeAttributeEnum)attributeType == FakeAttributeEnum.Type2)
             {
-                return Objects.ToList();
+                return Objects;
             }
             return null;
         }
