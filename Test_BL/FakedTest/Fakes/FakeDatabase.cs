@@ -37,9 +37,9 @@ namespace Test_BL.FakedTest.Fakes
         }
         
         /// <summary>
-        /// Adds argument to the DeletedObjects property of FakeDatabase class 
+        /// Adds argument to the DeletedObjects (class property) collecton 
         /// </summary>
-        /// <param name="deletableItem"></param>
+        /// <param name="deletableItem">object to be deleted from the collection</param>
         public void Delete(object deletableItem)
         {
             DeletedObjects.Add((T)deletableItem);
