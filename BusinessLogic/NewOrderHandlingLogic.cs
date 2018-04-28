@@ -154,7 +154,6 @@ namespace BusinessLogic
                 RentalFullPrice = finalPrice
             };
             rentalDBHandler.Insert(newRental);
-
         }
     }
 }

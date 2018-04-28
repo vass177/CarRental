@@ -52,8 +52,10 @@ namespace CarRentalManager
         private async void Confirm_TabButtonAsync(object sender, RoutedEventArgs e)
         {
             await this.ShowMessageAsync("Confirm message", "Successfull confirm");
+            this.clientWindowViewModel.FinishOrder();
+            NewRentalTabControl.SelectedItem = CarSelect_TabItem;
         }
-        
+
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             this.button1.Height = this.myGrid.ActualHeight / 4;
@@ -161,7 +163,6 @@ namespace CarRentalManager
 
             NewRentalTabControl.SelectedItem = Confirm_Tabitem;
 
-            this.clientWindowViewModel.FinishOrder();
         }
     }
 }

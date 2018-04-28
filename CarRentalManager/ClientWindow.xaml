@@ -97,7 +97,6 @@
                     <Label Content="{Binding LoggedInClient.ClientEmail}" Grid.Row="4" Grid.Column="1" FontSize="28" Foreground="White"></Label>
                     <Label Content="{Binding LoggedInClient.ClientDiscountStatus}" Grid.Row="5" Grid.Column="1" FontSize="28" Foreground="White"></Label>
 
-
                 </Grid>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem x:Name="button2" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
@@ -209,7 +208,7 @@
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>                                    
+                                    <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Label Content="Additional driver" Grid.Row="0" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
@@ -265,7 +264,7 @@
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="1*"></RowDefinition>
-                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="0.8*"></RowDefinition>
                                             <RowDefinition Height="4*"></RowDefinition>
                                             <RowDefinition Height="0.5*"></RowDefinition>
                                             <RowDefinition Height="0.75*"></RowDefinition>
@@ -276,7 +275,7 @@
                                             <ColumnDefinition Width="1.5*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <Label Content="Rental summary" Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="#FF464646" BorderThickness="0,0,0,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FF7E7C7C" FontSize="40" FontWeight="Bold" ></Label>
-                                        <Label Content="{Binding SelectedCar.CarType}" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="#FF7E7C7C" FontSize="28" FontStretch="ExtraExpanded" FontWeight="Bold" Margin="0" ></Label>
+                                        <Label Content="{Binding SelectedCar.CarType}" ContentStringFormat="Car type: {0}" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="#FF7E7C7C" FontSize="28" FontStretch="ExtraExpanded" FontWeight="Bold" Margin="0" ></Label>
                                         <Label Content="{Binding CarPrice}" Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#FF171717" FontSize="24" FontWeight="Bold" ></Label>
                                         <ListBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding ServiceList}" Background="#FFF3F3F3" ScrollViewer.CanContentScroll="False" >
                                             <ListBox.ItemContainerStyle>
@@ -309,23 +308,23 @@
                                         <Border BorderBrush="#FF464646" BorderThickness="0,0,10,0" Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" >
                                             <Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Background="#33E8FF00">
                                                 <Grid.RowDefinitions>
-                                                    <RowDefinition Height="1*"></RowDefinition>
-                                                    <RowDefinition Height="1*"></RowDefinition>
-                                                    <RowDefinition Height="1*"></RowDefinition>
-                                                    <RowDefinition Height="1*"></RowDefinition>
-                                                    <RowDefinition Height="1*"></RowDefinition>
-                                                    <RowDefinition Height="1*"></RowDefinition>
-                                                    <RowDefinition Height="1*"></RowDefinition>
-                                                    <RowDefinition Height="1*"></RowDefinition>
+                                                    <RowDefinition Height="50*"></RowDefinition>
+                                                    <RowDefinition Height="50*"></RowDefinition>
+                                                    <RowDefinition Height="50"></RowDefinition>
+                                                    <RowDefinition Height="51*"></RowDefinition>
+                                                    <RowDefinition Height="50*"></RowDefinition>
+                                                    <RowDefinition Height="51*"></RowDefinition>
+                                                    <RowDefinition Height="50*"></RowDefinition>
+                                                    <RowDefinition Height="51*"></RowDefinition>
                                                 </Grid.RowDefinitions>
                                                 <Label Content="Client" Grid.Row="0" FontWeight="Bold"  FontSize="26" HorizontalContentAlignment="Center" Foreground="#FF7E7E7E"></Label>
-                                                <Label Content="{Binding LoggedInClient.ClientName}" Grid.Row="1" FontWeight="Bold"  FontSize="22" HorizontalContentAlignment="Center" Foreground="#FF7E7E7E"></Label>
+                                                <Label Content="{Binding LoggedInClient.ClientName}" Grid.Row="1" FontWeight="Bold"  FontSize="22" HorizontalContentAlignment="Center" Foreground="#FF115E7E"></Label>
                                                 <Label Content="Discount rate" Grid.Row="2" FontWeight="Bold"  FontSize="26" HorizontalContentAlignment="Center" Foreground="#FF7E7E7E"></Label>
-                                                <Label Content="{Binding LoggedInClient.ClientDiscountStatus}" ContentStringFormat=" {0} %" Grid.Row="3" FontWeight="Bold"  FontSize="22" HorizontalContentAlignment="Center" Foreground="#FF7E7E7E"></Label>
+                                                <Label Content="{Binding LoggedInClient.ClientDiscountStatus}" ContentStringFormat=" {0} %" Grid.Row="3" FontWeight="Bold"  FontSize="22" HorizontalContentAlignment="Center" Foreground="#FF115E7E"></Label>
                                                 <Label Content="Start date" Grid.Row="4" FontWeight="Bold"  FontSize="26" HorizontalContentAlignment="Center" Foreground="#FF7E7E7E"></Label>
-                                                <Label Content="{Binding StartDate}" Grid.Row="5" FontWeight="Bold"  FontSize="22" HorizontalContentAlignment="Center" Foreground="#FF7E7E7E"></Label>
+                                                <Label Content="{Binding StartDate}" Grid.Row="5" FontWeight="Bold"  FontSize="22" HorizontalContentAlignment="Center" Foreground="#FF115E7E"></Label>
                                                 <Label Content="End date" Grid.Row="6" FontWeight="Bold"  FontSize="26" HorizontalContentAlignment="Center" Foreground="#FF7E7E7E"></Label>
-                                                <Label Content="{Binding EndDate}" Grid.Row="7" FontWeight="Bold"  FontSize="22" HorizontalContentAlignment="Center" Foreground="#FF7E7E7E"></Label>
+                                                <Label Content="{Binding EndDate}" Grid.Row="7" FontWeight="Bold"  FontSize="22" HorizontalContentAlignment="Center" Foreground="#FF115E7E"></Label>
 
                                             </Grid>
                                         </Border>
