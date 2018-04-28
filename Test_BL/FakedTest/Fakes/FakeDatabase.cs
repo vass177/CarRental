@@ -23,7 +23,8 @@ namespace Test_BL.FakedTest.Fakes
     /// </summary>
     internal class FakeDatabase<T> : IDataBase
     {
-        public IEnumerable<T> Objects { get; set; }
+        public IEnumerable<T> Objects { get; private set; }
+        public IEnumerable<T> DeletedObjects { get;  private set;}
         /// <summary>
         /// Constructor for FakeDatabase,gets an IEnumerable argument
         /// and sets corresponding field to it
