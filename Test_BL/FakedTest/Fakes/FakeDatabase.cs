@@ -35,6 +35,7 @@ namespace Test_BL.FakedTest.Fakes
         {
             Objects = mycollection;
         }
+        
         /// <summary>
         /// Adds argument to the DeletedObjects property of FakeDatabase class 
         /// </summary>
@@ -43,6 +44,7 @@ namespace Test_BL.FakedTest.Fakes
         {
             DeletedObjects.
         }
+        
         /// <summary>
         /// Returns all elements as type List of the dummy collection
         /// In the test it should be 'null'
@@ -52,6 +54,7 @@ namespace Test_BL.FakedTest.Fakes
         {
             return Objects.ToList();
         }
+        
         /// <summary>
         /// Does nothing in this test environment
         /// </summary>
@@ -60,6 +63,7 @@ namespace Test_BL.FakedTest.Fakes
         {
             
         }
+        
         /// <summary>
         /// It gives back first element of the dummy data collection
         /// if first argumentz of the method is a FakeAttibuteEnum type 
@@ -76,6 +80,7 @@ namespace Test_BL.FakedTest.Fakes
             }
             return null;
         }
+        
         /// <summary>
         /// Returns all element of the IEnumerable Object
         /// </summary>
@@ -91,6 +96,7 @@ namespace Test_BL.FakedTest.Fakes
             }
             return null;
         }
+        
         /// <summary>
         /// Does nothing
         /// </summary>
