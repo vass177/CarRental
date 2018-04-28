@@ -24,7 +24,7 @@ namespace Test_BL.FakedTest.Fakes
     /// </summary>
     internal class FakeDatabase<T> : IDataBase
     {
-        public IEnumerable<T> Objects { get; private set; }
+        public IList<T> Objects { get; private set; }
         public IList<T> DeletedObjects { get;  private set;}
         public IList<T> SelectedObjects { get; private set; }
         public IList<T> InsertedObjects { get; private set; }
@@ -33,7 +33,7 @@ namespace Test_BL.FakedTest.Fakes
         /// and sets corresponding field to it
         /// </summary>
         /// <param name="mycollection">IEnumerable type</param>
-        public FakeDatabase(IEnumerable<T> mycollection)
+        public FakeDatabase(object mycollection)
         {
             Objects = mycollection;
         }
