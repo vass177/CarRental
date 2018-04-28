@@ -23,12 +23,13 @@ namespace Test_BL.FakedTest.Fakes
     {
         public IEnumerable<T> Objects { get; set; }
         /// <summary>
-        /// Constructor for FakeDatabase,gets one argument, and does nothing with that
+        /// Constructor for FakeDatabase,gets an IEnumerable argument
+        /// and sets corresponding field to it
         /// </summary>
-        /// <param name="nothing">IEnumerable type, will be handled as if it would be null</param>
-        public FakeDatabase(IEnumerable<T> nothing)
+        /// <param name="nothing">IEnumerable type</param>
+        public FakeDatabase(IEnumerable<T> mycollection)
         {
-            Objects = null;
+            Objects = mycollection;
         }
         /// <summary>
         /// Does nothing in this test environment 
