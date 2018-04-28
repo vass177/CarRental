@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace Test_BL.FakedTest
 {
+    /// <summary>
+    /// Test methods of a fake class that implements IDataBase 
+    /// </summary>
     [TestFixture]
     class Test_IDataBase_methods
     {
         [OneTimeSetUp]
-
+        
     }
 }
