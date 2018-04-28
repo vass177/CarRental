@@ -49,7 +49,7 @@ namespace Test_BL.FakedTest.Fakes
         /// <summary>
         /// Returns all elements of Objects class property
         /// </summary>
-        /// <returns>IEnumerable</returns>
+        /// <returns>the whole Objects property</returns>
         public object GetAll()
         {
             return Objects;
