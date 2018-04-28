@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Test_BL.FakedTest.Fakes;
 
 namespace Test_BL.FakedTest
 {
@@ -14,6 +15,7 @@ namespace Test_BL.FakedTest
     class Test_IDataBase_methods
     {
         [OneTimeSetUp]
-        
+        private FakeDatabase<> myFakeDatabase;
+
     }
 }
