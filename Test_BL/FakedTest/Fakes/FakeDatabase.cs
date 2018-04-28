@@ -45,10 +45,19 @@ namespace Test_BL.FakedTest.Fakes
         {
             
         }
-
+        /// <summary>
+        /// Test method, it gives back first element of the dummy data collection
+        /// </summary>
+        /// <param name="attributeType">a FakeAttibuteEnum value</param>
+        /// <param name="attributeValue">can be anything</param>
+        /// <returns></returns>
         public object Select(object attributeType, object attributeValue)
         {
-            return 
+            if ((FakeAttributeEnum)attributeType == FakeAttributeEnum.Type1)
+            {
+                return Objects.First();
+            }
+            return null;
         }
 
         public object SelectMore(object attributeType, object attributeValue)
