@@ -19,8 +19,7 @@ namespace Test_BL.FakedTest.Fakes
         /// <param name="nothing">IEnumerable type, will be handled as if it would be null</param>
         public FakeDatabase(IEnumerable<T> nothing)
         {
-            
-                
+            Objects = null;
         }
         public void Delete(object deletableItem)
         {
