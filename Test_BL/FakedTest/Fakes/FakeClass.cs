@@ -13,5 +13,6 @@ namespace Test_BL.FakedTest.Fakes
     {
         public FakeAttributeEnum Attribute1 { get; set; }
         public FakeAttributeEnum Attribute2 { get; set; }
+        public FakeAttributeEnum Attribute3 { get; set; }
     }
 }
