@@ -33,7 +33,7 @@ namespace Test_BL.FakedTest.Fakes
         /// <param name="nothing">IEnumerable type</param>
         public FakeDatabase(IEnumerable<T> mycollection)
         {
-            Objects = mycollection;
+            Objects = (IList<T>)mycollection;
         }
         /// <summary>
         /// Adds argument to the DeletedObjects property of FakeDatabase class 
