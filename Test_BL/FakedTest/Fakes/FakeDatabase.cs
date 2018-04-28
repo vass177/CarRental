@@ -42,7 +42,7 @@ namespace Test_BL.FakedTest.Fakes
         /// <param name="deletableItem"></param>
         public void Delete(object deletableItem)
         {
-            DeletedObjects.
+            DeletedObjects.Add((T)deletableItem);
         }
         
         /// <summary>
