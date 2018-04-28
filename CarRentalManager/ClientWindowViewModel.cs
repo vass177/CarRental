@@ -13,8 +13,98 @@ namespace CarRentalManager
         private Client loggedInClient;
         private ClientInformationLogic clientLogic;
         private Car selectedCar;
-        private NewOrderHandlingLogic orderHandling;        
+        private NewOrderHandlingLogic orderHandling;
+        private List<Service> serviceList;
+        private List<int> servicePriceList;
+        private int carPrice;
+        private int clientDiscount;
+        private int totalPrice;
 
+        private DateTime startDate;
+        private DateTime endDate;
+
+
+        public DateTime StartDate
+        {
+            get { return startDate; }
+            set
+            {
+                startDate = value;
+                this.OnPropertyChanged(nameof(this.StartDate));
+            }
+        }
+        public DateTime EndDate
+        {
+            get { return endDate; }
+            set
+            {
+                endDate = value;
+                this.OnPropertyChanged(nameof(this.EndDate));
+            }
+        }
+
+
+        public int TotalPrice
+        {
+            get { return totalPrice; }
+            set
+            {
+                totalPrice = value;
+                this.OnPropertyChanged(nameof(this.TotalPrice));
+            }
+        }
+
+
+        public int ClientDiscount
+        {
+            get { return this.clientDiscount; }
+
+            set
+            {
+                this.clientDiscount = value;
+                this.OnPropertyChanged(nameof(this.ClientDiscount));
+            }
+        }
+
+
+        public int CarPrice
+        {
+            get { return this.carPrice; }
+
+            set
+            {
+                this.carPrice = value;
+                OnPropertyChanged(nameof(this.CarPrice));
+            }
+        }
+        
+        public List<Service> ServiceList
+        {
+            get
+            {
+                return this.serviceList;
+            }
+
+            set
+            {
+                this.serviceList = value;
+                this.OnPropertyChanged(nameof(this.ServiceList));
+            }
+        }
+
+        public List<int> ServicePriceList
+        {
+            get
+            {
+                return this.servicePriceList;
+            }
+
+            set
+            {
+                this.servicePriceList = value;
+                this.OnPropertyChanged(nameof(this.ServicePriceList));
+            }
+        }
 
         public Client LoggedInClient
         {
@@ -73,12 +163,24 @@ namespace CarRentalManager
 
         public bool CheckDates(DateTime startDate, DateTime endDate)
         {
+            this.StartDate = startDate;
+            this.EndDate = endDate;
             return this.orderHandling.CheckCarAvailibility(startDate, endDate);
         }
 
-        public void SelectService(List<string>serivceList)
+        public void SelectService(List<string> serivceList)
         {
-            this.orderHandling.SearchSelectedServices(serivceList);
+            this.ServiceList = this.orderHandling.SearchSelectedServices(serivceList);            
+            this.ServicePriceList = this.orderHandling.ServPriceList;
+            this.orderHandling.CalculateFinalPrice();
+            this.CarPrice = this.orderHandling.CarPrice;
+            this.ClientDiscount = this.orderHandling.ClientDiscount;
+            this.TotalPrice = this.orderHandling.FinalPrice;
+        }
+
+        public void FinishOrder()
+        {
+            this.orderHandling.FinishOrder();
         }
     }
 }

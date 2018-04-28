@@ -52,8 +52,10 @@ namespace CarRentalManager
         private async void Confirm_TabButtonAsync(object sender, RoutedEventArgs e)
         {
             await this.ShowMessageAsync("Confirm message", "Successfull confirm");
+            this.clientWindowViewModel.FinishOrder();
+            NewRentalTabControl.SelectedItem = CarSelect_TabItem;
         }
-        
+
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             this.button1.Height = this.myGrid.ActualHeight / 4;
@@ -90,26 +92,39 @@ namespace CarRentalManager
 
         private void startDatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-            startDatePicker.BorderBrush = Brushes.Gray;
-            endDatePicker.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#66DCFF00"));
+            this.informationLabel.Content = string.Empty;
+            this.endDatePicker.SelectedDate = null;
+            this.informationLabel.Content = "Select an ending date";
         }
 
         private void endDatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.startDatePicker.SelectedDate != null && this.startDatePicker.SelectedDate < this.endDatePicker.SelectedDate)
             {
-                startDatePicker.Foreground = Brushes.DarkGray;
-                endDatePicker.BorderBrush = Brushes.Gray;
-
+                this.informationLabel.Content = string.Empty;
                 DateTime startDate = (DateTime)this.startDatePicker.SelectedDate;
                 DateTime endDate = (DateTime)this.endDatePicker.SelectedDate;
 
                 availableCar = this.clientWindowViewModel.CheckDates(startDate, endDate);
-                Console.WriteLine(availableCar);
+                if (this.availableCar)
+                {
+                    this.informationLabel.Content = "The selected car is available between " + startDate.ToString().Substring(0, 13) + " and " + endDate.ToString().Substring(0,13);
+                }
+                else
+                {
+                    this.informationLabel.Content = "The selected car is NOT available, please select another car";
+                }
             }
             else
             {
-                startDatePicker.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#66DCFF00"));
+                if (this.startDatePicker.SelectedDate == null)
+                {
+                    this.informationLabel.Content = "Select a starting date!";
+                }
+                else if(this.startDatePicker.SelectedDate < this.endDatePicker.SelectedDate)
+                {
+                    this.informationLabel.Content = "Start date must be less, than end date";
+                }
                 availableCar = false;
             }
         }
@@ -132,19 +147,22 @@ namespace CarRentalManager
 
         private void Service_TabButton(object sender, RoutedEventArgs e)
         {
-            NewRentalTabControl.SelectedItem = Confirm_Tabitem;
+            
             List<string> services = new List<string>();
 
             foreach (var item in this.servicesGrid.Children)
             {
                 if (item is ToggleSwitch && (bool)(item as ToggleSwitch).IsChecked)
-                {
+                { 
                     string name = (item as ToggleSwitch).Name.Replace('_', ' ');
                     services.Add(name);
                 }
             }
 
             this.clientWindowViewModel.SelectService(services);
+
+            NewRentalTabControl.SelectedItem = Confirm_Tabitem;
+
         }
     }
 }

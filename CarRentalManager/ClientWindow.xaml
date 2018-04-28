@@ -97,7 +97,6 @@
                     <Label Content="{Binding LoggedInClient.ClientEmail}" Grid.Row="4" Grid.Column="1" FontSize="28" Foreground="White"></Label>
                     <Label Content="{Binding LoggedInClient.ClientDiscountStatus}" Grid.Row="5" Grid.Column="1" FontSize="28" Foreground="White"></Label>
 
-
                 </Grid>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem x:Name="button2" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
@@ -189,9 +188,8 @@
                                     </Rectangle>
                                 </Button>
                                 <Calendar x:Name="startDatePicker" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="1"  Background="#05FFFFFF" BorderBrush="#66DCFF00" Foreground="White" FontSize="20" BorderThickness="2" FirstDayOfWeek="Monday" SelectedDatesChanged="startDatePicker_SelectedDatesChanged" IsTodayHighlighted="False"/>
-                                <Calendar x:Name="endDatePicker" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="1"  Background="#05FFFFFF" BorderBrush="#33C3C3C3" Foreground="White" FontSize="20" BorderThickness="2" FirstDayOfWeek="Monday" Width="237" FontStretch="UltraExpanded" SelectedDatesChanged="endDatePicker_SelectedDatesChanged"/>
-                                <Label Content="Not available" Grid.Column="0" Grid.Row="5" FontSize="28" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFBDBDBD"></Label>
-                                <Label Content="Available" Grid.Column="0" Grid.Row="6" FontSize="28" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFBDBDBD"></Label>
+                                <Calendar x:Name="endDatePicker" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="1"  Background="#05FFFFFF" BorderBrush="#66DCFF00" Foreground="White" FontSize="20" BorderThickness="2" FirstDayOfWeek="Monday" Width="237" FontStretch="UltraExpanded" SelectedDatesChanged="endDatePicker_SelectedDatesChanged"/>
+                                <Label x:Name="informationLabel" Content="" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" FontSize="20" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFBDBDBD"></Label>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Services" x:Name="Services_TabItem">
@@ -210,7 +208,7 @@
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>                                    
+                                    <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Label Content="Additional driver" Grid.Row="0" Grid.Column="0" Foreground="#FFC1C1C1" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,20,0"/>
@@ -257,19 +255,86 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="8*"></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="2" Grid.Row="6" Click="Confirm_TabButtonAsync">
+                                <Border Margin="20,20,40,0" Grid.Column="0" Grid.Row="0" Background="#FFF3F3F3" CornerRadius="20,20,20,20" BorderThickness="2,2,2,2">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="0.8*"></RowDefinition>
+                                            <RowDefinition Height="4*"></RowDefinition>
+                                            <RowDefinition Height="0.5*"></RowDefinition>
+                                            <RowDefinition Height="0.75*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="3.5*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Content="Rental summary" Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="#FF464646" BorderThickness="0,0,0,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FF7E7C7C" FontSize="40" FontWeight="Bold" ></Label>
+                                        <Label Content="{Binding SelectedCar.CarType}" ContentStringFormat="Car type: {0}" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="#FF7E7C7C" FontSize="28" FontStretch="ExtraExpanded" FontWeight="Bold" Margin="0" ></Label>
+                                        <Label Content="{Binding CarPrice}" Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#FF171717" FontSize="24" FontWeight="Bold" ></Label>
+                                        <ListBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding ServiceList}" Background="#FFF3F3F3" ScrollViewer.CanContentScroll="False" >
+                                            <ListBox.ItemContainerStyle>
+                                                <Style TargetType="{x:Type ListBoxItem}">
+                                                    <Setter Property="Focusable" Value="False"/>
+                                                </Style>
+                                            </ListBox.ItemContainerStyle>
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Background="#FFF3F3F3">
+                                                        <Label FontSize="14" FontWeight="Bold" Content="{Binding ServiceName}"  Background="Transparent" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Foreground="#FF001E83"></Label>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                        <ListBox FontSize="20" Grid.Row="2" Grid.Column="2" ItemsSource="{Binding ServicePriceList}" Background="#FFF3F3F3" VerticalAlignment="Top" SnapsToDevicePixels="True" ScrollViewer.CanContentScroll="False" >
+                                            <ListBox.ItemContainerStyle>
+                                                <Style TargetType="{x:Type ListBoxItem}">
+                                                    <Setter Property="Focusable" Value="False"/>
+                                                </Style>
+                                            </ListBox.ItemContainerStyle>
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" Background="#FFF3F3F3">
+                                                        <Label FontSize="14" FontWeight="Bold" Content="{Binding}" Background="#FFF3F3F3" HorizontalContentAlignment="Stretch"></Label>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                        <Border BorderBrush="#FF464646" BorderThickness="0,0,10,0" Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" >
+                                            <Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Background="#33E8FF00">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="50*"></RowDefinition>
+                                                    <RowDefinition Height="50*"></RowDefinition>
+                                                    <RowDefinition Height="50"></RowDefinition>
+                                                    <RowDefinition Height="51*"></RowDefinition>
+                                                    <RowDefinition Height="50*"></RowDefinition>
+                                                    <RowDefinition Height="51*"></RowDefinition>
+                                                    <RowDefinition Height="50*"></RowDefinition>
+                                                    <RowDefinition Height="51*"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Label Content="Client" Grid.Row="0" FontWeight="Bold"  FontSize="26" HorizontalContentAlignment="Center" Foreground="#FF7E7E7E"></Label>
+                                                <Label Content="{Binding LoggedInClient.ClientName}" Grid.Row="1" FontWeight="Bold"  FontSize="22" HorizontalContentAlignment="Center" Foreground="#FF115E7E"></Label>
+                                                <Label Content="Discount rate" Grid.Row="2" FontWeight="Bold"  FontSize="26" HorizontalContentAlignment="Center" Foreground="#FF7E7E7E"></Label>
+                                                <Label Content="{Binding LoggedInClient.ClientDiscountStatus}" ContentStringFormat=" {0} %" Grid.Row="3" FontWeight="Bold"  FontSize="22" HorizontalContentAlignment="Center" Foreground="#FF115E7E"></Label>
+                                                <Label Content="Start date" Grid.Row="4" FontWeight="Bold"  FontSize="26" HorizontalContentAlignment="Center" Foreground="#FF7E7E7E"></Label>
+                                                <Label Content="{Binding StartDate}" Grid.Row="5" FontWeight="Bold"  FontSize="22" HorizontalContentAlignment="Center" Foreground="#FF115E7E"></Label>
+                                                <Label Content="End date" Grid.Row="6" FontWeight="Bold"  FontSize="26" HorizontalContentAlignment="Center" Foreground="#FF7E7E7E"></Label>
+                                                <Label Content="{Binding EndDate}" Grid.Row="7" FontWeight="Bold"  FontSize="22" HorizontalContentAlignment="Center" Foreground="#FF115E7E"></Label>
+
+                                            </Grid>
+                                        </Border>
+                                        <Label Content="Customer discount" Grid.Column="1" Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Foreground="#FF7E7C7C" FontSize="20" FontWeight="Bold" Margin="0,0,10,0" ></Label>
+                                        <Label ContentStringFormat="- {0}" Content="{Binding ClientDiscount}" Grid.Row="3" Grid.Column="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#FFCF0000" FontSize="20" FontWeight="Bold"></Label>
+                                        <Label Content="Total:" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" HorizontalContentAlignment="Right" BorderBrush="#FF464646" VerticalContentAlignment="Center" Foreground="#FF7E7C7C" FontSize="30" FontWeight="Bold" BorderThickness="0,10,0,0" ></Label>
+                                        <Label Content="{Binding TotalPrice}" Grid.Row="4" Grid.Column="2" BorderBrush="#FF464646" VerticalContentAlignment="Center" Foreground="#FF7E7C7C" FontSize="30" FontWeight="Bold" BorderThickness="0,10,0,0" />
+                                    </Grid>
+                                </Border>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" Grid.Column="0" Grid.Row="1" Click="Confirm_TabButtonAsync" HorizontalAlignment="Right" Foreground="White">
                                     <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
                                             <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}" />
