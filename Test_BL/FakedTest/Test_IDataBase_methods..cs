@@ -9,7 +9,7 @@ using Test_BL.FakedTest.Fakes;
 namespace Test_BL.FakedTest
 {
     /// <summary>
-    /// Test methods of a fake class that implements IDataBase 
+    /// Testing IDataBase implementor FakeDatabase 
     /// </summary>
     [TestFixture]
     class Test_IDataBase_methods
@@ -17,7 +17,7 @@ namespace Test_BL.FakedTest
         private List<FakeClass> myFakeDataSet { get; set; }
         private FakeDatabase<List<FakeClass>> myFakeDatabase;
         [OneTimeSetUp]
-        static void SetUp()
+        void SetUp()
         {
 
         } 
