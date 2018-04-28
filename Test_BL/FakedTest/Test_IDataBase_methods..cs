@@ -16,7 +16,7 @@ namespace Test_BL.FakedTest
     {
         static Random rnd = new Random();
         private List<FakeClass> myFakeDataSet;
-        private FakeDatabase<List<FakeClass>> myFDb;
+        private FakeDatabase<FakeClass> myFDb;
         [OneTimeSetUp]
         void SetUp()
         {
@@ -28,7 +28,7 @@ namespace Test_BL.FakedTest
                 fc.Attribute3 = (FakeAttributeEnum)rnd.Next(0, 2);
                 myFakeDataSet.Add(fc);
             }
-            myFDb = new FakeDatabase<List<FakeClass>>(myFakeDataSet);
+            myFDb = new FakeDatabase<FakeClass>(myFakeDataSet);
             
         } 
     }
