@@ -23,9 +23,9 @@ namespace Test_BL.FakedTest.Fakes
     /// </summary>
     internal class FakeDatabase<T> : IDataBase
     {
-        public IEnumerable<T> Objects { get; private set; }
-        public IEnumerable<T> DeletedObjects { get;  private set;}
-        public IEnumerable<T> SelectedObjects { get; private set; }
+        public IList<T> Objects { get; private set; }
+        public IList<T> DeletedObjects { get;  private set;}
+        public IList<T> SelectedObjects { get; private set; }
         /// <summary>
         /// Constructor for FakeDatabase,gets an IEnumerable argument
         /// and sets corresponding field to it
@@ -36,12 +36,12 @@ namespace Test_BL.FakedTest.Fakes
             Objects = mycollection;
         }
         /// <summary>
-        /// Does nothing in this test environment 
+        /// Adds argument to the DeletedObjects property of FakeDatabase class 
         /// </summary>
         /// <param name="deletableItem"></param>
         public void Delete(object deletableItem)
         {
-            
+            DeletedObjects.
         }
         /// <summary>
         /// Returns all elements as type List of the dummy collection
