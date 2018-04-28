@@ -74,8 +74,8 @@ namespace Test_BL.FakedTest.Fakes
         /// <summary>
         /// Returns all element of the IEnumerable Object
         /// </summary>
-        /// <param name="attributeType"></param>
-        /// <param name="attributeValue"></param>
+        /// <param name="attributeType">a FakeAttibuteEnum value</param>
+        /// <param name="attributeValue">can be anythig</param>
         /// <returns></returns>
         public object SelectMore(object attributeType, object attributeValue)
         {
@@ -86,7 +86,9 @@ namespace Test_BL.FakedTest.Fakes
             }
             return null;
         }
-
+        /// <summary>
+        /// Does nothing
+        /// </summary>
         public void Update()
         {
             
