@@ -17,7 +17,9 @@ namespace Test_BL.FakedTest.Fakes
     }
     
     /// <summary>
-    /// Simple generic database model with dummy implemented methods for test purposes 
+    /// Simple generic database model
+    /// Only Select and SelectMore and GetAll methods are implemented
+    /// with somewhat meaningful logic 
     /// </summary>
     internal class FakeDatabase<T> : IDataBase
     {
