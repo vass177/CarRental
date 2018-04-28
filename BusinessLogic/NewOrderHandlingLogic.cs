@@ -13,6 +13,8 @@ namespace BusinessLogic
         private Client client;
         private Car selectedCar;
         private bool carAvailable;
+        private List<Service> servList;
+        private DateTime[] dateRange;
 
         private readonly CarDataHandler carDBHandler;
         private readonly RentalDataHandler rentalDBHandler;
@@ -34,6 +36,8 @@ namespace BusinessLogic
             }
         }
 
+        public List<int> ServPriceList { get; private set; }
+
         public void SelectCar(string imageSource)
         {
             IQueryable<Car> selectedCarList= (IQueryable<Car>)carDBHandler.SelectMore(CarAttributeType.CarImageSource, imageSource);
@@ -50,7 +54,7 @@ namespace BusinessLogic
         }
         public bool CheckCarAvailibility(DateTime startDate, DateTime endDate)
         {
-            DateTime[] dateRange = new DateTime[] { startDate, endDate };
+            dateRange = new DateTime[] { startDate, endDate };
             IQueryable<Rental> rentals= (IQueryable<Rental>)this.rentalDBHandler.SelectMore(RentalAttributeType.RentalDateInterval, dateRange);
 
             foreach (var item in rentals)
@@ -68,13 +72,59 @@ namespace BusinessLogic
             return true;
         }
 
-        public void SearchSelectedServices(List<string>serviceList)
+        public List<Service> SearchSelectedServices(List<string>serviceList)
         {
+            servList = new List<Service>();
+           
             foreach (string service in serviceList)
             {
                 Service selectedService= (Service)serviceDBHandler.Select(ServiceAttributeType.ServiceName, service);
                 Console.WriteLine(selectedService.ServiceName +" "+selectedService.ServicePrice);
+                servList.Add(selectedService);
             }
+            CalculateServicePrice();
+
+            return servList;
+        }
+        public decimal CalculateServicePrice()
+        {
+            int dayCount = CalculateDays();
+            ServPriceList = new List<int>();
+
+            decimal serviceprice = 0;
+            foreach (Service s in servList)
+            {
+                serviceprice += (s.ServicePrice) * dayCount;
+                ServPriceList.Add((int)serviceprice);
+                Console.WriteLine(s.ServiceName + ": " + s.ServicePrice + " (" + dayCount + ")");
+            }
+            return serviceprice;
+        }
+        public int CalculateDays()
+        {
+            TimeSpan days = dateRange[1] - dateRange[0];
+            int dayCount = days.Days;
+            Console.WriteLine("Napok száma: " + dayCount);
+
+            return dayCount;
+        }
+        public void FinishOrder()
+        {
+            int dayCount = CalculateDays();
+
+            // must include client discount !!!!!!!!!!!!!!!!!!!!!!
+            decimal price = dayCount * SelectedCar.CarRentalPrice+CalculateServicePrice();
+
+            Rental newRental = new Rental
+            {
+                UserName = client.UserName,
+                CarID = SelectedCar.CarID,
+                RentalStartDate = dateRange[0],
+                RentalEndDate = dateRange[1],
+                RentalFullPrice = price
+            };
+            rentalDBHandler.Insert(newRental);
+
         }
     }
 }

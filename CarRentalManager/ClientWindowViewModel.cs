@@ -13,8 +13,37 @@ namespace CarRentalManager
         private Client loggedInClient;
         private ClientInformationLogic clientLogic;
         private Car selectedCar;
-        private NewOrderHandlingLogic orderHandling;        
+        private NewOrderHandlingLogic orderHandling;
+        private List<Service> serviceList;
+        private List<int> servicePriceList;
 
+        public List<Service> ServiceList
+        {
+            get
+            {
+                return this.serviceList;
+            }
+
+            set
+            {
+                this.serviceList = value;
+                this.OnPropertyChanged(nameof(this.ServiceList));
+            }
+        }
+
+        public List<int> ServicePriceList
+        {
+            get
+            {
+                return this.servicePriceList;
+            }
+
+            set
+            {
+                this.servicePriceList = value;
+                this.OnPropertyChanged(nameof(this.ServicePriceList));
+            }
+        }
 
         public Client LoggedInClient
         {
@@ -76,9 +105,15 @@ namespace CarRentalManager
             return this.orderHandling.CheckCarAvailibility(startDate, endDate);
         }
 
-        public void SelectService(List<string>serivceList)
+        public void SelectService(List<string> serivceList)
         {
-            this.orderHandling.SearchSelectedServices(serivceList);
+            this.ServiceList = this.orderHandling.SearchSelectedServices(serivceList);            
+            this.ServicePriceList = this.orderHandling.ServPriceList;
+        }
+
+        public void FinishOrder()
+        {
+            this.orderHandling.FinishOrder();
         }
     }
 }
