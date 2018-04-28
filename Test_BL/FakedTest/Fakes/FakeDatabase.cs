@@ -23,17 +23,17 @@ namespace Test_BL.FakedTest.Fakes
     /// </summary>
     internal class FakeDatabase<T> : IDataBase
     {
-        public IList<T> Objects { get; private set; }
+        public IEnumerable<T> Objects { get; private set; }
         public IList<T> DeletedObjects { get;  private set;}
         public IList<T> SelectedObjects { get; private set; }
         /// <summary>
         /// Constructor for FakeDatabase,gets an IEnumerable argument
         /// and sets corresponding field to it
         /// </summary>
-        /// <param name="nothing">IEnumerable type</param>
+        /// <param name="mycollection">IEnumerable type</param>
         public FakeDatabase(IEnumerable<T> mycollection)
         {
-            Objects = (IList<T>)mycollection;
+            Objects = mycollection;
         }
         /// <summary>
         /// Adds argument to the DeletedObjects property of FakeDatabase class 
