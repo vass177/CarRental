@@ -18,7 +18,7 @@ namespace Test_BL.FakedTest.Fakes
     
     /// <summary>
     /// Simple generic database model
-    /// All methods are implemented
+    /// All methods except Update are implemented
     /// with somewhat meaningful logic 
     /// </summary>
     internal class FakeDatabase<T> : IDataBase
