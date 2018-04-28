@@ -8,6 +8,15 @@ using Data.DataHandling;
 namespace Test_BL.FakedTest.Fakes
 {
     /// <summary>
+    /// Dummy enum for test purposes
+    /// </summary>
+    public enum FakeAttributeEnum
+    {
+        Type1,
+        Type2
+    }
+    
+    /// <summary>
     /// Simple generic database model with dummy implemented methods for test purposes 
     /// </summary>
     internal class FakeDatabase<T> : IDataBase
@@ -34,22 +43,22 @@ namespace Test_BL.FakedTest.Fakes
 
         public void Insert(object newItem)
         {
-            throw new NotImplementedException();
+            
         }
 
         public object Select(object attributeType, object attributeValue)
         {
-            throw new NotImplementedException();
+            return 
         }
 
         public object SelectMore(object attributeType, object attributeValue)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
