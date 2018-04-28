@@ -30,23 +30,33 @@ namespace Test_BL.FakedTest.Fakes
         {
             Objects = null;
         }
-
+        /// <summary>
+        /// Does nothing in this test environment 
+        /// </summary>
+        /// <param name="deletableItem"></param>
         public void Delete(object deletableItem)
         {
-            throw new NotImplementedException();
+            
         }
-
+        /// <summary>
+        /// Returns all elements as type List of the dummy collection
+        /// In the test it should be 'null'
+        /// </summary>
+        /// <returns>List</returns>
         public object GetAll()
         {
-            throw new NotImplementedException();
+            return Objects.ToList();
         }
-
+        /// <summary>
+        /// Does nothing in this test environment
+        /// </summary>
+        /// <param name="newItem"></param>
         public void Insert(object newItem)
         {
             
         }
         /// <summary>
-        /// Test method, it gives back first element of the dummy data collection
+        /// It gives back first element of the dummy data collection
         /// if first argumentz of the method is a FakeAttibuteEnum type 
         /// </summary>
         /// <param name="attributeType">a FakeAttibuteEnum value</param>
@@ -61,10 +71,20 @@ namespace Test_BL.FakedTest.Fakes
             }
             return null;
         }
-
+        /// <summary>
+        /// Returns all element of the IEnumerable Object
+        /// </summary>
+        /// <param name="attributeType"></param>
+        /// <param name="attributeValue"></param>
+        /// <returns></returns>
         public object SelectMore(object attributeType, object attributeValue)
         {
-            
+            if ((FakeAttributeEnum)attributeType == FakeAttributeEnum.Type1 ||
+                (FakeAttributeEnum)attributeType == FakeAttributeEnum.Type2)
+            {
+                return Objects.ToList();
+            }
+            return null;
         }
 
         public void Update()
