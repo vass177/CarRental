@@ -14,12 +14,16 @@ namespace Test_BL.FakedTest
     [TestFixture]
     class Test_IDataBase_methods
     {
+        
         private List<FakeClass> myFakeDataSet { get; set; }
         private FakeDatabase<List<FakeClass>> myFakeDatabase;
         [OneTimeSetUp]
         void SetUp()
         {
+            FakeClass fc = new FakeClass();
+            fc.Attribute1 = FakeAttributeEnum.Type1;
 
+            myFakeDataSet.Add()
         } 
     }
 }
