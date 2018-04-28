@@ -16,14 +16,20 @@ namespace Test_BL.FakedTest
     {
         static Random rnd = new Random();
         private List<FakeClass> myFakeDataSet { get; set; }
-        private FakeDatabase<List<FakeClass>> myFakeDatabase;
+        private FakeDatabase<List<FakeClass>> myFDb;
         [OneTimeSetUp]
         void SetUp()
         {
-            FakeClass fc = new FakeClass();
-            fc.Attribute1 = FakeAttributeEnum.Type1;
-
-            myFakeDataSet.Add()
+            for (int i = 0; i < 5; i++)
+            {
+                FakeClass fc = new FakeClass();
+                fc.Attribute1 = (FakeAttributeEnum)rnd.Next(0, 2);
+                fc.Attribute2 = (FakeAttributeEnum)rnd.Next(0, 2);
+                fc.Attribute3 = (FakeAttributeEnum)rnd.Next(0, 2);
+                myFakeDataSet.Add(fc);
+            }
+            myFakeDatabase = new FakeDatabase<List<FakeClass>>((List)myFakeDataSet);
+            
         } 
     }
 }
