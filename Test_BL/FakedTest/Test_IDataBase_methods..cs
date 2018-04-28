@@ -17,8 +17,9 @@ namespace Test_BL.FakedTest
         static Random rnd = new Random();
         private List<FakeClass> myFakeDataSet;
         private FakeDatabase<FakeClass> myFDb;
+
         [OneTimeSetUp]
-        void SetUp()
+        public void SetUp()
         {
             for (int i = 0; i < 5; i++)
             {
@@ -29,7 +30,9 @@ namespace Test_BL.FakedTest
                 myFakeDataSet.Add(fc);
             }
             myFDb = new FakeDatabase<FakeClass>(myFakeDataSet);
-            
         } 
+
+        [Test]
+        public 
     }
 }
