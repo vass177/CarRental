@@ -13,7 +13,8 @@ namespace Test_BL.FakedTest.Fakes
     public enum FakeAttributeEnum
     {
         Type1,
-        Type2
+        Type2,
+        Type3
     }
     
     /// <summary>
