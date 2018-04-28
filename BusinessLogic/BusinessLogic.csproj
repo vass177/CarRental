@@ -51,6 +51,7 @@
     <Compile Include="ClientInformationLogic.cs" />
     <Compile Include="LoginAuthentication.cs" />
     <Compile Include="NewOrderHandlingLogic.cs" />
+    <Compile Include="OrderHandling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserClientRegistration.cs" />
   </ItemGroup>

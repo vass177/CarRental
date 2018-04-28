@@ -129,8 +129,7 @@
                                 <StackPanel Orientation="Horizontal" Background="#198E916F" Margin="5,1,0,1" UseLayoutRounding="True" >
                                     <StackPanel Orientation="Vertical">
                                         <Label Content="Full name: " Foreground="Black" FontSize="20" FontWeight="Bold" />
-                                        <Label Content="User name: " Foreground="Black" FontSize="16" FontWeight="Bold"/>
-                                        
+                                        <Label Content="User name: " Foreground="Black" FontSize="16" FontWeight="Bold"/>                                        
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical" Width="150">
                                         <Label Content="{Binding ClientName}" Foreground="Black" FontSize="20" />

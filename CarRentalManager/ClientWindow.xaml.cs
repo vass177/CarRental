@@ -53,7 +53,7 @@ namespace CarRentalManager
         {
             await this.ShowMessageAsync("Confirm message", "Successfull confirm");
             this.clientWindowViewModel.FinishOrder();
-            NewRentalTabControl.SelectedItem = CarSelect_TabItem;
+            NewRentalTabControl.SelectedItem = CarSelect_TabItem;            
         }
 
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)

@@ -360,15 +360,40 @@
                 <Grid Background="#FF464646">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="8*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Content="My rentals" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
+                    <Label Content="MY RENTALS" FontWeight="SemiBold" FontSize="32" Grid.Row="0"  Grid.Column="0" Foreground="LightGray" VerticalContentAlignment="Center" HorizontalAlignment="Center"></Label>
+                    <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Rental}" Background="Transparent" ScrollViewer.CanContentScroll="False" Margin="20,0,20,20">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListBoxItem}">
+                                <Setter Property="Focusable" Value="False"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Background="#FF464646" UseLayoutRounding="True" >
+                                    <StackPanel Orientation="Vertical">
+                                        <Label Content="Car type: " Foreground="White" FontSize="20" FontWeight="Bold" />
+                                        <Label Content="Price: " Foreground="White" FontSize="16" FontWeight="Bold"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Width="150">
+                                        <Label Content="{Binding Car.CarType}" Foreground="White" FontSize="20" />
+                                        <Label Content="{Binding RentalFullPrice}" ContentStringFormat=" {0} Ft" Foreground="White" FontSize="16"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Width="250">
+                                        <Label Content="Address" Foreground="Black" FontSize="20" FontWeight="Bold"/>
+                                        <Label Content="{Binding ClientAddress}" FontSize="18"/>
+                                        <Label Content="Discount: " HorizontalContentAlignment="Right" Foreground="Black" FontSize="16" FontWeight="Bold"/>
+                                    </StackPanel>
+                                    <Image Source="{Binding Car.CarPhotoPath}" UseLayoutRounding="False" Height="150" Width="300" ></Image>
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem x:Name="button4" Background="#41b1e1" Margin="0,2,0,0" VerticalAlignment="Top" Height="167" MouseLeave="MetroTabControl_MouseLeave" MouseEnter="MetroTabControl_MouseEnter">
