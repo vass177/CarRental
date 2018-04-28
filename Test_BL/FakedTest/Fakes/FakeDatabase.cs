@@ -33,9 +33,9 @@ namespace Test_BL.FakedTest.Fakes
         /// and sets corresponding field to it
         /// </summary>
         /// <param name="mycollection">IEnumerable type</param>
-        public FakeDatabase(List<T> mycollection)
+        public FakeDatabase(IEnumerable<T> mycollection)
         {
-            Objects = mycollection;
+            Objects = (IList<T>)mycollection;
         }
         
         /// <summary>
