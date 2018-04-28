@@ -56,12 +56,12 @@ namespace Test_BL.FakedTest.Fakes
         }
         
         /// <summary>
-        /// Does nothing in this test environment
+        /// Adds argument to InsertedObjects collection
         /// </summary>
-        /// <param name="newItem"></param>
+        /// <param name="newItem">object, will be casted and added to InsertedObjects collectons</param>
         public void Insert(object newItem)
         {
-            
+            InsertedObjects.Add((T)newItem);
         }
         
         /// <summary>
