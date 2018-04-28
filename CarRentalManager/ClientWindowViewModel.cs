@@ -16,7 +16,68 @@ namespace CarRentalManager
         private NewOrderHandlingLogic orderHandling;
         private List<Service> serviceList;
         private List<int> servicePriceList;
+        private int carPrice;
+        private int clientDiscount;
+        private int totalPrice;
 
+        private DateTime startDate;
+        private DateTime endDate;
+
+
+        public DateTime StartDate
+        {
+            get { return startDate; }
+            set
+            {
+                startDate = value;
+                this.OnPropertyChanged(nameof(this.StartDate));
+            }
+        }
+        public DateTime EndDate
+        {
+            get { return endDate; }
+            set
+            {
+                endDate = value;
+                this.OnPropertyChanged(nameof(this.EndDate));
+            }
+        }
+
+
+        public int TotalPrice
+        {
+            get { return totalPrice; }
+            set
+            {
+                totalPrice = value;
+                this.OnPropertyChanged(nameof(this.TotalPrice));
+            }
+        }
+
+
+        public int ClientDiscount
+        {
+            get { return this.clientDiscount; }
+
+            set
+            {
+                this.clientDiscount = value;
+                this.OnPropertyChanged(nameof(this.ClientDiscount));
+            }
+        }
+
+
+        public int CarPrice
+        {
+            get { return this.carPrice; }
+
+            set
+            {
+                this.carPrice = value;
+                OnPropertyChanged(nameof(this.CarPrice));
+            }
+        }
+        
         public List<Service> ServiceList
         {
             get
@@ -102,6 +163,8 @@ namespace CarRentalManager
 
         public bool CheckDates(DateTime startDate, DateTime endDate)
         {
+            this.StartDate = startDate;
+            this.EndDate = endDate;
             return this.orderHandling.CheckCarAvailibility(startDate, endDate);
         }
 
@@ -109,6 +172,10 @@ namespace CarRentalManager
         {
             this.ServiceList = this.orderHandling.SearchSelectedServices(serivceList);            
             this.ServicePriceList = this.orderHandling.ServPriceList;
+            this.orderHandling.CalculateFinalPrice();
+            this.CarPrice = this.orderHandling.CarPrice;
+            this.ClientDiscount = this.orderHandling.ClientDiscount;
+            this.TotalPrice = this.orderHandling.FinalPrice;
         }
 
         public void FinishOrder()

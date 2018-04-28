@@ -15,6 +15,10 @@ namespace BusinessLogic
         private bool carAvailable;
         private List<Service> servList;
         private DateTime[] dateRange;
+        private int carPrice;
+        private int clientDiscount;
+        private int finalPrice;
+        
 
         private readonly CarDataHandler carDBHandler;
         private readonly RentalDataHandler rentalDBHandler;
@@ -36,6 +40,23 @@ namespace BusinessLogic
             }
         }
 
+        public int ClientDiscount
+        {
+            get { return clientDiscount; }
+        }
+
+        public int FinalPrice
+        {
+            get { return this.finalPrice; }
+        }
+
+        public int CarPrice
+        {
+            get
+            {
+                return this.carPrice;
+            }
+        }
         public List<int> ServPriceList { get; private set; }
 
         public void SelectCar(string imageSource)
@@ -95,9 +116,9 @@ namespace BusinessLogic
             foreach (Service s in servList)
             {
                 serviceprice += (s.ServicePrice) * dayCount;
-                ServPriceList.Add((int)serviceprice);
-                Console.WriteLine(s.ServiceName + ": " + s.ServicePrice + " (" + dayCount + ")");
+                ServPriceList.Add((int)(s.ServicePrice) * dayCount);
             }
+            Console.WriteLine("Total service price: "+serviceprice);
             return serviceprice;
         }
         public int CalculateDays()
@@ -106,14 +127,23 @@ namespace BusinessLogic
             int dayCount = days.Days;
             Console.WriteLine("Napok száma: " + dayCount);
 
+            this.carPrice = (int)SelectedCar.CarRentalPrice * dayCount;
+            Console.WriteLine("Car price: "+this.CarPrice);
+
             return dayCount;
+        }
+        public void CalculateFinalPrice()
+        {
+            int price = (int)(this.carPrice + CalculateServicePrice());
+            this.clientDiscount = (int)(price * client.ClientDiscountStatus / 100);
+            Console.WriteLine("client discount: "+clientDiscount);
+
+            this.finalPrice = price - clientDiscount;
+            Console.WriteLine("final price: "+finalPrice);
+
         }
         public void FinishOrder()
         {
-            int dayCount = CalculateDays();
-
-            // must include client discount !!!!!!!!!!!!!!!!!!!!!!
-            decimal price = dayCount * SelectedCar.CarRentalPrice+CalculateServicePrice();
 
             Rental newRental = new Rental
             {
@@ -121,7 +151,7 @@ namespace BusinessLogic
                 CarID = SelectedCar.CarID,
                 RentalStartDate = dateRange[0],
                 RentalEndDate = dateRange[1],
-                RentalFullPrice = price
+                RentalFullPrice = finalPrice
             };
             rentalDBHandler.Insert(newRental);
 
