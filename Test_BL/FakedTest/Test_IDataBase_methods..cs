@@ -14,7 +14,7 @@ namespace Test_BL.FakedTest
     [TestFixture]
     class Test_IDataBase_methods
     {
-        
+        static Random rnd = new Random();
         private List<FakeClass> myFakeDataSet { get; set; }
         private FakeDatabase<List<FakeClass>> myFakeDatabase;
         [OneTimeSetUp]
