@@ -46,13 +46,12 @@ namespace Test_BL.FakedTest.Fakes
         }
         
         /// <summary>
-        /// Returns all elements as type List of the dummy collection
-        /// In the test it should be 'null'
+        /// Returns all elements of Objects class property
         /// </summary>
-        /// <returns>List</returns>
+        /// <returns>IEnumerable</returns>
         public object GetAll()
         {
-            return Objects.ToList();
+            return Objects;
         }
         
         /// <summary>
