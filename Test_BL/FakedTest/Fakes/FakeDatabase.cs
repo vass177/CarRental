@@ -21,6 +21,7 @@ namespace Test_BL.FakedTest.Fakes
         {
             Objects = null;
         }
+
         public void Delete(object deletableItem)
         {
             throw new NotImplementedException();
