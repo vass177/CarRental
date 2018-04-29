@@ -119,7 +119,7 @@
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Content="Clients" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" FontSize="35" HorizontalAlignment="Center" FontWeight="Bold"/>
-                    <ListBox x:Name="clientListBox" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClient}" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="5" Background="#66F7F7F7" Margin="0,0">
+                    <ListBox x:Name="clientListBox" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClient}" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="5" Background="#33F7F7F7" Margin="0,0">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Background="#198E916F" Margin="5,1,0,1" UseLayoutRounding="True" >
