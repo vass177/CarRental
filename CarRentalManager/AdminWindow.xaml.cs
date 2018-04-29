@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using BusinessLogic;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System.Data.SqlClient;
+using System.IO;
 
 namespace CarRentalManager
 {
@@ -29,7 +31,6 @@ namespace CarRentalManager
         public AdminWindow()
         {
             this.InitializeComponent();
-
         }
 
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -42,6 +43,9 @@ namespace CarRentalManager
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
+
+            //MessageBox.Show(File.ReadAllLines("C:/Users/Franciska/source/repos/oenik_szt2_2018tavasz_pm4j60_gk607o_ilnrw96Q/ListCarHP.sql").ToString());
+
             this.adminWindowViewModel = new AdminWindowViewModel();
 
             SeriesCollection mySeries = new SeriesCollection

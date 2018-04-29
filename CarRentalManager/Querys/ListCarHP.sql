@@ -1,0 +1,1 @@
+﻿select CarHorsepower from Car
