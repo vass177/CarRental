@@ -155,6 +155,7 @@ namespace CarRentalManager
 
             this.clientLogic.ClientLoggedIn += ClientLogic_ClientLoggedIn;
             this.clientOrderHandling.RentalListChanged += ClientOrderHandling_RentalListChanged;
+            
         }
 
         private void ClientOrderHandling_RentalListChanged(object sender, EventArgs e)
@@ -207,6 +208,11 @@ namespace CarRentalManager
         {
             this.orderHandling.FinishOrder();
             this.RefreshOrderList();
+        }
+
+        public List<int> getClientStatistics()
+        {
+            return clientOrderHandling.OrderRevenue();
         }
     }
 }

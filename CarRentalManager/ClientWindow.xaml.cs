@@ -1,4 +1,6 @@
 ﻿using CarRentalManager.Controls;
+using LiveCharts;
+using LiveCharts.Wpf;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;
@@ -53,7 +55,8 @@ namespace CarRentalManager
         {
             await this.ShowMessageAsync("Confirm message", "Successfull confirm");
             this.clientWindowViewModel.FinishOrder();
-            NewRentalTabControl.SelectedItem = CarSelect_TabItem;            
+            NewRentalTabControl.SelectedItem = CarSelect_TabItem;
+            LoadUserStatistics();
         }
 
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -78,6 +81,7 @@ namespace CarRentalManager
         {
             this.clientWindowViewModel = new ClientWindowViewModel(this.userName);
             this.DataContext = this.clientWindowViewModel;
+            this.LoadUserStatistics();
         }
 
 
@@ -162,6 +166,29 @@ namespace CarRentalManager
             this.clientWindowViewModel.SelectService(services);
 
             NewRentalTabControl.SelectedItem = Confirm_Tabitem;
+
+        }
+
+        public void LoadUserStatistics()
+        {
+            List<int> clientData = this.clientWindowViewModel.getClientStatistics();
+
+            LineSeries ls = new LineSeries();
+            foreach (int item in clientData)
+            {
+                //ls.Values.Add(item);
+            }
+            SeriesCollection mySeries = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = new ChartValues<int>(clientData),
+                    Title="Payments"
+                }
+            };
+            axisX.Labels = new string[] { "2014", "2015", "2016", "2017", "2018" };
+            paymentChart.Series = mySeries;
+            
 
         }
     }
