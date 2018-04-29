@@ -100,12 +100,14 @@
                     <Label Content="{Binding LoggedInClient.ClientAddress}" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" FontSize="28" Foreground="White" Margin="20,0,0,0"></Label>
                     <Label Content="{Binding LoggedInClient.ClientEmail}" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" FontSize="28" Foreground="White" Margin="20,0,0,0"></Label>                    
                     <Border  CornerRadius="20,20,20,20" Grid.Column="0" Grid.Row="5" Grid.RowSpan="1" Grid.ColumnSpan="4" Margin="10,0,20,20" BorderThickness="2" BorderBrush="#4CFFFFFF" Background="#19E2E2E2"></Border>
-                    <lvc:Gauge x:Name="gauge" Grid.Row="5" Grid.Column="3"  Margin="60,5,60,48" From="0" To="100" Value="{Binding LoggedInClient.ClientDiscountStatus}" Foreground="White" FontSize="20" >
+                    <Label Content="Client discount" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="1" FontSize="12" FontWeight="ExtraBold" Foreground="#FFE4E4E4" HorizontalContentAlignment="Center" Margin="0" BorderBrush="#19FFFFFF" BorderThickness="0,0,7,0" Padding="5,5,25,5"></Label>
+
+                    <lvc:Gauge x:Name="gauge" Grid.Row="5" Grid.Column="3"  Margin="60,20,60,30" From="0" To="100" Value="{Binding LoggedInClient.ClientDiscountStatus}" Foreground="White" FontSize="15" >
                         <lvc:Gauge.GaugeBackground>
                             <SolidColorBrush Color="White" Opacity="0.1"/>
                         </lvc:Gauge.GaugeBackground>
                     </lvc:Gauge>
-                    <Charts:CartesianChart x:Name="paymentChart" BorderBrush="#4CFFFFFF" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" LegendLocation="Top" Margin="15,0,0,20" Foreground="White" ScrollBarFill="{x:Null}" BorderThickness="0,0,2,0" Padding="0,0,20,0" FontSize="10" >
+                    <Charts:CartesianChart x:Name="paymentChart" BorderBrush="#4CFFFFFF" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" LegendLocation="Top" Margin="15,0,10,20" Foreground="White" ScrollBarFill="{x:Null}" BorderThickness="0,0,2,0" Padding="0,0,0,0" FontSize="10" >
                         <lvc:CartesianChart.AxisY >
                             <lvc:Axis IsMerged="False" MinValue="0">
                                 <lvc:Axis.Separator>
@@ -453,8 +455,9 @@
                     <Controls1:MapControl Grid.Column="1" Grid.Row="2"  HorizontalAlignment="Center" VerticalAlignment="Top" Height="367" Width="396" BorderThickness="20" BorderBrush="#33FFFFFF" Margin="5,5,10,0"></Controls1:MapControl>
                     <Label Content="Contact" Grid.Row="1" Grid.Column="0" FontSize="35" Foreground="#FFF0F0F0" FontWeight="ExtraBold" VerticalAlignment="Center"></Label>
                     <TextBlock FontSize="24" Grid.Row="2" Grid.Column="0" Foreground="#FFF0F0F0" LineHeight="50">Phone number: +0 1 234 56 78 <LineBreak></LineBreak>
-                    E-mail: abcdef@xyzzs.com <LineBreak></LineBreak>
-                    Address: 1000 City, Blabla 10/a
+                    E-mail: crmteam@crm.com <LineBreak></LineBreak>
+                    Address: 1185 Budapest <LineBreak></LineBreak> 
+                        Liszt Ferenc International Airport
                     </TextBlock>
                 </Grid>
             </Controls:MetroTabItem>

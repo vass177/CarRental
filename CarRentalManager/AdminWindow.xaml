@@ -111,10 +111,6 @@
                 <Grid Background="#FFDAD7D7">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"></ColumnDefinition>
-                        <ColumnDefinition Width="3*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
@@ -149,7 +145,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Border Margin="20" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Background="White" CornerRadius="20,20,20,20" BorderThickness="2,2,2,2">
+                    <Border Margin="150,20" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Background="White" CornerRadius="20,20,20,20" BorderThickness="2,2,2,2">
                         <Grid Margin="20,10" Background="White">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"></ColumnDefinition>
