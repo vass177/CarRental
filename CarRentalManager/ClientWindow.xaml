@@ -374,19 +374,19 @@
                         </ListBox.ItemContainerStyle>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Background="#FF464646" UseLayoutRounding="True" >
-                                    <StackPanel Orientation="Vertical">
-                                        <Label Content="Car type: " Foreground="White" FontSize="20" FontWeight="Bold" />
-                                        <Label Content="Price: " Foreground="White" FontSize="16" FontWeight="Bold"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Vertical" Width="150">
-                                        <Label Content="{Binding Car.CarType}" Foreground="White" FontSize="20" />
-                                        <Label Content="{Binding RentalFullPrice}" ContentStringFormat=" {0} Ft" Foreground="White" FontSize="16"/>
-                                    </StackPanel>
+                                <StackPanel Orientation="Horizontal" Background="#19DADADA" UseLayoutRounding="True" Margin="0,2" >
                                     <StackPanel Orientation="Vertical" Width="250">
-                                        <Label Content="Address" Foreground="Black" FontSize="20" FontWeight="Bold"/>
-                                        <Label Content="{Binding ClientAddress}" FontSize="18"/>
-                                        <Label Content="Discount: " HorizontalContentAlignment="Right" Foreground="Black" FontSize="16" FontWeight="Bold"/>
+                                        <Label Content="Car type: " Foreground="#FFC9C9C9" FontSize="20" FontWeight="Bold"/>
+                                        <Label Content="{Binding Car.CarType}" Foreground="White" FontSize="20"  />
+                                        <Label Content="Rental price: " Foreground="#FFC9C9C9" FontSize="20" FontWeight="Bold"/>
+                                        <Label Content="{Binding RentalFullPrice}" ContentStringFormat=" {0} Ft" Foreground="White" FontSize="20"/>
+
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Width="200">
+                                        <Label Content="From:" Foreground="#FFC9C9C9" FontSize="20" FontWeight="Bold"/>
+                                        <Label Content="{Binding RentalStartDate}" Foreground="White" FontSize="20" />
+                                        <Label Content="To:" Foreground="#FFC9C9C9" FontSize="20" FontWeight="Bold"/>
+                                        <Label Content="{Binding RentalEndDate}" Foreground="White" FontSize="20" />                                       
                                     </StackPanel>
                                     <Image Source="{Binding Car.CarPhotoPath}" UseLayoutRounding="False" Height="150" Width="300" ></Image>
 
