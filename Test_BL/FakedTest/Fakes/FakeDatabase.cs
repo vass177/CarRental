@@ -24,11 +24,11 @@ namespace Test_BL.FakedTest.Fakes
     /// </summary>
     internal class FakeDatabase<T> : IFakeDataBase<T>
     {
-        public IList<T> Objects { get; private set; }
-        public IList<T> DeletedObjects { get;  private set;}
-        public IList<T> SelectedObjects { get; private set; }
-        public IList<T> InsertedObjects { get; private set; }
-        
+        public IList<T> Objects { get; private set; } = new List<T>();
+        public IList<T> DeletedObjects { get;  private set;} = new List<T>();
+        public IList<T> SelectedObjects { get; private set; } = new List<T>();
+        public IList<T> InsertedObjects { get; private set; } = new List<T>();
+
         /// <summary>
         /// Constructor for dummy database handler for testing purposes
         /// </summary>

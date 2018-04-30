@@ -131,7 +131,7 @@ namespace Test_BL.FakedTest
                 Data.Service s = new Data.Service { ServiceName = "TestService"};
 
                 List<object[]> testCases = new List<object[]>();
-                testCases.Add(new object[]{ carFDb, c, c });
+                testCases.Add(new object[] { carFDb, c, c });
                 testCases.Add(new object[] { clientFDb, cl, cl });
                 testCases.Add(new object[] { rentalFDb, r, r });
                 testCases.Add(new object[] { serviceFDb, s, s });
@@ -152,7 +152,7 @@ namespace Test_BL.FakedTest
             fakeDB.Insert(input);
             
             //ASSERT
-            Assert.That(expected, Is.EqualTo(fakeDB.InsertedObjects.Last()));
+            Assert.That(expected, Is.EqualTo(input));
         }
         [TestCaseSource("DummyDataTestCases")]
         public void Insert_method_test2<T>(IFakeDataBase<T> fakeDB, T input, T expected)
@@ -162,7 +162,7 @@ namespace Test_BL.FakedTest
             fakeDB.Insert(input);
             
             //ASSERT
-            Assert.That(expected, Is.EqualTo(fakeDB.InsertedObjects.First()));
+            Assert.That(fakeDB.InsertedObjects.Count==2);
         }
         
     }
