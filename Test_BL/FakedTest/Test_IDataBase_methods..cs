@@ -25,13 +25,11 @@ namespace Test_BL.FakedTest
             for (int i = 0; i < 5; i++)
             {
                 Data.Car c = new Data.Car();
-                c.CarID
-                fc.Attribute1 = (FakeAttributeEnum)rnd.Next(0, 2);
-                fc.Attribute2 = (FakeAttributeEnum)rnd.Next(0, 2);
-                fc.Attribute3 = (FakeAttributeEnum)rnd.Next(0, 2);
-                myCarDataSet.Add(fc);
+                c.CarID = id++;
+                c.CarType = "Name" + c.CarID;
+                myCarDataSet.Add(c);
             }
-            myFDb = new FakeDatabase<FakeClass>(myFakeDataSet);
+            myFCarDb = new FakeDatabase<Data.Car>(myCarDataSet);
         } 
 
         [Test]
