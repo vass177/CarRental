@@ -114,14 +114,14 @@ namespace Test_BL.FakedTest
             //ARRANGE+ACT+ASSERT
             Assert.That(input.GetAll(), Is.EqualTo(expected));
         }
-        [Test]
-        public void Insert_method_test<T>(IDataBase fakeDB, T input, T expected)
+        [TestCase()]
+        public void Insert_method_test<T>(IFakeDataBase<T> fakeDB, T input, T expected)
         {
             //ARRANGE+ACT
             fakeDB.Insert(input);
 
             //ASSERT
-            Assert.That(input, fakeDB.InsertedObjects.)
+            Assert.That(input, Is.EqualTo(fakeDB.InsertedObjects.Last()));
         }
 
     }
