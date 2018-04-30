@@ -58,16 +58,60 @@ namespace Test_BL.FakedTest
             myFRentalDb = new FakeDatabase<Data.Rental>(myRentalDataSet);
             myFServiceDb = new FakeDatabase<Data.Service>(myServiceDataSet);
         }
+        public static IEnumerable<object[]> DummyDataSetTestCases
+        {
+            get
+            {
+                List<Data.Car> carDS = new List<Data.Car>();
+                List<Data.Client> clientDS = new List<Data.Client>();
+                List<Data.Rental> rentalDS = new List<Data.Rental();
+                List<Data.Service> serviceDS = new List<Data.Service>();
+                for (int i = 0; i < 3; i++)
+                {
+                    carDS.Add(new Data.Car
+                    {
+                        CarID = i,
+                        CarType = "Cartype_"+i
+                    });
+                    clientDS.Add(new Data.Client
+                    {
+                        UserName = "username_"+i
+                    });
+                    rentalDS.Add(new Data.Rental
+                    {
+                        RentalID = i,
+                        UserName = "username_" + i
+                    });
+                    serviceDS.Add(new Data.Service
+                    {
+                        ServiceName = "service_" + i++
+                    });
+                }
+                FakeDatabase<Data.Car> carFDb = new FakeDatabase<Data.Car>(carDS);
+                FakeDatabase<Data.Client> clientFDb = new FakeDatabase<Data.Client>(clientDS);
+                FakeDatabase<Data.Rental> rentalFDb = new FakeDatabase<Data.Client>(rentalDS);
+                FakeDatabase<Data.Service> serviceFDb = new FakeDatabase<Data.Client>(serviceDS);
+
+                List<object[]> testCases = new List<object[]>();
+                testCases.Add(new object[] { carFDb, carDS });
+                testCases.Add(new object[] { clientFDb, clientDS });
+                testCases.Add(new object[] { rentalFDb, rentalDS });
+                testCases.Add(new object[] { serviceFDb, serviceDS });
+                return testCases;
+            }
+            
+
+        }
         /// <summary>
-        /// simple test  
+        /// simple method test for all kind of fake datasets  
         /// </summary>
         /// <param name="input">object list to be tested</param>
         /// <param name="excpected">object list returned</param>
-        [Test]
-        public void GetAll_method_test()
+        [TestCase(myCarDataSet)]
+        public void GetAll_method_test<T>(List<T> expected)
         {
             //ARRANGE+ACT+ASSERT
-            Assert.That(this.myFCarDb.GetAll(), Is.EqualTo(myCarDataSet));
+            Assert.That(this.myFCarDb.GetAll(), Is.EqualTo((List<T>)expected));
         }
     }
 }
