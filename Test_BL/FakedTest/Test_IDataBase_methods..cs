@@ -14,6 +14,7 @@ namespace Test_BL.FakedTest
     [TestFixture]
     class Test_IDataBase_methods
     {
+        static int id = 0;
         static Random rnd = new Random();
         private List<Data.Car> myCarDataSet;
         private FakeDatabase<Data.Car> myFDb;
@@ -23,11 +24,12 @@ namespace Test_BL.FakedTest
         {
             for (int i = 0; i < 5; i++)
             {
-                FakeClass fc = new FakeClass();
+                Data.Car c = new Data.Car();
+                c.CarID
                 fc.Attribute1 = (FakeAttributeEnum)rnd.Next(0, 2);
                 fc.Attribute2 = (FakeAttributeEnum)rnd.Next(0, 2);
                 fc.Attribute3 = (FakeAttributeEnum)rnd.Next(0, 2);
-                myFakeDataSet.Add(fc);
+                myCarDataSet.Add(fc);
             }
             myFDb = new FakeDatabase<FakeClass>(myFakeDataSet);
         } 
