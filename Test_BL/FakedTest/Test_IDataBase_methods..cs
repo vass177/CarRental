@@ -15,7 +15,7 @@ namespace Test_BL.FakedTest
     class Test_IDataBase_methods
     {
         static Random rnd = new Random();
-        private List<FakeClass> myFakeDataSet;
+        private List<Data.Car> myCarDataSet;
         private FakeDatabase<FakeClass> myFDb;
 
         [OneTimeSetUp]
