@@ -61,6 +61,7 @@ namespace Test_BL.FakedTest
             myFRentalDb = new FakeDatabase<Data.Rental>(myRentalDataSet);
             myFServiceDb = new FakeDatabase<Data.Service>(myServiceDataSet);
         }
+
         public static IEnumerable<object[]> DummyDataSetTestCases
         {
             get
@@ -103,6 +104,7 @@ namespace Test_BL.FakedTest
                 return testCases;
             }
         }
+       
         /// <summary>
         /// simple method test for all kind of fake datasets  
         /// </summary>
@@ -114,6 +116,7 @@ namespace Test_BL.FakedTest
             //ARRANGE+ACT+ASSERT
             Assert.That(input.GetAll(), Is.EqualTo(expected));
         }
+        
         /// <summary>
         /// Inserts an object and tests whether the inserted object occurs in the  InsertedObject list
         /// </summary>
