@@ -208,5 +208,20 @@ namespace Test_BL.FakedTest
             //ASSERT
             Assert.That(expected, Is.EqualTo(fakeDB.Objects.First()));
         }
+
+        [TestCaseSource("DummyDataSetTestCases")]
+        public void SelectMore_method_test<T>(IFakeDataBase<T> fakeDB, List<T> inputDS)
+        {
+            //ARRANGE
+            FakeAttributeEnum inputAttributeType = FakeAttributeEnum.Type2;
+            T inputAttributeValue = inputDS.Last();
+            List<T> expected = inputDS;
+
+            //ACT
+            fakeDB.SelectMore(inputAttributeType, inputAttributeValue);
+
+            //ASSERT
+            Assert.That(expected, Is.EqualTo(fakeDB.Objects));
+        }
     }
 }
