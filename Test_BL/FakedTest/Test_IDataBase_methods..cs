@@ -31,7 +31,11 @@ namespace Test_BL.FakedTest
         private FakeDatabase<Data.Service> myFServiceDb;
 
         public Data.Car MyCar { get; set; }
-
+        
+        /// <summary>
+        /// Valamiért nem elérhetőek a többi metódusból 
+        /// az itt beállított objektumok
+        /// </summary>
         [OneTimeSetUp]
         public void SetUp()
         {
