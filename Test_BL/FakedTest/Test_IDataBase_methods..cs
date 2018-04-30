@@ -64,7 +64,7 @@ namespace Test_BL.FakedTest
         /// <param name="input">object list to be tested</param>
         /// <param name="excpected">object list returned</param>
         [Test]
-        public void GetAll_method_test(object input, object excpected)
+        public void GetAll_method_test()
         {
             //ARRANGE+ACT+ASSERT
             Assert.That(this.myFCarDb.GetAll(), Is.EqualTo(myCarDataSet));
