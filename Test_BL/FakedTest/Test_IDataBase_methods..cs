@@ -154,6 +154,14 @@ namespace Test_BL.FakedTest
             //ASSERT
             Assert.That(expected, Is.EqualTo(fakeDB.InsertedObjects.First()));
         }
+        /// <summary>
+        /// Inserts an object 2 times and tests if IFakeDataBase implementor 
+        /// InsertedObject property has 2 elements
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="fakeDB">a IFakeDataBase implementor</param>
+        /// <param name="input">an Entity Framework object inserted</param>
+        /// <param name="expected">an EF object to bechecked</param>
         [TestCaseSource("DummyDataTestCases")]
         public void Insert_method_test2<T>(IFakeDataBase<T> fakeDB, T input, T expected)
         {
