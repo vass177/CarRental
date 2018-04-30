@@ -114,8 +114,8 @@ namespace Test_BL.FakedTest
             //ARRANGE+ACT+ASSERT
             Assert.That(input.GetAll(), Is.EqualTo(expected));
         }
-        [TestCase()]
-        public void Insert_method_test<T>(IFakeDataBase<T> fakeDB, T input, T expected)
+        [TestCase(new FakeDatabase<Data.Car>())]
+        public void Insert_method_test<T>(IFakeDataBase<T> fakeDB)
         {
             //ARRANGE+ACT
             fakeDB.Insert(input);
