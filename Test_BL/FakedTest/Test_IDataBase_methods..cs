@@ -65,7 +65,7 @@ namespace Test_BL.FakedTest
             {
                 List<Data.Car> carDS = new List<Data.Car>();
                 List<Data.Client> clientDS = new List<Data.Client>();
-                List<Data.Rental> rentalDS = new List<Data.Rental();
+                List<Data.Rental> rentalDS = new List<Data.Rental>();
                 List<Data.Service> serviceDS = new List<Data.Service>();
                 for (int i = 0; i < 3; i++)
                 {
@@ -90,8 +90,8 @@ namespace Test_BL.FakedTest
                 }
                 FakeDatabase<Data.Car> carFDb = new FakeDatabase<Data.Car>(carDS);
                 FakeDatabase<Data.Client> clientFDb = new FakeDatabase<Data.Client>(clientDS);
-                FakeDatabase<Data.Rental> rentalFDb = new FakeDatabase<Data.Client>(rentalDS);
-                FakeDatabase<Data.Service> serviceFDb = new FakeDatabase<Data.Client>(serviceDS);
+                FakeDatabase<Data.Rental> rentalFDb = new FakeDatabase<Data.Rental>(rentalDS);
+                FakeDatabase<Data.Service> serviceFDb = new FakeDatabase<Data.Service>(serviceDS);
 
                 List<object[]> testCases = new List<object[]>();
                 testCases.Add(new object[] { carFDb, carDS });
