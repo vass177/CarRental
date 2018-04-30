@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Test_BL.FakedTest.Fakes
 {
-
+    /// <summary>
+    /// fake properties for IDataBase implementors
+    /// only for testing purposes
+    /// </summary>
+    /// <typeparam name="T">represents a EntityFramework generated class</typeparam>
     interface IFakeProperties<T>
     {
         IList<T> Objects { get; }
