@@ -24,7 +24,7 @@ namespace Test_BL.FakedTest
         private FakeDatabase<Data.Client> myFClientDb;
 
         private List<Data.Rental> myRentalDataSet;
-        private FakeDatabase<Data.Car> myFRentallDb;
+        private FakeDatabase<Data.Rental> myFRentalDb;
 
         private List<Data.Service> myServiceDataSet;
         private FakeDatabase<Data.Service> myFServiceDb;
@@ -35,11 +35,24 @@ namespace Test_BL.FakedTest
             for (int i = 0; i < 5; i++)
             {
                 Data.Car c = new Data.Car();
-                c.CarID = id++;
-                c.CarType = "Name" + c.CarID;
+                c.CarID = id;
+                c.CarType = "CarName" + c.CarID;
                 myCarDataSet.Add(c);
+                Data.Client cl = new Data.Client();
+                cl.UserName = "username" + id;
+                myClientDataSet.Add(cl);
+                Data.Rental r = new Data.Rental();
+                r.RentalID = id;
+                r.UserName = "username" + r.RentalID;
+                myRentalDataSet.Add(r);
+                Data.Service s = new Data.Service();
+                s.ServiceName = "Service_"+id++;
+                myServiceDataSet.Add(s);
             }
             myFCarDb = new FakeDatabase<Data.Car>(myCarDataSet);
+            myFClientDb = new FakeDatabase<Data.Client>(myClientDataSet);
+            myFRentalDb = new FakeDatabase<Data.Rental>(myRentalDataSet);
+            myFServiceDb = new FakeDatabase<Data.Service>(myServiceDataSet);
         } 
 
         [Test]
