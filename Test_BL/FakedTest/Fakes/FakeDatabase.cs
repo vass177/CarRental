@@ -22,12 +22,21 @@ namespace Test_BL.FakedTest.Fakes
     /// All methods except Update are implemented
     /// with somewhat meaningful logic 
     /// </summary>
-    internal class FakeDatabase<T> : IDataBase
+    internal class FakeDatabase<T> : IFakeDataBase<T>
     {
-        public IEnumerable<T> Objects { get; private set; }
-        public IList<T> DeletedObjects { get;  private set;}
-        public IList<T> SelectedObjects { get; private set; }
-        public IList<T> InsertedObjects { get; private set; }
+        public IList<T> Objects { get; private set; } = new List<T>();
+        public IList<T> DeletedObjects { get;  private set;} = new List<T>();
+        public IList<T> SelectedObjects { get; private set; } = new List<T>();
+        public IList<T> InsertedObjects { get; private set; } = new List<T>();
+
+        /// <summary>
+        /// Constructor for dummy database handler for testing purposes
+        /// </summary>
+        public FakeDatabase()
+        {
+            Objects = new List<T>();
+        }
+
         /// <summary>
         /// Constructor for FakeDatabase,gets an IEnumerable argument
         /// and sets corresponding field to it
@@ -35,7 +44,7 @@ namespace Test_BL.FakedTest.Fakes
         /// <param name="mycollection">IEnumerable type</param>
         public FakeDatabase(IEnumerable<T> mycollection)
         {
-            Objects = mycollection;
+            Objects = (IList<T>)mycollection;
         }
         
         /// <summary>
@@ -66,18 +75,16 @@ namespace Test_BL.FakedTest.Fakes
         }
         
         /// <summary>
-        /// It gives back first element of the dummy data collection
-        /// if first argumentz of the method is a FakeAttibuteEnum type 
+        /// It gives back first element of the data collection
         /// No matter what it adds second argument to SelectedObjects collection
         /// </summary>
-        /// <param name="attributeType">a FakeAttibuteEnum value</param>
+        /// <param name="attributeType">will be casted as FakeAttributeEnum</param>
         /// <param name="attributeValue">can be anything</param>
         /// <returns>object, returns first element of the Objects collection or returns null</returns>
         public object Select(object attributeType, object attributeValue)
         {
             SelectedObjects.Add((T)attributeValue);
-            if ((FakeAttributeEnum)attributeType == FakeAttributeEnum.Type1 ||
-                (FakeAttributeEnum)attributeType == FakeAttributeEnum.Type2)
+            if ((FakeAttributeEnum)attributeType == (FakeAttributeEnum)0)
             {
                 return Objects.First();
             }
