@@ -28,6 +28,7 @@ namespace Test_BL.FakedTest.Fakes
         public IList<T> DeletedObjects { get;  private set;}
         public IList<T> SelectedObjects { get; private set; }
         public IList<T> InsertedObjects { get; private set; }
+        public object AttributeTypeEnum; 
         /// <summary>
         /// Constructor for FakeDatabase,gets an IEnumerable argument
         /// and sets corresponding field to it
