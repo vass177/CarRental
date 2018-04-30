@@ -176,6 +176,15 @@ namespace Test_BL.FakedTest
             //ASSERT
             Assert.That(fakeDB.InsertedObjects.Count==2);
         }
-        
+
+        [TestCaseSource("DummyDataTestCases")]
+        public void Delete_method_test<T>(IFakeDataBase<T> fakeDB, T input, T expected)
+        {
+            //ARRANGE+ACT
+            fakeDB.Delete(input);
+
+            //ASSERT
+            Assert.That(expected, Is.EqualTo(fakeDB.DeletedObjects.Last()));
+        }
     }
 }
