@@ -117,6 +117,28 @@ namespace Test_BL.FakedTest
             Assert.That(input.GetAll(), Is.EqualTo(expected));
         }
         
+        public static IEnumerable<object[]> DummyDataTestCases
+        {
+            get
+            {
+                IFakeDataBase<Data.Car> carFDb = new FakeDatabase<Data.Car>();
+                IFakeDataBase<Data.Client> clientFDb = new FakeDatabase<Data.Client>();
+                IFakeDataBase<Data.Rental> rentalFDb = new FakeDatabase<Data.Rental>();
+                IFakeDataBase<Data.Service> serviceFDb = new FakeDatabase<Data.Service>();
+                Data.Car c = new Data.Car{CarType = "TestCar"};
+                Data.Client cl = new Data.Client { UserName = "TestName" };
+                Data.Rental r = new Data.Rental { UserName = "TestName" };
+                Data.Service s = new Data.Service { ServiceName = "TestService"};
+
+                List<object[]> testCases = new List<object[]>();
+                testCases.Add(new object[]{ carFDb, c, c });
+                testCases.Add(new object[] { clientFDb, cl, cl });
+                testCases.Add(new object[] { rentalFDb, r, r });
+                testCases.Add(new object[] { serviceFDb, s, s });
+                return testCases;
+            }
+        }
+
         /// <summary>
         /// Inserts an object and tests whether the inserted object occurs in the  InsertedObject list
         /// </summary>
