@@ -53,9 +53,17 @@ namespace Test_BL.FakedTest
             myFClientDb = new FakeDatabase<Data.Client>(myClientDataSet);
             myFRentalDb = new FakeDatabase<Data.Rental>(myRentalDataSet);
             myFServiceDb = new FakeDatabase<Data.Service>(myServiceDataSet);
-        } 
-
+        }
+        /// <summary>
+        /// simple test  
+        /// </summary>
+        /// <param name="input">object list to be tested</param>
+        /// <param name="excpected">object list returned</param>
         [Test]
-        public 
+        public void GetAll_method_test(object input, object excpected)
+        {
+            //ARRANGE+ACT+ASSERT
+            Assert.That(this.myFCarDb.GetAll(), Is.EqualTo(myCarDataSet));
+        }
     }
 }
