@@ -152,7 +152,7 @@ namespace Test_BL.FakedTest
             fakeDB.Insert(input);
             
             //ASSERT
-            Assert.That(expected, Is.EqualTo(input));
+            Assert.That(expected, Is.EqualTo(fakeDB.InsertedObjects.First()));
         }
         [TestCaseSource("DummyDataTestCases")]
         public void Insert_method_test2<T>(IFakeDataBase<T> fakeDB, T input, T expected)
