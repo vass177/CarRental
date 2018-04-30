@@ -150,11 +150,20 @@ namespace Test_BL.FakedTest
         {
             //ARRANGE+ACT
             fakeDB.Insert(input);
-
+            
             //ASSERT
             Assert.That(expected, Is.EqualTo(fakeDB.InsertedObjects.Last()));
-
         }
-
+        [TestCaseSource("DummyDataTestCases")]
+        public void Insert_method_test2<T>(IFakeDataBase<T> fakeDB, T input, T expected)
+        {
+            //ARRANGE+ACT
+            fakeDB.Insert(input);
+            fakeDB.Insert(input);
+            
+            //ASSERT
+            Assert.That(expected, Is.EqualTo(fakeDB.InsertedObjects.First()));
+        }
+        
     }
 }
