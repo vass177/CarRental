@@ -17,7 +17,7 @@ namespace Test_BL.FakedTest
         static int id = 0;
         static Random rnd = new Random();
         private List<Data.Car> myCarDataSet;
-        private FakeDatabase<Data.Car> myFDb;
+        private FakeDatabase<Data.Car> myFCarDb;
 
         [OneTimeSetUp]
         public void SetUp()
