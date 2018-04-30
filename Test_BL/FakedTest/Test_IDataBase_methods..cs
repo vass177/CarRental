@@ -114,8 +114,14 @@ namespace Test_BL.FakedTest
             //ARRANGE+ACT+ASSERT
             Assert.That(input.GetAll(), Is.EqualTo(expected));
         }
-        [TestCase(new FakeDatabase<Data.Car>())]
-        public void Insert_method_test<T>(IFakeDataBase<T> fakeDB)
+        /// <summary>
+        /// Inserts an object and tests whether the inserted object occurs in the  InsertedObject list
+        /// </summary>
+        /// <typeparam name="T">An EntityFramework created data class</typeparam>
+        /// <param name="input">An object to be inserted</param>
+        /// <param name="expected">an object to be expected</param>
+        [TestCaseSource("DummyDataTestCases")]
+        public void Insert_method_test<T>(IFakeDataBase<T> fakeDB, T input, T expected)
         {
             //ARRANGE+ACT
             fakeDB.Insert(input);
