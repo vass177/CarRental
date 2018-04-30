@@ -186,5 +186,27 @@ namespace Test_BL.FakedTest
             //ASSERT
             Assert.That(expected, Is.EqualTo(fakeDB.DeletedObjects.Last()));
         }
+
+        /// <summary>
+        /// Tests Select method using enum value in the method's
+        /// parameter list
+        /// </summary>
+        /// <typeparam name="T">an Entity Framework object</typeparam>
+        /// <param name="fakeDB">FakeDatabBase<T>, fake database for method testing</param>
+        /// <param name="inputDS">List<T>, a fake dataset to be tested</param>
+        [TestCaseSource("DummyDataSetTestCases")]
+        public void Select_method_test<T>(IFakeDataBase<T> fakeDB, List<T> inputDS)
+        {
+            //ARRANGE
+            FakeAttributeEnum inputAttributeType = FakeAttributeEnum.Type1;
+            object inputAttributeValue = null;
+            T expected = inputDS.First();
+            
+            //ACT
+            fakeDB.Select(inputAttributeType,inputAttributeValue);
+
+            //ASSERT
+            Assert.That(expected, Is.EqualTo(fakeDB.SelectedObjects.First()));
+        }
     }
 }
