@@ -198,15 +198,16 @@ namespace Test_BL.FakedTest
         public void Select_method_test<T>(IFakeDataBase<T> fakeDB, List<T> inputDS)
         {
             //ARRANGE
-            FakeAttributeEnum inputAttributeType = FakeAttributeEnum.Type1;
-            object inputAttributeValue = null;
+            FakeAttributeEnum inputAttributeType = (FakeAttributeEnum)0;
+            string inputAttributeValue = "test";
             T expected = inputDS.First();
             
             //ACT
             fakeDB.Select(inputAttributeType,inputAttributeValue);
 
             //ASSERT
-            Assert.That(expected, Is.EqualTo(fakeDB.SelectedObjects.First()));
+            Assert.That(expected, Is.EqualTo(fakeDB.Objects.First()));
+
         }
     }
 }
