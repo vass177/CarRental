@@ -30,6 +30,8 @@ namespace Test_BL.FakedTest
         private List<Data.Service> myServiceDataSet;
         private FakeDatabase<Data.Service> myFServiceDb;
 
+        public Data.Car MyCar { get; set; }
+
         [OneTimeSetUp]
         public void SetUp()
         {
@@ -111,6 +113,15 @@ namespace Test_BL.FakedTest
         {
             //ARRANGE+ACT+ASSERT
             Assert.That(input.GetAll(), Is.EqualTo(expected));
+        }
+        [Test]
+        public void Insert_method_test<T>(IDataBase fakeDB, T input, T expected)
+        {
+            //ARRANGE+ACT
+            fakeDB.Insert(input);
+
+            //ASSERT
+            Assert.That(input, fakeDB.InsertedObjects.)
         }
 
     }
