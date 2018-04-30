@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Data.DataHandling;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -99,19 +100,18 @@ namespace Test_BL.FakedTest
                 testCases.Add(new object[] { serviceFDb, serviceDS });
                 return testCases;
             }
-            
-
         }
         /// <summary>
         /// simple method test for all kind of fake datasets  
         /// </summary>
         /// <param name="input">object list to be tested</param>
         /// <param name="excpected">object list returned</param>
-        [TestCase(myCarDataSet)]
-        public void GetAll_method_test<T>(List<T> expected)
+        [TestCaseSource("DummyDataSetTestCases")]
+        public void GetAll_method_test<T>(IDataBase input, List<T> expected)
         {
             //ARRANGE+ACT+ASSERT
-            Assert.That(this.myFCarDb.GetAll(), Is.EqualTo((List<T>)expected));
+            Assert.That(input.GetAll(), Is.EqualTo(expected));
         }
+
     }
 }
