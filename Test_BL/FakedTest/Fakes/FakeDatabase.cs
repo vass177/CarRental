@@ -69,7 +69,7 @@ namespace Test_BL.FakedTest.Fakes
         /// <summary>
         /// It gives back first element of the dummy data collection
         /// if first argumentz of the method is an object that will be casted to 
-        /// as an Enum type 
+        /// cast as an Enum type 
         /// No matter what it adds second argument to SelectedObjects collection
         /// </summary>
         /// <param name="attributeType">an Enum value</param>
