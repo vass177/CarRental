@@ -199,7 +199,7 @@ namespace Test_BL.FakedTest
         {
             //ARRANGE
             FakeAttributeEnum inputAttributeType = (FakeAttributeEnum)0;
-            string inputAttributeValue = "test";
+            T inputAttributeValue = inputDS.Last();
             T expected = inputDS.First();
             
             //ACT
