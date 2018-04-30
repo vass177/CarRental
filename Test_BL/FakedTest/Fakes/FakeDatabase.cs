@@ -28,7 +28,7 @@ namespace Test_BL.FakedTest.Fakes
         public IList<T> DeletedObjects { get;  private set;}
         public IList<T> SelectedObjects { get; private set; }
         public IList<T> InsertedObjects { get; private set; }
-        public object AttributeTypeEnum; 
+        public Enum AttributeTypeEnum; 
         /// <summary>
         /// Constructor for FakeDatabase,gets an IEnumerable argument
         /// and sets corresponding field to it
@@ -68,10 +68,11 @@ namespace Test_BL.FakedTest.Fakes
         
         /// <summary>
         /// It gives back first element of the dummy data collection
-        /// if first argumentz of the method is a FakeAttibuteEnum type 
+        /// if first argumentz of the method is an object that will be casted to 
+        /// as an Enum type 
         /// No matter what it adds second argument to SelectedObjects collection
         /// </summary>
-        /// <param name="attributeType">a FakeAttibuteEnum value</param>
+        /// <param name="attributeType">an Enum value</param>
         /// <param name="attributeValue">can be anything</param>
         /// <returns>object, returns first element of the Objects collection or returns null</returns>
         public object Select(object attributeType, object attributeValue)
