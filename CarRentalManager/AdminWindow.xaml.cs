@@ -43,7 +43,7 @@ namespace CarRentalManager
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
+            LoadAdminStatistics();
             //MessageBox.Show(File.ReadAllLines("C:/Users/Franciska/source/repos/oenik_szt2_2018tavasz_pm4j60_gk607o_ilnrw96Q/ListCarHP.sql").ToString());
 
             this.adminWindowViewModel = new AdminWindowViewModel();
@@ -90,6 +90,11 @@ namespace CarRentalManager
             }
             //MessageBox.Show(adminWindowViewModel.CarSumma.ToString());
             CarSumma_Label.Content = adminWindowViewModel.CarSumma.ToString();
+        }
+
+        public void LoadAdminStatistics()
+        {
+
         }
     }
 }
