@@ -18,6 +18,12 @@ namespace Test_BL.FakedTest
         static Random rnd = new Random();
         private List<Data.Car> myCarDataSet;
         private FakeDatabase<Data.Car> myFCarDb;
+        private List<Data.Client> myClientDataSet;
+        private FakeDatabase<Data.Client> myFClientDb;
+        private List<Data.Rental> myRentalDataSet;
+        private FakeDatabase<Data.Car> myFRentallDb;
+        private List<Data.Service> myServiceDataSet;
+        private FakeDatabase<Data.Service> myFServiceDb;
 
         [OneTimeSetUp]
         public void SetUp()
