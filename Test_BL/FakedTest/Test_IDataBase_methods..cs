@@ -207,6 +207,7 @@ namespace Test_BL.FakedTest
 
             //ASSERT
             Assert.That(expected, Is.EqualTo(fakeDB.Objects.First()));
+            Assert.That(inputAttributeValue, Is.EqualTo(fakeDB.SelectedObjects.First()));
         }
 
         [TestCaseSource("DummyDataSetTestCases")]
