@@ -22,7 +22,7 @@ namespace Test_BL.FakedTest.Fakes
     /// All methods except Update are implemented
     /// with somewhat meaningful logic 
     /// </summary>
-    internal class FakeDatabase<T> : IDataBase
+    internal class FakeDatabase<T> : IDataBase, IFakeProperties<T>
     {
         public IList<T> Objects { get; private set; }
         public IList<T> DeletedObjects { get;  private set;}
