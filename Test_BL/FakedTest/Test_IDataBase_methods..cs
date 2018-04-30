@@ -104,7 +104,7 @@ namespace Test_BL.FakedTest
         /// <summary>
         /// simple method test for all kind of fake datasets  
         /// </summary>
-        /// <param name="input">object list to be tested</param>
+        /// <param name="input">FakeDatabase implementor classes to be tested</param>
         /// <param name="excpected">object list returned</param>
         [TestCaseSource("DummyDataSetTestCases")]
         public void GetAll_method_test<T>(IDataBase input, List<T> expected)
