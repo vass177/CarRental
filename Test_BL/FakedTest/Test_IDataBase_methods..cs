@@ -152,7 +152,8 @@ namespace Test_BL.FakedTest
             fakeDB.Insert(input);
 
             //ASSERT
-            Assert.That(input, Is.EqualTo(fakeDB.InsertedObjects.Last()));
+            Assert.That(expected, Is.EqualTo(fakeDB.InsertedObjects.Last()));
+
         }
 
     }
