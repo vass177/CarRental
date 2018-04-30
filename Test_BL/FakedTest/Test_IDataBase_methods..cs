@@ -32,22 +32,26 @@ namespace Test_BL.FakedTest
         [OneTimeSetUp]
         public void SetUp()
         {
+            this.myCarDataSet = new List<Data.Car>();
+            this.myClientDataSet = new List<Data.Client>();
+            this.myRentalDataSet = new List<Data.Rental>();
+            this.myServiceDataSet = new List<Data.Service>();
             for (int i = 0; i < 5; i++)
             {
                 Data.Car c = new Data.Car();
                 c.CarID = id;
                 c.CarType = "CarName" + c.CarID;
-                myCarDataSet.Add(c);
+                this.myCarDataSet.Add(c);
                 Data.Client cl = new Data.Client();
                 cl.UserName = "username" + id;
-                myClientDataSet.Add(cl);
+                this.myClientDataSet.Add(cl);
                 Data.Rental r = new Data.Rental();
                 r.RentalID = id;
                 r.UserName = "username" + r.RentalID;
-                myRentalDataSet.Add(r);
+                this.myRentalDataSet.Add(r);
                 Data.Service s = new Data.Service();
                 s.ServiceName = "Service_"+id++;
-                myServiceDataSet.Add(s);
+                this.myServiceDataSet.Add(s);
             }
             myFCarDb = new FakeDatabase<Data.Car>(myCarDataSet);
             myFClientDb = new FakeDatabase<Data.Client>(myClientDataSet);
