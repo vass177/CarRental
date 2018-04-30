@@ -207,7 +207,6 @@ namespace Test_BL.FakedTest
 
             //ASSERT
             Assert.That(expected, Is.EqualTo(fakeDB.Objects.First()));
-
         }
     }
 }
