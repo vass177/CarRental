@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data.DataHandling.Interfaces
 {
-    public interface DataBaseWrapper
+    public interface IDataBaseWrapper
     {
+        void SaveChanges();
     }
 }
