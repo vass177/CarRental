@@ -120,6 +120,11 @@ namespace Test_BL.FakedTest
             //ARRANGE+ACT+ASSERT
             Assert.That(input.GetAll(), Is.EqualTo(expected));
         }
+
+        /// <summary>
+        /// Tests insert method of a FakeDatabase object
+        /// that is an IDataBase implementor
+        /// </summary>
         [Test]
         public void WhenInsertedCar_ListContainsIt()
         {
