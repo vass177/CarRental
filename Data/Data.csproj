@@ -79,6 +79,7 @@
     </Compile>
     <Compile Include="DataHandling\CarDataHandler.cs" />
     <Compile Include="DataHandling\ClientDataHandler.cs" />
+    <Compile Include="DataHandling\Interfaces\DataBaseWrapper.cs" />
     <Compile Include="DataHandling\Interfaces\IDataBase.cs" />
     <Compile Include="DataHandling\RentalDataHandler.cs" />
     <Compile Include="DataHandling\RentalServiceJoinDataHandler.cs" />
