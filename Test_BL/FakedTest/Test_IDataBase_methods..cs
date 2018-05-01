@@ -120,7 +120,7 @@ namespace Test_BL.FakedTest
             //ARRANGE+ACT+ASSERT
             Assert.That(input.GetAll(), Is.EqualTo(expected));
         }
-
+        [Test]
         public void WhenInsertedCar_ListContainsIt()
         {
             //ARRANGE
@@ -136,7 +136,6 @@ namespace Test_BL.FakedTest
 
             //ASSERT
             Assert.That(myFCarDb.InsertedObjects.Contains(c));
-
         }
         
         public static IEnumerable<object[]> DummyDataTestCases
