@@ -12,7 +12,6 @@ namespace BusinessLogic
     /// </summary>
     interface ICarHandlingLogic
     {
-        event EventHandler CarListChanged;
         IList<Car> GetAllCarList();
         void DeleteCar(Car selectedCar);
         void UpdateCar();
