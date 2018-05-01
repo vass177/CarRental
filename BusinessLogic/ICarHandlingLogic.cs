@@ -10,7 +10,7 @@ namespace BusinessLogic
     /// <summary>
     /// Interface for basic data handling operations
     /// </summary>
-    interface ICarHandlingLogic
+    public interface ICarHandlingLogic
     {
         IList<Car> GetAllCarList();
         void DeleteCar(Car selectedCar);
