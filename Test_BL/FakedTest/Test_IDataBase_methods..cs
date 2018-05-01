@@ -120,6 +120,24 @@ namespace Test_BL.FakedTest
             //ARRANGE+ACT+ASSERT
             Assert.That(input.GetAll(), Is.EqualTo(expected));
         }
+
+        public void WhenInsertedCar_ListContainsIt()
+        {
+            //ARRANGE
+            Data.Car c = new Data.Car
+            {
+                CarID = int.MaxValue,
+                CarCapacity = 4,
+                CarType = "TestCar",
+            };
+
+            //ACT
+            myFCarDb.Insert(c);
+
+            //ASSERT
+            Assert.That(myFCarDb.InsertedObjects.Contains(c));
+
+        }
         
         public static IEnumerable<object[]> DummyDataTestCases
         {
@@ -154,6 +172,7 @@ namespace Test_BL.FakedTest
         {
             //ARRANGE+ACT
             fakeDB.Insert(input);
+           
             
             //ASSERT
             Assert.That(expected, Is.EqualTo(fakeDB.InsertedObjects.First()));
