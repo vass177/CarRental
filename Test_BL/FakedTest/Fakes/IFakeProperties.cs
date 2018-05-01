@@ -13,9 +13,9 @@ namespace Test_BL.FakedTest.Fakes
     /// <typeparam name="T">represents a EntityFramework generated class</typeparam>
     interface IFakeProperties<T>
     {
-        IQueryable<T> Objects { get; }
-        IQueryable<T> DeletedObjects { get; }
-        IQueryable<T> SelectedObjects { get; }
-        IQueryable<T> InsertedObjects { get; }
+        IList<T> Objects { get; }
+        IList<T> DeletedObjects { get; }
+        IList<T> SelectedObjects { get; }
+        IList<T> InsertedObjects { get; }
     }
 }
