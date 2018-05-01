@@ -215,38 +215,47 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.5*"></RowDefinition>
-                        <RowDefinition Height="5*"></RowDefinition>
+                        <!--<RowDefinition Height="5*"></RowDefinition>-->
                         <!--<RowDefinition Height="0.5*"></RowDefinition>
                         <RowDefinition Height="2*"></RowDefinition>-->
                     </Grid.RowDefinitions>
                     <Label Content="Cars" Grid.Row="0" Grid.Column="0" FontSize="28" Foreground="White" FontWeight="Bold"></Label>
                     <ListBox x:Name="carsListBox"  Grid.Row="1" ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Background="#FF464646" Margin="0,0" Height="500" BorderBrush="AliceBlue">
+                        <!--<ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Canvas></Canvas>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>-->
+                        <!--<ListBoxItem Content="Car ID: " Foreground="Black" FontSize="12" FontWeight="Bold" Canvas.Left="0" Canvas.Top="5"></ListBoxItem>-->
+                        <!--<ListBoxItem Content="valami" Grid.Column="1" Grid.Row="0"></ListBoxItem>-->
                         <ListBox.ItemTemplate>
                             <DataTemplate>
+                                
                                 <StackPanel Orientation="Horizontal" Background="#198E916F" Margin="5,1,0,1" UseLayoutRounding="True">
-                                    <StackPanel Orientation="Vertical">
-                                            <Label Content="Car ID: " Foreground="Black" FontSize="12" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
-                                            <Label Content="Car type: " Foreground="Black" FontSize="12" FontWeight="Bold" />
-                                            <Label Content="Car HP: " Foreground="Black" FontSize="12" FontWeight="Bold" />
-                                            <Label Content="Car capacity: " Foreground="Black" FontSize="12" FontWeight="Bold" />
-                                            <Label Content="Car motorcode: " Foreground="Black" FontSize="12" FontWeight="Bold" Grid.Row="0" Grid.Column="1"/>
-                                            <Label Content="Car rental price: " Foreground="Black" FontSize="12" FontWeight="Bold" />
-                                            <Label Content="Car quantity: " Foreground="Black" FontSize="12" FontWeight="Bold" />
+                                    <StackPanel Orientation="Vertical" Width="250">
+                                            <Label Content="ID" Foreground="Black" FontSize="12" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Width="100"/>
+                                        <Label Content="Type" Foreground="Black" FontSize="12" FontWeight="Bold" Width="100"/>
+                                        <Label Content="Horsepower" Foreground="Black" FontSize="12" FontWeight="Bold" Width="100"/>
+                                        <!--<TextBox Text="{Binding CarID}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="150" FontSize="12" />
+                                        <TextBox Text="{Binding CarType}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="150" FontSize="12"/>
+                                        <TextBox Text="{Binding CarHorsepower}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="150" FontSize="12" />-->
+                                        <Label Content="Capacity" Foreground="Black" FontSize="12" FontWeight="Bold" />
+                                            <Label Content="Motorcode" Foreground="Black" FontSize="12" FontWeight="Bold" Grid.Row="0" Grid.Column="1"/>
+                                            <Label Content="Rental price" Foreground="Black" FontSize="12" FontWeight="Bold" />
+                                            <Label Content="Quantity" Foreground="Black" FontSize="12" FontWeight="Bold" />
+                                        
                                         <!--<Image Source="Images\lada.jpg" Grid.Column="1"/>-->
                                     </StackPanel>
-                                    <StackPanel Orientation="Vertical" Width="400">
-                                        <TextBox Text="{Binding CarID}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="380" FontSize="12" />
-                                        <TextBox Text="{Binding CarType}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="380" FontSize="12"/>
-                                        <TextBox Text="{Binding CarHorsepower}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="380" FontSize="12" />
+                                    <StackPanel Orientation="Vertical" Width="300">
                                         <TextBox Text="{Binding CarCapacity}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="380" FontSize="12"/>
                                         <TextBox Text="{Binding CarMotorcode}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="380" FontSize="12" />
                                         <TextBox Text="{Binding CarRentalPrice}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="380" FontSize="12"/>
                                         <TextBox Text="{Binding CarQuantity}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="380" FontSize="12" />
                                     </StackPanel>
-                                    <StackPanel Orientation="Vertical" Width="300" HorizontalAlignment="Right">
+                                    <StackPanel Orientation="Vertical" Width="200" HorizontalAlignment="Right">
                                         <Image Source="{Binding CarPhotoPath}" Margin="0,20,0,0"/>
-                                        <Button Content="Modify"></Button>
-                                        <Button Content="Delete"></Button>
+                                        <Button Content="Modify" Width="100"></Button>
+                                        <Button Content="Delete" Width="100"></Button>
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>
