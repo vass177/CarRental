@@ -89,7 +89,7 @@ namespace CarRentalManager
                 adminWindowViewModel.CarSumma++;
             }
             //MessageBox.Show(adminWindowViewModel.CarSumma.ToString());
-            CarSumma_Label.Content = adminWindowViewModel.CarSumma.ToString();
+            //CarSumma_Label.Content = adminWindowViewModel.CarSumma.ToString();
         }
 
         public void LoadAdminStatistics()
