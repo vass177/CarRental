@@ -73,16 +73,17 @@
                 <Grid Background="#FFDAD7D7">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="4*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Content="Welcome Admin!" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
-                    <Charts:PieChart Grid.Row="1" Grid.Column="0" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
+                    <Charts:PieChart  Grid.Row="2" Grid.Column="0" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
                         <Charts:PieChart.Series>
                             <Charts:PieSeries Title="Opel" Values="3" DataLabels="True"/>
                             <Charts:PieSeries Title="Smart" Values="4" DataLabels="True" />
@@ -90,9 +91,10 @@
                             <Charts:PieSeries Title="Tesla" Values="2" DataLabels="True" />
                         </Charts:PieChart.Series>
                     </Charts:PieChart>
-                    <Charts:CartesianChart x:Name="IncomeChart" Grid.Row="2" Grid.Column="0" LegendLocation="Right" >
+                    <Charts:CartesianChart x:Name="IncomeChart" Grid.Row="4" Grid.Column="0" LegendLocation="Right" >
                     </Charts:CartesianChart>
-                    <Label Grid.Row="1" Grid.Column="1" Content="Number of cars: " FontSize="24"></Label>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Utilization of cars" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"></Label>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Income per month" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"></Label>
                     <Label x:Name="CarSumma_Label" Grid.Row="1" Grid.Column="2" FontSize="24"></Label>
                 </Grid>
             </Controls:MetroTabItem>
