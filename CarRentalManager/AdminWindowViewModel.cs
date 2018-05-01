@@ -14,6 +14,8 @@ namespace CarRentalManager
 
     public class AdminWindowViewModel : Bindable
     {
+        private OrderHandling adminOrderhandling;
+
         private IList<Client> clients;
         private Client selectedClient;
         private ClientInformationLogic clientListLogic;
@@ -130,5 +132,10 @@ namespace CarRentalManager
         {
             this.RefreshCarList();
         }
+
+        /*public List<int> getCarIDStatistics()
+        {
+
+        }*/
     }
 }

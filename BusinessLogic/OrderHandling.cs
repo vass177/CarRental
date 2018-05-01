@@ -33,6 +33,14 @@ namespace BusinessLogic
             return ((IQueryable<Rental>)rentals).ToList();
         }
 
+        public List<int> HowMuchCarID()
+        {
+            //var myquery=from carid in Car
+            
+
+            return new List<int> { 1, 2 };
+        }
+
         public List<int> OrderRevenue()
         {
             IQueryable<Rental> rentalsByClient = (IQueryable<Rental>)rentalDBHandler.SelectMore(RentalAttributeType.UserName, loggedInClient.UserName);
