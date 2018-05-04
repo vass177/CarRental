@@ -30,7 +30,7 @@ namespace BusinessLogic
 
         public LoginAuthentication()
         {
-            userDataHandler = new UserDataHandler();
+            this.userDataHandler = new UserDataHandler();
         }
 
         public bool CheckLoginCredentials(string user, string password)
@@ -55,7 +55,7 @@ namespace BusinessLogic
 
         public bool IsClient()
         {
-            if (user.IsClient=="Y")
+            if (this.user.IsClient=="Y")
             {
                 return true;
             }
@@ -70,8 +70,8 @@ namespace BusinessLogic
             this.userName = u;
 
             try
-            {                
-                this.user=(User)userDataHandler.Select(UserAttributeType.UserName, this.userName);
+            {
+                this.user = (User)this.userDataHandler.Select(UserAttributeType.UserName, this.userName);
                 return true;
             }
             catch(EntryNotFoundException e)

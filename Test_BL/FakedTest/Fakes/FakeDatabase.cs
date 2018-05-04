@@ -53,7 +53,7 @@ namespace Test_BL.FakedTest.Fakes
         /// <param name="deletableItem">object to be deleted from the collection</param>
         public void Delete(object deletableItem)
         {
-            DeletedObjects.Add((T)deletableItem);
+            this.DeletedObjects.Add((T)deletableItem);
         }
         
         /// <summary>
@@ -83,7 +83,7 @@ namespace Test_BL.FakedTest.Fakes
         /// <returns>object, returns first element of the Objects collection or returns null</returns>
         public object Select(object attributeType, object attributeValue)
         {
-            SelectedObjects.Add((T)attributeValue);
+            this.SelectedObjects.Add((T)attributeValue);
             if ((FakeAttributeEnum)attributeType == (FakeAttributeEnum)0)
             {
                 return Objects.First();

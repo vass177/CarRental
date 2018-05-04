@@ -36,19 +36,19 @@ namespace CarRentalManager
 
         public DateTime StartDate
         {
-            get { return startDate; }
+            get { return this.startDate; }
             set
             {
-                startDate = value;
+                this.startDate = value;
                 this.OnPropertyChanged(nameof(this.StartDate));
             }
         }
         public DateTime EndDate
         {
-            get { return endDate; }
+            get { return this.endDate; }
             set
             {
-                endDate = value;
+                this.endDate = value;
                 this.OnPropertyChanged(nameof(this.EndDate));
             }
         }
@@ -56,10 +56,10 @@ namespace CarRentalManager
 
         public int TotalPrice
         {
-            get { return totalPrice; }
+            get { return this.totalPrice; }
             set
             {
-                totalPrice = value;
+                this.totalPrice = value;
                 this.OnPropertyChanged(nameof(this.TotalPrice));
             }
         }
@@ -84,7 +84,7 @@ namespace CarRentalManager
             set
             {
                 this.carPrice = value;
-                OnPropertyChanged(nameof(this.CarPrice));
+                this.OnPropertyChanged(nameof(this.CarPrice));
             }
         }
         
@@ -153,8 +153,8 @@ namespace CarRentalManager
             this.clientOrderHandling = new OrderHandling(this.loggedInClient);
             this.RefreshOrderList();
 
-            this.clientLogic.ClientLoggedIn += ClientLogic_ClientLoggedIn;
-            this.clientOrderHandling.RentalListChanged += ClientOrderHandling_RentalListChanged;
+            this.clientLogic.ClientLoggedIn += this.ClientLogic_ClientLoggedIn;
+            this.clientOrderHandling.RentalListChanged += this.ClientOrderHandling_RentalListChanged;
             
         }
 
@@ -183,7 +183,7 @@ namespace CarRentalManager
         {
             this.orderHandling.SelectCar(imageSource);
             this.selectedCar = this.orderHandling.SelectedCar;
-            OnPropertyChanged(nameof(this.SelectedCar));
+            this.OnPropertyChanged(nameof(this.SelectedCar));
 
         }
 
@@ -212,7 +212,7 @@ namespace CarRentalManager
 
         public List<int> getClientStatistics()
         {
-            return clientOrderHandling.OrderRevenue();
+            return this.clientOrderHandling.OrderRevenue(true);
         }
     }
 }

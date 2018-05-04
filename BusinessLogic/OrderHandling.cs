@@ -11,32 +11,76 @@ namespace BusinessLogic
     public class OrderHandling
     {
         private readonly RentalDataHandler rentalDBHandler;
+        private readonly ServiceDataHandler serviceDBHandler;
+        private readonly ClientDataHandler clientDBHandler;
+        private readonly RentalServiceJoinDataHandler rentalJoinDBHandler;
         private Client loggedInClient;
 
         public event EventHandler RentalListChanged;
 
         public OrderHandling(Client loggedInClient)
         {
-            rentalDBHandler = new RentalDataHandler();
+            this.rentalDBHandler = new RentalDataHandler();
+            this.serviceDBHandler = new ServiceDataHandler();
+            this.clientDBHandler = new ClientDataHandler();
+            this.rentalJoinDBHandler = new RentalServiceJoinDataHandler();
             this.loggedInClient = loggedInClient;
         }
 
         private void OnRentalListChanged()
         {
-            RentalListChanged?.Invoke(this, EventArgs.Empty);
+            this.RentalListChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public IList<Rental> GetAllRentalList()
         {
-            var rentals = rentalDBHandler.SelectMore(RentalAttributeType.UserName,loggedInClient.UserName);
+            var rentals = this.rentalDBHandler.SelectMore(RentalAttributeType.UserName,this.loggedInClient.UserName);
 
             return ((IQueryable<Rental>)rentals).ToList();
         }
 
-        public List<int> OrderRevenue()
+        public List<int> HowMuchCarID()
         {
-            IQueryable<Rental> rentalsByClient = (IQueryable<Rental>)rentalDBHandler.SelectMore(RentalAttributeType.UserName, loggedInClient.UserName);
-            var q2014 = rentalsByClient.Where(x => (x.RentalStartDate < new DateTime(2015, 1, 1) && x.RentalStartDate > new DateTime(2014, 1, 1)));
+            //var myquery=from carid in Car
+            
+
+            return new List<int> { 1, 2 };
+        }
+
+        public int NumberOfRental(Car car)
+        {
+            IQueryable<Rental> allRental = (IQueryable<Rental>)this.rentalDBHandler.GetAll();
+            
+            return allRental.Count(x => x.CarID == car.CarID);
+        }
+
+        public int NumberOfServices(Service service)
+        {
+            IQueryable<RentalServiceJoin> allRental = (IQueryable<RentalServiceJoin>)this.rentalJoinDBHandler.GetAll();
+
+            return allRental.Count(x => x.ServiceName == service.ServiceName);
+        }
+
+        public IList<Service> GetAllServiceList()
+        {
+            var services = this.serviceDBHandler.GetAll();
+
+            return ((IQueryable<Service>)services).ToList();
+        }
+
+        public List<int> OrderRevenue(bool onlyForClient)
+        {
+            IQueryable<Rental> rentals;
+            if (onlyForClient == true)
+            {
+                rentals = (IQueryable<Rental>)this.rentalDBHandler.SelectMore(RentalAttributeType.UserName, this.loggedInClient.UserName);
+            }
+            else
+            {
+                rentals = (IQueryable<Rental>)this.rentalDBHandler.GetAll();
+            }
+
+            var q2014 = rentals.Where(x => (x.RentalStartDate < new DateTime(2015, 1, 1) && x.RentalStartDate > new DateTime(2014, 1, 1)));
             int sum2014 = 0;
             if(q2014!=null)
             {
@@ -46,9 +90,8 @@ namespace BusinessLogic
                 }
             }
             
-            Console.WriteLine("ÖSSSSSZEGGGG 2014:" + sum2014);
 
-            var q2015 = rentalsByClient.Where(x => (x.RentalStartDate < new DateTime(2016, 1, 1) && x.RentalStartDate > new DateTime(2015, 1, 1)));
+            var q2015 = rentals.Where(x => (x.RentalStartDate < new DateTime(2016, 1, 1) && x.RentalStartDate > new DateTime(2015, 1, 1)));
             int sum2015 = 0;
             if (q2015 != null)
             {
@@ -57,7 +100,7 @@ namespace BusinessLogic
                     sum2015 += (int)item.RentalFullPrice;
                 }
             }
-            var q2016 = rentalsByClient.Where(x => (x.RentalStartDate < new DateTime(2017, 1, 1) && x.RentalStartDate > new DateTime(2016, 1, 1)));
+            var q2016 = rentals.Where(x => (x.RentalStartDate < new DateTime(2017, 1, 1) && x.RentalStartDate > new DateTime(2016, 1, 1)));
             int sum2016 = 0;
             if (q2016 != null)
             {
@@ -66,7 +109,7 @@ namespace BusinessLogic
                     sum2016 += (int)item.RentalFullPrice;
                 }
             }
-            var q2017 = rentalsByClient.Where(x => (x.RentalStartDate < new DateTime(2018, 1, 1) && x.RentalStartDate > new DateTime(2017, 1, 1)));
+            var q2017 = rentals.Where(x => (x.RentalStartDate < new DateTime(2018, 1, 1) && x.RentalStartDate > new DateTime(2017, 1, 1)));
             int sum2017 = 0;
             if (q2017 != null)
             {
@@ -76,15 +119,23 @@ namespace BusinessLogic
                 }
             }
 
-            var q2018 = rentalsByClient.Where(x => (x.RentalStartDate < new DateTime(2019, 1, 1) && x.RentalStartDate > new DateTime(2018, 1, 1)));
+            var q2018 = rentals.Where(x => (x.RentalStartDate < new DateTime(2019, 1, 1) && x.RentalStartDate > new DateTime(2018, 1, 1)));
             int sum2018 = 0;
             foreach (var item in q2018)
             {
                 sum2018 += (int)item.RentalFullPrice;
             }
-            Console.WriteLine("ÖSSSSSZEGGGG:" +sum2016);
+
+            if (onlyForClient == true)
+            {
+                List<int> allRevenue = this.OrderRevenue(false);
+                double discount = ((double)sum2018 / (double)allRevenue[4]) * 100;
+                this.loggedInClient.ClientDiscountStatus = (int)discount;
+                this.clientDBHandler.Update();
+            }
 
             return new List<int> { sum2014, sum2015, sum2016, sum2017, sum2018 };
         }
+
     }
 }

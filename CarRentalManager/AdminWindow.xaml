@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Charts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:local="clr-namespace:CarRentalManager"
         xmlns:Controls1="clr-namespace:CarRentalManager.Controls" x:Class="CarRentalManager.AdminWindow"
         mc:Ignorable="d"
         Title="CRM - ADMIN WINDOW" Height="700" Width="1000" MinHeight="700" MinWidth="1000" SizeChanged="MetroWindow_SizeChanged" Loaded="MetroWindow_Loaded">
-    <Grid x:Name="adminGrid" Background="#FFDAD7D7">
+    <Grid x:Name="adminGrid" Background="#FF464646">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <!--<ColumnDefinition Width="4*"/>-->
@@ -70,30 +71,74 @@
                         <TextBlock Text="Statistics" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
                     </StackPanel>
                 </Controls:MetroTabItem.Header>
-                <Grid Background="#FFDAD7D7">
+                <Grid Background="#FF464646">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="4*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Content="Welcome Admin!" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
-                    <Charts:PieChart Grid.Row="1" Grid.Column="0" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
-                        <Charts:PieChart.Series>
-                            <Charts:PieSeries Title="Opel" Values="3" DataLabels="True"/>
-                            <Charts:PieSeries Title="Smart" Values="4" DataLabels="True" />
-                            <Charts:PieSeries Title="Lada" Values="6" DataLabels="True"/>
-                            <Charts:PieSeries Title="Tesla" Values="2" DataLabels="True" />
-                        </Charts:PieChart.Series>
+                    <Label Content="Welcome Admin!" Grid.Row="0" Grid.Column="0" FontSize="28" Foreground="White" FontWeight="Bold"></Label>
+                    <Charts:PieChart x:Name="UtilizationCarsChart" Foreground="White" FontSize="12" Grid.Row="2" Grid.Column="0" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
+                        <!--<Charts:PieChart.Series>
+                            <Charts:PieSeries Title="Opel" Values="3" DataLabels="False" />
+                            <Charts:PieSeries Title="Smart" Values="4" DataLabels="False" />
+                            <Charts:PieSeries Title="Lada" Values="6" DataLabels="False"/>
+                            <Charts:PieSeries Title="Tesla" Values="2" DataLabels="False" />
+                        </Charts:PieChart.Series>-->
                     </Charts:PieChart>
-                    <Charts:CartesianChart x:Name="IncomeChart" Grid.Row="2" Grid.Column="0" LegendLocation="Right" >
+                    <Charts:CartesianChart Foreground="White" FontSize="12" x:Name="IncomeChart" Grid.Row="4" Grid.Column="0" LegendLocation="Right" >
+                        <Charts:CartesianChart.AxisY >
+                            <Charts:Axis IsMerged="False" MinValue="0">
+                                <Charts:Axis.Separator>
+                                    <Charts:Separator StrokeThickness="1"  IsEnabled="True">
+                                        <Charts:Separator.Stroke>
+                                            <SolidColorBrush Color="#19FFFFFF" />
+                                        </Charts:Separator.Stroke>
+                                    </Charts:Separator>
+                                </Charts:Axis.Separator>
+                            </Charts:Axis>
+                        </Charts:CartesianChart.AxisY>
+                        <Charts:CartesianChart.AxisX>
+                            <Charts:Axis x:Name="axisX" IsMerged="False" FontSize="8">
+                                <Charts:Axis.Separator>
+                                    <Charts:Separator StrokeThickness="1" IsEnabled="False">
+                                        <!--Here, see the IsEnabled => false-->
+                                        <Charts:Separator.Stroke>
+                                            <SolidColorBrush Color="White" />
+                                        </Charts:Separator.Stroke>
+                                    </Charts:Separator>
+                                </Charts:Axis.Separator>
+                            </Charts:Axis>
+                        </Charts:CartesianChart.AxisX>
                     </Charts:CartesianChart>
-                    <Label Grid.Row="1" Grid.Column="1" Content="Number of cars: " FontSize="24"></Label>
-                    <Label x:Name="CarSumma_Label" Grid.Row="1" Grid.Column="2" FontSize="24"></Label>
+                    <m:Map x:Name="carMap"  Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Stretch" Center="47.4329711,19.26"  VerticalAlignment="Stretch" Margin="5,5,5,15" ZoomLevel="6" CredentialsProvider="Ai5jBedZ2T2KPuCcQjsomqBdjUJIxFOTg2iCf8sKveMD2a-wkxVizKARjMR21NwA" Cursor="Hand" AnimationLevel="Full">
+                        <!--<m:Pushpin x:Name="firstPushpin" Background="#FFE51010"></m:Pushpin>-->
+                    </m:Map>
+
+                    <Charts:PieChart x:Name="UtilizationServicesChart" Foreground="White" FontSize="12"  Grid.Row="2" Grid.Column="1" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
+                        <!--<Charts:PieChart.Series>
+                            <Charts:PieSeries Title="Additional driver" Values="3" DataLabels="False"/>
+                            <Charts:PieSeries Title="Baby seat" Values="4" DataLabels="False" />
+                            <Charts:PieSeries Title="Collision insurance" Values="6" DataLabels="False"/>
+                            <Charts:PieSeries Title="Cross border" Values="2" DataLabels="False" />
+                            <Charts:PieSeries Title="GPS Navigation" Values="2" DataLabels="False" />
+                            <Charts:PieSeries Title="Safety Vest" Values="10" DataLabels="False" />
+                            <Charts:PieSeries Title="Ski box" Values="1" DataLabels="False" />
+                            <Charts:PieSeries Title="Theft insurance" Values="2" DataLabels="False" />
+                            <Charts:PieSeries Title="Winter tires" Values="4" DataLabels="False" />
+                        </Charts:PieChart.Series>-->
+                    </Charts:PieChart>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Utilization of cars" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
+                    <Label Grid.Row="1" Grid.Column="1" Content="Utilization of services" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Income per year" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
+                    <Label Grid.Row="3" Grid.Column="1" Content="Location of cars" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
+                    <!--<Label x:Name="CarSumma_Label" Grid.Row="1" Grid.Column="2" FontSize="24"></Label>-->
                 </Grid>
             </Controls:MetroTabItem>
             
@@ -108,7 +153,7 @@
                         <TextBlock Text="Clients" FontSize="24" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
                     </StackPanel>
                 </Controls:MetroTabItem.Header>
-                <Grid Background="#FFDAD7D7">
+                <Grid Background="#FF464646">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
@@ -118,7 +163,7 @@
                         <RowDefinition Height="2*"></RowDefinition>
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Content="Clients" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" FontSize="35" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <Label Content="Clients" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" FontSize="35" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
                     <ListBox x:Name="clientListBox" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClient}" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="5" Background="#33F7F7F7" Margin="0,0">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -183,51 +228,75 @@
                         <TextBlock Text="Cars" FontSize="24" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
                     </StackPanel>
                 </Controls:MetroTabItem.Header>
-                <Grid Background="#198E916F">
+                <Grid Background="#FF464646">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <!--<ColumnDefinition></ColumnDefinition>-->
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.5*"></RowDefinition>
-                        <RowDefinition Height="5*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="9*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <!--<RowDefinition Height="5*"></RowDefinition>-->
                         <!--<RowDefinition Height="0.5*"></RowDefinition>
                         <RowDefinition Height="2*"></RowDefinition>-->
                     </Grid.RowDefinitions>
-                    <Label Content="Cars" Grid.Row="0" Grid.Column="0" FontSize="28"></Label>
-                    <ListBox x:Name="carsListBox"  Grid.Row="1" ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Background="#198E916F" Margin="0,0">
+                    <Label Content="Changing cars" Grid.Row="0" Grid.Column="0" FontSize="28" Foreground="White" FontWeight="Bold"></Label>
+                    <ListBox x:Name="carsListBox" SelectionChanged="carsListBox_SelectionChanged" Grid.Row="1" ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Background="#FF464646" Margin="0,0" Height="500" BorderBrush="AliceBlue">
+                        <!--<ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Canvas></Canvas>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>-->
+                        <!--<ListBoxItem Content="Car ID: " Foreground="Black" FontSize="12" FontWeight="Bold" Canvas.Left="0" Canvas.Top="5"></ListBoxItem>-->
+                        <!--<ListBoxItem Content="valami" Grid.Column="1" Grid.Row="0"></ListBoxItem>-->
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Background="#198E916F" Margin="5,1,0,1" UseLayoutRounding="True" >
-                                    <StackPanel Orientation="Vertical">
-                                            <Label Content="Car ID: " Foreground="Black" FontSize="12" FontWeight="Bold" />
-                                            <Label Content="Car type: " Foreground="Black" FontSize="12" FontWeight="Bold" />
-                                            <Label Content="Car HP: " Foreground="Black" FontSize="12" FontWeight="Bold" />
-                                            <Label Content="Car capacity: " Foreground="Black" FontSize="12" FontWeight="Bold" />
-                                            <Label Content="Car motorcode: " Foreground="Black" FontSize="12" FontWeight="Bold" />
-                                            <Label Content="Car rental price: " Foreground="Black" FontSize="12" FontWeight="Bold" />
-                                            <Label Content="Car quantity: " Foreground="Black" FontSize="12" FontWeight="Bold" />
+                                
+                                <StackPanel Orientation="Horizontal" Background="#198E916F" Margin="5,1,0,1" UseLayoutRounding="True">
+                                    <StackPanel Orientation="Vertical" Width="250" Background="#198E916F">
+                                        <Label Content="ID" Foreground="Black" FontSize="12" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Width="100"/>
+                                        <Label Content="Type" Foreground="Black" FontSize="12" FontWeight="Bold" Width="100"/>
+                                        <Label Content="Horsepower" Foreground="Black" FontSize="12" FontWeight="Bold" Width="100"/>
+                                        <!--<TextBox Text="{Binding CarID}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="150" FontSize="12" />
+                                        <TextBox Text="{Binding CarType}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="150" FontSize="12"/>
+                                        <TextBox Text="{Binding CarHorsepower}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="150" FontSize="12" />-->
+                                        <Label Content="Capacity" Foreground="Black" FontSize="12" FontWeight="Bold" Width="100"/>
+                                        <Label Content="Motorcode" Foreground="Black" FontSize="12" FontWeight="Bold" Width="100"/>
+                                        <Label Content="Rental price" Foreground="Black" FontSize="12" FontWeight="Bold" Width="100"/>
+                                        <Label Content="Quantity" Foreground="Black" FontSize="12" FontWeight="Bold" Width="100"/>
+                                        
                                         <!--<Image Source="Images\lada.jpg" Grid.Column="1"/>-->
                                     </StackPanel>
-                                    <StackPanel Orientation="Vertical" Width="150">
-                                        <TextBox Text="{Binding CarID}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="100" FontSize="12" />
-                                        <TextBox Text="{Binding CarType}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="100" FontSize="12"/>
-                                        <TextBox Text="{Binding CarHorsepower}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="100" FontSize="12" />
-                                        <TextBox Text="{Binding CarCapacity}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="100" FontSize="12"/>
-                                        <TextBox Text="{Binding CarMotorcode}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="100" FontSize="12" />
-                                        <TextBox Text="{Binding CarRentalPrice}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="100" FontSize="12"/>
-                                        <TextBox Text="{Binding CarQuantity}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#198E916F"  Foreground="Black" Width="100" FontSize="12" />
+                                    <StackPanel Orientation="Vertical" Width="300" Background="#198E916F">
+                                        <Label Content="{Binding CarID}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#EAEAE4"  Foreground="Black" Width="380" FontSize="12">
+                                            <Label.ToolTip>
+                                                <StackPanel>
+                                                    <TextBlock>Not modifiable</TextBlock>
+                                                </StackPanel>
+                                            </Label.ToolTip>
+                                        </Label>
+                                        <TextBox Text="{Binding CarType}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#EAEAE4"  Foreground="Black" Width="380" FontSize="12" />
+                                        <TextBox Text="{Binding CarHorsepower}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#EAEAE4"  Foreground="Black" Width="380" FontSize="12"/>
+                                        <!--<TextBox Text="{Binding CarCapacity}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#EAEAE4"  Foreground="Black" Width="380" FontSize="12" />-->
+                                        <Controls:NumericUpDown Minimum="1" Maximum="6" Interval="1" Value="{Binding CarCapacity}"  Background="#EAEAE4"  Foreground="Black" HorizontalContentAlignment="Left"></Controls:NumericUpDown>
+                                        <TextBox Text="{Binding CarMotorcode}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#EAEAE4"  Foreground="Black" Width="380" FontSize="12" />
+                                        <TextBox Text="{Binding CarRentalPrice}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#EAEAE4"  Foreground="Black" Width="380" FontSize="12"/>
+                                        <!--<TextBox Text="{Binding CarQuantity}" BorderThickness="0,0,0,1" BorderBrush="#41b1e1" Background="#EAEAE4"  Foreground="Black" Width="380" FontSize="12" />-->
+                                        <Controls:NumericUpDown Minimum="0" Maximum="1000" Interval="1" Value="{Binding CarQuantity}"  Background="#EAEAE4"  Foreground="Black" HorizontalContentAlignment="Left"></Controls:NumericUpDown>
                                     </StackPanel>
-                                    <StackPanel Orientation="Vertical" Width="120">
+                                    <StackPanel Orientation="Vertical" Width="250" HorizontalAlignment="Right" Background="#198E916F">
                                         <Image Source="{Binding CarPhotoPath}" Margin="0,20,0,0"/>
-                                        <Button Content="Modify"></Button>
-                                        <Button Content="Delete"></Button>
+                                        <!--<Button Content="Modify" Click="ModifyCar_Click" Width="100"></Button>
+                                        <Button Content="Delete" Click="DeleteCar_Click" Width="100"></Button>-->
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Label Content="New car" Grid.Row="0" Grid.Column="1" FontSize="26"></Label>
+                    <Button x:Name="ModifyButton" Content="Modify" FontSize="18" Visibility="Hidden" Click="ModifyCar_ClickAsync" Width="100" Grid.Row="3" Height="50" Margin="700,5,5,5"></Button>
+                    <Button x:Name="DeleteButton" Content="Delete" FontSize="18" Visibility="Hidden" Click="DeleteCar_ClickAsync" Width="100" Grid.Row="3" Height="50" Margin="400,5,5,5"></Button>
+                    <!--Label Content="New car" Grid.Row="0" Grid.Column="1" FontSize="26" Foreground="White"></Label>
                     <Grid Grid.Row="1" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1.5*"></ColumnDefinition>
@@ -245,15 +314,15 @@
                             <RowDefinition Height="1*"></RowDefinition>
                             <RowDefinition Height="1*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Label Content="Car type" FontSize="20" Grid.Row="0" Grid.Column="0"></Label>
-                        <Label Content="Car photo" FontSize="20" Grid.Row="1" Grid.Column="0"></Label>
-                        <Label Content="Car horsepower" FontSize="20" Grid.Row="3" Grid.Column="0"></Label>
-                        <Label Content="Car capacity" FontSize="20" Grid.Row="4" Grid.Column="0"></Label>
-                        <Label Content="Car motorcode" FontSize="20" Grid.Row="5" Grid.Column="0"></Label>
-                        <Label Content="Car rental price" FontSize="20" Grid.Row="6" Grid.Column="0"></Label>
-                        <Label Content="Car quantity" FontSize="20" Grid.Row="7" Grid.Column="0"></Label>
-                        <Label Content="Car category" FontSize="20" Grid.Row="8" Grid.Column="0"></Label>
-                        <Button Content="OK" Grid.Row="9" Grid.Column="1" FontSize="16" Height="32"></Button>
+                        <Label Content="Car type" FontSize="20" Grid.Row="0" Grid.Column="0" Foreground="White"></Label>
+                        <Label Content="Car photo" FontSize="20" Grid.Row="1" Grid.Column="0" Foreground="White"></Label>
+                        <Label Content="Car horsepower" FontSize="20" Grid.Row="3" Grid.Column="0" Foreground="White"></Label>
+                        <Label Content="Car capacity" FontSize="20" Grid.Row="4" Grid.Column="0" Foreground="White"></Label>
+                        <Label Content="Car motorcode" FontSize="20" Grid.Row="5" Grid.Column="0" Foreground="White"></Label>
+                        <Label Content="Car rental price" FontSize="20" Grid.Row="6" Grid.Column="0" Foreground="White"></Label>
+                        <Label Content="Car quantity" FontSize="20" Grid.Row="7" Grid.Column="0" Foreground="White"></Label>
+                        <Label Content="Car category" FontSize="20" Grid.Row="8" Grid.Column="0" Foreground="White"></Label>
+                        <Button Content="OK" Grid.Row="9" Grid.Column="1" FontSize="16" Height="32" ></Button>
                         <TextBox Grid.Row="0" Grid.Column="1" Height="30"></TextBox>
                         <TextBox Grid.Row="3" Grid.Column="1" Height="30"></TextBox>
                         <TextBox Grid.Row="4" Grid.Column="1" Height="30"></TextBox>
@@ -262,7 +331,7 @@
                         <TextBox Grid.Row="7" Grid.Column="1" Height="30"></TextBox>
                         <TextBox Grid.Row="8" Grid.Column="1" Height="30"></TextBox>
                         <Image Source="Images\lada.jpg" Grid.Row="2" Grid.Column="1"></Image>
-                    </Grid>
+                    </Grid>-->
                     <!--<Label Content="Upload photo" Grid.Column="0" Grid.Row="2" FontSize="20"></Label>
                     <Grid Grid.Row="3" Grid.Column="0">
                         <Grid.ColumnDefinitions>
@@ -292,29 +361,93 @@
                         <TextBlock Text="Admin" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
                     </StackPanel>
                 </Controls:MetroTabItem.Header>
-                <Grid Background="#FFDAD7D7">
+                <Grid Background="#FF464646">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition  Width="1*"></ColumnDefinition>
+                        <ColumnDefinition  Width="1*"></ColumnDefinition>
+                        <ColumnDefinition  Width="1*"></ColumnDefinition>
+                        <ColumnDefinition  Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Content="Welcome Admin!" Grid.Column="0" Grid.Row="0" FontSize="30" FontWeight="Bold"></Label>
-                    <Label Content="See the data of clients..." Grid.Column="0" Grid.Row="4" FontSize="30"></Label>
-                    <Label Content="See the data of cars..." Grid.Column="0" Grid.Row="7" FontSize="30"></Label>
-                    <Label Content="See the statistics..." Grid.Column="0" Grid.Row="10" FontSize="30"></Label>
+                    <Label Content="Welcome Admin!" Grid.Column="0" Grid.Row="0" FontSize="24" FontWeight="Bold" Foreground="White"></Label>
+                    <Label Content="Members of the team..." Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" FontSize="18" FontWeight="Normal" Foreground="White"></Label>
+                    <StackPanel Grid.Column="0" Grid.Row="1">
+                        <!--<Button Width="50" Height="50" Style="{DynamicResource MetroCircleButtonStyle}">
+                            <Rectangle Width="20"  Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_close}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                        </Button>-->
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" Grid.Row="7">
+                        <TextBlock  Foreground="White" FontWeight="Bold" FontSize="22">About the program</TextBlock>
+                        <TextBlock Grid.Column="0" Grid.Row="1" Foreground="White" FontWeight="Normal" FontSize="16">Version 1.0</TextBlock>
+                        <TextBlock Grid.Column="0" Grid.Row="1" Foreground="White" FontWeight="Normal" FontSize="16">Last modified: 04. 05. 2018</TextBlock>
+                    </StackPanel>
+                    <Label Content="Franciska Cseleszki" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" FontSize="22" Foreground="White"></Label>
+                    <Button Grid.Column="2" Grid.Row="2"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" Height="80" Style="{DynamicResource MetroCircleButtonStyle}">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold">Tasks</TextBlock>
+                                    <TextBlock>GUI<LineBreak></LineBreak>
+                                        Contact: franciska@carrentalmanager.com
+                                    </TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <Rectangle Width="40"  Height="40" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_user}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                    <Label Content="Tamás Kocsis" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" FontSize="22" Foreground="White"></Label>
+                    <Button Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" Height="80" Style="{DynamicResource MetroCircleButtonStyle}">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold">Tasks</TextBlock>
+                                    <TextBlock>Tests<LineBreak></LineBreak>
+                                        Contact: tamas@carrentalmanager.com
+                                    </TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <Rectangle Width="40"  Height="40" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_user}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                    <Label Content="Ádám Vass" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" FontSize="22" Foreground="White"></Label>
+                    <Button Grid.Column="2" Grid.Row="4"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" Height="80" Style="{DynamicResource MetroCircleButtonStyle}">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold">Tasks</TextBlock>
+                                    <TextBlock>Backend<LineBreak></LineBreak>
+                                        Contact: adam@carrentalmanager.com
+                                    </TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <Rectangle Width="40"  Height="40" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_user}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
                 </Grid>
             </Controls:MetroTabItem>
         </Controls:MetroTabControl>

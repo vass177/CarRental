@@ -14,6 +14,9 @@ namespace CarRentalManager
 
     public class AdminWindowViewModel : Bindable
     {
+        private OrderHandling adminOrderhandling;
+
+
         private IList<Client> clients;
         private Client selectedClient;
         private ClientInformationLogic clientListLogic;
@@ -68,6 +71,49 @@ namespace CarRentalManager
             }
         }
 
+        public Dictionary<string, int> SummaCars()
+        {
+            Dictionary<string, int> tempCarList = new Dictionary<string, int>();
+            IList<Car> getAllCars = this.carHandLogic.GetAllCarList();
+            foreach (var item in getAllCars)
+            {
+                int i = 0;
+                i = this.adminOrderhandling.NumberOfRental(item);
+                tempCarList.Add(item.CarType, i);                
+            }
+            return tempCarList;
+        }
+
+        public List<decimal> GetCarCoordinates()
+        {
+            List<decimal> carCoord = new List<decimal>();
+            IList<Car> getAllCars = this.carHandLogic.GetAllCarList();
+            foreach (var item in getAllCars)
+            {
+                carCoord.Add(item.CoordLat*100);
+                carCoord.Add(item.CoordLong * 100);
+            }
+            return carCoord;
+        }
+
+        public Dictionary<string, int> SummaServices()
+        {
+            Dictionary<string, int> tempServicesList = new Dictionary<string, int>();
+            IList<Service> getAllServices = this.adminOrderhandling.GetAllServiceList();
+            foreach (var item in getAllServices)
+            {
+                int i = 0;
+                i = this.adminOrderhandling.NumberOfServices(item);
+                tempServicesList.Add(item.ServiceName, i);
+            }
+            return tempServicesList;
+        }
+
+        public List<int> getIncomeStatistics()
+        {
+            return this.adminOrderhandling.OrderRevenue(false);
+        }
+
         public int CarSumma
         {
             get { return this.carSumma; }
@@ -78,7 +124,8 @@ namespace CarRentalManager
         {
             this.clientListLogic = new ClientInformationLogic();
             this.carHandLogic = new CarHandlingLogic();
-            
+
+            this.adminOrderhandling = new OrderHandling(null);
 
             this.RefreshClientList();
             this.RefreshCarList();
@@ -97,6 +144,16 @@ namespace CarRentalManager
             }
         }
 
+        public void DeleteCar()
+        {
+            if (this.selectedCar != null)
+            {
+                this.carHandLogic.DeleteCar(this.selectedCar);
+
+                this.RefreshCarList();
+            }
+        }
+
         public void UpdateClient()
         {
             if (this.selectedClient != null)
@@ -104,6 +161,16 @@ namespace CarRentalManager
                 this.clientListLogic.UpdateClient();
 
                 this.RefreshClientList();
+            }
+        }
+
+        public void UpdateCar()
+        {
+            if (this.selectedCar != null)
+            {
+                this.carHandLogic.UpdateCar();
+
+                this.RefreshCarList();
             }
         }
 
@@ -130,5 +197,10 @@ namespace CarRentalManager
         {
             this.RefreshCarList();
         }
+
+        /*public List<int> getCarIDStatistics()
+        {
+
+        }*/
     }
 }

@@ -16,14 +16,16 @@ namespace Data.DataHandling
         ServiceName,
         ServicePrice
     }
+
     public class ServiceDataHandler : IDataBase
     {
         private RentalDBEntities database;
+
         public ServiceDataHandler()
         {
             this.database = new RentalDBEntities();
         }
-        
+
         public void Delete(object deletableItem)
         {
             this.database.Services.Remove((Service)deletableItem);
@@ -39,7 +41,7 @@ namespace Data.DataHandling
         public object Select(object attributeType, object attributeValue)
         {
             // Service can only be selected by ServiceName
-            if (!((ServiceAttributeType)attributeType==ServiceAttributeType.ServiceName))
+            if (!((ServiceAttributeType)attributeType == ServiceAttributeType.ServiceName))
             {
                 throw new InvalidSearchTypeException("ServiceAttributeType");
             }
@@ -62,7 +64,7 @@ namespace Data.DataHandling
             // for servicePrice, attributvalue will be an decimal[] array
             decimal priceRange1 = 0;
             decimal priceRange2 = 0;
-            if (attribute==ServiceAttributeType.ServicePrice)
+            if (attribute == ServiceAttributeType.ServicePrice)
             {
                 priceRange1 = ((decimal[])attributeValue)[0];
                 priceRange2 = ((decimal[])attributeValue)[1];

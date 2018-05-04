@@ -175,6 +175,7 @@
                                     <Controls:FlipView x:Name="carFlipView" Margin="30,0" Foreground="#00000000" IsBannerEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" MouseHoverBorderEnabled="False" SelectionChanged="carFlipView_SelectionChanged">
                                         <Image Source="Images\smart.png"></Image>
                                         <Image Source="Images\s2000.png"></Image>
+                                        <Image Source="Images\audi.png"></Image>
                                         <Image Source="Images\civic.png"></Image>
                                         <Image Source="Images\lexus.png"></Image>
                                         <Image Source="Images\opel.png"></Image>

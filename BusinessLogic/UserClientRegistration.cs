@@ -31,14 +31,14 @@ namespace BusinessLogic
             };
             this.userHandler.Insert(user);
 
-            if (isClient=="Y")
+            if (isClient == "Y")
             {
                 var client = new Client
                 {
                     UserName = userName,
-                    ClientName=fullName,
-                    ClientAddress=address,
-                    ClientEmail=email
+                    ClientName = fullName,
+                    ClientAddress = address,
+                    ClientEmail = email
                 };
                 this.clientHandler.Insert(client);
             }

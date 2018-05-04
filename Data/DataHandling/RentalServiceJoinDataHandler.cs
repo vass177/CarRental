@@ -20,10 +20,12 @@ namespace Data.DataHandling
     public class RentalServiceJoinDataHandler : IDataBase
     {
         private RentalDBEntities database;
+
         public RentalServiceJoinDataHandler()
         {
             this.database = new RentalDBEntities();
         }
+
         public void Delete(object deletableItem)
         {
             this.database.RentalServiceJoins.Remove((RentalServiceJoin)deletableItem);
@@ -51,7 +53,7 @@ namespace Data.DataHandling
         public object SelectMore(object attributeType, object attributeValue)
         {
             RentalServiceAttributeType attribute = (RentalServiceAttributeType)attributeType;
-            
+
             switch (attribute)
             {
                 case RentalServiceAttributeType.RentalID:

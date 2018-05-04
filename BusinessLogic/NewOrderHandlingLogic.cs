@@ -42,7 +42,7 @@ namespace BusinessLogic
 
         public int ClientDiscount
         {
-            get { return clientDiscount; }
+            get { return this.clientDiscount; }
         }
 
         public int FinalPrice
@@ -61,7 +61,7 @@ namespace BusinessLogic
 
         public void SelectCar(string imageSource)
         {
-            IQueryable<Car> selectedCarList= (IQueryable<Car>)carDBHandler.SelectMore(CarAttributeType.CarImageSource, imageSource);
+            IQueryable<Car> selectedCarList= (IQueryable<Car>)this.carDBHandler.SelectMore(CarAttributeType.CarImageSource, imageSource);
             if(selectedCarList.Count() == 0)
             {
                 this.carAvailable = false;
@@ -70,13 +70,13 @@ namespace BusinessLogic
             {
                 //ez még nem végleges
                 this.selectedCar = selectedCarList.First();
-                Console.WriteLine(selectedCar.CarType);
+                Console.WriteLine(this.selectedCar.CarType);
             }
         }
         public bool CheckCarAvailibility(DateTime startDate, DateTime endDate)
         {
-            dateRange = new DateTime[] { startDate, endDate };
-            IQueryable<Rental> rentals= (IQueryable<Rental>)this.rentalDBHandler.SelectMore(RentalAttributeType.RentalDateInterval, dateRange);
+            this.dateRange = new DateTime[] { startDate, endDate };
+            IQueryable<Rental> rentals= (IQueryable<Rental>)this.rentalDBHandler.SelectMore(RentalAttributeType.RentalDateInterval, this.dateRange);
 
             foreach (var item in rentals)
             {
@@ -86,8 +86,8 @@ namespace BusinessLogic
             foreach (var order in rentals)
             {
                 Console.WriteLine(order.Car.CarID);
-                Console.WriteLine(selectedCar.CarID);
-                if (order.Car.CarID==selectedCar.CarID)
+                Console.WriteLine(this.selectedCar.CarID);
+                if (order.Car.CarID==this.selectedCar.CarID)
                     return false;
             }
             return true;
@@ -95,51 +95,51 @@ namespace BusinessLogic
 
         public List<Service> SearchSelectedServices(List<string>serviceList)
         {
-            servList = new List<Service>();
+            this.servList = new List<Service>();
            
             foreach (string service in serviceList)
             {
-                Service selectedService= (Service)serviceDBHandler.Select(ServiceAttributeType.ServiceName, service);
+                Service selectedService= (Service)this.serviceDBHandler.Select(ServiceAttributeType.ServiceName, service);
                 Console.WriteLine(selectedService.ServiceName +" "+selectedService.ServicePrice);
-                servList.Add(selectedService);
+                this.servList.Add(selectedService);
             }
-            CalculateServicePrice();
+            this.CalculateServicePrice();
 
-            return servList;
+            return this.servList;
         }
         public decimal CalculateServicePrice()
         {
-            int dayCount = CalculateDays();
-            ServPriceList = new List<int>();
+            int dayCount = this.CalculateDays();
+            this.ServPriceList = new List<int>();
 
             decimal serviceprice = 0;
-            foreach (Service s in servList)
+            foreach (Service s in this.servList)
             {
                 serviceprice += (s.ServicePrice) * dayCount;
-                ServPriceList.Add((int)(s.ServicePrice) * dayCount);
+                this.ServPriceList.Add((int)(s.ServicePrice) * dayCount);
             }
             Console.WriteLine("Total service price: "+serviceprice);
             return serviceprice;
         }
         public int CalculateDays()
         {
-            TimeSpan days = dateRange[1] - dateRange[0];
+            TimeSpan days = this.dateRange[1] - this.dateRange[0];
             int dayCount = days.Days;
             Console.WriteLine("Napok száma: " + dayCount);
 
-            this.carPrice = (int)SelectedCar.CarRentalPrice * dayCount;
+            this.carPrice = (int)this.SelectedCar.CarRentalPrice * dayCount;
             Console.WriteLine("Car price: "+this.CarPrice);
 
             return dayCount;
         }
         public void CalculateFinalPrice()
         {
-            int price = (int)(this.carPrice + CalculateServicePrice());
-            this.clientDiscount = (int)(price * client.ClientDiscountStatus / 100);
-            Console.WriteLine("client discount: "+clientDiscount);
+            int price = (int)(this.carPrice + this.CalculateServicePrice());
+            this.clientDiscount = (int)(price * this.client.ClientDiscountStatus / 100);
+            Console.WriteLine("client discount: "+this.clientDiscount);
 
-            this.finalPrice = price - clientDiscount;
-            Console.WriteLine("final price: "+finalPrice);
+            this.finalPrice = price - this.clientDiscount;
+            Console.WriteLine("final price: "+this.finalPrice);
 
         }
         public void FinishOrder()
@@ -147,13 +147,13 @@ namespace BusinessLogic
 
             Rental newRental = new Rental
             {
-                UserName = client.UserName,
-                CarID = SelectedCar.CarID,
-                RentalStartDate = dateRange[0],
-                RentalEndDate = dateRange[1],
-                RentalFullPrice = finalPrice
+                UserName = this.client.UserName,
+                CarID = this.SelectedCar.CarID,
+                RentalStartDate = this.dateRange[0],
+                RentalEndDate = this.dateRange[1],
+                RentalFullPrice = this.finalPrice
             };
-            rentalDBHandler.Insert(newRental);
+            this.rentalDBHandler.Insert(newRental);
         }
     }
 }

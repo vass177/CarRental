@@ -23,7 +23,8 @@ namespace CarRentalManager.Controls
     {
         public MapControl()
         {
-            InitializeComponent();
+            this.InitializeComponent();            
         }
+
     }
 }

@@ -43,7 +43,7 @@ namespace Data.DataHandling
 
         public object GetAll()
         {
-            return database.Cars;
+            return this.database.Cars;
         }
 
         public void Insert(object newItem)

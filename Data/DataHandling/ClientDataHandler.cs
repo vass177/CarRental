@@ -35,7 +35,7 @@ namespace Data.DataHandling
 
         public object GetAll()
         {
-            return database.Clients;
+            return this.database.Clients;
         }
 
         public void Insert(object newItem)
