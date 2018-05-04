@@ -104,14 +104,14 @@ namespace CarRentalManager
             }
         }
 
-        private void startDatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        private void StartDatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             this.informationLabel.Content = string.Empty;
             this.endDatePicker.SelectedDate = null;
             this.informationLabel.Content = "Select an ending date";
         }
 
-        private void endDatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        private void EndDatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.startDatePicker.SelectedDate != null && this.startDatePicker.SelectedDate < this.endDatePicker.SelectedDate)
             {

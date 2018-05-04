@@ -223,8 +223,8 @@
                                         </Rectangle.OpacityMask>
                                     </Rectangle>
                                 </Button>
-                                <Calendar x:Name="startDatePicker" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="1"  Background="#05FFFFFF" BorderBrush="#66DCFF00" Foreground="White" FontSize="20" BorderThickness="2" FirstDayOfWeek="Monday" SelectedDatesChanged="startDatePicker_SelectedDatesChanged" IsTodayHighlighted="False"/>
-                                <Calendar x:Name="endDatePicker" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="1"  Background="#05FFFFFF" BorderBrush="#66DCFF00" Foreground="White" FontSize="20" BorderThickness="2" FirstDayOfWeek="Monday" Width="237" FontStretch="UltraExpanded" SelectedDatesChanged="endDatePicker_SelectedDatesChanged"/>
+                                <Calendar x:Name="startDatePicker" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="1"  Background="#05FFFFFF" BorderBrush="#66DCFF00" Foreground="White" FontSize="20" BorderThickness="2" FirstDayOfWeek="Monday" SelectedDatesChanged="StartDatePicker_SelectedDatesChanged" IsTodayHighlighted="False"/>
+                                <Calendar x:Name="endDatePicker" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.RowSpan="4" Grid.ColumnSpan="1"  Background="#05FFFFFF" BorderBrush="#66DCFF00" Foreground="White" FontSize="20" BorderThickness="2" FirstDayOfWeek="Monday" Width="237" FontStretch="UltraExpanded" SelectedDatesChanged="EndDatePicker_SelectedDatesChanged"/>
                                 <Label x:Name="informationLabel" Content="" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" FontSize="20" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFBDBDBD"></Label>
                             </Grid>
                         </TabItem>

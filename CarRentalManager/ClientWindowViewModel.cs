@@ -30,6 +30,19 @@ namespace CarRentalManager
         private DateTime startDate;
         private DateTime endDate;
 
+        public ClientWindowViewModel(string loggedInUser)
+        {
+            this.clientLogic = new ClientInformationLogic();
+            this.LoggedInClient = this.clientLogic.GetLoggedInClient(loggedInUser);
+
+            this.orderHandling = new NewOrderHandlingLogic(this.loggedInClient);
+            this.clientOrderHandling = new OrderHandling(this.loggedInClient);
+            this.RefreshOrderList();
+
+            this.clientLogic.ClientLoggedIn += this.ClientLogic_ClientLoggedIn;
+            this.clientOrderHandling.RentalListChanged += this.ClientOrderHandling_RentalListChanged;
+        }
+
         public IList<Rental> Rental
         {
             get
@@ -162,19 +175,6 @@ namespace CarRentalManager
                 this.selectedCar = value;
                 this.OnPropertyChanged(nameof(this.SelectedCar));
             }
-        }
-
-        public ClientWindowViewModel(string loggedInUser)
-        {
-            this.clientLogic = new ClientInformationLogic();
-            this.LoggedInClient = this.clientLogic.GetLoggedInClient(loggedInUser);
-
-            this.orderHandling = new NewOrderHandlingLogic(this.loggedInClient);
-            this.clientOrderHandling = new OrderHandling(this.loggedInClient);
-            this.RefreshOrderList();
-
-            this.clientLogic.ClientLoggedIn += this.ClientLogic_ClientLoggedIn;
-            this.clientOrderHandling.RentalListChanged += this.ClientOrderHandling_RentalListChanged;
         }
 
         public void RefreshOrderList()
