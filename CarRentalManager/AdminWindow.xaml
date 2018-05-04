@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Charts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:local="clr-namespace:CarRentalManager"
         xmlns:Controls1="clr-namespace:CarRentalManager.Controls" x:Class="CarRentalManager.AdminWindow"
         mc:Ignorable="d"
@@ -116,8 +117,9 @@
                             </Charts:Axis>
                         </Charts:CartesianChart.AxisX>
                     </Charts:CartesianChart>
-
-                    <Controls1:MapControl Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,15"></Controls1:MapControl>
+                    <m:Map x:Name="carMap"  Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,15" Center="47.4329711,19.26" ZoomLevel="13" CredentialsProvider="Ai5jBedZ2T2KPuCcQjsomqBdjUJIxFOTg2iCf8sKveMD2a-wkxVizKARjMR21NwA" Cursor="Hand" AnimationLevel="Full">
+                        <!--<m:Pushpin Location="47.4329711,19.26" Background="#FFE51010"></m:Pushpin>-->
+                    </m:Map>
 
                     <Charts:PieChart x:Name="UtilizationServicesChart" Foreground="White" FontSize="12"  Grid.Row="2" Grid.Column="1" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
                         <!--<Charts:PieChart.Series>

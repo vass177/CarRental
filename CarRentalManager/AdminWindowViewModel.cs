@@ -84,6 +84,18 @@ namespace CarRentalManager
             return tempCarList;
         }
 
+        public List<decimal> GetCarCoordinates()
+        {
+            List<decimal> carCoord = new List<decimal>();
+            IList<Car> getAllCars = carHandLogic.GetAllCarList();
+            foreach (var item in getAllCars)
+            {
+                carCoord.Add(item.CoordLat*100);
+                carCoord.Add(item.CoordLong * 100);
+            }
+            return carCoord;
+        }
+
         public Dictionary<string, int> SummaServices()
         {
             Dictionary<string, int> tempServicesList = new Dictionary<string, int>();

@@ -18,6 +18,7 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using System.Data.SqlClient;
 using System.IO;
+using MapControl;
 
 namespace CarRentalManager
 {
@@ -139,6 +140,21 @@ namespace CarRentalManager
             };
             axisX.Labels = new string[] { "2014", "2015", "2016", "2017", "2018" };
             IncomeChart.Series = mySeries;
+
+            List<decimal> carCoordinates = this.adminWindowViewModel.GetCarCoordinates();
+            for (int i = 0; i < carCoordinates.Count()-1; i++)
+            {
+                // The pushpin to add to the map.
+                Pushpin pin = new Pushpin();
+                pin.Location = new Location((double)carCoordinates[i], (double)carCoordinates[i+1]);
+
+                // Adds the pushpin to the map.
+                carMap.Children.Add(pin);
+            }
+            Pushpin pin1 = new Pushpin();
+            pin1.Location = new Location(47.322, 19.212);
+            pin1.Background = Brushes.Red;
+            carMap.Children.Add(pin1);
         }
     }
 }

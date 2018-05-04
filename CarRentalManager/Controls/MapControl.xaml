@@ -8,7 +8,7 @@
              d:DesignHeight="500" d:DesignWidth="500">
     <Grid>
         <m:Map Center="47.4329711,19.26" ZoomLevel="13" CredentialsProvider="Ai5jBedZ2T2KPuCcQjsomqBdjUJIxFOTg2iCf8sKveMD2a-wkxVizKARjMR21NwA" Cursor="Hand" AnimationLevel="Full">
-            <m:Pushpin Location="47.4329711,19.26" Background="#FFE51010"></m:Pushpin>       
+            <m:Pushpin Location="47.4329711,19.26" Background="#FFE51010"></m:Pushpin>    
                      
         </m:Map>
     </Grid>
