@@ -359,25 +359,33 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Content="Welcome Admin!" Grid.Column="0" Grid.Row="0" FontSize="30" FontWeight="Bold" Foreground="White"></Label>
-                    <Label Content="See the data of clients..." Grid.Column="0" Grid.Row="4" FontSize="30" Foreground="White"></Label>
-                    <Label Content="See the data of cars..." Grid.Column="0" Grid.Row="7" FontSize="30" Foreground="White"></Label>
-                    <Label Content="See the statistics..." Grid.Column="0" Grid.Row="1" FontSize="30" Foreground="White"></Label>
+                    <StackPanel Grid.Column="0" Grid.Row="1">
+                        <!--<Button Width="50" Height="50" Style="{DynamicResource MetroCircleButtonStyle}">
+                            <Rectangle Width="20"  Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_close}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                        </Button>-->
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <TextBlock  Foreground="White" FontWeight="Bold" FontSize="24">About the program</TextBlock>
+                        <TextBlock Grid.Column="0" Grid.Row="1" Foreground="White" FontWeight="Normal" FontSize="24">Version 1.0</TextBlock>
+                        <TextBlock Grid.Column="0" Grid.Row="1" Foreground="White" FontWeight="Normal" FontSize="22">last modified: 04. 05. 2018</TextBlock>
+                    </StackPanel>
                 </Grid>
             </Controls:MetroTabItem>
         </Controls:MetroTabControl>
