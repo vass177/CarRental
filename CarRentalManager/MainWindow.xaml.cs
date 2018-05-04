@@ -1,37 +1,40 @@
-﻿using MahApps.Metro.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Data.DataHandling;
-using Data.Exceptions;
-using Data;
-using BusinessLogic;
-using MahApps.Metro.Controls.Dialogs;
+﻿// <copyright file="MainWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace CarRentalManager
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+    using BusinessLogic;
+    using Data;
+    using Data.DataHandling;
+    using Data.Exceptions;
+    using MahApps.Metro.Controls;
+    using MahApps.Metro.Controls.Dialogs;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
         private bool passwordValid;
-        ViewModel VM;
+
         public MainWindow()
         {
             this.InitializeComponent();
-            this.VM = new ViewModel();
             this.passwordValid = false;
 
             /*CarDataHandler carHander = new CarDataHandler();
@@ -114,7 +117,6 @@ namespace CarRentalManager
             return false;
         }
 
-
         private async void Login_ButtonClickAsync(object sender, RoutedEventArgs e)
         {
             LoginAuthentication loginAuthentication = new LoginAuthentication();
@@ -161,6 +163,7 @@ namespace CarRentalManager
                     usertype = "N";
                     usertypename = "admin";
                 }
+
                 if (this.Name_Textbox.Text.Length < 5 && this.Fullname_Textbox.Text.Length < 5 && this.Address_Textbox.Text.Length < 5 && this.Email_Textbox.Text.Length < 5)
                 {
                     this.Pw_Textbox.Clear();
@@ -168,12 +171,13 @@ namespace CarRentalManager
                 }
                 else
                 {
-                    userClientRegistration.AddNewUser(this.Name_Textbox.Text, Fullname_Textbox.Text, this.Pw_Textbox.Password, this.Address_Textbox.Text, this.Email_Textbox.Text, usertype);
-                    //Registration_Grid.Children.Clear();
+                    userClientRegistration.AddNewUser(this.Name_Textbox.Text, this.Fullname_Textbox.Text, this.Pw_Textbox.Password, this.Address_Textbox.Text, this.Email_Textbox.Text, usertype);
+                    // Registration_Grid.Children.Clear();
+
                     this.Name_Textbox.Text = string.Empty;
                     this.Fullname_Textbox.Text = string.Empty;
                     this.Pw_Textbox.Password = string.Empty;
-                    Address_Textbox.Text = string.Empty;
+                    this.Address_Textbox.Text = string.Empty;
                     this.Email_Textbox.Text = string.Empty;
                     await this.ShowMessageAsync("Registration message", this.Name_Textbox.Text + " user is created as " + usertypename);
                 }

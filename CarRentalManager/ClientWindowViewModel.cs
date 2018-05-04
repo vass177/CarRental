@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BusinessLogic;
-using Data;
+﻿// <copyright file="ClientWindowViewModel.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace CarRentalManager
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using BusinessLogic;
+    using Data;
+
     public class ClientWindowViewModel : Bindable
     {
         private Client loggedInClient;
@@ -200,7 +204,6 @@ namespace CarRentalManager
             this.orderHandling.SelectCar(imageSource);
             this.selectedCar = this.orderHandling.SelectedCar;
             this.OnPropertyChanged(nameof(this.SelectedCar));
-
         }
 
         public bool CheckDates(DateTime startDate, DateTime endDate)
