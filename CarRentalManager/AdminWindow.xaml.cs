@@ -31,6 +31,8 @@ namespace CarRentalManager
         public AdminWindow()
         {
             this.InitializeComponent();
+
+            
         }
 
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)

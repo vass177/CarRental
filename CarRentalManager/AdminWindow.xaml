@@ -357,9 +357,10 @@
                 </Controls:MetroTabItem.Header>
                 <Grid Background="#FF464646">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition  Width="1*"></ColumnDefinition>
+                        <ColumnDefinition  Width="1*"></ColumnDefinition>
+                        <ColumnDefinition  Width="1*"></ColumnDefinition>
+                        <ColumnDefinition  Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
@@ -371,7 +372,8 @@
                         <RowDefinition Height="2*"></RowDefinition>
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Content="Welcome Admin!" Grid.Column="0" Grid.Row="0" FontSize="30" FontWeight="Bold" Foreground="White"></Label>
+                    <Label Content="Welcome Admin!" Grid.Column="0" Grid.Row="0" FontSize="24" FontWeight="Bold" Foreground="White"></Label>
+                    <Label Content="Members of the team..." Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" FontSize="18" FontWeight="Normal" Foreground="White"></Label>
                     <StackPanel Grid.Column="0" Grid.Row="1">
                         <!--<Button Width="50" Height="50" Style="{DynamicResource MetroCircleButtonStyle}">
                             <Rectangle Width="20"  Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
@@ -381,11 +383,65 @@
                             </Rectangle>
                         </Button>-->
                     </StackPanel>
-                    <StackPanel Grid.Column="1" Grid.Row="1">
-                        <TextBlock  Foreground="White" FontWeight="Bold" FontSize="24">About the program</TextBlock>
-                        <TextBlock Grid.Column="0" Grid.Row="1" Foreground="White" FontWeight="Normal" FontSize="24">Version 1.0</TextBlock>
-                        <TextBlock Grid.Column="0" Grid.Row="1" Foreground="White" FontWeight="Normal" FontSize="22">last modified: 04. 05. 2018</TextBlock>
+                    <StackPanel Grid.Column="3" Grid.Row="7">
+                        <TextBlock  Foreground="White" FontWeight="Bold" FontSize="22">About the program</TextBlock>
+                        <TextBlock Grid.Column="0" Grid.Row="1" Foreground="White" FontWeight="Normal" FontSize="16">Version 1.0</TextBlock>
+                        <TextBlock Grid.Column="0" Grid.Row="1" Foreground="White" FontWeight="Normal" FontSize="16">Last modified: 04. 05. 2018</TextBlock>
                     </StackPanel>
+                    <Label Content="Franciska Cseleszki" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" FontSize="22" Foreground="White"></Label>
+                    <Button Grid.Column="2" Grid.Row="2"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" Height="80" Style="{DynamicResource MetroCircleButtonStyle}">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold">Tasks</TextBlock>
+                                    <TextBlock>GUI<LineBreak></LineBreak>
+                                        Contact: franciska@carrentalmanager.com
+                                    </TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <Rectangle Width="40"  Height="40" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_user}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                    <Label Content="Tamás Kocsis" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" FontSize="22" Foreground="White"></Label>
+                    <Button Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" Height="80" Style="{DynamicResource MetroCircleButtonStyle}">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold">Tasks</TextBlock>
+                                    <TextBlock>Tests<LineBreak></LineBreak>
+                                        Contact: tamas@carrentalmanager.com
+                                    </TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <Rectangle Width="40"  Height="40" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_user}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                    <Label Content="Ádám Vass" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" FontSize="22" Foreground="White"></Label>
+                    <Button Grid.Column="2" Grid.Row="4"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" Height="80" Style="{DynamicResource MetroCircleButtonStyle}">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold">Tasks</TextBlock>
+                                    <TextBlock>Backend<LineBreak></LineBreak>
+                                        Contact: adam@carrentalmanager.com
+                                    </TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <Rectangle Width="40"  Height="40" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_user}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
                 </Grid>
             </Controls:MetroTabItem>
         </Controls:MetroTabControl>
