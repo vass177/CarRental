@@ -234,13 +234,15 @@
                         <!--<ColumnDefinition></ColumnDefinition>-->
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.5*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="9*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
                         <!--<RowDefinition Height="5*"></RowDefinition>-->
                         <!--<RowDefinition Height="0.5*"></RowDefinition>
                         <RowDefinition Height="2*"></RowDefinition>-->
                     </Grid.RowDefinitions>
                     <Label Content="Changing cars" Grid.Row="0" Grid.Column="0" FontSize="28" Foreground="White" FontWeight="Bold"></Label>
-                    <ListBox x:Name="carsListBox"  Grid.Row="1" ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Background="#FF464646" Margin="0,0" Height="560" BorderBrush="AliceBlue">
+                    <ListBox x:Name="carsListBox" SelectionChanged="carsListBox_SelectionChanged" Grid.Row="1" ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Background="#FF464646" Margin="0,0" Height="500" BorderBrush="AliceBlue">
                         <!--<ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <Canvas></Canvas>
@@ -285,13 +287,15 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical" Width="250" HorizontalAlignment="Right" Background="#198E916F">
                                         <Image Source="{Binding CarPhotoPath}" Margin="0,20,0,0"/>
-                                        <Button Content="Modify" Width="100"></Button>
-                                        <Button Content="Delete" Width="100"></Button>
+                                        <!--<Button Content="Modify" Click="ModifyCar_Click" Width="100"></Button>
+                                        <Button Content="Delete" Click="DeleteCar_Click" Width="100"></Button>-->
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                    <Button x:Name="ModifyButton" Content="Modify" FontSize="18" Visibility="Hidden" Click="ModifyCar_Click" Width="100" Grid.Row="3" Height="50" Margin="700,5,5,5"></Button>
+                    <Button x:Name="DeleteButton" Content="Delete" FontSize="18" Visibility="Hidden" Click="DeleteCar_Click" Width="100" Grid.Row="3" Height="50" Margin="400,5,5,5"></Button>
                     <!--Label Content="New car" Grid.Row="0" Grid.Column="1" FontSize="26" Foreground="White"></Label>
                     <Grid Grid.Row="1" Grid.Column="1" >
                         <Grid.ColumnDefinitions>

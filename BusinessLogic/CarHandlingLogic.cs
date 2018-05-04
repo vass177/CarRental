@@ -11,12 +11,14 @@
     public class CarHandlingLogic
     {
         private readonly CarDataHandler carDBHandler;
+        private readonly RentalDataHandler rentalDBHandler;
 
         public event EventHandler CarListChanged;
 
         public CarHandlingLogic()
         {
             this.carDBHandler = new CarDataHandler();
+            this.rentalDBHandler = new RentalDataHandler();
         }
         private void OnCarListChanged()
         {
@@ -32,9 +34,20 @@
 
         public void DeleteCar(Car selectedCar)
         {
-            carDBHandler.Delete(selectedCar);
+            IQueryable<Rental> carRentals = (IQueryable<Rental>)rentalDBHandler.SelectMore(RentalAttributeType.CarID, selectedCar.CarID);
+            DeleteCarOrders(carRentals);
 
+            carDBHandler.Delete(selectedCar);
             OnCarListChanged();
+        }
+
+        public void DeleteCarOrders(IQueryable<Rental> rentals)
+        {
+            List<Rental> rentalList = rentals.ToList();
+            for (int i = 0; i < rentalList.Count(); i++)
+            {
+                rentalDBHandler.Delete(rentalList[i]);
+            }
         }
 
         public void UpdateCar()

@@ -144,6 +144,16 @@ namespace CarRentalManager
             }
         }
 
+        public void DeleteCar()
+        {
+            if (this.selectedCar != null)
+            {
+                this.carHandLogic.DeleteCar(this.selectedCar);
+
+                this.RefreshCarList();
+            }
+        }
+
         public void UpdateClient()
         {
             if (this.selectedClient != null)
@@ -151,6 +161,16 @@ namespace CarRentalManager
                 this.clientListLogic.UpdateClient();
 
                 this.RefreshClientList();
+            }
+        }
+
+        public void UpdateCar()
+        {
+            if (this.selectedCar != null)
+            {
+                this.carHandLogic.UpdateCar();
+
+                this.RefreshCarList();
             }
         }
 

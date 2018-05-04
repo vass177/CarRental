@@ -164,5 +164,28 @@ namespace CarRentalManager
 
 
         }
+
+        private void ModifyCar_Click(object sender, RoutedEventArgs e)
+        {
+            this.adminWindowViewModel.UpdateCar();
+            ModifyButton.Visibility = Visibility.Hidden;
+            DeleteButton.Visibility = Visibility.Hidden;
+        }
+
+        private void DeleteCar_Click(object sender, RoutedEventArgs e)
+        {
+            this.adminWindowViewModel.DeleteCar();
+            ModifyButton.Visibility = Visibility.Hidden;
+            DeleteButton.Visibility = Visibility.Hidden;
+        }
+
+        private void carsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (carsListBox.SelectedItem != null)
+            {
+                ModifyButton.Visibility = Visibility.Visible;
+                DeleteButton.Visibility = Visibility.Visible;
+            }
+        }
     }
 }
