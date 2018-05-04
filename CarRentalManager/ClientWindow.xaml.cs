@@ -84,7 +84,6 @@ namespace CarRentalManager
             this.LoadUserStatistics();
         }
 
-
         private void ButtonClick_SelectDate(object sender, RoutedEventArgs e)
         {
             if (this.availableCar)
@@ -112,7 +111,7 @@ namespace CarRentalManager
                 this.availableCar = this.clientWindowViewModel.CheckDates(startDate, endDate);
                 if (this.availableCar)
                 {
-                    this.informationLabel.Content = "The selected car is available between " + startDate.ToString().Substring(0, 13) + " and " + endDate.ToString().Substring(0,13);
+                    this.informationLabel.Content = "The selected car is available between " + startDate.ToString().Substring(0, 13) + " and " + endDate.ToString().Substring(0, 13);
                 }
                 else
                 {
@@ -125,10 +124,11 @@ namespace CarRentalManager
                 {
                     this.informationLabel.Content = "Select a starting date!";
                 }
-                else if(this.startDatePicker.SelectedDate < this.endDatePicker.SelectedDate)
+                else if (this.startDatePicker.SelectedDate < this.endDatePicker.SelectedDate)
                 {
                     this.informationLabel.Content = "Start date must be less, than end date";
                 }
+
                 this.availableCar = false;
             }
         }
@@ -140,24 +140,22 @@ namespace CarRentalManager
             string[] image = item.Source.ToString().Split(';');
             string imageSource = image[1].Substring(10);
             this.clientWindowViewModel.SelectACar(imageSource);
-
         }
 
         private void ButtonClick_SelectCar(object sender, RoutedEventArgs e)
-        {           
+        {
             // calling next tab
             this.NewRentalTabControl.SelectedItem = this.Date_TabItem;
         }
 
         private void Service_TabButton(object sender, RoutedEventArgs e)
         {
-            
             List<string> services = new List<string>();
 
             foreach (var item in this.servicesGrid.Children)
             {
                 if (item is ToggleSwitch && (bool)(item as ToggleSwitch).IsChecked)
-                { 
+                {
                     string name = (item as ToggleSwitch).Name.Replace('_', ' ');
                     services.Add(name);
                 }
@@ -166,7 +164,6 @@ namespace CarRentalManager
             this.clientWindowViewModel.SelectService(services);
 
             this.NewRentalTabControl.SelectedItem = this.Confirm_Tabitem;
-
         }
 
         public void LoadUserStatistics()
@@ -174,19 +171,17 @@ namespace CarRentalManager
             List<int> clientData = this.clientWindowViewModel.getClientStatistics();
 
             LineSeries ls = new LineSeries();
-            
+
             SeriesCollection mySeries = new SeriesCollection
             {
                 new LineSeries
                 {
                     Values = new ChartValues<int>(clientData),
-                    Title="Payments"
+                    Title = "Payments"
                 }
             };
             this.axisX.Labels = new string[] { "2014", "2015", "2016", "2017", "2018" };
             this.paymentChart.Series = mySeries;
-            
-
         }
     }
 }
