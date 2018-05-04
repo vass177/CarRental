@@ -142,7 +142,7 @@ namespace CarRentalManager
             IncomeChart.Series = mySeries;
 
             List<decimal> carCoordinates = this.adminWindowViewModel.GetCarCoordinates();
-            for (int i = 0; i < carCoordinates.Count()-1; i++)
+            for (int i = 0; i < carCoordinates.Count()-1; i+=2)
             {
                 // The pushpin to add to the map.
                 Pushpin pin = new Pushpin();
