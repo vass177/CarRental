@@ -19,6 +19,7 @@ using LiveCharts.Wpf;
 using System.Data.SqlClient;
 using System.IO;
 using Microsoft.Maps.MapControl.WPF;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace CarRentalManager
 {
@@ -165,18 +166,20 @@ namespace CarRentalManager
 
         }
 
-        private void ModifyCar_Click(object sender, RoutedEventArgs e)
+        private async void ModifyCar_ClickAsync(object sender, RoutedEventArgs e)
         {
             this.adminWindowViewModel.UpdateCar();
             ModifyButton.Visibility = Visibility.Hidden;
             DeleteButton.Visibility = Visibility.Hidden;
+            await this.ShowMessageAsync("Update car", "Car has been changed...");
         }
 
-        private void DeleteCar_Click(object sender, RoutedEventArgs e)
+        private async void DeleteCar_ClickAsync(object sender, RoutedEventArgs e)
         {
             this.adminWindowViewModel.DeleteCar();
             ModifyButton.Visibility = Visibility.Hidden;
             DeleteButton.Visibility = Visibility.Hidden;
+            await this.ShowMessageAsync("Delete car", "Car has been deleted...");
         }
 
         private void carsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
