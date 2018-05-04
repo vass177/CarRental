@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data.DataHandling;
-using Data;
-
+﻿
 namespace BusinessLogic
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Data;
+    using Data.DataHandling;
+
     public class ClientInformationLogic
     {
         private readonly ClientDataHandler clientDBHandler;
         private readonly RentalDataHandler rentalDBHandler;
         private readonly UserDataHandler userDBHandler;
         private readonly RentalServiceJoinDataHandler rentalJoinDBHandler;
-
-        public event EventHandler ClientListChanged;
-
-        public event EventHandler ClientLoggedIn;
 
         public ClientInformationLogic()
         {
@@ -27,15 +24,9 @@ namespace BusinessLogic
             this.rentalJoinDBHandler = new RentalServiceJoinDataHandler();
         }
 
-        private void OnLogIn()
-        {
-            this.ClientLoggedIn?.Invoke(this, EventArgs.Empty);
-        }
+        public event EventHandler ClientListChanged;
 
-        private void OnClientListChanged()
-        {
-            this.ClientListChanged?.Invoke(this, EventArgs.Empty);
-        }
+        public event EventHandler ClientLoggedIn;
 
         public IList<Client> GetAllClientList()
         {
@@ -46,9 +37,11 @@ namespace BusinessLogic
 
         public void DeleteClient(Client selectedClient)
         {
-            IQueryable<Rental> clientRentals =  (IQueryable<Rental>) this.rentalDBHandler.SelectMore(RentalAttributeType.UserName, selectedClient.UserName);
-            if(clientRentals!=null)
+            IQueryable<Rental> clientRentals = (IQueryable<Rental>)this.rentalDBHandler.SelectMore(RentalAttributeType.UserName, selectedClient.UserName);
+            if (clientRentals != null)
+            {
                 this.DeleteClientOrders(clientRentals);
+            }
 
             User deletableUser = (User)this.userDBHandler.Select(UserAttributeType.UserName, selectedClient.UserName);
             this.clientDBHandler.Delete(selectedClient);
@@ -68,6 +61,7 @@ namespace BusinessLogic
                 {
                     this.rentalJoinDBHandler.Delete(rentalJoins[j]);
                 }
+
                 this.rentalDBHandler.Delete(rentalList[i]);
             }
         }
@@ -81,9 +75,18 @@ namespace BusinessLogic
 
         public Client GetLoggedInClient(string userName)
         {
-            Client loggedIn=(Client)this.clientDBHandler.Select(ClientAttributeType.UserName, userName);
+            Client loggedIn = (Client)this.clientDBHandler.Select(ClientAttributeType.UserName, userName);
             return loggedIn;
         }
 
+        private void OnClientListChanged()
+        {
+            this.ClientListChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnLogIn()
+        {
+            this.ClientLoggedIn?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

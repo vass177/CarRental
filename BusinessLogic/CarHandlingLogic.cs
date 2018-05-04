@@ -5,16 +5,14 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using Data.DataHandling;
     using Data;
+    using Data.DataHandling;
 
     public class CarHandlingLogic : ICarHandlingLogic
     {
         private readonly CarDataHandler carDBHandler;
         private readonly RentalDataHandler rentalDBHandler;
         private readonly RentalServiceJoinDataHandler rentalJoinDBHandler;
-
-        public event EventHandler CarListChanged;
 
         public CarHandlingLogic()
         {
@@ -23,10 +21,7 @@
             this.rentalJoinDBHandler = new RentalServiceJoinDataHandler();
         }
 
-        private void OnCarListChanged()
-        {
-            this.CarListChanged?.Invoke(this, EventArgs.Empty);
-        }
+        public event EventHandler CarListChanged;
 
         public IList<Car> GetAllCarList()
         {
@@ -54,6 +49,7 @@
                 {
                     this.rentalJoinDBHandler.Delete(rentalJoins[j]);
                 }
+
                 this.rentalDBHandler.Delete(rentalList[i]);
             }
         }
@@ -76,6 +72,11 @@
             this.carDBHandler.Insert(newCar);
 
             this.OnCarListChanged();
+        }
+
+        private void OnCarListChanged()
+        {
+            this.CarListChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

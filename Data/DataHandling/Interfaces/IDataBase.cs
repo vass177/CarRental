@@ -26,4 +26,3 @@ namespace Data.DataHandling
         object GetAll();
     }
 }
-

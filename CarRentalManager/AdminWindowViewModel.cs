@@ -9,8 +9,8 @@ namespace CarRentalManager
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using Data;
     using BusinessLogic;
+    using Data;
 
     public class AdminWindowViewModel : Bindable
     {
