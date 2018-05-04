@@ -92,6 +92,29 @@
                         </Charts:PieChart.Series>-->
                     </Charts:PieChart>
                     <Charts:CartesianChart Foreground="White" FontSize="12" x:Name="IncomeChart" Grid.Row="4" Grid.Column="0" LegendLocation="Right" >
+                        <Charts:CartesianChart.AxisY >
+                            <Charts:Axis IsMerged="False" MinValue="0">
+                                <Charts:Axis.Separator>
+                                    <Charts:Separator StrokeThickness="1"  IsEnabled="True">
+                                        <Charts:Separator.Stroke>
+                                            <SolidColorBrush Color="#19FFFFFF" />
+                                        </Charts:Separator.Stroke>
+                                    </Charts:Separator>
+                                </Charts:Axis.Separator>
+                            </Charts:Axis>
+                        </Charts:CartesianChart.AxisY>
+                        <Charts:CartesianChart.AxisX>
+                            <Charts:Axis x:Name="axisX" IsMerged="False" FontSize="8">
+                                <Charts:Axis.Separator>
+                                    <Charts:Separator StrokeThickness="1" IsEnabled="False">
+                                        <!--Here, see the IsEnabled => false-->
+                                        <Charts:Separator.Stroke>
+                                            <SolidColorBrush Color="White" />
+                                        </Charts:Separator.Stroke>
+                                    </Charts:Separator>
+                                </Charts:Axis.Separator>
+                            </Charts:Axis>
+                        </Charts:CartesianChart.AxisX>
                     </Charts:CartesianChart>
 
                     <Controls1:MapControl Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,15"></Controls1:MapControl>
@@ -111,7 +134,7 @@
                     </Charts:PieChart>
                     <Label Grid.Row="1" Grid.Column="0" Content="Utilization of cars" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
                     <Label Grid.Row="1" Grid.Column="1" Content="Utilization of services" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
-                    <Label Grid.Row="3" Grid.Column="0" Content="Income per month" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Income per year" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
                     <Label Grid.Row="3" Grid.Column="1" Content="Location of cars" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
                     <!--<Label x:Name="CarSumma_Label" Grid.Row="1" Grid.Column="2" FontSize="24"></Label>-->
                 </Grid>

@@ -121,6 +121,22 @@ namespace CarRentalManager
                 }
             }
             UtilizationServicesChart.Series = myPieCollection2;
+
+
+            List<int> incomeData = this.adminWindowViewModel.getIncomeStatistics();
+
+            LineSeries ls = new LineSeries();
+            
+            SeriesCollection mySeries = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = new ChartValues<int>(incomeData),
+                    Title = "Income"
+                }
+            };
+            axisX.Labels = new string[] { "2014", "2015", "2016", "2017", "2018" };
+            IncomeChart.Series = mySeries;
         }
     }
 }

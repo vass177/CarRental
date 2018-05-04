@@ -97,6 +97,11 @@ namespace CarRentalManager
             return tempServicesList;
         }
 
+        public List<int> getIncomeStatistics()
+        {
+            return adminOrderhandling.OrderRevenue(false);
+        }
+
         public int CarSumma
         {
             get { return this.carSumma; }

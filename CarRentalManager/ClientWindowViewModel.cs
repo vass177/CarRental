@@ -212,7 +212,7 @@ namespace CarRentalManager
 
         public List<int> getClientStatistics()
         {
-            return clientOrderHandling.OrderRevenue();
+            return clientOrderHandling.OrderRevenue(true);
         }
     }
 }

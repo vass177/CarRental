@@ -174,10 +174,7 @@ namespace CarRentalManager
             List<int> clientData = this.clientWindowViewModel.getClientStatistics();
 
             LineSeries ls = new LineSeries();
-            foreach (int item in clientData)
-            {
-                //ls.Values.Add(item);
-            }
+            
             SeriesCollection mySeries = new SeriesCollection
             {
                 new LineSeries
