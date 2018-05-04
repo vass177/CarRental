@@ -18,7 +18,7 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using System.Data.SqlClient;
 using System.IO;
-using MapControl;
+using Microsoft.Maps.MapControl.WPF;
 
 namespace CarRentalManager
 {
@@ -150,11 +150,19 @@ namespace CarRentalManager
 
                 // Adds the pushpin to the map.
                 carMap.Children.Add(pin);
+
+
             }
-            Pushpin pin1 = new Pushpin();
-            pin1.Location = new Location(47.322, 19.212);
-            pin1.Background = Brushes.Red;
-            carMap.Children.Add(pin1);
+
+            /*Location myloc =new Location(42.32460,-071.069970);
+            var pushpin = new Pushpin()
+            {
+                Background = new SolidColorBrush(Color.FromRgb(244,244,32))
+            };
+            MapLayer.SetPosition(pushpin, myloc);
+            carMap.Children.Add(pushpin);*/
+
+
         }
     }
 }
