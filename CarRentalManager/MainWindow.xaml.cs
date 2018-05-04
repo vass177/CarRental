@@ -123,23 +123,23 @@ namespace CarRentalManager
                 await this.ShowMessageAsync("Login message", "Successfull");
                 if (loginAuthentication.IsClient() == true)
                 {
-                    this.LoginName_TextBox.Text = "";
-                    this.LoginPassword_TextBox.Password = "";
+                    this.LoginName_TextBox.Text = string.Empty;
+                    this.LoginPassword_TextBox.Password = string.Empty;
                     ClientWindow cw = new ClientWindow(loginAuthentication.UserName);
                     cw.ShowDialog();
                 }
                 else
                 {
-                    this.LoginName_TextBox.Text = "";
-                    this.LoginPassword_TextBox.Password = "";
+                    this.LoginName_TextBox.Text = string.Empty;
+                    this.LoginPassword_TextBox.Password = string.Empty;
                     AdminWindow aw = new AdminWindow();
                     aw.ShowDialog();
                 }
             }
             else
             {
-                this.LoginName_TextBox.Text = "";
-                this.LoginPassword_TextBox.Password = "";
+                this.LoginName_TextBox.Text = string.Empty;
+                this.LoginPassword_TextBox.Password = string.Empty;
                 await this.ShowMessageAsync("Login message", "Unsuccessfull");
             }
         }
@@ -170,15 +170,16 @@ namespace CarRentalManager
                 {
                     userClientRegistration.AddNewUser(this.Name_Textbox.Text, Fullname_Textbox.Text, this.Pw_Textbox.Password, this.Address_Textbox.Text, this.Email_Textbox.Text, usertype);
                     //Registration_Grid.Children.Clear();
-                    this.Name_Textbox.Text = "";
-                    this.Fullname_Textbox.Text = "";
-                    this.Pw_Textbox.Password = "";
-                    Address_Textbox.Text = "";
-                    this.Email_Textbox.Text = "";
+                    this.Name_Textbox.Text = string.Empty;
+                    this.Fullname_Textbox.Text = string.Empty;
+                    this.Pw_Textbox.Password = string.Empty;
+                    Address_Textbox.Text = string.Empty;
+                    this.Email_Textbox.Text = string.Empty;
                     await this.ShowMessageAsync("Registration message", this.Name_Textbox.Text + " user is created as " + usertypename);
                 }
             }
         }
+
         /// <summary>
         /// This method checks after every change in the PasswordBox, whether it is valid or not
         /// </summary>

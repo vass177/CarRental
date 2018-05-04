@@ -36,16 +36,25 @@ namespace CarRentalManager
 
         public DateTime StartDate
         {
-            get { return this.startDate; }
+            get
+            {
+                return this.startDate;
+            }
+
             set
             {
                 this.startDate = value;
                 this.OnPropertyChanged(nameof(this.StartDate));
             }
         }
+
         public DateTime EndDate
         {
-            get { return this.endDate; }
+            get
+            {
+                return this.endDate;
+            }
+
             set
             {
                 this.endDate = value;
@@ -53,10 +62,13 @@ namespace CarRentalManager
             }
         }
 
-
         public int TotalPrice
         {
-            get { return this.totalPrice; }
+            get
+            {
+                return this.totalPrice;
+            }
+
             set
             {
                 this.totalPrice = value;
@@ -64,10 +76,12 @@ namespace CarRentalManager
             }
         }
 
-
         public int ClientDiscount
         {
-            get { return this.clientDiscount; }
+            get
+            {
+                return this.clientDiscount;
+            }
 
             set
             {
@@ -76,10 +90,12 @@ namespace CarRentalManager
             }
         }
 
-
         public int CarPrice
         {
-            get { return this.carPrice; }
+            get
+            {
+                return this.carPrice;
+            }
 
             set
             {
@@ -87,7 +103,7 @@ namespace CarRentalManager
                 this.OnPropertyChanged(nameof(this.CarPrice));
             }
         }
-        
+
         public List<Service> ServiceList
         {
             get
@@ -155,7 +171,6 @@ namespace CarRentalManager
 
             this.clientLogic.ClientLoggedIn += this.ClientLogic_ClientLoggedIn;
             this.clientOrderHandling.RentalListChanged += this.ClientOrderHandling_RentalListChanged;
-            
         }
 
         private void ClientOrderHandling_RentalListChanged(object sender, EventArgs e)
@@ -179,6 +194,7 @@ namespace CarRentalManager
         {
             this.OnPropertyChanged(nameof(this.LoggedInClient));
         }
+
         public void SelectACar(string imageSource)
         {
             this.orderHandling.SelectCar(imageSource);
@@ -196,7 +212,7 @@ namespace CarRentalManager
 
         public void SelectService(List<string> serivceList)
         {
-            this.ServiceList = this.orderHandling.SearchSelectedServices(serivceList);            
+            this.ServiceList = this.orderHandling.SearchSelectedServices(serivceList);
             this.ServicePriceList = this.orderHandling.ServPriceList;
             this.orderHandling.CalculateFinalPrice();
             this.CarPrice = this.orderHandling.CarPrice;
