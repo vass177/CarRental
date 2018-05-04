@@ -12,8 +12,8 @@ namespace Test_BL.FakedTest.Fakes
     /// Simply comprises together interfaces IDataBase and IFakeProperties 
     /// without any meaningful logic or declaration
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    interface IFakeDataBase<T> : IDataBase, IFakeProperties<T>  
+    /// <typeparam name="T">T: property type in IFakeProperties</typeparam>
+    public interface IFakeDataBase<T> : IDataBase, IFakeProperties<T>  
     {
     }
 }

@@ -14,14 +14,14 @@ namespace Test_BL.FakedTests.Fakes
     {
         private Car[] cars;
         private CarHandlingLogic carHandlingLogic;
+
         [OneTimeSetUp]
         public void Setup()
         {
-
         }
+
         private void CreateCarArray()
         {
-
         }
     }
 }
