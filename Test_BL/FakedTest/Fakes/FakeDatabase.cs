@@ -16,37 +16,42 @@ namespace Test_BL.FakedTest.Fakes
         Type2,
         Type3
     }
-    
+
     /// <summary>
     /// Simple generic database model
     /// All methods except Update are implemented
-    /// with somewhat meaningful logic 
+    /// with somewhat meaningful logic
     /// </summary>
     internal class FakeDatabase<T> : IFakeDataBase<T>
     {
         public IList<T> Objects { get; private set; } = new List<T>();
-        public IList<T> DeletedObjects { get;  private set;} = new List<T>();
+
+        public IList<T> DeletedObjects { get;  private set; } = new List<T>();
+
         public IList<T> SelectedObjects { get; private set; } = new List<T>();
+
         public IList<T> InsertedObjects { get; private set; } = new List<T>();
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="FakeDatabase{T}"/> class.
         /// Constructor for dummy database handler for testing purposes
         /// </summary>
         public FakeDatabase()
         {
-            Objects = new List<T>();
+            this.Objects = new List<T>();
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="FakeDatabase{T}"/> class.
         /// Constructor for FakeDatabase,gets an IEnumerable argument
         /// and sets corresponding field to it
         /// </summary>
         /// <param name="mycollection">IEnumerable type</param>
         public FakeDatabase(IEnumerable<T> mycollection)
         {
-            Objects = (IList<T>)mycollection;
+            this.Objects = (IList<T>)mycollection;
         }
-        
+
         /// <summary>
         /// Adds argument to the DeletedObjects (class property) collecton 
         /// </summary>
@@ -55,25 +60,25 @@ namespace Test_BL.FakedTest.Fakes
         {
             this.DeletedObjects.Add((T)deletableItem);
         }
-        
+
         /// <summary>
         /// Returns all elements of Objects class property
         /// </summary>
         /// <returns>the whole Objects property</returns>
         public object GetAll()
         {
-            return Objects;
+            return this.Objects;
         }
-        
+
         /// <summary>
         /// Adds argument to InsertedObjects collection
         /// </summary>
         /// <param name="newItem">object, will be casted and added to InsertedObjects collectons</param>
         public void Insert(object newItem)
         {
-            InsertedObjects.Add((T)newItem);
+            this.InsertedObjects.Add((T)newItem);
         }
-        
+
         /// <summary>
         /// It gives back first element of the data collection
         /// No matter what it adds second argument to SelectedObjects collection
@@ -86,11 +91,12 @@ namespace Test_BL.FakedTest.Fakes
             this.SelectedObjects.Add((T)attributeValue);
             if ((FakeAttributeEnum)attributeType == (FakeAttributeEnum)0)
             {
-                return Objects.First();
+                return this.Objects.First();
             }
+
             return null;
         }
-        
+
         /// <summary>
         /// Returns all element of the IEnumerable Object
         /// </summary>
@@ -102,17 +108,17 @@ namespace Test_BL.FakedTest.Fakes
             if ((FakeAttributeEnum)attributeType == FakeAttributeEnum.Type1 ||
                 (FakeAttributeEnum)attributeType == FakeAttributeEnum.Type2)
             {
-                return Objects;
+                return this.Objects;
             }
+
             return null;
         }
-        
+
         /// <summary>
         /// Does nothing
         /// </summary>
         public void Update()
         {
-            
         }
     }
 }
