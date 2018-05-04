@@ -46,7 +46,6 @@ namespace Data.DataHandling
         public object Select(object attributeType, object attributeValue)
         {
             // No single select available in this table
-
             throw new InvalidSearchTypeException("RentalServiceAttributeType");
         }
 
