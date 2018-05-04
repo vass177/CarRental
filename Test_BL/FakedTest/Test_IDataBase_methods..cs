@@ -170,6 +170,7 @@ namespace Test_BL.FakedTest
         /// Inserts an object and tests whether the inserted object occurs in the  InsertedObject list
         /// </summary>
         /// <typeparam name="T">An EntityFramework created data class</typeparam>
+        /// <param name="fakeDB">IFakeDataBase<T> dummy interface reference for testing</param>
         /// <param name="input">An object to be inserted</param>
         /// <param name="expected">an object to be expected</param>
         [TestCaseSource("DummyDataTestCases")]
@@ -186,7 +187,7 @@ namespace Test_BL.FakedTest
         /// Inserts an object 2 times and tests if IFakeDataBase implementor 
         /// InsertedObject property has 2 elements
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">T an EntityFramwork generated object</typeparam>
         /// <param name="fakeDB">a IFakeDataBase implementor</param>
         /// <param name="input">an Entity Framework object inserted</param>
         /// <param name="expected">an EF object to bechecked</param>
@@ -217,7 +218,7 @@ namespace Test_BL.FakedTest
         /// </summary>
         /// <typeparam name="T">an Entity Framework object</typeparam>
         /// <param name="fakeDB">FakeDatabBase<T>, fake database for method testing</param>
-        /// <param name="inputDS">List<T>, a fake dataset to be tested</param>
+        /// <param name="inputDS">List<T>, fake dataset to be tested</param>
         [TestCaseSource("DummyDataSetTestCases")]
         public void Select_method_test<T>(IFakeDataBase<T> fakeDB, List<T> inputDS)
         {

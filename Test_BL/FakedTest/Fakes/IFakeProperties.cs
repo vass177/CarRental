@@ -11,11 +11,14 @@ namespace Test_BL.FakedTest.Fakes
     /// only for testing purposes
     /// </summary>
     /// <typeparam name="T">represents a EntityFramework generated class</typeparam>
-    interface IFakeProperties<T>
+    public interface IFakeProperties<T>
     {
         IList<T> Objects { get; }
+
         IList<T> DeletedObjects { get; }
+
         IList<T> SelectedObjects { get; }
+
         IList<T> InsertedObjects { get; }
     }
 }
