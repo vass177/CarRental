@@ -11,6 +11,7 @@ namespace BusinessLogic
     public class OrderHandling
     {
         private readonly RentalDataHandler rentalDBHandler;
+        private readonly ServiceDataHandler serviceDBHandler;
         private Client loggedInClient;
 
         public event EventHandler RentalListChanged;
@@ -18,6 +19,7 @@ namespace BusinessLogic
         public OrderHandling(Client loggedInClient)
         {
             rentalDBHandler = new RentalDataHandler();
+            serviceDBHandler = new ServiceDataHandler();
             this.loggedInClient = loggedInClient;
         }
 
@@ -39,6 +41,13 @@ namespace BusinessLogic
             
 
             return new List<int> { 1, 2 };
+        }
+
+        public IList<Service> GetAllServiceList()
+        {
+            var services = serviceDBHandler.GetAll();
+
+            return ((IQueryable<Service>)services).ToList();
         }
 
         public List<int> OrderRevenue()
@@ -94,5 +103,6 @@ namespace BusinessLogic
 
             return new List<int> { sum2014, sum2015, sum2016, sum2017, sum2018 };
         }
+
     }
 }
