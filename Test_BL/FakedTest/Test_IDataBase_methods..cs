@@ -15,8 +15,8 @@ namespace Test_BL.FakedTest
     [TestFixture]
     public class Test_IDataBase_methods
     {
-        static int id = 0;
-        static Random rnd = new Random();
+        private static int id = 0;
+        private static Random rnd = new Random();
 
         private List<Data.Car> myCarDataSet;
         private FakeDatabase<Data.Car> myFCarDb;
@@ -32,7 +32,7 @@ namespace Test_BL.FakedTest
 
         public Data.Car MyCar { get; set; }
 
-        public static IEnumerable<object[]> DummyDataSetTestCases
+        public IEnumerable<object[]> DummyDataSetTestCases
         {
             get
             {
@@ -61,6 +61,7 @@ namespace Test_BL.FakedTest
                         ServiceName = "service_" + i++
                     });
                 }
+
                 FakeDatabase<Data.Car> carFDb = new FakeDatabase<Data.Car>(carDS);
                 FakeDatabase<Data.Client> clientFDb = new FakeDatabase<Data.Client>(clientDS);
                 FakeDatabase<Data.Rental> rentalFDb = new FakeDatabase<Data.Rental>(rentalDS);
@@ -71,6 +72,28 @@ namespace Test_BL.FakedTest
                 testCases.Add(new object[] { clientFDb, clientDS });
                 testCases.Add(new object[] { rentalFDb, rentalDS });
                 testCases.Add(new object[] { serviceFDb, serviceDS });
+                return testCases;
+            }
+        }
+
+        public IEnumerable<object[]> DummyDataTestCases
+        {
+            get
+            {
+                IFakeDataBase<Data.Car> carFDb = new FakeDatabase<Data.Car>();
+                IFakeDataBase<Data.Client> clientFDb = new FakeDatabase<Data.Client>();
+                IFakeDataBase<Data.Rental> rentalFDb = new FakeDatabase<Data.Rental>();
+                IFakeDataBase<Data.Service> serviceFDb = new FakeDatabase<Data.Service>();
+                Data.Car c = new Data.Car { CarType = "TestCar" };
+                Data.Client cl = new Data.Client { UserName = "TestName" };
+                Data.Rental r = new Data.Rental { UserName = "TestName" };
+                Data.Service s = new Data.Service { ServiceName = "TestService" };
+
+                List<object[]> testCases = new List<object[]>();
+                testCases.Add(new object[] { carFDb, c, c });
+                testCases.Add(new object[] { clientFDb, cl, cl });
+                testCases.Add(new object[] { rentalFDb, r, r });
+                testCases.Add(new object[] { serviceFDb, s, s });
                 return testCases;
             }
         }
@@ -138,32 +161,10 @@ namespace Test_BL.FakedTest
             };
 
             // ACT
-            myFCarDb.Insert(c);
+            this.myFCarDb.Insert(c);
 
             // ASSERT
             Assert.That(this.myFCarDb.InsertedObjects.Contains(c));
-        }
-
-        public static IEnumerable<object[]> DummyDataTestCases
-        {
-            get
-            {
-                IFakeDataBase<Data.Car> carFDb = new FakeDatabase<Data.Car>();
-                IFakeDataBase<Data.Client> clientFDb = new FakeDatabase<Data.Client>();
-                IFakeDataBase<Data.Rental> rentalFDb = new FakeDatabase<Data.Rental>();
-                IFakeDataBase<Data.Service> serviceFDb = new FakeDatabase<Data.Service>();
-                Data.Car c = new Data.Car{CarType = "TestCar"};
-                Data.Client cl = new Data.Client { UserName = "TestName" };
-                Data.Rental r = new Data.Rental { UserName = "TestName" };
-                Data.Service s = new Data.Service { ServiceName = "TestService"};
-
-                List<object[]> testCases = new List<object[]>();
-                testCases.Add(new object[] { carFDb, c, c });
-                testCases.Add(new object[] { clientFDb, cl, cl });
-                testCases.Add(new object[] { rentalFDb, r, r });
-                testCases.Add(new object[] { serviceFDb, s, s });
-                return testCases;
-            }
         }
 
         /// <summary>
