@@ -12,6 +12,7 @@ namespace BusinessLogic
     {
         private readonly RentalDataHandler rentalDBHandler;
         private readonly ServiceDataHandler serviceDBHandler;
+        private readonly ClientDataHandler clientDBHandler;
         private readonly RentalServiceJoinDataHandler rentalJoinDBHandler;
         private Client loggedInClient;
 
@@ -21,6 +22,7 @@ namespace BusinessLogic
         {
             rentalDBHandler = new RentalDataHandler();
             serviceDBHandler = new ServiceDataHandler();
+            clientDBHandler = new ClientDataHandler();
             rentalJoinDBHandler = new RentalServiceJoinDataHandler();
             this.loggedInClient = loggedInClient;
         }
@@ -122,6 +124,14 @@ namespace BusinessLogic
             foreach (var item in q2018)
             {
                 sum2018 += (int)item.RentalFullPrice;
+            }
+
+            if (onlyForClient == true)
+            {
+                List<int> allRevenue = OrderRevenue(false);
+                double discount = ((double)sum2018 / (double)allRevenue[4]) * 100;
+                loggedInClient.ClientDiscountStatus = (int)discount;
+                clientDBHandler.Update();
             }
 
             return new List<int> { sum2014, sum2015, sum2016, sum2017, sum2018 };
