@@ -9,7 +9,7 @@ namespace Data.Exceptions
     class InvalidSearchTypeException : Exception
     {
         public InvalidSearchTypeException(string message)
-            :base(message)
+            : base(message)
         {
         }
     }

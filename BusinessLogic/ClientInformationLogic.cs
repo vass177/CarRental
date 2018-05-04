@@ -36,7 +36,7 @@ namespace BusinessLogic
         {
             this.ClientListChanged?.Invoke(this, EventArgs.Empty);
         }
-        
+
         public IList<Client> GetAllClientList()
         {
             var clients = this.clientDBHandler.GetAll();
@@ -57,6 +57,7 @@ namespace BusinessLogic
 
             this.OnClientListChanged();
         }
+
         public void DeleteClientOrders(IQueryable<Rental> rentals)
         {
             List<Rental> rentalList = rentals.ToList();
@@ -77,12 +78,12 @@ namespace BusinessLogic
 
             this.OnClientListChanged();
         }
+
         public Client GetLoggedInClient(string userName)
         {
             Client loggedIn=(Client)this.clientDBHandler.Select(ClientAttributeType.UserName, userName);
             return loggedIn;
         }
-        
 
     }
 }

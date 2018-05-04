@@ -22,6 +22,7 @@
             this.rentalDBHandler = new RentalDataHandler();
             this.rentalJoinDBHandler = new RentalServiceJoinDataHandler();
         }
+
         private void OnCarListChanged()
         {
             this.CarListChanged?.Invoke(this, EventArgs.Empty);
