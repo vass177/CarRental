@@ -34,12 +34,12 @@ namespace CarRentalManager
     {
         private AdminWindowViewModel adminWindowViewModel;
 
-        public SeriesCollection MySeries { get; set; }
-
         public AdminWindow()
         {
             this.InitializeComponent();
         }
+
+        public SeriesCollection MySeries { get; set; }
 
         public void LoadAdminStatistics()
         {
