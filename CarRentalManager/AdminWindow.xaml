@@ -83,25 +83,20 @@
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Content="Welcome Admin!" Grid.Row="0" Grid.Column="0" FontSize="28" Foreground="White" FontWeight="Bold"></Label>
-                    <Charts:PieChart  Grid.Row="2" Grid.Column="0" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
+                    <Charts:PieChart Foreground="White" FontSize="12" Grid.Row="2" Grid.Column="0" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
                         <Charts:PieChart.Series>
-                            <Charts:PieSeries Title="Opel" Values="3" DataLabels="False"/>
+                            <Charts:PieSeries Title="Opel" Values="3" DataLabels="False" />
                             <Charts:PieSeries Title="Smart" Values="4" DataLabels="False" />
                             <Charts:PieSeries Title="Lada" Values="6" DataLabels="False"/>
                             <Charts:PieSeries Title="Tesla" Values="2" DataLabels="False" />
                         </Charts:PieChart.Series>
                     </Charts:PieChart>
-                    <Charts:CartesianChart x:Name="IncomeChart" Grid.Row="4" Grid.Column="0" LegendLocation="Right" >
+                    <Charts:CartesianChart Foreground="White" FontSize="12" x:Name="IncomeChart" Grid.Row="4" Grid.Column="0" LegendLocation="Right" >
                     </Charts:CartesianChart>
-                    <Charts:CartesianChart Grid.Column="1" Grid.Row="4" Series="{Binding SeriesCollection}" LegendLocation="Left">
-                        <Charts:CartesianChart.AxisX>
-                            <Charts:Axis Title="Salesman" Labels="{Binding Labels}"></Charts:Axis>
-                        </Charts:CartesianChart.AxisX>
-                        <Charts:CartesianChart.AxisY>
-                            <Charts:Axis Title="Sold Apps" LabelFormatter="{Binding Formatter}"></Charts:Axis>
-                        </Charts:CartesianChart.AxisY>
-                    </Charts:CartesianChart>
-                    <Charts:PieChart  Grid.Row="2" Grid.Column="1" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
+
+                    <Controls1:MapControl Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,15"></Controls1:MapControl>
+
+                    <Charts:PieChart Foreground="White" FontSize="12" Grid.Row="2" Grid.Column="1" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
                         <Charts:PieChart.Series>
                             <Charts:PieSeries Title="Additional driver" Values="3" DataLabels="False"/>
                             <Charts:PieSeries Title="Baby seat" Values="4" DataLabels="False" />
@@ -117,7 +112,7 @@
                     <Label Grid.Row="1" Grid.Column="0" Content="Utilization of cars" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
                     <Label Grid.Row="1" Grid.Column="1" Content="Utilization of services" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
                     <Label Grid.Row="3" Grid.Column="0" Content="Income per month" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
-                    <Label Grid.Row="3" Grid.Column="1" Content="New user per month" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
+                    <Label Grid.Row="3" Grid.Column="1" Content="Location of cars" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
                     <!--<Label x:Name="CarSumma_Label" Grid.Row="1" Grid.Column="2" FontSize="24"></Label>-->
                 </Grid>
             </Controls:MetroTabItem>
