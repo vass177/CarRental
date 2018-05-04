@@ -43,12 +43,13 @@ namespace CarRentalManager
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadAdminStatistics();
             //MessageBox.Show(File.ReadAllLines("C:/Users/Franciska/source/repos/oenik_szt2_2018tavasz_pm4j60_gk607o_ilnrw96Q/ListCarHP.sql").ToString());
 
             this.adminWindowViewModel = new AdminWindowViewModel();
 
-            SeriesCollection mySeries = new SeriesCollection
+            LoadAdminStatistics();
+
+            /*SeriesCollection mySeries = new SeriesCollection
             {
                 new LineSeries
                 {
@@ -56,7 +57,7 @@ namespace CarRentalManager
                     Values = new ChartValues<int>{10, 20, 5, 2, 30}
                 }
             };
-            IncomeChart.Series = mySeries;
+            IncomeChart.Series = mySeries;*/
 
             this.DataContext = this.adminWindowViewModel;          
         }
@@ -94,7 +95,32 @@ namespace CarRentalManager
 
         public void LoadAdminStatistics()
         {
+            Dictionary<string, int> myCarsList = new Dictionary<string, int>();
+            myCarsList = adminWindowViewModel.SummaCars();
 
+            SeriesCollection myPieCollection = new SeriesCollection();
+            foreach (var item in myCarsList)
+            {
+                if (myCarsList[item.Key] != 0 )
+                {
+                    myPieCollection.Add(new PieSeries { Title = item.Key, Values = new ChartValues<int> { myCarsList[item.Key] } });
+                }               
+            }           
+            UtilizationCarsChart.Series = myPieCollection;
+
+
+            Dictionary<string, int> myServicesList = new Dictionary<string, int>();
+            myServicesList = adminWindowViewModel.SummaCars();
+            
+            SeriesCollection myPieCollection2 = new SeriesCollection();
+            foreach (var item in myServicesList)
+            {
+                if (myCarsList[item.Key] != 0)
+                {
+                    myPieCollection2.Add(new PieSeries { Title = item.Key, Values = new ChartValues<int> { myServicesList[item.Key] } });
+                }
+            }
+            UtilizationServicesChart.Series = myPieCollection2;
         }
     }
 }
