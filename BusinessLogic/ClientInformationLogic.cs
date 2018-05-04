@@ -11,6 +11,8 @@ namespace BusinessLogic
     public class ClientInformationLogic
     {
         private readonly ClientDataHandler clientDBHandler;
+        private readonly RentalDataHandler rentalDBHandler;
+        private readonly UserDataHandler userDBHandler;
 
         public event EventHandler ClientListChanged;
 
@@ -19,6 +21,8 @@ namespace BusinessLogic
         public ClientInformationLogic()
         {
             this.clientDBHandler = new ClientDataHandler();
+            this.rentalDBHandler = new RentalDataHandler();
+            this.userDBHandler = new UserDataHandler();
         }
 
         private void OnLogIn()
@@ -40,9 +44,23 @@ namespace BusinessLogic
 
         public void DeleteClient(Client selectedClient)
         {
+            IQueryable<Rental> clientRentals =  (IQueryable<Rental>) rentalDBHandler.SelectMore(RentalAttributeType.UserName, selectedClient.UserName);
+            DeleteClientOrders(clientRentals);
+
+            User deletableUser = (User)userDBHandler.Select(UserAttributeType.UserName, selectedClient.UserName);
             clientDBHandler.Delete(selectedClient);
+            userDBHandler.Delete(deletableUser);
+
 
             OnClientListChanged();
+        }
+        public void DeleteClientOrders(IQueryable<Rental> rentals)
+        {
+            List<Rental> rentalList = rentals.ToList();
+            for (int i = 0; i < rentalList.Count(); i++)
+            {
+                rentalDBHandler.Delete(rentalList[i]);
+            }
         }
 
         public void UpdateClient()
