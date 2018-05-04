@@ -16,6 +16,7 @@ namespace CarRentalManager
     {
         private OrderHandling adminOrderhandling;
 
+
         private IList<Client> clients;
         private Client selectedClient;
         private ClientInformationLogic clientListLogic;
@@ -70,6 +71,19 @@ namespace CarRentalManager
             }
         }
 
+        public Dictionary<string, int> SummaCars()
+        {
+            Dictionary<string, int> tempCarList = new Dictionary<string, int>();
+            IList<Car> getAllCars = carHandLogic.GetAllCarList();
+            foreach (var item in getAllCars)
+            {
+                int i = 0;
+                i = adminOrderhandling.NumberOfRental(item);
+                tempCarList.Add(item.CarType, i);                
+            }
+            return tempCarList;
+        }
+
         public int CarSumma
         {
             get { return this.carSumma; }
@@ -80,7 +94,8 @@ namespace CarRentalManager
         {
             this.clientListLogic = new ClientInformationLogic();
             this.carHandLogic = new CarHandlingLogic();
-            
+
+            this.adminOrderhandling = new OrderHandling(null);
 
             this.RefreshClientList();
             this.RefreshCarList();

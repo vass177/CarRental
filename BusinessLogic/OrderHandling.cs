@@ -41,6 +41,13 @@ namespace BusinessLogic
             return new List<int> { 1, 2 };
         }
 
+        public int NumberOfRental(Car car)
+        {
+            IQueryable<Rental> allRental = (IQueryable<Rental>)rentalDBHandler.GetAll();
+            
+            return allRental.Count(x => x.CarID == car.CarID);
+        } 
+
         public List<int> OrderRevenue()
         {
             IQueryable<Rental> rentalsByClient = (IQueryable<Rental>)rentalDBHandler.SelectMore(RentalAttributeType.UserName, loggedInClient.UserName);

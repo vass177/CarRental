@@ -83,13 +83,13 @@
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Content="Welcome Admin!" Grid.Row="0" Grid.Column="0" FontSize="28" Foreground="White" FontWeight="Bold"></Label>
-                    <Charts:PieChart Foreground="White" FontSize="12" Grid.Row="2" Grid.Column="0" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
-                        <Charts:PieChart.Series>
+                    <Charts:PieChart x:Name="UtilizationCarsChart" Foreground="White" FontSize="12" Grid.Row="2" Grid.Column="0" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
+                        <!--<Charts:PieChart.Series>
                             <Charts:PieSeries Title="Opel" Values="3" DataLabels="False" />
                             <Charts:PieSeries Title="Smart" Values="4" DataLabels="False" />
                             <Charts:PieSeries Title="Lada" Values="6" DataLabels="False"/>
                             <Charts:PieSeries Title="Tesla" Values="2" DataLabels="False" />
-                        </Charts:PieChart.Series>
+                        </Charts:PieChart.Series>-->
                     </Charts:PieChart>
                     <Charts:CartesianChart Foreground="White" FontSize="12" x:Name="IncomeChart" Grid.Row="4" Grid.Column="0" LegendLocation="Right" >
                     </Charts:CartesianChart>
