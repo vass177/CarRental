@@ -172,7 +172,7 @@
                                     <RowDefinition Height="0.3*"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Border Margin="20,0,40,0" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="#FFF3F3F3" CornerRadius="20,20,20,20" BorderThickness="2,2,2,2">
-                                    <Controls:FlipView x:Name="carFlipView" Margin="30,0" Foreground="#00000000" IsBannerEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" MouseHoverBorderEnabled="False" SelectionChanged="carFlipView_SelectionChanged">
+                                    <Controls:FlipView x:Name="carFlipView" Margin="30,0" Foreground="#00000000" IsBannerEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" MouseHoverBorderEnabled="False" SelectionChanged="CarFlipView_SelectionChanged">
                                         <Image Source="Images\smart.png"></Image>
                                         <Image Source="Images\s2000.png"></Image>
                                         <Image Source="Images\audi.png"></Image>

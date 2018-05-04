@@ -34,7 +34,7 @@ namespace CarRentalManager
     {
         private AdminWindowViewModel adminWindowViewModel;
 
-        public SeriesCollection mySeries { get; set; }
+        public SeriesCollection MySeries { get; set; }
 
         public AdminWindow()
         {
@@ -115,7 +115,6 @@ namespace CarRentalManager
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // MessageBox.Show(File.ReadAllLines("C:/Users/Franciska/source/repos/oenik_szt2_2018tavasz_pm4j60_gk607o_ilnrw96Q/ListCarHP.sql").ToString());
-
             this.adminWindowViewModel = new AdminWindowViewModel();
 
             this.LoadAdminStatistics();
@@ -165,8 +164,6 @@ namespace CarRentalManager
             // CarSumma_Label.Content = adminWindowViewModel.CarSumma.ToString();
         }
 
-        
-
         private async void ModifyCar_ClickAsync(object sender, RoutedEventArgs e)
         {
             this.adminWindowViewModel.UpdateCar();
@@ -183,7 +180,7 @@ namespace CarRentalManager
             await this.ShowMessageAsync("Delete car", "Car has been deleted...");
         }
 
-        private void carsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CarsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.carsListBox.SelectedItem != null)
             {

@@ -172,8 +172,6 @@ namespace CarRentalManager
                 else
                 {
                     userClientRegistration.AddNewUser(this.Name_Textbox.Text, this.Fullname_Textbox.Text, this.Pw_Textbox.Password, this.Address_Textbox.Text, this.Email_Textbox.Text, usertype);
-                    // Registration_Grid.Children.Clear();
-
                     this.Name_Textbox.Text = string.Empty;
                     this.Fullname_Textbox.Text = string.Empty;
                     this.Pw_Textbox.Password = string.Empty;

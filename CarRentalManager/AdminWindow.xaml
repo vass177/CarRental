@@ -242,7 +242,7 @@
                         <RowDefinition Height="2*"></RowDefinition>-->
                     </Grid.RowDefinitions>
                     <Label Content="Changing cars" Grid.Row="0" Grid.Column="0" FontSize="28" Foreground="White" FontWeight="Bold"></Label>
-                    <ListBox x:Name="carsListBox" SelectionChanged="carsListBox_SelectionChanged" Grid.Row="1" ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Background="#FF464646" Margin="0,0" Height="500" BorderBrush="AliceBlue">
+                    <ListBox x:Name="carsListBox" SelectionChanged="CarsListBox_SelectionChanged" Grid.Row="1" ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Background="#FF464646" Margin="0,0" Height="500" BorderBrush="AliceBlue">
                         <!--<ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <Canvas></Canvas>

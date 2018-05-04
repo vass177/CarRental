@@ -177,16 +177,6 @@ namespace CarRentalManager
             this.clientOrderHandling.RentalListChanged += this.ClientOrderHandling_RentalListChanged;
         }
 
-        private void ClientOrderHandling_RentalListChanged(object sender, EventArgs e)
-        {
-            this.RefreshOrderList();
-        }
-
-        private void ClientLogic_ClientLoggedIn(object sender, EventArgs e)
-        {
-            this.RefreshClient();
-        }
-
         public void RefreshOrderList()
         {
             this.rental = this.clientOrderHandling.GetAllRentalList();
@@ -232,6 +222,16 @@ namespace CarRentalManager
         public List<int> getClientStatistics()
         {
             return this.clientOrderHandling.OrderRevenue(true);
+        }
+
+        private void ClientOrderHandling_RentalListChanged(object sender, EventArgs e)
+        {
+            this.RefreshOrderList();
+        }
+
+        private void ClientLogic_ClientLoggedIn(object sender, EventArgs e)
+        {
+            this.RefreshClient();
         }
     }
 }

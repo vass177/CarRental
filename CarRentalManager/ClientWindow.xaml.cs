@@ -31,6 +31,22 @@ namespace CarRentalManager
             this.availableCar = false;
         }
 
+        public void LoadUserStatistics()
+        {
+            List<int> clientData = this.clientWindowViewModel.getClientStatistics();
+
+            SeriesCollection mySeries = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = new ChartValues<int>(clientData),
+                    Title = "Payments"
+                }
+            };
+            this.axisX.Labels = new string[] { "2014", "2015", "2016", "2017", "2018" };
+            this.paymentChart.Series = mySeries;
+        }
+
         private void Client_TabButton(object sender, RoutedEventArgs e)
         {
             this.NewRentalTabControl.SelectedItem = this.CarSelect_TabItem;
@@ -128,7 +144,7 @@ namespace CarRentalManager
             }
         }
 
-        private void carFlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CarFlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int index = this.carFlipView.SelectedIndex;
             Image item = (Image)this.carFlipView.SelectedItem;
@@ -159,22 +175,6 @@ namespace CarRentalManager
             this.clientWindowViewModel.SelectService(services);
 
             this.NewRentalTabControl.SelectedItem = this.Confirm_Tabitem;
-        }
-
-        public void LoadUserStatistics()
-        {
-            List<int> clientData = this.clientWindowViewModel.getClientStatistics();
-
-            SeriesCollection mySeries = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Values = new ChartValues<int>(clientData),
-                    Title = "Payments"
-                }
-            };
-            this.axisX.Labels = new string[] { "2014", "2015", "2016", "2017", "2018" };
-            this.paymentChart.Series = mySeries;
         }
     }
 }
