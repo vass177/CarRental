@@ -79,7 +79,7 @@
     </Compile>
     <Compile Include="DataHandling\CarDataHandler.cs" />
     <Compile Include="DataHandling\ClientDataHandler.cs" />
-    <Compile Include="DataHandling\IDataBase.cs" />
+    <Compile Include="DataHandling\Interfaces\IDataBase.cs" />
     <Compile Include="DataHandling\RentalDataHandler.cs" />
     <Compile Include="DataHandling\RentalServiceJoinDataHandler.cs" />
     <Compile Include="DataHandling\ServiceDataHandler.cs" />
@@ -139,10 +139,10 @@
       <LastGenOutput>RentalDatabaseEntities.cs</LastGenOutput>
     </Content>
     <Content Include="RentalDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="RentalDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>RentalDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>
@@ -161,10 +161,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

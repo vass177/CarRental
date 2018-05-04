@@ -8,7 +8,7 @@
     using Data;
     using Data.DataHandling;
 
-    public class CarHandlingLogic
+    public class CarHandlingLogic : ICarHandlingLogic
     {
         private readonly CarDataHandler carDBHandler;
         private readonly RentalDataHandler rentalDBHandler;
