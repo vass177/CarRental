@@ -31,7 +31,7 @@ namespace CarRentalManager
         public MainWindow()
         {
             this.InitializeComponent();
-            VM = new ViewModel();
+            this.VM = new ViewModel();
             this.passwordValid = false;
 
             /*CarDataHandler carHander = new CarDataHandler();
@@ -118,28 +118,28 @@ namespace CarRentalManager
         private async void Login_ButtonClickAsync(object sender, RoutedEventArgs e)
         {
             LoginAuthentication loginAuthentication = new LoginAuthentication();
-            if (loginAuthentication.CheckLoginCredentials(LoginName_TextBox.Text, LoginPassword_TextBox.Password) == true)
+            if (loginAuthentication.CheckLoginCredentials(this.LoginName_TextBox.Text, this.LoginPassword_TextBox.Password) == true)
             {
                 await this.ShowMessageAsync("Login message", "Successfull");
                 if (loginAuthentication.IsClient() == true)
                 {
-                    LoginName_TextBox.Text = "";
-                    LoginPassword_TextBox.Password = "";
+                    this.LoginName_TextBox.Text = "";
+                    this.LoginPassword_TextBox.Password = "";
                     ClientWindow cw = new ClientWindow(loginAuthentication.UserName);
                     cw.ShowDialog();
                 }
                 else
                 {
-                    LoginName_TextBox.Text = "";
-                    LoginPassword_TextBox.Password = "";
+                    this.LoginName_TextBox.Text = "";
+                    this.LoginPassword_TextBox.Password = "";
                     AdminWindow aw = new AdminWindow();
                     aw.ShowDialog();
                 }
             }
             else
             {
-                LoginName_TextBox.Text = "";
-                LoginPassword_TextBox.Password = "";
+                this.LoginName_TextBox.Text = "";
+                this.LoginPassword_TextBox.Password = "";
                 await this.ShowMessageAsync("Login message", "Unsuccessfull");
             }
         }
@@ -151,7 +151,7 @@ namespace CarRentalManager
                 UserClientRegistration userClientRegistration = new UserClientRegistration();
                 string usertype;
                 string usertypename;
-                if (UserType_ToggleSwitch.IsChecked == true)
+                if (this.UserType_ToggleSwitch.IsChecked == true)
                 {
                     usertype = "Y";
                     usertypename = "client";
@@ -161,21 +161,21 @@ namespace CarRentalManager
                     usertype = "N";
                     usertypename = "admin";
                 }
-                if (Name_Textbox.Text.Length < 5 && Fullname_Textbox.Text.Length < 5 && Address_Textbox.Text.Length < 5 && Email_Textbox.Text.Length < 5)
+                if (this.Name_Textbox.Text.Length < 5 && this.Fullname_Textbox.Text.Length < 5 && this.Address_Textbox.Text.Length < 5 && this.Email_Textbox.Text.Length < 5)
                 {
-                    Pw_Textbox.Clear();
+                    this.Pw_Textbox.Clear();
                     await this.ShowMessageAsync("Registration message", "Unsuccessfull, too short, min. 5 char in every field");
                 }
                 else
                 {
-                    userClientRegistration.AddNewUser(Name_Textbox.Text, Fullname_Textbox.Text, Pw_Textbox.Password, Address_Textbox.Text, Email_Textbox.Text, usertype);
+                    userClientRegistration.AddNewUser(this.Name_Textbox.Text, Fullname_Textbox.Text, this.Pw_Textbox.Password, this.Address_Textbox.Text, this.Email_Textbox.Text, usertype);
                     //Registration_Grid.Children.Clear();
-                    Name_Textbox.Text = "";
-                    Fullname_Textbox.Text = "";
-                    Pw_Textbox.Password = "";
+                    this.Name_Textbox.Text = "";
+                    this.Fullname_Textbox.Text = "";
+                    this.Pw_Textbox.Password = "";
                     Address_Textbox.Text = "";
-                    Email_Textbox.Text = "";
-                    await this.ShowMessageAsync("Registration message", Name_Textbox.Text + " user is created as " + usertypename);
+                    this.Email_Textbox.Text = "";
+                    await this.ShowMessageAsync("Registration message", this.Name_Textbox.Text + " user is created as " + usertypename);
                 }
             }
         }

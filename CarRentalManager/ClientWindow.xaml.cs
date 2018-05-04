@@ -38,25 +38,25 @@ namespace CarRentalManager
 
         private void Client_TabButton(object sender, RoutedEventArgs e)
         {
-            NewRentalTabControl.SelectedItem = CarSelect_TabItem;
+            this.NewRentalTabControl.SelectedItem = this.CarSelect_TabItem;
         }
 
         private void Car_TabButton(object sender, RoutedEventArgs e)
         {
-            NewRentalTabControl.SelectedItem = Date_TabItem;
+            this.NewRentalTabControl.SelectedItem = this.Date_TabItem;
         }
 
         private void Date_TabButton(object sender, RoutedEventArgs e)
         {
-            NewRentalTabControl.SelectedItem = Services_TabItem;
+            this.NewRentalTabControl.SelectedItem = this.Services_TabItem;
         }
 
         private async void Confirm_TabButtonAsync(object sender, RoutedEventArgs e)
         {
             await this.ShowMessageAsync("Confirm message", "Successfull confirm");
             this.clientWindowViewModel.FinishOrder();
-            NewRentalTabControl.SelectedItem = CarSelect_TabItem;
-            LoadUserStatistics();
+            this.NewRentalTabControl.SelectedItem = this.CarSelect_TabItem;
+            this.LoadUserStatistics();
         }
 
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -109,7 +109,7 @@ namespace CarRentalManager
                 DateTime startDate = (DateTime)this.startDatePicker.SelectedDate;
                 DateTime endDate = (DateTime)this.endDatePicker.SelectedDate;
 
-                availableCar = this.clientWindowViewModel.CheckDates(startDate, endDate);
+                this.availableCar = this.clientWindowViewModel.CheckDates(startDate, endDate);
                 if (this.availableCar)
                 {
                     this.informationLabel.Content = "The selected car is available between " + startDate.ToString().Substring(0, 13) + " and " + endDate.ToString().Substring(0,13);
@@ -129,7 +129,7 @@ namespace CarRentalManager
                 {
                     this.informationLabel.Content = "Start date must be less, than end date";
                 }
-                availableCar = false;
+                this.availableCar = false;
             }
         }
 
@@ -165,7 +165,7 @@ namespace CarRentalManager
 
             this.clientWindowViewModel.SelectService(services);
 
-            NewRentalTabControl.SelectedItem = Confirm_Tabitem;
+            this.NewRentalTabControl.SelectedItem = this.Confirm_Tabitem;
 
         }
 
@@ -183,8 +183,8 @@ namespace CarRentalManager
                     Title="Payments"
                 }
             };
-            axisX.Labels = new string[] { "2014", "2015", "2016", "2017", "2018" };
-            paymentChart.Series = mySeries;
+            this.axisX.Labels = new string[] { "2014", "2015", "2016", "2017", "2018" };
+            this.paymentChart.Series = mySeries;
             
 
         }

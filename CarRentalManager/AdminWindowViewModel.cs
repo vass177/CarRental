@@ -74,11 +74,11 @@ namespace CarRentalManager
         public Dictionary<string, int> SummaCars()
         {
             Dictionary<string, int> tempCarList = new Dictionary<string, int>();
-            IList<Car> getAllCars = carHandLogic.GetAllCarList();
+            IList<Car> getAllCars = this.carHandLogic.GetAllCarList();
             foreach (var item in getAllCars)
             {
                 int i = 0;
-                i = adminOrderhandling.NumberOfRental(item);
+                i = this.adminOrderhandling.NumberOfRental(item);
                 tempCarList.Add(item.CarType, i);                
             }
             return tempCarList;
@@ -87,7 +87,7 @@ namespace CarRentalManager
         public List<decimal> GetCarCoordinates()
         {
             List<decimal> carCoord = new List<decimal>();
-            IList<Car> getAllCars = carHandLogic.GetAllCarList();
+            IList<Car> getAllCars = this.carHandLogic.GetAllCarList();
             foreach (var item in getAllCars)
             {
                 carCoord.Add(item.CoordLat*100);
@@ -99,11 +99,11 @@ namespace CarRentalManager
         public Dictionary<string, int> SummaServices()
         {
             Dictionary<string, int> tempServicesList = new Dictionary<string, int>();
-            IList<Service> getAllServices = adminOrderhandling.GetAllServiceList();
+            IList<Service> getAllServices = this.adminOrderhandling.GetAllServiceList();
             foreach (var item in getAllServices)
             {
                 int i = 0;
-                i = adminOrderhandling.NumberOfServices(item);
+                i = this.adminOrderhandling.NumberOfServices(item);
                 tempServicesList.Add(item.ServiceName, i);
             }
             return tempServicesList;
@@ -111,7 +111,7 @@ namespace CarRentalManager
 
         public List<int> getIncomeStatistics()
         {
-            return adminOrderhandling.OrderRevenue(false);
+            return this.adminOrderhandling.OrderRevenue(false);
         }
 
         public int CarSumma

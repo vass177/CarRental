@@ -24,23 +24,23 @@
         }
         private void OnCarListChanged()
         {
-            CarListChanged?.Invoke(this, EventArgs.Empty);
+            this.CarListChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public IList<Car> GetAllCarList()
         {
-            var cars = carDBHandler.GetAll();
+            var cars = this.carDBHandler.GetAll();
 
             return ((IQueryable<Car>)cars).ToList();
         }
 
         public void DeleteCar(Car selectedCar)
         {
-            IQueryable<Rental> carRentals = (IQueryable<Rental>)rentalDBHandler.SelectMore(RentalAttributeType.CarID, selectedCar.CarID);
-            DeleteCarOrders(carRentals);
+            IQueryable<Rental> carRentals = (IQueryable<Rental>)this.rentalDBHandler.SelectMore(RentalAttributeType.CarID, selectedCar.CarID);
+            this.DeleteCarOrders(carRentals);
 
-            carDBHandler.Delete(selectedCar);
-            OnCarListChanged();
+            this.carDBHandler.Delete(selectedCar);
+            this.OnCarListChanged();
         }
 
         public void DeleteCarOrders(IQueryable<Rental> rentals)
@@ -48,20 +48,20 @@
             List<Rental> rentalList = rentals.ToList();
             for (int i = 0; i < rentalList.Count(); i++)
             {
-                List<RentalServiceJoin> rentalJoins = ((IQueryable<RentalServiceJoin>)rentalJoinDBHandler.SelectMore(RentalServiceAttributeType.RentalID, rentalList[i].RentalID)).ToList();
+                List<RentalServiceJoin> rentalJoins = ((IQueryable<RentalServiceJoin>)this.rentalJoinDBHandler.SelectMore(RentalServiceAttributeType.RentalID, rentalList[i].RentalID)).ToList();
                 for (int j = 0; j < rentalJoins.Count(); j++)
                 {
-                    rentalJoinDBHandler.Delete(rentalJoins[j]);
+                    this.rentalJoinDBHandler.Delete(rentalJoins[j]);
                 }
-                rentalDBHandler.Delete(rentalList[i]);
+                this.rentalDBHandler.Delete(rentalList[i]);
             }
         }
 
         public void UpdateCar()
         {
-            carDBHandler.Update();
+            this.carDBHandler.Update();
 
-            OnCarListChanged();
+            this.OnCarListChanged();
         }
 
         public void AddNewCar(Car newCar, string photoPath)
@@ -72,9 +72,9 @@
             newCar.CoordLat = 3;
             newCar.CoordLong = 4;
 
-            carDBHandler.Insert(newCar);
+            this.carDBHandler.Insert(newCar);
 
-            OnCarListChanged();
+            this.OnCarListChanged();
         }
     }
 }

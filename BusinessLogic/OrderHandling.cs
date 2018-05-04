@@ -20,21 +20,21 @@ namespace BusinessLogic
 
         public OrderHandling(Client loggedInClient)
         {
-            rentalDBHandler = new RentalDataHandler();
-            serviceDBHandler = new ServiceDataHandler();
-            clientDBHandler = new ClientDataHandler();
-            rentalJoinDBHandler = new RentalServiceJoinDataHandler();
+            this.rentalDBHandler = new RentalDataHandler();
+            this.serviceDBHandler = new ServiceDataHandler();
+            this.clientDBHandler = new ClientDataHandler();
+            this.rentalJoinDBHandler = new RentalServiceJoinDataHandler();
             this.loggedInClient = loggedInClient;
         }
 
         private void OnRentalListChanged()
         {
-            RentalListChanged?.Invoke(this, EventArgs.Empty);
+            this.RentalListChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public IList<Rental> GetAllRentalList()
         {
-            var rentals = rentalDBHandler.SelectMore(RentalAttributeType.UserName,loggedInClient.UserName);
+            var rentals = this.rentalDBHandler.SelectMore(RentalAttributeType.UserName,this.loggedInClient.UserName);
 
             return ((IQueryable<Rental>)rentals).ToList();
         }
@@ -49,21 +49,21 @@ namespace BusinessLogic
 
         public int NumberOfRental(Car car)
         {
-            IQueryable<Rental> allRental = (IQueryable<Rental>)rentalDBHandler.GetAll();
+            IQueryable<Rental> allRental = (IQueryable<Rental>)this.rentalDBHandler.GetAll();
             
             return allRental.Count(x => x.CarID == car.CarID);
         }
 
         public int NumberOfServices(Service service)
         {
-            IQueryable<RentalServiceJoin> allRental = (IQueryable<RentalServiceJoin>)rentalJoinDBHandler.GetAll();
+            IQueryable<RentalServiceJoin> allRental = (IQueryable<RentalServiceJoin>)this.rentalJoinDBHandler.GetAll();
 
             return allRental.Count(x => x.ServiceName == service.ServiceName);
         }
 
         public IList<Service> GetAllServiceList()
         {
-            var services = serviceDBHandler.GetAll();
+            var services = this.serviceDBHandler.GetAll();
 
             return ((IQueryable<Service>)services).ToList();
         }
@@ -73,11 +73,11 @@ namespace BusinessLogic
             IQueryable<Rental> rentals;
             if (onlyForClient == true)
             {
-                rentals = (IQueryable<Rental>)rentalDBHandler.SelectMore(RentalAttributeType.UserName, loggedInClient.UserName);
+                rentals = (IQueryable<Rental>)this.rentalDBHandler.SelectMore(RentalAttributeType.UserName, this.loggedInClient.UserName);
             }
             else
             {
-                rentals = (IQueryable<Rental>)rentalDBHandler.GetAll();
+                rentals = (IQueryable<Rental>)this.rentalDBHandler.GetAll();
             }
 
             var q2014 = rentals.Where(x => (x.RentalStartDate < new DateTime(2015, 1, 1) && x.RentalStartDate > new DateTime(2014, 1, 1)));
@@ -128,10 +128,10 @@ namespace BusinessLogic
 
             if (onlyForClient == true)
             {
-                List<int> allRevenue = OrderRevenue(false);
+                List<int> allRevenue = this.OrderRevenue(false);
                 double discount = ((double)sum2018 / (double)allRevenue[4]) * 100;
-                loggedInClient.ClientDiscountStatus = (int)discount;
-                clientDBHandler.Update();
+                this.loggedInClient.ClientDiscountStatus = (int)discount;
+                this.clientDBHandler.Update();
             }
 
             return new List<int> { sum2014, sum2015, sum2016, sum2017, sum2018 };

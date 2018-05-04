@@ -51,7 +51,7 @@ namespace CarRentalManager
 
             this.adminWindowViewModel = new AdminWindowViewModel();
 
-            LoadAdminStatistics();
+            this.LoadAdminStatistics();
 
             /*SeriesCollection mySeries = new SeriesCollection
             {
@@ -88,10 +88,10 @@ namespace CarRentalManager
 
         private void Statistics_Loaded(object sender, RoutedEventArgs e)
         {
-            adminWindowViewModel.CarSumma = 0;
-            foreach (var item in adminWindowViewModel.Cars)
+            this.adminWindowViewModel.CarSumma = 0;
+            foreach (var item in this.adminWindowViewModel.Cars)
             {
-                adminWindowViewModel.CarSumma++;
+                this.adminWindowViewModel.CarSumma++;
             }
             //MessageBox.Show(adminWindowViewModel.CarSumma.ToString());
             //CarSumma_Label.Content = adminWindowViewModel.CarSumma.ToString();
@@ -100,7 +100,7 @@ namespace CarRentalManager
         public void LoadAdminStatistics()
         {
             Dictionary<string, int> myCarsList = new Dictionary<string, int>();
-            myCarsList = adminWindowViewModel.SummaCars();
+            myCarsList = this.adminWindowViewModel.SummaCars();
 
             SeriesCollection myPieCollection = new SeriesCollection();
             foreach (var item in myCarsList)
@@ -110,11 +110,11 @@ namespace CarRentalManager
                     myPieCollection.Add(new PieSeries { Title = item.Key, Values = new ChartValues<int> { myCarsList[item.Key] } });
                 }               
             }           
-            UtilizationCarsChart.Series = myPieCollection;
+            this.UtilizationCarsChart.Series = myPieCollection;
 
 
             Dictionary<string, int> myServicesList = new Dictionary<string, int>();
-            myServicesList = adminWindowViewModel.SummaServices();
+            myServicesList = this.adminWindowViewModel.SummaServices();
             
             SeriesCollection myPieCollection2 = new SeriesCollection();
             foreach (var item in myServicesList)
@@ -124,7 +124,7 @@ namespace CarRentalManager
                     myPieCollection2.Add(new PieSeries { Title = item.Key, Values = new ChartValues<int> { myServicesList[item.Key] } });
                 }
             }
-            UtilizationServicesChart.Series = myPieCollection2;
+            this.UtilizationServicesChart.Series = myPieCollection2;
 
 
             List<int> incomeData = this.adminWindowViewModel.getIncomeStatistics();
@@ -139,8 +139,8 @@ namespace CarRentalManager
                     Title = "Income"
                 }
             };
-            axisX.Labels = new string[] { "2014", "2015", "2016", "2017", "2018" };
-            IncomeChart.Series = mySeries;
+            this.axisX.Labels = new string[] { "2014", "2015", "2016", "2017", "2018" };
+            this.IncomeChart.Series = mySeries;
 
             List<decimal> carCoordinates = this.adminWindowViewModel.GetCarCoordinates();
             for (int i = 0; i < carCoordinates.Count()-1; i+=2)
@@ -150,7 +150,7 @@ namespace CarRentalManager
                 pin.Location = new Location((double)carCoordinates[i], (double)carCoordinates[i+1]);
 
                 // Adds the pushpin to the map.
-                carMap.Children.Add(pin);
+                this.carMap.Children.Add(pin);
 
 
             }
@@ -169,25 +169,25 @@ namespace CarRentalManager
         private async void ModifyCar_ClickAsync(object sender, RoutedEventArgs e)
         {
             this.adminWindowViewModel.UpdateCar();
-            ModifyButton.Visibility = Visibility.Hidden;
-            DeleteButton.Visibility = Visibility.Hidden;
+            this.ModifyButton.Visibility = Visibility.Hidden;
+            this.DeleteButton.Visibility = Visibility.Hidden;
             await this.ShowMessageAsync("Update car", "Car has been changed...");
         }
 
         private async void DeleteCar_ClickAsync(object sender, RoutedEventArgs e)
         {
             this.adminWindowViewModel.DeleteCar();
-            ModifyButton.Visibility = Visibility.Hidden;
-            DeleteButton.Visibility = Visibility.Hidden;
+            this.ModifyButton.Visibility = Visibility.Hidden;
+            this.DeleteButton.Visibility = Visibility.Hidden;
             await this.ShowMessageAsync("Delete car", "Car has been deleted...");
         }
 
         private void carsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (carsListBox.SelectedItem != null)
+            if (this.carsListBox.SelectedItem != null)
             {
-                ModifyButton.Visibility = Visibility.Visible;
-                DeleteButton.Visibility = Visibility.Visible;
+                this.ModifyButton.Visibility = Visibility.Visible;
+                this.DeleteButton.Visibility = Visibility.Visible;
             }
         }
     }
