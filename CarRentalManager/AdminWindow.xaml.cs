@@ -110,12 +110,12 @@ namespace CarRentalManager
 
 
             Dictionary<string, int> myServicesList = new Dictionary<string, int>();
-            myServicesList = adminWindowViewModel.SummaCars();
+            myServicesList = adminWindowViewModel.SummaServices();
             
             SeriesCollection myPieCollection2 = new SeriesCollection();
             foreach (var item in myServicesList)
             {
-                if (myCarsList[item.Key] != 0)
+                if (myServicesList[item.Key] != 0)
                 {
                     myPieCollection2.Add(new PieSeries { Title = item.Key, Values = new ChartValues<int> { myServicesList[item.Key] } });
                 }

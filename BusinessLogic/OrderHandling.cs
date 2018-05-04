@@ -12,6 +12,7 @@ namespace BusinessLogic
     {
         private readonly RentalDataHandler rentalDBHandler;
         private readonly ServiceDataHandler serviceDBHandler;
+        private readonly RentalServiceJoinDataHandler rentalJoinDBHandler;
         private Client loggedInClient;
 
         public event EventHandler RentalListChanged;
@@ -20,6 +21,7 @@ namespace BusinessLogic
         {
             rentalDBHandler = new RentalDataHandler();
             serviceDBHandler = new ServiceDataHandler();
+            rentalJoinDBHandler = new RentalServiceJoinDataHandler();
             this.loggedInClient = loggedInClient;
         }
 
@@ -48,7 +50,14 @@ namespace BusinessLogic
             IQueryable<Rental> allRental = (IQueryable<Rental>)rentalDBHandler.GetAll();
             
             return allRental.Count(x => x.CarID == car.CarID);
-        } 
+        }
+
+        public int NumberOfServices(Service service)
+        {
+            IQueryable<RentalServiceJoin> allRental = (IQueryable<RentalServiceJoin>)rentalJoinDBHandler.GetAll();
+
+            return allRental.Count(x => x.ServiceName == service.ServiceName);
+        }
 
         public IList<Service> GetAllServiceList()
         {

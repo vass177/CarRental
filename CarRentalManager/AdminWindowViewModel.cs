@@ -87,7 +87,14 @@ namespace CarRentalManager
         public Dictionary<string, int> SummaServices()
         {
             Dictionary<string, int> tempServicesList = new Dictionary<string, int>();
-            //IList<Service> getAllServices
+            IList<Service> getAllServices = adminOrderhandling.GetAllServiceList();
+            foreach (var item in getAllServices)
+            {
+                int i = 0;
+                i = adminOrderhandling.NumberOfServices(item);
+                tempServicesList.Add(item.ServiceName, i);
+            }
+            return tempServicesList;
         }
 
         public int CarSumma
