@@ -96,8 +96,8 @@
 
                     <Controls1:MapControl Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,15"></Controls1:MapControl>
 
-                    <Charts:PieChart Foreground="White" FontSize="12" Grid.Row="2" Grid.Column="1" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
-                        <Charts:PieChart.Series>
+                    <Charts:PieChart x:Name="UtilizationServicesChart" Foreground="White" FontSize="12"  Grid.Row="2" Grid.Column="1" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}">
+                        <!--<Charts:PieChart.Series>
                             <Charts:PieSeries Title="Additional driver" Values="3" DataLabels="False"/>
                             <Charts:PieSeries Title="Baby seat" Values="4" DataLabels="False" />
                             <Charts:PieSeries Title="Collision insurance" Values="6" DataLabels="False"/>
@@ -107,7 +107,7 @@
                             <Charts:PieSeries Title="Ski box" Values="1" DataLabels="False" />
                             <Charts:PieSeries Title="Theft insurance" Values="2" DataLabels="False" />
                             <Charts:PieSeries Title="Winter tires" Values="4" DataLabels="False" />
-                        </Charts:PieChart.Series>
+                        </Charts:PieChart.Series>-->
                     </Charts:PieChart>
                     <Label Grid.Row="1" Grid.Column="0" Content="Utilization of cars" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>
                     <Label Grid.Row="1" Grid.Column="1" Content="Utilization of services" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White"></Label>

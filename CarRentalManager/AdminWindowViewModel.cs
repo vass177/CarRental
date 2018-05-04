@@ -84,6 +84,12 @@ namespace CarRentalManager
             return tempCarList;
         }
 
+        public Dictionary<string, int> SummaServices()
+        {
+            Dictionary<string, int> tempServicesList = new Dictionary<string, int>();
+            //IList<Service> getAllServices
+        }
+
         public int CarSumma
         {
             get { return this.carSumma; }
