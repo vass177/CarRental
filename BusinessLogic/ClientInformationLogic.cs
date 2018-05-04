@@ -13,6 +13,7 @@ namespace BusinessLogic
         private readonly ClientDataHandler clientDBHandler;
         private readonly RentalDataHandler rentalDBHandler;
         private readonly UserDataHandler userDBHandler;
+        private readonly RentalServiceJoinDataHandler rentalJoinDBHandler;
 
         public event EventHandler ClientListChanged;
 
@@ -23,6 +24,7 @@ namespace BusinessLogic
             this.clientDBHandler = new ClientDataHandler();
             this.rentalDBHandler = new RentalDataHandler();
             this.userDBHandler = new UserDataHandler();
+            this.rentalJoinDBHandler = new RentalServiceJoinDataHandler();
         }
 
         private void OnLogIn()
@@ -45,7 +47,8 @@ namespace BusinessLogic
         public void DeleteClient(Client selectedClient)
         {
             IQueryable<Rental> clientRentals =  (IQueryable<Rental>) rentalDBHandler.SelectMore(RentalAttributeType.UserName, selectedClient.UserName);
-            DeleteClientOrders(clientRentals);
+            if(clientRentals!=null)
+                DeleteClientOrders(clientRentals);
 
             User deletableUser = (User)userDBHandler.Select(UserAttributeType.UserName, selectedClient.UserName);
             clientDBHandler.Delete(selectedClient);
@@ -59,6 +62,11 @@ namespace BusinessLogic
             List<Rental> rentalList = rentals.ToList();
             for (int i = 0; i < rentalList.Count(); i++)
             {
+                List<RentalServiceJoin> rentalJoins = ((IQueryable<RentalServiceJoin>)rentalJoinDBHandler.SelectMore(RentalServiceAttributeType.RentalID, rentalList[i].RentalID)).ToList();
+                for (int j = 0; j < rentalJoins.Count(); j++)
+                {
+                    rentalJoinDBHandler.Delete(rentalJoins[j]);
+                }
                 rentalDBHandler.Delete(rentalList[i]);
             }
         }

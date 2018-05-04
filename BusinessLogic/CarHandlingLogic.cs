@@ -12,6 +12,7 @@
     {
         private readonly CarDataHandler carDBHandler;
         private readonly RentalDataHandler rentalDBHandler;
+        private readonly RentalServiceJoinDataHandler rentalJoinDBHandler;
 
         public event EventHandler CarListChanged;
 
@@ -19,6 +20,7 @@
         {
             this.carDBHandler = new CarDataHandler();
             this.rentalDBHandler = new RentalDataHandler();
+            this.rentalJoinDBHandler = new RentalServiceJoinDataHandler();
         }
         private void OnCarListChanged()
         {
@@ -46,6 +48,11 @@
             List<Rental> rentalList = rentals.ToList();
             for (int i = 0; i < rentalList.Count(); i++)
             {
+                List<RentalServiceJoin> rentalJoins = ((IQueryable<RentalServiceJoin>)rentalJoinDBHandler.SelectMore(RentalServiceAttributeType.RentalID, rentalList[i].RentalID)).ToList();
+                for (int j = 0; j < rentalJoins.Count(); j++)
+                {
+                    rentalJoinDBHandler.Delete(rentalJoins[j]);
+                }
                 rentalDBHandler.Delete(rentalList[i]);
             }
         }
