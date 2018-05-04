@@ -1,5 +1,4 @@
-﻿
-namespace BusinessLogic
+﻿namespace BusinessLogic
 {
     using System;
     using System.Collections.Generic;
@@ -62,7 +61,7 @@ namespace BusinessLogic
 
         public void SelectCar(string imageSource)
         {
-            IQueryable<Car> selectedCarList= (IQueryable<Car>)this.carDBHandler.SelectMore(CarAttributeType.CarImageSource, imageSource);
+            IQueryable<Car> selectedCarList = (IQueryable<Car>)this.carDBHandler.SelectMore(CarAttributeType.CarImageSource, imageSource);
             if (selectedCarList.Count() == 0)
             {
                 this.carAvailable = false;

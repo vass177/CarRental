@@ -1,5 +1,4 @@
-﻿
-namespace BusinessLogic
+﻿namespace BusinessLogic
 {
     using System;
     using System.Collections.Generic;
@@ -46,8 +45,6 @@ namespace BusinessLogic
             User deletableUser = (User)this.userDBHandler.Select(UserAttributeType.UserName, selectedClient.UserName);
             this.clientDBHandler.Delete(selectedClient);
             this.userDBHandler.Delete(deletableUser);
-
-
             this.OnClientListChanged();
         }
 
