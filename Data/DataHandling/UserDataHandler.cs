@@ -49,6 +49,7 @@ namespace Data.DataHandling
             {
                 throw new InvalidSearchTypeException("UserAttributeType");
             }
+
             try
             {
                 return this.database.Users.Single(x => x.UserName == (string)attributeValue);
@@ -67,9 +68,9 @@ namespace Data.DataHandling
             switch (attribute)
             {
                 case UserAttributeType.UserName:
-                    return this.database.Users.Where(x => x.UserName==(string)attributeValue);
+                    return this.database.Users.Where(x => x.UserName == (string)attributeValue);
                 case UserAttributeType.IsClient:
-                    return this.database.Users.Where(x => x.IsClient==(string)attributeValue);
+                    return this.database.Users.Where(x => x.IsClient == (string)attributeValue);
                 default:
                     return null;
             }

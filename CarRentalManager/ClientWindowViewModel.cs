@@ -37,15 +37,18 @@ namespace CarRentalManager
         public DateTime StartDate
         {
             get { return startDate; }
+
             set
             {
                 startDate = value;
                 this.OnPropertyChanged(nameof(this.StartDate));
             }
         }
+
         public DateTime EndDate
         {
             get { return endDate; }
+
             set
             {
                 endDate = value;
@@ -57,6 +60,7 @@ namespace CarRentalManager
         public int TotalPrice
         {
             get { return totalPrice; }
+
             set
             {
                 totalPrice = value;
@@ -87,7 +91,7 @@ namespace CarRentalManager
                 OnPropertyChanged(nameof(this.CarPrice));
             }
         }
-        
+
         public List<Service> ServiceList
         {
             get
@@ -155,7 +159,7 @@ namespace CarRentalManager
 
             this.clientLogic.ClientLoggedIn += ClientLogic_ClientLoggedIn;
             this.clientOrderHandling.RentalListChanged += ClientOrderHandling_RentalListChanged;
-            
+
         }
 
         private void ClientOrderHandling_RentalListChanged(object sender, EventArgs e)
@@ -179,6 +183,7 @@ namespace CarRentalManager
         {
             this.OnPropertyChanged(nameof(this.LoggedInClient));
         }
+
         public void SelectACar(string imageSource)
         {
             this.orderHandling.SelectCar(imageSource);
@@ -196,7 +201,7 @@ namespace CarRentalManager
 
         public void SelectService(List<string> serivceList)
         {
-            this.ServiceList = this.orderHandling.SearchSelectedServices(serivceList);            
+            this.ServiceList = this.orderHandling.SearchSelectedServices(serivceList);
             this.ServicePriceList = this.orderHandling.ServPriceList;
             this.orderHandling.CalculateFinalPrice();
             this.CarPrice = this.orderHandling.CarPrice;

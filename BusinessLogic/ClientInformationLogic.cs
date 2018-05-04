@@ -36,7 +36,7 @@ namespace BusinessLogic
         {
             ClientListChanged?.Invoke(this, EventArgs.Empty);
         }
-        
+
         public IList<Client> GetAllClientList()
         {
             var clients = clientDBHandler.GetAll();
@@ -46,8 +46,8 @@ namespace BusinessLogic
 
         public void DeleteClient(Client selectedClient)
         {
-            IQueryable<Rental> clientRentals =  (IQueryable<Rental>) rentalDBHandler.SelectMore(RentalAttributeType.UserName, selectedClient.UserName);
-            if(clientRentals!=null)
+            IQueryable<Rental> clientRentals = (IQueryable<Rental>)rentalDBHandler.SelectMore(RentalAttributeType.UserName, selectedClient.UserName);
+            if (clientRentals != null)
                 DeleteClientOrders(clientRentals);
 
             User deletableUser = (User)userDBHandler.Select(UserAttributeType.UserName, selectedClient.UserName);
@@ -57,6 +57,7 @@ namespace BusinessLogic
 
             OnClientListChanged();
         }
+
         public void DeleteClientOrders(IQueryable<Rental> rentals)
         {
             List<Rental> rentalList = rentals.ToList();
@@ -67,6 +68,7 @@ namespace BusinessLogic
                 {
                     rentalJoinDBHandler.Delete(rentalJoins[j]);
                 }
+
                 rentalDBHandler.Delete(rentalList[i]);
             }
         }
@@ -77,12 +79,12 @@ namespace BusinessLogic
 
             OnClientListChanged();
         }
+
         public Client GetLoggedInClient(string userName)
         {
-            Client loggedIn=(Client)clientDBHandler.Select(ClientAttributeType.UserName, userName);
+            Client loggedIn = (Client)clientDBHandler.Select(ClientAttributeType.UserName, userName);
             return loggedIn;
         }
-        
 
     }
 }

@@ -23,10 +23,12 @@ namespace Data.DataHandling
     public class RentalDataHandler : IDataBase
     {
         private RentalDBEntities database;
+
         public RentalDataHandler()
         {
             this.database = new RentalDBEntities();
         }
+
         public void Delete(object deletableItem)
         {
             this.database.Rentals.Remove((Rental)deletableItem);

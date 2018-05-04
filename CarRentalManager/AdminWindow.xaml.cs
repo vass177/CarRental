@@ -29,12 +29,12 @@ namespace CarRentalManager
     public partial class AdminWindow : MetroWindow
     {
         private AdminWindowViewModel adminWindowViewModel;
+
         public SeriesCollection mySeries { get; set; }
+
         public AdminWindow()
         {
             this.InitializeComponent();
-
-            
         }
 
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -47,7 +47,7 @@ namespace CarRentalManager
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(File.ReadAllLines("C:/Users/Franciska/source/repos/oenik_szt2_2018tavasz_pm4j60_gk607o_ilnrw96Q/ListCarHP.sql").ToString());
+            // MessageBox.Show(File.ReadAllLines("C:/Users/Franciska/source/repos/oenik_szt2_2018tavasz_pm4j60_gk607o_ilnrw96Q/ListCarHP.sql").ToString());
 
             this.adminWindowViewModel = new AdminWindowViewModel();
 
@@ -63,7 +63,7 @@ namespace CarRentalManager
             };
             IncomeChart.Series = mySeries;*/
 
-            this.DataContext = this.adminWindowViewModel;          
+            this.DataContext = this.adminWindowViewModel;
         }
 
         private void DeleteClientClick(object sender, RoutedEventArgs e)
@@ -93,8 +93,9 @@ namespace CarRentalManager
             {
                 adminWindowViewModel.CarSumma++;
             }
-            //MessageBox.Show(adminWindowViewModel.CarSumma.ToString());
-            //CarSumma_Label.Content = adminWindowViewModel.CarSumma.ToString();
+
+            // MessageBox.Show(adminWindowViewModel.CarSumma.ToString());
+            // CarSumma_Label.Content = adminWindowViewModel.CarSumma.ToString();
         }
 
         public void LoadAdminStatistics()
@@ -105,17 +106,16 @@ namespace CarRentalManager
             SeriesCollection myPieCollection = new SeriesCollection();
             foreach (var item in myCarsList)
             {
-                if (myCarsList[item.Key] != 0 )
+                if (myCarsList[item.Key] != 0)
                 {
                     myPieCollection.Add(new PieSeries { Title = item.Key, Values = new ChartValues<int> { myCarsList[item.Key] } });
-                }               
-            }           
-            UtilizationCarsChart.Series = myPieCollection;
+                }
+            }
 
+            UtilizationCarsChart.Series = myPieCollection;
 
             Dictionary<string, int> myServicesList = new Dictionary<string, int>();
             myServicesList = adminWindowViewModel.SummaServices();
-            
             SeriesCollection myPieCollection2 = new SeriesCollection();
             foreach (var item in myServicesList)
             {
@@ -124,13 +124,13 @@ namespace CarRentalManager
                     myPieCollection2.Add(new PieSeries { Title = item.Key, Values = new ChartValues<int> { myServicesList[item.Key] } });
                 }
             }
-            UtilizationServicesChart.Series = myPieCollection2;
 
+            UtilizationServicesChart.Series = myPieCollection2;
 
             List<int> incomeData = this.adminWindowViewModel.getIncomeStatistics();
 
             LineSeries ls = new LineSeries();
-            
+
             SeriesCollection mySeries = new SeriesCollection
             {
                 new LineSeries
@@ -143,11 +143,11 @@ namespace CarRentalManager
             IncomeChart.Series = mySeries;
 
             List<decimal> carCoordinates = this.adminWindowViewModel.GetCarCoordinates();
-            for (int i = 0; i < carCoordinates.Count()-1; i+=2)
+            for (int i = 0; i < carCoordinates.Count() - 1; i += 2)
             {
                 // The pushpin to add to the map.
                 Pushpin pin = new Pushpin();
-                pin.Location = new Location((double)carCoordinates[i], (double)carCoordinates[i+1]);
+                pin.Location = new Location((double)carCoordinates[i], (double)carCoordinates[i + 1]);
 
                 // Adds the pushpin to the map.
                 carMap.Children.Add(pin);

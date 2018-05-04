@@ -28,6 +28,7 @@ namespace CarRentalManager
     {
         private bool passwordValid;
         ViewModel VM;
+
         public MainWindow()
         {
             this.InitializeComponent();
@@ -123,23 +124,23 @@ namespace CarRentalManager
                 await this.ShowMessageAsync("Login message", "Successfull");
                 if (loginAuthentication.IsClient() == true)
                 {
-                    LoginName_TextBox.Text = "";
-                    LoginPassword_TextBox.Password = "";
+                    LoginName_TextBox.Text = string.Empty;
+                    LoginPassword_TextBox.Password = string.Empty;
                     ClientWindow cw = new ClientWindow(loginAuthentication.UserName);
                     cw.ShowDialog();
                 }
                 else
                 {
-                    LoginName_TextBox.Text = "";
-                    LoginPassword_TextBox.Password = "";
+                    LoginName_TextBox.Text = string.Empty;
+                    LoginPassword_TextBox.Password = string.Empty;
                     AdminWindow aw = new AdminWindow();
                     aw.ShowDialog();
                 }
             }
             else
             {
-                LoginName_TextBox.Text = "";
-                LoginPassword_TextBox.Password = "";
+                LoginName_TextBox.Text = string.Empty;
+                LoginPassword_TextBox.Password = string.Empty;
                 await this.ShowMessageAsync("Login message", "Unsuccessfull");
             }
         }
@@ -161,6 +162,7 @@ namespace CarRentalManager
                     usertype = "N";
                     usertypename = "admin";
                 }
+
                 if (Name_Textbox.Text.Length < 5 && Fullname_Textbox.Text.Length < 5 && Address_Textbox.Text.Length < 5 && Email_Textbox.Text.Length < 5)
                 {
                     Pw_Textbox.Clear();
@@ -169,16 +171,17 @@ namespace CarRentalManager
                 else
                 {
                     userClientRegistration.AddNewUser(Name_Textbox.Text, Fullname_Textbox.Text, Pw_Textbox.Password, Address_Textbox.Text, Email_Textbox.Text, usertype);
-                    //Registration_Grid.Children.Clear();
-                    Name_Textbox.Text = "";
-                    Fullname_Textbox.Text = "";
-                    Pw_Textbox.Password = "";
-                    Address_Textbox.Text = "";
-                    Email_Textbox.Text = "";
+                    // Registration_Grid.Children.Clear();
+                    Name_Textbox.Text = string.Empty;
+                    Fullname_Textbox.Text = string.Empty;
+                    Pw_Textbox.Password = string.Empty;
+                    Address_Textbox.Text = string.Empty;
+                    Email_Textbox.Text = string.Empty;
                     await this.ShowMessageAsync("Registration message", Name_Textbox.Text + " user is created as " + usertypename);
                 }
             }
         }
+
         /// <summary>
         /// This method checks after every change in the PasswordBox, whether it is valid or not
         /// </summary>

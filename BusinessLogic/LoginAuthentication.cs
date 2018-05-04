@@ -39,7 +39,7 @@ namespace BusinessLogic
             {
                 string inputPassword = this.EncodePassword(password);
                 if (inputPassword.Equals(this.user.UserPassword))
-                {                    
+                {
                     return true;
                 }
                 else
@@ -55,7 +55,7 @@ namespace BusinessLogic
 
         public bool IsClient()
         {
-            if (user.IsClient=="Y")
+            if (user.IsClient == "Y")
             {
                 return true;
             }
@@ -70,11 +70,11 @@ namespace BusinessLogic
             this.userName = u;
 
             try
-            {                
-                this.user=(User)userDataHandler.Select(UserAttributeType.UserName, this.userName);
+            {
+                this.user = (User)userDataHandler.Select(UserAttributeType.UserName, this.userName);
                 return true;
             }
-            catch(EntryNotFoundException e)
+            catch (EntryNotFoundException e)
             {
                 return false;
             }

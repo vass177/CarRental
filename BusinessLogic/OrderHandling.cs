@@ -32,15 +32,14 @@ namespace BusinessLogic
 
         public IList<Rental> GetAllRentalList()
         {
-            var rentals = rentalDBHandler.SelectMore(RentalAttributeType.UserName,loggedInClient.UserName);
+            var rentals = rentalDBHandler.SelectMore(RentalAttributeType.UserName, loggedInClient.UserName);
 
             return ((IQueryable<Rental>)rentals).ToList();
         }
 
         public List<int> HowMuchCarID()
         {
-            //var myquery=from carid in Car
-            
+            // var myquery=from carid in Car
 
             return new List<int> { 1, 2 };
         }
@@ -48,7 +47,7 @@ namespace BusinessLogic
         public int NumberOfRental(Car car)
         {
             IQueryable<Rental> allRental = (IQueryable<Rental>)rentalDBHandler.GetAll();
-            
+
             return allRental.Count(x => x.CarID == car.CarID);
         }
 
@@ -80,14 +79,13 @@ namespace BusinessLogic
 
             var q2014 = rentals.Where(x => (x.RentalStartDate < new DateTime(2015, 1, 1) && x.RentalStartDate > new DateTime(2014, 1, 1)));
             int sum2014 = 0;
-            if(q2014!=null)
+            if (q2014 != null)
             {
                 foreach (var item in q2014)
                 {
                     sum2014 += (int)item.RentalFullPrice;
                 }
             }
-            
 
             var q2015 = rentals.Where(x => (x.RentalStartDate < new DateTime(2016, 1, 1) && x.RentalStartDate > new DateTime(2015, 1, 1)));
             int sum2015 = 0;
@@ -98,6 +96,7 @@ namespace BusinessLogic
                     sum2015 += (int)item.RentalFullPrice;
                 }
             }
+
             var q2016 = rentals.Where(x => (x.RentalStartDate < new DateTime(2017, 1, 1) && x.RentalStartDate > new DateTime(2016, 1, 1)));
             int sum2016 = 0;
             if (q2016 != null)
@@ -107,6 +106,7 @@ namespace BusinessLogic
                     sum2016 += (int)item.RentalFullPrice;
                 }
             }
+
             var q2017 = rentals.Where(x => (x.RentalStartDate < new DateTime(2018, 1, 1) && x.RentalStartDate > new DateTime(2017, 1, 1)));
             int sum2017 = 0;
             if (q2017 != null)

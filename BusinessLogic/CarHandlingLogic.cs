@@ -22,6 +22,7 @@
             this.rentalDBHandler = new RentalDataHandler();
             this.rentalJoinDBHandler = new RentalServiceJoinDataHandler();
         }
+
         private void OnCarListChanged()
         {
             CarListChanged?.Invoke(this, EventArgs.Empty);
@@ -53,6 +54,7 @@
                 {
                     rentalJoinDBHandler.Delete(rentalJoins[j]);
                 }
+
                 rentalDBHandler.Delete(rentalList[i]);
             }
         }
