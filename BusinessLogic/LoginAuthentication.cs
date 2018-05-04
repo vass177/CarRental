@@ -20,6 +20,11 @@ namespace BusinessLogic
         private User user;
         private UserDataHandler userDataHandler;
 
+        public LoginAuthentication()
+        {
+            this.userDataHandler = new UserDataHandler();
+        }
+
         public string UserName
         {
             get
@@ -28,18 +33,13 @@ namespace BusinessLogic
             }
         }
 
-        public LoginAuthentication()
-        {
-            this.userDataHandler = new UserDataHandler();
-        }
-
         public bool CheckLoginCredentials(string user, string password)
         {
             if (this.UserExists(user))
             {
                 string inputPassword = this.EncodePassword(password);
                 if (inputPassword.Equals(this.user.UserPassword))
-                {                    
+                {
                     return true;
                 }
                 else
@@ -55,7 +55,7 @@ namespace BusinessLogic
 
         public bool IsClient()
         {
-            if (this.user.IsClient=="Y")
+            if (this.user.IsClient == "Y")
             {
                 return true;
             }
@@ -63,6 +63,13 @@ namespace BusinessLogic
             {
                 return false;
             }
+        }
+
+        public string EncodePassword(string password)
+        {
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] inArray = HashAlgorithm.Create("SHA256").ComputeHash(bytes);
+            return Convert.ToBase64String(inArray);
         }
 
         private bool UserExists(string u)
@@ -74,17 +81,10 @@ namespace BusinessLogic
                 this.user = (User)this.userDataHandler.Select(UserAttributeType.UserName, this.userName);
                 return true;
             }
-            catch(EntryNotFoundException e)
+            catch (EntryNotFoundException)
             {
                 return false;
             }
-        }
-
-        public string EncodePassword(string password)
-        {
-            byte[] bytes = Encoding.Unicode.GetBytes(password);
-            byte[] inArray = HashAlgorithm.Create("SHA256").ComputeHash(bytes);
-            return Convert.ToBase64String(inArray);
         }
     }
 }

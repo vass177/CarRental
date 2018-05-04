@@ -30,6 +30,11 @@ namespace Data.DataHandling
             this.database = new RentalDBEntities();
         }
 
+        public CarDataHandler(object database)
+        {
+
+        }
+
         public void Delete(object deletableItem)
         {
             this.database.Cars.Remove((Car)deletableItem);
