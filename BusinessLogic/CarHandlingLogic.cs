@@ -1,4 +1,8 @@
-﻿namespace BusinessLogic
+﻿// <copyright file="CarHandlingLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace BusinessLogic
 {
     using System;
     using System.Collections.Generic;

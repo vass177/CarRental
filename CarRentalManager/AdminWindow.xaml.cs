@@ -34,12 +34,12 @@ namespace CarRentalManager
     {
         private AdminWindowViewModel adminWindowViewModel;
 
-        public SeriesCollection MySeries { get; set; }
-
         public AdminWindow()
         {
             this.InitializeComponent();
         }
+
+        public SeriesCollection MySeries { get; set; }
 
         public void LoadAdminStatistics()
         {
@@ -71,7 +71,7 @@ namespace CarRentalManager
 
             this.UtilizationServicesChart.Series = myPieCollection2;
 
-            List<int> incomeData = this.adminWindowViewModel.getIncomeStatistics();
+            List<int> incomeData = this.adminWindowViewModel.GetIncomeStatistics();
 
             SeriesCollection mySeries = new SeriesCollection
             {
