@@ -69,8 +69,8 @@ namespace Data.DataHandling
             RentalAttributeType attribute = (RentalAttributeType)attributeType;
 
             // for RentalDate, attributvalue will be a Date[] array
-            DateTime dateRange1 = new DateTime();
-            DateTime dateRange2 = new DateTime();
+            DateTime dateRange1 = default(DateTime);
+            DateTime dateRange2 = default(DateTime);
             if (attribute == RentalAttributeType.RentalDateInterval)
             {
                 dateRange1 = ((DateTime[])attributeValue)[0];

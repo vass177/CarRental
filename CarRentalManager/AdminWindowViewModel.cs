@@ -16,7 +16,6 @@ namespace CarRentalManager
     {
         private OrderHandling adminOrderhandling;
 
-
         private IList<Client> clients;
         private Client selectedClient;
         private ClientInformationLogic clientListLogic;
@@ -79,8 +78,9 @@ namespace CarRentalManager
             {
                 int i = 0;
                 i = this.adminOrderhandling.NumberOfRental(item);
-                tempCarList.Add(item.CarType, i);                
+                tempCarList.Add(item.CarType, i);
             }
+
             return tempCarList;
         }
 
@@ -90,9 +90,10 @@ namespace CarRentalManager
             IList<Car> getAllCars = this.carHandLogic.GetAllCarList();
             foreach (var item in getAllCars)
             {
-                carCoord.Add(item.CoordLat*100);
+                carCoord.Add(item.CoordLat * 100);
                 carCoord.Add(item.CoordLong * 100);
             }
+
             return carCoord;
         }
 
@@ -106,6 +107,7 @@ namespace CarRentalManager
                 i = this.adminOrderhandling.NumberOfServices(item);
                 tempServicesList.Add(item.ServiceName, i);
             }
+
             return tempServicesList;
         }
 
@@ -116,8 +118,16 @@ namespace CarRentalManager
 
         public int CarSumma
         {
-            get { return this.carSumma; }
-            set { this.carSumma = value; this.OnPropertyChanged(nameof(this.CarSumma)); }
+            get
+            {
+                return this.carSumma;
+            }
+
+            set
+            {
+                this.carSumma = value;
+                this.OnPropertyChanged(nameof(this.CarSumma));
+            }
         }
 
         public AdminWindowViewModel()
