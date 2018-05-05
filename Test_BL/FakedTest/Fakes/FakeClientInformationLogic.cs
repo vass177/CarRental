@@ -20,7 +20,10 @@ namespace Test_BL.FakedTest.Fakes
 
         public void DeleteClient(Client selectedClient)
         {
-            throw new NotImplementedException();
+            if (this.Clients.Contains(selectedClient))
+            {
+                this.Clients.Remove(selectedClient);
+            }
         }
 
         public void DeleteClientOrders(IQueryable<Rental> rentals)
