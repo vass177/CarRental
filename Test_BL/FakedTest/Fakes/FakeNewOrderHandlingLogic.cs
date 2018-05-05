@@ -44,7 +44,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public decimal CalculateServicePrice()
         {
-            return 10;
+            return this.servicePrice;
         }
 
         public bool CheckCarAvailibility(DateTime startDate, DateTime endDate)
