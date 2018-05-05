@@ -13,7 +13,7 @@ namespace Test_BL.FakedTest.Fakes
     /// without any meaningful logic or declaration
     /// </summary>
     /// <typeparam name="T">T: property type in IFakeProperties</typeparam>
-    public interface IFakeDataBase<T> : IDataBase, IFakeProperties<T>  
+    public interface IFakeDataBase<T> : IDataBase, IFakeProperties<T>
     {
     }
 }

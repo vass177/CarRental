@@ -51,6 +51,7 @@
     <Compile Include="ClientInformationLogic.cs" />
     <Compile Include="Interfaces\ICarHandlingLogic.cs" />
     <Compile Include="Interfaces\IClientInformationLogic.cs" />
+    <Compile Include="Interfaces\INewOrderHandlingLogic.cs" />
     <Compile Include="LoginAuthentication.cs" />
     <Compile Include="NewOrderHandlingLogic.cs" />
     <Compile Include="OrderHandling.cs" />
