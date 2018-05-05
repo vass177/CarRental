@@ -33,7 +33,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public int NumberOfRental(Car car)
         {
-            throw new NotImplementedException();
+            return this.Rentals.Where(x => x.CarID == car.CarID).Count();
         }
 
         public int NumberOfServices(Service service)
