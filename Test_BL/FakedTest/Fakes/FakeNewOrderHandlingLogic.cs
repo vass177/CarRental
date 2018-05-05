@@ -65,12 +65,14 @@ namespace Test_BL.FakedTest.Fakes
 
         public List<Service> SearchSelectedServices(List<string> serviceList)
         {
+            int sum = 0;
             if (!(this.Services == null || serviceList == null))
             {
                 List<Service> s = new List<Service>();
                 foreach (string item in serviceList)
                 {
-                    s.Add(this.Services.Single(x => x.ServiceName == item));
+                    s.AddRange(this.Services.Where(x => x.ServiceName == item));
+                    sum += 10;
                 }
 
                 return s;
@@ -81,7 +83,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public void SelectCar(string imageSource)
         {
-            throw new NotImplementedException();
+            this.VoidMethodCalls++;
         }
     }
 }
