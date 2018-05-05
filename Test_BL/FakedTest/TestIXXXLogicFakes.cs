@@ -1,4 +1,7 @@
-﻿
+﻿// <copyright file="TestIXXXLogicFakes.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace Test_BL.FakedTest
 {
     using Data;
