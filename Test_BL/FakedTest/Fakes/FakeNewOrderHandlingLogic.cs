@@ -65,7 +65,16 @@ namespace Test_BL.FakedTest.Fakes
 
         public List<Service> SearchSelectedServices(List<string> serviceList)
         {
-            throw new NotImplementedException();
+            if (!(this.Services == null || serviceList == null))
+            {
+                List<Service> s = new List<Service>();
+                foreach (string item in serviceList)
+                {
+                    s.Add(this.Services.Single(x => x.ServiceName == item));
+                }
+                return s; 
+            }
+            return null;
         }
 
         public void SelectCar(string imageSource)
