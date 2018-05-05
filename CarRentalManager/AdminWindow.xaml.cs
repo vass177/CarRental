@@ -71,7 +71,7 @@ namespace CarRentalManager
 
             this.UtilizationServicesChart.Series = myPieCollection2;
 
-            List<int> incomeData = this.adminWindowViewModel.getIncomeStatistics();
+            List<int> incomeData = this.adminWindowViewModel.GetIncomeStatistics();
 
             SeriesCollection mySeries = new SeriesCollection
             {
