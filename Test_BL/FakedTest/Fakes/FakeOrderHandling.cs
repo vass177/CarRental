@@ -38,7 +38,15 @@ namespace Test_BL.FakedTest.Fakes
 
         public int NumberOfServices(Service service)
         {
-            throw new NotImplementedException();
+            int db = 0;
+            foreach (Tuple<Rental, IList<Service>> egyTuple in this.RentalsWithServices)
+            {
+                if (egyTuple.Item2.Contains(service))
+                {
+                    db++;
+                }
+            }
+            return db;
         }
 
         public List<int> OrderRevenue(bool onlyForClient)
