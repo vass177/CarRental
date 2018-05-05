@@ -46,12 +46,13 @@ namespace Test_BL.FakedTest.Fakes
                     db++;
                 }
             }
+
             return db;
         }
 
         public List<int> OrderRevenue(bool onlyForClient)
         {
-            throw new NotImplementedException();
+            return onlyForClient ? new List<int> { 10, 11, 12, 13 } : null;
         }
     }
 }
