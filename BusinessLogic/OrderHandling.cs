@@ -122,6 +122,8 @@ namespace BusinessLogic
             {
                 List<int> allRevenue = this.OrderRevenue(false);
                 double discount = ((double)sum2018 / (double)allRevenue[4]) * 100;
+                Client updatedClient = (Client) this.clientDBHandler.Select(ClientAttributeType.UserName, loggedInClient.UserName);
+                updatedClient.ClientDiscountStatus = (int)discount;
                 this.loggedInClient.ClientDiscountStatus = (int)discount;
                 this.clientDBHandler.Update();
             }
