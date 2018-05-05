@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Test_BL.FakedTest
 {
     /// <summary>
-    /// Test class for IXXXLogic implementor fakes 
+    /// Test class for IXXXLogic implementor fakes
     /// </summary>
     [TestFixture]
     public class TestIXXXLogicFakes
@@ -42,6 +42,7 @@ namespace Test_BL.FakedTest
                 cl.UserName = "username" + id;
                 this.myClientDS.Add(cl);
                 Service s = new Service();
+                s.ServicePrice = 2 * id;
                 s.ServiceName = "ServiceName" + id++;
                 this.myServiceDS.Add(s);
             }
@@ -64,6 +65,19 @@ namespace Test_BL.FakedTest
                 this.myRentalDS.Add(r);
             }
 
+            for (int i2 = 0; i2 < this.myRentalDS.Count; i2++)
+            {
+                int serviceToRental = rnd.Next(1, maxFakeElements);
+                List<Service> servlist = new List<Service>();
+                for (int j = 0; j < serviceToRental; j++)
+                {
+                    servlist.Add(this.myServiceDS.ElementAt(j));
+                }
+
+                Tuple<Rental, IList<Service>> myTuple =
+                    new Tuple<Rental, IList<Service>>(this.myRentalDS.ElementAt(i2), servlist);
+                this.myRentalsWithServicesDS.Add(myTuple);
+            }
         }
     }
 }
