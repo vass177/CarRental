@@ -73,6 +73,9 @@ $(function() {
 <div class="title">BusinessLogic.CarHandlingLogic Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class, that contains all the methods connecting to car handling  
+ <a href="class_business_logic_1_1_car_handling_logic.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for BusinessLogic.CarHandlingLogic:</div>
 <div class="dyncontent">
@@ -85,20 +88,20 @@ Inheritance diagram for BusinessLogic.CarHandlingLogic:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a51403b761ff906f96a522fde59ac4500"><td class="memItemLeft" align="right" valign="top"><a id="a51403b761ff906f96a522fde59ac4500"></a>
-IList&lt; <a class="el" href="class_data_1_1_car.html">Car</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetAllCarList</b> ()</td></tr>
+<tr class="memitem:a51403b761ff906f96a522fde59ac4500"><td class="memItemLeft" align="right" valign="top">IList&lt; <a class="el" href="class_data_1_1_car.html">Car</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_business_logic_1_1_car_handling_logic.html#a51403b761ff906f96a522fde59ac4500">GetAllCarList</a> ()</td></tr>
+<tr class="memdesc:a51403b761ff906f96a522fde59ac4500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collects all the cars, that could be rent  <a href="#a51403b761ff906f96a522fde59ac4500">More...</a><br /></td></tr>
 <tr class="separator:a51403b761ff906f96a522fde59ac4500"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadf2fcf01c9956c74c675bcc895e5932"><td class="memItemLeft" align="right" valign="top"><a id="aadf2fcf01c9956c74c675bcc895e5932"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DeleteCar</b> (<a class="el" href="class_data_1_1_car.html">Car</a> selectedCar)</td></tr>
+<tr class="memitem:aadf2fcf01c9956c74c675bcc895e5932"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_business_logic_1_1_car_handling_logic.html#aadf2fcf01c9956c74c675bcc895e5932">DeleteCar</a> (<a class="el" href="class_data_1_1_car.html">Car</a> selectedCar)</td></tr>
+<tr class="memdesc:aadf2fcf01c9956c74c675bcc895e5932"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method, called for deleting a Car from database  <a href="#aadf2fcf01c9956c74c675bcc895e5932">More...</a><br /></td></tr>
 <tr class="separator:aadf2fcf01c9956c74c675bcc895e5932"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd56bf8be500f1f945da76e818c0fb75"><td class="memItemLeft" align="right" valign="top"><a id="afd56bf8be500f1f945da76e818c0fb75"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DeleteCarOrders</b> (IQueryable&lt; <a class="el" href="class_data_1_1_rental.html">Rental</a> &gt; rentals)</td></tr>
+<tr class="memitem:afd56bf8be500f1f945da76e818c0fb75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_business_logic_1_1_car_handling_logic.html#afd56bf8be500f1f945da76e818c0fb75">DeleteCarOrders</a> (IQueryable&lt; <a class="el" href="class_data_1_1_rental.html">Rental</a> &gt; rentals)</td></tr>
+<tr class="memdesc:afd56bf8be500f1f945da76e818c0fb75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all the connected Rentals to a Car object, before the Car will be deleted  <a href="#afd56bf8be500f1f945da76e818c0fb75">More...</a><br /></td></tr>
 <tr class="separator:afd56bf8be500f1f945da76e818c0fb75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48f65e63f98df78b1f1e6301466d38ff"><td class="memItemLeft" align="right" valign="top"><a id="a48f65e63f98df78b1f1e6301466d38ff"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateCar</b> ()</td></tr>
+<tr class="memitem:a48f65e63f98df78b1f1e6301466d38ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_business_logic_1_1_car_handling_logic.html#a48f65e63f98df78b1f1e6301466d38ff">UpdateCar</a> ()</td></tr>
+<tr class="memdesc:a48f65e63f98df78b1f1e6301466d38ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calles the database savechange for Car DB and fires an event to notify GUI about the change in the list  <a href="#a48f65e63f98df78b1f1e6301466d38ff">More...</a><br /></td></tr>
 <tr class="separator:a48f65e63f98df78b1f1e6301466d38ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a51897789a33c28c9a5054a11015ba2"><td class="memItemLeft" align="right" valign="top"><a id="a8a51897789a33c28c9a5054a11015ba2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddNewCar</b> (<a class="el" href="class_data_1_1_car.html">Car</a> newCar, string photoPath)</td></tr>
+<tr class="memitem:a8a51897789a33c28c9a5054a11015ba2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_business_logic_1_1_car_handling_logic.html#a8a51897789a33c28c9a5054a11015ba2">AddNewCar</a> (<a class="el" href="class_data_1_1_car.html">Car</a> newCar, string photoPath)</td></tr>
+<tr class="memdesc:a8a51897789a33c28c9a5054a11015ba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Its not really used, and not really working  <a href="#a8a51897789a33c28c9a5054a11015ba2">More...</a><br /></td></tr>
 <tr class="separator:a8a51897789a33c28c9a5054a11015ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="events"></a>
@@ -108,9 +111,157 @@ EventHandler&#160;</td><td class="memItemRight" valign="bottom"><b>CarListChange
 <tr class="separator:a2e1ddea9c1dc3827f4b748ab07432ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_car_handling_logic_8cs_source.html#l00015">15</a> of file <a class="el" href="_car_handling_logic_8cs_source.html">CarHandlingLogic.cs</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Class, that contains all the methods connecting to car handling </p>
+
+<p class="definition">Definition at line <a class="el" href="_car_handling_logic_8cs_source.html#l00018">18</a> of file <a class="el" href="_car_handling_logic_8cs_source.html">CarHandlingLogic.cs</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8a51897789a33c28c9a5054a11015ba2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a51897789a33c28c9a5054a11015ba2">&#9670;&nbsp;</a></span>AddNewCar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BusinessLogic.CarHandlingLogic.AddNewCar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_data_1_1_car.html">Car</a>&#160;</td>
+          <td class="paramname"><em>newCar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>photoPath</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Its not really used, and not really working </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newCar</td><td>a Car...</td></tr>
+    <tr><td class="paramname">photoPath</td><td>an ImageSource</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="interface_business_logic_1_1_i_car_handling_logic.html">BusinessLogic.ICarHandlingLogic</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_car_handling_logic_8cs_source.html#l00091">91</a> of file <a class="el" href="_car_handling_logic_8cs_source.html">CarHandlingLogic.cs</a>.</p>
+
+</div>
+</div>
+<a id="aadf2fcf01c9956c74c675bcc895e5932"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadf2fcf01c9956c74c675bcc895e5932">&#9670;&nbsp;</a></span>DeleteCar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BusinessLogic.CarHandlingLogic.DeleteCar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_data_1_1_car.html">Car</a>&#160;</td>
+          <td class="paramname"><em>selectedCar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Method, called for deleting a Car from database </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">selectedCar</td><td>Car object, that will be deleted</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="interface_business_logic_1_1_i_car_handling_logic.html">BusinessLogic.ICarHandlingLogic</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_car_handling_logic_8cs_source.html#l00048">48</a> of file <a class="el" href="_car_handling_logic_8cs_source.html">CarHandlingLogic.cs</a>.</p>
+
+</div>
+</div>
+<a id="afd56bf8be500f1f945da76e818c0fb75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd56bf8be500f1f945da76e818c0fb75">&#9670;&nbsp;</a></span>DeleteCarOrders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BusinessLogic.CarHandlingLogic.DeleteCarOrders </td>
+          <td>(</td>
+          <td class="paramtype">IQueryable&lt; <a class="el" href="class_data_1_1_rental.html">Rental</a> &gt;&#160;</td>
+          <td class="paramname"><em>rentals</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deletes all the connected Rentals to a Car object, before the Car will be deleted </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rentals</td><td>List, that contains all the rentals, in which the Car is included</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_car_handling_logic_8cs_source.html#l00061">61</a> of file <a class="el" href="_car_handling_logic_8cs_source.html">CarHandlingLogic.cs</a>.</p>
+
+</div>
+</div>
+<a id="a51403b761ff906f96a522fde59ac4500"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51403b761ff906f96a522fde59ac4500">&#9670;&nbsp;</a></span>GetAllCarList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IList&lt;<a class="el" href="class_data_1_1_car.html">Car</a>&gt; BusinessLogic.CarHandlingLogic.GetAllCarList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Collects all the cars, that could be rent </p>
+<dl class="section return"><dt>Returns</dt><dd>a List containing all the Car objects</dd></dl>
+
+<p>Implements <a class="el" href="interface_business_logic_1_1_i_car_handling_logic.html">BusinessLogic.ICarHandlingLogic</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_car_handling_logic_8cs_source.html#l00037">37</a> of file <a class="el" href="_car_handling_logic_8cs_source.html">CarHandlingLogic.cs</a>.</p>
+
+</div>
+</div>
+<a id="a48f65e63f98df78b1f1e6301466d38ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48f65e63f98df78b1f1e6301466d38ff">&#9670;&nbsp;</a></span>UpdateCar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BusinessLogic.CarHandlingLogic.UpdateCar </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calles the database savechange for Car DB and fires an event to notify GUI about the change in the list </p>
+
+<p>Implements <a class="el" href="interface_business_logic_1_1_i_car_handling_logic.html">BusinessLogic.ICarHandlingLogic</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_car_handling_logic_8cs_source.html#l00079">79</a> of file <a class="el" href="_car_handling_logic_8cs_source.html">CarHandlingLogic.cs</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>BusinessLogic/<a class="el" href="_car_handling_logic_8cs_source.html">CarHandlingLogic.cs</a></li>
 </ul>
 </div><!-- contents -->

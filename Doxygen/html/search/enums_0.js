@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['fakeattributeenum',['FakeAttributeEnum',['../namespace_test___b_l_1_1_faked_test_1_1_fakes.html#a539e1c5d9f0c6598dbf2fcb598b70e8f',1,'Test_BL::FakedTest::Fakes']]]
+  ['carattributetype',['CarAttributeType',['../namespace_data_1_1_data_handling.html#abbce85bec5dd452b3621164755be8baa',1,'Data::DataHandling']]],
+  ['clientattributetype',['ClientAttributeType',['../namespace_data_1_1_data_handling.html#ae558e9941ea3b4acd83de51625d37ebd',1,'Data::DataHandling']]]
 ];

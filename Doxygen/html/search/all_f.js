@@ -1,6 +1,10 @@
 var searchData=
 [
+  ['update',['Update',['../class_data_1_1_data_handling_1_1_car_data_handler.html#a91e80d6d58662f584250375eff2d1402',1,'Data.DataHandling.CarDataHandler.Update()'],['../class_data_1_1_data_handling_1_1_client_data_handler.html#a56501fa5e83ef983df96c69fba545d3f',1,'Data.DataHandling.ClientDataHandler.Update()'],['../class_data_1_1_data_handling_1_1_rental_data_handler.html#a2191567fa0c0999dfb186a4b89672f6a',1,'Data.DataHandling.RentalDataHandler.Update()'],['../class_data_1_1_data_handling_1_1_rental_service_join_data_handler.html#ae1b3294eaf88d1da64a793d4a555da83',1,'Data.DataHandling.RentalServiceJoinDataHandler.Update()'],['../class_data_1_1_data_handling_1_1_service_data_handler.html#ab6c81e3e65b90486df36ab84be6bbb40',1,'Data.DataHandling.ServiceDataHandler.Update()'],['../class_data_1_1_data_handling_1_1_user_data_handler.html#ab974b751cfc0e1fd0150bcc4e2e0a14d',1,'Data.DataHandling.UserDataHandler.Update()']]],
+  ['updatecar',['UpdateCar',['../class_business_logic_1_1_car_handling_logic.html#a48f65e63f98df78b1f1e6301466d38ff',1,'BusinessLogic.CarHandlingLogic.UpdateCar()'],['../class_car_rental_manager_1_1_admin_window_view_model.html#a6aa42361ce2b6f0f83ba16647f20cd49',1,'CarRentalManager.AdminWindowViewModel.UpdateCar()']]],
+  ['updateclient',['UpdateClient',['../class_business_logic_1_1_client_information_logic.html#a24805c00af8cc5011b4dfa23129aaa45',1,'BusinessLogic.ClientInformationLogic.UpdateClient()'],['../class_car_rental_manager_1_1_admin_window_view_model.html#ad29ed37692c302e26990e3969ae8010c',1,'CarRentalManager.AdminWindowViewModel.UpdateClient()']]],
   ['user',['User',['../class_data_1_1_user.html',1,'Data']]],
+  ['userattributetype',['UserAttributeType',['../namespace_data_1_1_data_handling.html#aa327276ad6ffb590aa9a3be97353bc54',1,'Data::DataHandling']]],
   ['userclientregistration',['UserClientRegistration',['../class_business_logic_1_1_user_client_registration.html',1,'BusinessLogic']]],
   ['userdatahandler',['UserDataHandler',['../class_data_1_1_data_handling_1_1_user_data_handler.html',1,'Data::DataHandling']]]
 ];

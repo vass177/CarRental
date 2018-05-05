@@ -73,32 +73,35 @@ $(function() {
 <div class="title">BusinessLogic.NewOrderHandlingLogic Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class, that handles the process of a new order  
+ <a href="class_business_logic_1_1_new_order_handling_logic.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa98dcca2b173939ef4bfbf4243729c4f"><td class="memItemLeft" align="right" valign="top"><a id="aa98dcca2b173939ef4bfbf4243729c4f"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>NewOrderHandlingLogic</b> (<a class="el" href="class_data_1_1_client.html">Client</a> loggedInClient)</td></tr>
 <tr class="separator:aa98dcca2b173939ef4bfbf4243729c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04388bbfacb68944be287e7a232d012f"><td class="memItemLeft" align="right" valign="top"><a id="a04388bbfacb68944be287e7a232d012f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SelectCar</b> (string imageSource)</td></tr>
+<tr class="memitem:a04388bbfacb68944be287e7a232d012f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_business_logic_1_1_new_order_handling_logic.html#a04388bbfacb68944be287e7a232d012f">SelectCar</a> (string imageSource)</td></tr>
+<tr class="memdesc:a04388bbfacb68944be287e7a232d012f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a Car object from the database by the selected image source  <a href="#a04388bbfacb68944be287e7a232d012f">More...</a><br /></td></tr>
 <tr class="separator:a04388bbfacb68944be287e7a232d012f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89e7ae1b7897188d668055a907f4446f"><td class="memItemLeft" align="right" valign="top"><a id="a89e7ae1b7897188d668055a907f4446f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>CheckCarAvailibility</b> (DateTime startDate, DateTime endDate)</td></tr>
+<tr class="memitem:a89e7ae1b7897188d668055a907f4446f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_business_logic_1_1_new_order_handling_logic.html#a89e7ae1b7897188d668055a907f4446f">CheckCarAvailibility</a> (DateTime startDate, DateTime endDate)</td></tr>
+<tr class="memdesc:a89e7ae1b7897188d668055a907f4446f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks, whether the selected car is available between the selected dates  <a href="#a89e7ae1b7897188d668055a907f4446f">More...</a><br /></td></tr>
 <tr class="separator:a89e7ae1b7897188d668055a907f4446f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60b1cbcd26abcd4427d68df34e944d03"><td class="memItemLeft" align="right" valign="top"><a id="a60b1cbcd26abcd4427d68df34e944d03"></a>
-List&lt; <a class="el" href="class_data_1_1_service.html">Service</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>SearchSelectedServices</b> (List&lt; string &gt; serviceList)</td></tr>
+<tr class="memitem:a60b1cbcd26abcd4427d68df34e944d03"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_data_1_1_service.html">Service</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_business_logic_1_1_new_order_handling_logic.html#a60b1cbcd26abcd4427d68df34e944d03">SearchSelectedServices</a> (List&lt; string &gt; serviceList)</td></tr>
+<tr class="memdesc:a60b1cbcd26abcd4427d68df34e944d03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of the selected services  <a href="#a60b1cbcd26abcd4427d68df34e944d03">More...</a><br /></td></tr>
 <tr class="separator:a60b1cbcd26abcd4427d68df34e944d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb5239aa0038c6ab2e71c6584c2230f3"><td class="memItemLeft" align="right" valign="top"><a id="abb5239aa0038c6ab2e71c6584c2230f3"></a>
-decimal&#160;</td><td class="memItemRight" valign="bottom"><b>CalculateServicePrice</b> ()</td></tr>
+<tr class="memitem:abb5239aa0038c6ab2e71c6584c2230f3"><td class="memItemLeft" align="right" valign="top">decimal&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_business_logic_1_1_new_order_handling_logic.html#abb5239aa0038c6ab2e71c6584c2230f3">CalculateServicePrice</a> ()</td></tr>
+<tr class="memdesc:abb5239aa0038c6ab2e71c6584c2230f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the price of the selected services for the interval  <a href="#abb5239aa0038c6ab2e71c6584c2230f3">More...</a><br /></td></tr>
 <tr class="separator:abb5239aa0038c6ab2e71c6584c2230f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fe5d36d9e2e6d6cf149de79baf13938"><td class="memItemLeft" align="right" valign="top"><a id="a9fe5d36d9e2e6d6cf149de79baf13938"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>CalculateDays</b> ()</td></tr>
+<tr class="memitem:a9fe5d36d9e2e6d6cf149de79baf13938"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_business_logic_1_1_new_order_handling_logic.html#a9fe5d36d9e2e6d6cf149de79baf13938">CalculateDays</a> ()</td></tr>
+<tr class="memdesc:a9fe5d36d9e2e6d6cf149de79baf13938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the days between the dates  <a href="#a9fe5d36d9e2e6d6cf149de79baf13938">More...</a><br /></td></tr>
 <tr class="separator:a9fe5d36d9e2e6d6cf149de79baf13938"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fad81cc145abb732d29d46ce98233fd"><td class="memItemLeft" align="right" valign="top"><a id="a1fad81cc145abb732d29d46ce98233fd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>CalculateFinalPrice</b> ()</td></tr>
+<tr class="memitem:a1fad81cc145abb732d29d46ce98233fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_business_logic_1_1_new_order_handling_logic.html#a1fad81cc145abb732d29d46ce98233fd">CalculateFinalPrice</a> ()</td></tr>
+<tr class="memdesc:a1fad81cc145abb732d29d46ce98233fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the final price: sum of car prices and services price  <a href="#a1fad81cc145abb732d29d46ce98233fd">More...</a><br /></td></tr>
 <tr class="separator:a1fad81cc145abb732d29d46ce98233fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc130abe9b063e0bb1891d1d7c8ae20b"><td class="memItemLeft" align="right" valign="top"><a id="adc130abe9b063e0bb1891d1d7c8ae20b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>FinishOrder</b> ()</td></tr>
+<tr class="memitem:adc130abe9b063e0bb1891d1d7c8ae20b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_business_logic_1_1_new_order_handling_logic.html#adc130abe9b063e0bb1891d1d7c8ae20b">FinishOrder</a> ()</td></tr>
+<tr class="memdesc:adc130abe9b063e0bb1891d1d7c8ae20b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finishes the new order, by inserting it in the database  <a href="#adc130abe9b063e0bb1891d1d7c8ae20b">More...</a><br /></td></tr>
 <tr class="separator:adc130abe9b063e0bb1891d1d7c8ae20b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
@@ -120,9 +123,194 @@ List&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ServPric
 <tr class="separator:ad6da69832cbd5862b5223b17b79baed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_new_order_handling_logic_8cs_source.html#l00015">15</a> of file <a class="el" href="_new_order_handling_logic_8cs_source.html">NewOrderHandlingLogic.cs</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Class, that handles the process of a new order </p>
+
+<p class="definition">Definition at line <a class="el" href="_new_order_handling_logic_8cs_source.html#l00018">18</a> of file <a class="el" href="_new_order_handling_logic_8cs_source.html">NewOrderHandlingLogic.cs</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9fe5d36d9e2e6d6cf149de79baf13938"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fe5d36d9e2e6d6cf149de79baf13938">&#9670;&nbsp;</a></span>CalculateDays()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BusinessLogic.NewOrderHandlingLogic.CalculateDays </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the days between the dates </p>
+<dl class="section return"><dt>Returns</dt><dd>returns the day count</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_new_order_handling_logic_8cs_source.html#l00153">153</a> of file <a class="el" href="_new_order_handling_logic_8cs_source.html">NewOrderHandlingLogic.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1fad81cc145abb732d29d46ce98233fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fad81cc145abb732d29d46ce98233fd">&#9670;&nbsp;</a></span>CalculateFinalPrice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BusinessLogic.NewOrderHandlingLogic.CalculateFinalPrice </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the final price: sum of car prices and services price </p>
+
+<p class="definition">Definition at line <a class="el" href="_new_order_handling_logic_8cs_source.html#l00166">166</a> of file <a class="el" href="_new_order_handling_logic_8cs_source.html">NewOrderHandlingLogic.cs</a>.</p>
+
+</div>
+</div>
+<a id="abb5239aa0038c6ab2e71c6584c2230f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb5239aa0038c6ab2e71c6584c2230f3">&#9670;&nbsp;</a></span>CalculateServicePrice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">decimal BusinessLogic.NewOrderHandlingLogic.CalculateServicePrice </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the price of the selected services for the interval </p>
+<dl class="section return"><dt>Returns</dt><dd>returns the sum of the prices</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_new_order_handling_logic_8cs_source.html#l00134">134</a> of file <a class="el" href="_new_order_handling_logic_8cs_source.html">NewOrderHandlingLogic.cs</a>.</p>
+
+</div>
+</div>
+<a id="a89e7ae1b7897188d668055a907f4446f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89e7ae1b7897188d668055a907f4446f">&#9670;&nbsp;</a></span>CheckCarAvailibility()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BusinessLogic.NewOrderHandlingLogic.CheckCarAvailibility </td>
+          <td>(</td>
+          <td class="paramtype">DateTime&#160;</td>
+          <td class="paramname"><em>startDate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DateTime&#160;</td>
+          <td class="paramname"><em>endDate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks, whether the selected car is available between the selected dates </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startDate</td><td>Selected starting date</td></tr>
+    <tr><td class="paramname">endDate</td><td>Selected ending date</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True, if car is available, false if not</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_new_order_handling_logic_8cs_source.html#l00092">92</a> of file <a class="el" href="_new_order_handling_logic_8cs_source.html">NewOrderHandlingLogic.cs</a>.</p>
+
+</div>
+</div>
+<a id="adc130abe9b063e0bb1891d1d7c8ae20b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc130abe9b063e0bb1891d1d7c8ae20b">&#9670;&nbsp;</a></span>FinishOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BusinessLogic.NewOrderHandlingLogic.FinishOrder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finishes the new order, by inserting it in the database </p>
+
+<p class="definition">Definition at line <a class="el" href="_new_order_handling_logic_8cs_source.html#l00177">177</a> of file <a class="el" href="_new_order_handling_logic_8cs_source.html">NewOrderHandlingLogic.cs</a>.</p>
+
+</div>
+</div>
+<a id="a60b1cbcd26abcd4427d68df34e944d03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60b1cbcd26abcd4427d68df34e944d03">&#9670;&nbsp;</a></span>SearchSelectedServices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_data_1_1_service.html">Service</a>&gt; BusinessLogic.NewOrderHandlingLogic.SearchSelectedServices </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; string &gt;&#160;</td>
+          <td class="paramname"><em>serviceList</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a list of the selected services </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serviceList</td><td>list, containing services names in string</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>List, containing the selected Service objects</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_new_order_handling_logic_8cs_source.html#l00115">115</a> of file <a class="el" href="_new_order_handling_logic_8cs_source.html">NewOrderHandlingLogic.cs</a>.</p>
+
+</div>
+</div>
+<a id="a04388bbfacb68944be287e7a232d012f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04388bbfacb68944be287e7a232d012f">&#9670;&nbsp;</a></span>SelectCar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BusinessLogic.NewOrderHandlingLogic.SelectCar </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>imageSource</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a Car object from the database by the selected image source </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">imageSource</td><td>Image source of the selected car</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_new_order_handling_logic_8cs_source.html#l00073">73</a> of file <a class="el" href="_new_order_handling_logic_8cs_source.html">NewOrderHandlingLogic.cs</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>BusinessLogic/<a class="el" href="_new_order_handling_logic_8cs_source.html">NewOrderHandlingLogic.cs</a></li>
 </ul>
 </div><!-- contents -->
