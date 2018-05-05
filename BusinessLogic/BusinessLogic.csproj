@@ -63,6 +63,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="oenik.ruleset" />
     <None Include="packages.config" />
     <None Include="stylecop.json" />
   </ItemGroup>

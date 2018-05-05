@@ -48,7 +48,7 @@ namespace BusinessLogic
         public int NumberOfServices(Service service)
         {
             IQueryable<RentalServiceJoin> allRental = (IQueryable<RentalServiceJoin>)this.rentalJoinDBHandler.GetAll();
-
+            Console.WriteLine(allRental.Count(x => x.ServiceName == service.ServiceName));
             return allRental.Count(x => x.ServiceName == service.ServiceName);
         }
 
