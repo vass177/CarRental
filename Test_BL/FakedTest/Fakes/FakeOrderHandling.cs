@@ -23,7 +23,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public IList<Service> GetAllServiceList()
         {
-            throw new NotImplementedException();
+            return this.Services;
         }
 
         public List<int> HowMuchCarID()
