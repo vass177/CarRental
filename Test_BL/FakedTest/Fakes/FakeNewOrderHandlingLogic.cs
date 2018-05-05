@@ -68,14 +68,14 @@ namespace Test_BL.FakedTest.Fakes
 
         public List<Service> SearchSelectedServices(List<string> serviceList)
         {
-            int sum = 0;
+            this.servicePrice = 0;
             if (!(this.Services == null || serviceList == null))
             {
                 List<Service> s = new List<Service>();
                 foreach (string item in serviceList)
                 {
                     s.AddRange(this.Services.Where(x => x.ServiceName == item));
-                    sum += 10;
+                    this.servicePrice += 10;
                 }
 
                 return s;
