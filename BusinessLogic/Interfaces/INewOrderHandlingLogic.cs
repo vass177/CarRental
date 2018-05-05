@@ -17,7 +17,7 @@ namespace BusinessLogic.Interfaces
 
         int CarPrice { get; }
 
-        List<int> ServPriceList { get; set; }
+        List<int> ServPriceList { get; }
 
         void SelectCar(string imageSource);
 
