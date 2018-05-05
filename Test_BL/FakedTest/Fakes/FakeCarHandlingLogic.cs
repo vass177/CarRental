@@ -19,6 +19,8 @@ namespace Test_BL.FakedTest.Fakes
 
         public IList<Rental> Rentals { get; set; }
 
+        public int UpdatedTimes { get; private set; }
+
         public void AddNewCar(Car newCar, string photoPath)
         {
             this.Cars.Add(newCar);
@@ -43,7 +45,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public IList<Car> GetAllCarList()
         {
-            
+            return this.Cars;
         }
 
         public void UpdateCar()
