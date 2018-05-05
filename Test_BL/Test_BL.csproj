@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="FakedTest\CarSelectionLogicTest_WithFakes.cs" />
+    <Compile Include="FakedTest\Fakes\FakeCarHandlingLogic.cs" />
     <Compile Include="FakedTest\Fakes\FakeDatabase.cs" />
     <Compile Include="FakedTest\Fakes\IFakeDataBase.cs" />
     <Compile Include="FakedTest\Fakes\IFakeProperties.cs" />
