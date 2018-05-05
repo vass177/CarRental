@@ -50,11 +50,13 @@ namespace Test_BL.FakedTest.Fakes
         {
             this.dateArray[0] = startDate;
             this.dateArray[1] = endDate;
+            int days = (int)(startDate - endDate).TotalDays;
             if ((startDate - endDate).TotalDays < 0)
             {
                 return false;
             }
 
+            this.CarPrice = days * 10;
             return true;
         }
 
