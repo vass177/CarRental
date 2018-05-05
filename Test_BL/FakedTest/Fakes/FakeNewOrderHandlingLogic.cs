@@ -11,6 +11,7 @@ namespace Test_BL.FakedTest.Fakes
     public class FakeNewOrderHandlingLogic : INewOrderHandlingLogic
     {
         private DateTime[] dateArray = new DateTime[2];
+        private int servicePrice = 0;
 
         public IList<Service> Services { get; set; }
 
@@ -38,6 +39,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public void CalculateFinalPrice()
         {
+            this.FinalPrice = this.CarPrice + this.servicePrice;
             this.VoidMethodCalls++;
         }
 
@@ -77,7 +79,6 @@ namespace Test_BL.FakedTest.Fakes
                     sum += 10;
                 }
 
-                this.FinalPrice = this.CarPrice + sum;
                 return s;
             }
 
