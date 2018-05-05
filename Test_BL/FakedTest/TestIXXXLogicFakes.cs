@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,9 @@ namespace Test_BL.FakedTest
     /// <summary>
     /// Test class for IXXXLogic implementor fakes 
     /// </summary>
-    class TestIXXXLogicFakes
+    [TestFixture]
+    public class TestIXXXLogicFakes
     {
+        
     }
 }
