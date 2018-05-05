@@ -52,6 +52,7 @@
     <Compile Include="FakedTest\Fakes\FakeCarHandlingLogic.cs" />
     <Compile Include="FakedTest\Fakes\FakeClientInformationLogic.cs" />
     <Compile Include="FakedTest\Fakes\FakeDatabase.cs" />
+    <Compile Include="FakedTest\Fakes\FakeNewOrderHandlingLogic.cs" />
     <Compile Include="FakedTest\Fakes\IFakeDataBase.cs" />
     <Compile Include="FakedTest\Fakes\IFakeProperties.cs" />
     <Compile Include="FakedTest\Test_IDataBase_methods..cs" />
