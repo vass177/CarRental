@@ -10,7 +10,7 @@ using Test_BL.FakedTest.Fakes;
 namespace Test_BL.FakedTest
 {
     /// <summary>
-    /// Testing IDataBase implementor FakeDatabase 
+    /// Testing IDataBase implementor FakeDatabase
     /// </summary>
     [TestFixture]
     public class Test_IDataBase_methods
