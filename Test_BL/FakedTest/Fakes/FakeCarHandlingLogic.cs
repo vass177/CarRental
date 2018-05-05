@@ -17,7 +17,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public Dictionary<Car, string> CarsWithPhotoPaths { get; private set; }
 
-        public IList<Rental> Rental { get; set; }
+        public IList<Rental> Rentals { get; set; }
 
         public void AddNewCar(Car newCar, string photoPath)
         {
@@ -35,7 +35,10 @@ namespace Test_BL.FakedTest.Fakes
 
         public void DeleteCarOrders(IQueryable<Rental> rentals)
         {
-            
+            foreach (Rental item in rentals)
+            {
+                this.Rentals.Remove(item);
+            }
         }
 
         public IList<Car> GetAllCarList()
