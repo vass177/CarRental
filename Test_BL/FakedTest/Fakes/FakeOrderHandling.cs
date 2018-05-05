@@ -10,6 +10,12 @@ namespace Test_BL.FakedTest.Fakes
 {
     public class FakeOrderHandling : IOrderHandling
     {
+        public IList<Rental> Rentals { get; set; }
+
+        public IList<Service> Services { get; set; }
+
+        public IList<Tuple<Rental, IList<Service>>> RentalsWithServices { get; set; }
+
         public IList<Rental> GetAllRentalList()
         {
             throw new NotImplementedException();
