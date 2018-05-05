@@ -17,6 +17,8 @@ namespace CarRentalManager.Interfaces
 
         Car SelectedCar { get; set; }
 
+        int CarSumma { get; set; }
+
         Dictionary<string, int> SummaCars();
 
         List<decimal> GetCarCoordinates();
@@ -25,11 +27,10 @@ namespace CarRentalManager.Interfaces
 
         List<int> GetIncomeStatistics();
 
+        void DeleteClient();
 
+        void DeleteCar();
 
-
-
-
-
+        void UpdateClient();
     }
 }
