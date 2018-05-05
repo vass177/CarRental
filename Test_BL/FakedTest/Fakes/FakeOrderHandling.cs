@@ -18,7 +18,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public IList<Rental> GetAllRentalList()
         {
-            throw new NotImplementedException();
+            return this.Rentals;
         }
 
         public IList<Service> GetAllServiceList()
