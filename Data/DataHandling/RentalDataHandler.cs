@@ -97,7 +97,7 @@ namespace Data.DataHandling
                 case RentalAttributeType.CarID:
                     return this.database.Rentals.Where(x => x.CarID == (int)attributeValue);
                 case RentalAttributeType.RentalDateInterval:
-                    return this.database.Rentals.Where(x => (x.RentalStartDate >= dateRange1 && x.RentalStartDate <= dateRange2) || (x.RentalEndDate >= dateRange1 && x.RentalEndDate <= dateRange2));
+                    return this.database.Rentals.Where(x => (x.RentalStartDate >= dateRange1 && x.RentalStartDate <= dateRange2) || (x.RentalEndDate >= dateRange1 && x.RentalEndDate <= dateRange2) || (x.RentalStartDate <= dateRange1 && x.RentalEndDate >= dateRange2) || (x.RentalStartDate >= dateRange1 && x.RentalEndDate <= dateRange2));
                 case RentalAttributeType.RentalPriceInterval:
                     return this.database.Rentals.Where(x => (x.RentalFullPrice >= priceRange1 && x.RentalFullPrice <= priceRange2));
                 default:

@@ -80,15 +80,13 @@ namespace BusinessLogic
         {
             this.dateRange = new DateTime[] { startDate, endDate };
             IQueryable<Rental> rentals = (IQueryable<Rental>)this.rentalDBHandler.SelectMore(RentalAttributeType.RentalDateInterval, this.dateRange);
-            Console.WriteLine("Keressük ezt: "+selectedCar.CarType);
+
             foreach (var order in rentals)
             {
                 Console.WriteLine(order.Car.CarType);
                 Console.WriteLine(order.Client.ClientName);
                 if (order.Car.CarID == this.selectedCar.CarID)
                 {
-                    /// 
-                    Console.WriteLine("Autó foglalt");
                     return false;
                 }
             }
