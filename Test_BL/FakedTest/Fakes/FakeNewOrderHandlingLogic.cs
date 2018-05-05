@@ -41,12 +41,19 @@ namespace Test_BL.FakedTest.Fakes
 
         public decimal CalculateServicePrice()
         {
-            throw new NotImplementedException();
+            return 10;
         }
 
         public bool CheckCarAvailibility(DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+            this.dateArray[0] = startDate;
+            this.dateArray[1] = endDate;
+            if ((startDate - endDate).TotalDays < 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public void FinishOrder()
