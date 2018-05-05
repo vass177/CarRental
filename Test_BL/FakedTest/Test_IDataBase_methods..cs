@@ -30,9 +30,7 @@ namespace Test_BL.FakedTest
         private List<Data.Service> myServiceDataSet;
         private FakeDatabase<Data.Service> myFServiceDb;
 
-        public Data.Car MyCar { get; set; }
-
-        public IEnumerable<object[]> DummyDataSetTestCases
+        public static IEnumerable<object[]> DummyDataSetTestCases
         {
             get
             {
@@ -76,7 +74,7 @@ namespace Test_BL.FakedTest
             }
         }
 
-        public IEnumerable<object[]> DummyDataTestCases
+        public static IEnumerable<object[]> DummyDataTestCases
         {
             get
             {
@@ -97,6 +95,8 @@ namespace Test_BL.FakedTest
                 return testCases;
             }
         }
+
+        public Data.Car MyCar { get; set; }
 
         /// <summary>
         /// Valamiért nem elérhetőek a többi metódusból
