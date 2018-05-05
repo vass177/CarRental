@@ -15,6 +15,8 @@ namespace Test_BL.FakedTest.Fakes
     {
         public IList<Car> Cars { get; set; }
 
+        public Dictionary<Car, string> CarsWithPhotoPaths { get; private set; }
+
         public IList<Rental> Rental { get; set; }
 
         public void AddNewCar(Car newCar, string photoPath)
