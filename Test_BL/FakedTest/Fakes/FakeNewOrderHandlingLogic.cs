@@ -8,6 +8,9 @@ using Data;
 
 namespace Test_BL.FakedTest.Fakes
 {
+    /// <summary>
+    /// An INewOrderHandlingLogic implementor, contains simple logic only for test purposes 
+    /// </summary>
     public class FakeNewOrderHandlingLogic : INewOrderHandlingLogic
     {
         private DateTime[] dateArray = new DateTime[2];

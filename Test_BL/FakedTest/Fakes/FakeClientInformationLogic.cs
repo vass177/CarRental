@@ -8,6 +8,9 @@ using Data;
 
 namespace Test_BL.FakedTest.Fakes
 {
+    /// <summary>
+    /// An IClientInformationLogic implementor with no meaningful logic only for testing
+    /// </summary>
     public class FakeClientInformationLogic : IClientInformationLogic
     {
         public IList<Client> Clients { get; set; }
