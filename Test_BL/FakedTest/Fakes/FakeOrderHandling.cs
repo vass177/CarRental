@@ -8,6 +8,9 @@ using Data;
 
 namespace Test_BL.FakedTest.Fakes
 {
+    /// <summary>
+    /// An IOrderHandling implementor with simple logic only for testing
+    /// </summary>
     public class FakeOrderHandling : IOrderHandling
     {
         public IList<Rental> Rentals { get; set; }
