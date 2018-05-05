@@ -84,7 +84,7 @@
                         <RowDefinition Height="4*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Content="Statistics" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="35" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"></Label>
-                    <Charts:PieChart x:Name="UtilizationCarsChart" Foreground="White" FontSize="10" Grid.Row="2" Grid.Column="0" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}" BorderThickness="0" BorderBrush="#33FFFFFF" Margin="0,0,0,10">
+                    <Charts:PieChart x:Name="UtilizationCarsChart" Foreground="White" FontSize="10" Grid.Row="2" Grid.Column="0" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}" BorderThickness="0" BorderBrush="#33FFFFFF" Margin="0,0,0,10" HoverPushOut="10" InnerRadius="65">
                         <!--<Charts:PieChart.Series>
                             <Charts:PieSeries Title="Opel" Values="3" DataLabels="False" />
                             <Charts:PieSeries Title="Smart" Values="4" DataLabels="False" />
@@ -121,7 +121,7 @@
                         <!--<m:Pushpin x:Name="firstPushpin" Background="#FFE51010"></m:Pushpin>-->
                     </m:Map>
 
-                    <Charts:PieChart x:Name="UtilizationServicesChart" Foreground="White" FontSize="10"  Grid.Row="2" Grid.Column="1" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}" Margin="0,0,0,10">
+                    <Charts:PieChart x:Name="UtilizationServicesChart" Foreground="White" FontSize="10"  Grid.Row="2" Grid.Column="1" LegendLocation="Bottom" Hoverable="True" DataTooltip="{x:Null}" Margin="0,0,0,10" HoverPushOut="10" InnerRadius="65">
                         <!--<Charts:PieChart.Series>
                             <Charts:PieSeries Title="Additional driver" Values="3" DataLabels="False"/>
                             <Charts:PieSeries Title="Baby seat" Values="4" DataLabels="False" />

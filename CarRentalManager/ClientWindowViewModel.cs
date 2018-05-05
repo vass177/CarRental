@@ -219,7 +219,7 @@ namespace CarRentalManager
             this.RefreshOrderList();
         }
 
-        public List<int> getClientStatistics()
+        public List<int> GetClientStatistics()
         {
             return this.clientOrderHandling.OrderRevenue(true);
         }

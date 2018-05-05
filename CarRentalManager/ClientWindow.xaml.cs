@@ -33,7 +33,7 @@ namespace CarRentalManager
 
         public void LoadUserStatistics()
         {
-            List<int> clientData = this.clientWindowViewModel.getClientStatistics();
+            List<int> clientData = this.clientWindowViewModel.GetClientStatistics();
 
             SeriesCollection mySeries = new SeriesCollection
             {
