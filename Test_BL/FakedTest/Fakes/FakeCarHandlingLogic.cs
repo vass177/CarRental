@@ -21,7 +21,8 @@ namespace Test_BL.FakedTest.Fakes
 
         public void AddNewCar(Car newCar, string photoPath)
         {
-           
+            this.Cars.Add(newCar);
+            this.CarsWithPhotoPaths.Add(newCar, photoPath);
         }
 
         public void DeleteCar(Car selectedCar)
