@@ -1,13 +1,17 @@
-﻿using BusinessLogic.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data;
+﻿// <copyright file="FakeClientInformationLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Test_BL.FakedTest.Fakes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using BusinessLogic.Interfaces;
+    using Data;
+
     /// <summary>
     /// An IClientInformationLogic implementor with no meaningful logic only for testing
     /// </summary>

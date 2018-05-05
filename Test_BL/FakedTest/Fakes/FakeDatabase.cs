@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data.DataHandling;
+﻿// <copyright file="FakeDatabase.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Test_BL.FakedTest.Fakes
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Dummy enum for test purposes
     /// </summary>

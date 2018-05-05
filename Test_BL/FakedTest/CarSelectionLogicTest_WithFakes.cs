@@ -1,14 +1,13 @@
-﻿using BusinessLogic;
-using Data;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="CarSelectionLogicTest_WithFakes.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Test_BL.FakedTests.Fakes
 {
+    using BusinessLogic;
+    using Data;
+    using NUnit.Framework;
+
     [TestFixture]
     internal class CarSelectionLogicTest_WithFakes
     {
