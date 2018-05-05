@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Data.DataHandling;
 using Data;
+using BusinessLogic.Interfaces;
 
 namespace BusinessLogic
 {
-    public class OrderHandling
+    public class OrderHandling : IOrderHandling
     {
         private readonly RentalDataHandler rentalDBHandler;
         private readonly ServiceDataHandler serviceDBHandler;
