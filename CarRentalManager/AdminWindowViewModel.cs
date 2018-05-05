@@ -11,9 +11,8 @@ namespace CarRentalManager
     using System.Threading.Tasks;
     using BusinessLogic;
     using Data;
-    using Interfaces;
 
-    public class AdminWindowViewModel : Bindable, IAdminWindowViewModel
+    public class AdminWindowViewModel : Bindable
     {
         private OrderHandling adminOrderhandling;
 
@@ -26,6 +25,20 @@ namespace CarRentalManager
         private CarHandlingLogic carHandLogic;
 
         private int carSumma;
+
+        public AdminWindowViewModel()
+        {
+            this.clientListLogic = new ClientInformationLogic();
+            this.carHandLogic = new CarHandlingLogic();
+
+            this.adminOrderhandling = new OrderHandling(null);
+
+            this.RefreshClientList();
+            this.RefreshCarList();
+
+            this.clientListLogic.ClientListChanged += this.ClientListLogic_ClientListChanged;
+            this.carHandLogic.CarListChanged += this.CarHandLogic_CarListChanged;
+        }
 
         public IList<Client> Clients
         {
@@ -71,52 +84,6 @@ namespace CarRentalManager
             }
         }
 
-        public Dictionary<string, int> SummaCars()
-        {
-            Dictionary<string, int> tempCarList = new Dictionary<string, int>();
-            IList<Car> getAllCars = this.carHandLogic.GetAllCarList();
-            foreach (var item in getAllCars)
-            {
-                int i = 0;
-                i = this.adminOrderhandling.NumberOfRental(item);
-                tempCarList.Add(item.CarType, i);
-            }
-
-            return tempCarList;
-        }
-
-        public List<decimal> GetCarCoordinates()
-        {
-            List<decimal> carCoord = new List<decimal>();
-            IList<Car> getAllCars = this.carHandLogic.GetAllCarList();
-            foreach (var item in getAllCars)
-            {
-                carCoord.Add(item.CoordLat * 100);
-                carCoord.Add(item.CoordLong * 100);
-            }
-
-            return carCoord;
-        }
-
-        public Dictionary<string, int> SummaServices()
-        {
-            Dictionary<string, int> tempServicesList = new Dictionary<string, int>();
-            IList<Service> getAllServices = this.adminOrderhandling.GetAllServiceList();
-            foreach (var item in getAllServices)
-            {
-                int i = 0;
-                i = this.adminOrderhandling.NumberOfServices(item);
-                tempServicesList.Add(item.ServiceName, i);
-            }
-
-            return tempServicesList;
-        }
-
-        public List<int> GetIncomeStatistics()
-        {
-            return this.adminOrderhandling.OrderRevenue(false);
-        }
-
         public int CarSumma
         {
             get
@@ -131,20 +98,71 @@ namespace CarRentalManager
             }
         }
 
-        public AdminWindowViewModel()
+        /// <summary>
+        /// Returns the car utilization statitics in a dictionary (key: cartype as string, value: car count in rentals)
+        /// </summary>
+        /// <returns>Dictinary containing car types as key and car count as value</returns>
+        public Dictionary<string, int> SummaCars()
         {
-            this.clientListLogic = new ClientInformationLogic();
-            this.carHandLogic = new CarHandlingLogic();
+            Dictionary<string, int> tempCarList = new Dictionary<string, int>();
+            IList<Car> getAllCars = this.carHandLogic.GetAllCarList();
+            foreach (var item in getAllCars)
+            {
+                int i = 0;
+                i = this.adminOrderhandling.NumberOfRental(item);
+                tempCarList.Add(item.CarType, i);
+            }
 
-            this.adminOrderhandling = new OrderHandling(null);
-
-            this.RefreshClientList();
-            this.RefreshCarList();
-
-            this.clientListLogic.ClientListChanged += this.ClientListLogic_ClientListChanged;
-            this.carHandLogic.CarListChanged += this.CarHandLogic_CarListChanged;
+            return tempCarList;
         }
 
+        /// <summary>
+        /// Return car coordinates from the database
+        /// </summary>
+        /// <returns>List containing car coordinates</returns>
+        public List<decimal> GetCarCoordinates()
+        {
+            List<decimal> carCoord = new List<decimal>();
+            IList<Car> getAllCars = this.carHandLogic.GetAllCarList();
+            foreach (var item in getAllCars)
+            {
+                carCoord.Add(item.CoordLat * 100);
+                carCoord.Add(item.CoordLong * 100);
+            }
+
+            return carCoord;
+        }
+
+        /// <summary>
+        /// Returns the service utilization statitics in a dictionary (key: serviceType as string, value: service count in rentals)
+        /// </summary>
+        /// <returns>Dictinary containing service names as key and service count as value</returns>
+        public Dictionary<string, int> SummaServices()
+        {
+            Dictionary<string, int> tempServicesList = new Dictionary<string, int>();
+            IList<Service> getAllServices = this.adminOrderhandling.GetAllServiceList();
+            foreach (var item in getAllServices)
+            {
+                int i = 0;
+                i = this.adminOrderhandling.NumberOfServices(item);
+                tempServicesList.Add(item.ServiceName, i);
+            }
+
+            return tempServicesList;
+        }
+
+        /// <summary>
+        /// return a list of income numbers (from 2014 to 2018)
+        /// </summary>
+        /// <returns>list of income statistics</returns>
+        public List<int> GetIncomeStatistics()
+        {
+            return this.adminOrderhandling.OrderRevenue(false);
+        }
+
+        /// <summary>
+        /// Deletes a client
+        /// </summary>
         public void DeleteClient()
         {
             if (this.selectedClient != null)
@@ -155,6 +173,9 @@ namespace CarRentalManager
             }
         }
 
+        /// <summary>
+        /// Deletes a car
+        /// </summary>
         public void DeleteCar()
         {
             if (this.selectedCar != null)
@@ -165,6 +186,9 @@ namespace CarRentalManager
             }
         }
 
+        /// <summary>
+        /// updates client list
+        /// </summary>
         public void UpdateClient()
         {
             if (this.selectedClient != null)
@@ -175,6 +199,9 @@ namespace CarRentalManager
             }
         }
 
+        /// <summary>
+        /// updates car list
+        /// </summary>
         public void UpdateCar()
         {
             if (this.selectedCar != null)
@@ -185,11 +212,19 @@ namespace CarRentalManager
             }
         }
 
+        /// <summary>
+        /// Refreshes client list
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private void ClientListLogic_ClientListChanged(object sender, EventArgs e)
         {
             this.RefreshClientList();
         }
 
+        /// <summary>
+        /// updates client list
+        /// </summary>
         private void RefreshClientList()
         {
             this.clients = this.clientListLogic.GetAllClientList();
@@ -197,6 +232,9 @@ namespace CarRentalManager
             this.OnPropertyChanged(nameof(this.Clients));
         }
 
+        /// <summary>
+        /// updates car list
+        /// </summary>
         private void RefreshCarList()
         {
             this.cars = this.carHandLogic.GetAllCarList();
@@ -204,14 +242,14 @@ namespace CarRentalManager
             this.OnPropertyChanged(nameof(this.Cars));
         }
 
+        /// <summary>
+        /// Refreshes car list
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private void CarHandLogic_CarListChanged(object sender, EventArgs e)
         {
             this.RefreshCarList();
         }
-
-        /*public List<int> getCarIDStatistics()
-        {
-
-        }*/
     }
 }

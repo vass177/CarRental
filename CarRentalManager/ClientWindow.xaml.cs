@@ -31,21 +31,60 @@ namespace CarRentalManager
             this.availableCar = false;
         }
 
+        /// <summary>
+        /// Loads client statistics
+        /// </summary>
+        public void LoadUserStatistics()
+        {
+            List<int> clientData = this.clientWindowViewModel.GetClientStatistics();
+
+            SeriesCollection mySeries = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = new ChartValues<int>(clientData),
+                    Title = "Payments"
+                }
+            };
+            this.axisX.Labels = new string[] { "2014", "2015", "2016", "2017", "2018" };
+            this.paymentChart.Series = mySeries;
+        }
+
+        /// <summary>
+        /// Switches tab to car selection
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
         private void Client_TabButton(object sender, RoutedEventArgs e)
         {
             this.NewRentalTabControl.SelectedItem = this.CarSelect_TabItem;
         }
 
+        /// <summary>
+        /// Switches tab to date selection
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
         private void Car_TabButton(object sender, RoutedEventArgs e)
         {
             this.NewRentalTabControl.SelectedItem = this.Date_TabItem;
         }
 
+        /// <summary>
+        /// Switches tab to service selection
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
         private void Date_TabButton(object sender, RoutedEventArgs e)
         {
             this.NewRentalTabControl.SelectedItem = this.Services_TabItem;
         }
 
+        /// <summary>
+        /// Rental completed message show
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">...</param>
         private async void Confirm_TabButtonAsync(object sender, RoutedEventArgs e)
         {
             await this.ShowMessageAsync("Confirm message", "Successfull confirm");
@@ -54,6 +93,11 @@ namespace CarRentalManager
             this.LoadUserStatistics();
         }
 
+        /// <summary>
+        /// Window sized changed event to resize side buttons
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             this.button1.Height = this.myGrid.ActualHeight / 4;
@@ -62,16 +106,31 @@ namespace CarRentalManager
             this.button4.Height = this.myGrid.ActualHeight / 4 * 1.1;
         }
 
+        /// <summary>
+        /// Mouse leave event for side button size change
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
         private void MetroTabControl_MouseLeave(object sender, MouseEventArgs e)
         {
             this.tabControl.TabStripMargin = new Thickness(0, 0, 20, 0);
         }
 
+        /// <summary>
+        /// Mouse enter event for side button size change
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
         private void MetroTabControl_MouseEnter(object sender, MouseEventArgs e)
         {
             this.tabControl.TabStripMargin = new Thickness(0, 0, 0, 0);
         }
 
+        /// <summary>
+        /// Window loaded event to initialize viewmodel
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
         private void ClientWindow_Loaded(object sender, RoutedEventArgs e)
         {
             this.clientWindowViewModel = new ClientWindowViewModel(this.userName);
@@ -79,6 +138,11 @@ namespace CarRentalManager
             this.LoadUserStatistics();
         }
 
+        /// <summary>
+        /// Tab change if car is available
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
         private void ButtonClick_SelectDate(object sender, RoutedEventArgs e)
         {
             if (this.availableCar)
@@ -88,14 +152,24 @@ namespace CarRentalManager
             }
         }
 
-        private void startDatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>
+        /// Start date selection
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
+        private void StartDatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             this.informationLabel.Content = string.Empty;
             this.endDatePicker.SelectedDate = null;
             this.informationLabel.Content = "Select an ending date";
         }
 
-        private void endDatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>
+        /// End date selection
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
+        private void EndDatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.startDatePicker.SelectedDate != null && this.startDatePicker.SelectedDate < this.endDatePicker.SelectedDate)
             {
@@ -128,7 +202,12 @@ namespace CarRentalManager
             }
         }
 
-        private void carFlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>
+        /// Flipview selection change event to select a car
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
+        private void CarFlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int index = this.carFlipView.SelectedIndex;
             Image item = (Image)this.carFlipView.SelectedItem;
@@ -137,12 +216,22 @@ namespace CarRentalManager
             this.clientWindowViewModel.SelectACar(imageSource);
         }
 
+        /// <summary>
+        /// Tab change to date selection
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
         private void ButtonClick_SelectCar(object sender, RoutedEventArgs e)
         {
             // calling next tab
             this.NewRentalTabControl.SelectedItem = this.Date_TabItem;
         }
 
+        /// <summary>
+        /// Tab change to confirm rental tab
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
         private void Service_TabButton(object sender, RoutedEventArgs e)
         {
             List<string> services = new List<string>();
@@ -159,22 +248,6 @@ namespace CarRentalManager
             this.clientWindowViewModel.SelectService(services);
 
             this.NewRentalTabControl.SelectedItem = this.Confirm_Tabitem;
-        }
-
-        public void LoadUserStatistics()
-        {
-            List<int> clientData = this.clientWindowViewModel.getClientStatistics();
-
-            SeriesCollection mySeries = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Values = new ChartValues<int>(clientData),
-                    Title = "Payments"
-                }
-            };
-            this.axisX.Labels = new string[] { "2014", "2015", "2016", "2017", "2018" };
-            this.paymentChart.Series = mySeries;
         }
     }
 }

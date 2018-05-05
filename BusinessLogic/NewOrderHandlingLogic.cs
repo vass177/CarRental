@@ -1,4 +1,7 @@
-﻿
+﻿// <copyright file="NewOrderHandlingLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace BusinessLogic
 {
     using System;
@@ -8,9 +11,11 @@ namespace BusinessLogic
     using System.Threading.Tasks;
     using Data;
     using Data.DataHandling;
-    using Interfaces;
 
-    public class NewOrderHandlingLogic : INewOrderHandlingLogic
+    /// <summary>
+    /// Class, that handles the process of a new order
+    /// </summary>
+    public class NewOrderHandlingLogic
     {
         private readonly RentalDataHandler rentalDBHandler;
         private readonly ServiceDataHandler serviceDBHandler;
@@ -61,9 +66,13 @@ namespace BusinessLogic
 
         public List<int> ServPriceList { get; private set; }
 
+        /// <summary>
+        /// Gets a Car object from the database by the selected image source
+        /// </summary>
+        /// <param name="imageSource">Image source of the selected car</param>
         public void SelectCar(string imageSource)
         {
-            IQueryable<Car> selectedCarList= (IQueryable<Car>)this.carDBHandler.SelectMore(CarAttributeType.CarImageSource, imageSource);
+            IQueryable<Car> selectedCarList = (IQueryable<Car>)this.carDBHandler.SelectMore(CarAttributeType.CarImageSource, imageSource);
             if (selectedCarList.Count() == 0)
             {
                 this.carAvailable = false;
@@ -74,6 +83,12 @@ namespace BusinessLogic
             }
         }
 
+        /// <summary>
+        /// Checks, whether the selected car is available between the selected dates
+        /// </summary>
+        /// <param name="startDate">Selected starting date</param>
+        /// <param name="endDate">Selected ending date</param>
+        /// <returns>True, if car is available, false if not</returns>
         public bool CheckCarAvailibility(DateTime startDate, DateTime endDate)
         {
             this.dateRange = new DateTime[] { startDate, endDate };
@@ -81,6 +96,8 @@ namespace BusinessLogic
 
             foreach (var order in rentals)
             {
+                Console.WriteLine(order.Car.CarType);
+                Console.WriteLine(order.Client.ClientName);
                 if (order.Car.CarID == this.selectedCar.CarID)
                 {
                     return false;
@@ -90,6 +107,11 @@ namespace BusinessLogic
             return true;
         }
 
+        /// <summary>
+        /// Returns a list of the selected services
+        /// </summary>
+        /// <param name="serviceList">list, containing services names in string</param>
+        /// <returns>List, containing the selected Service objects</returns>
         public List<Service> SearchSelectedServices(List<string> serviceList)
         {
             this.servList = new List<Service>();
@@ -105,6 +127,10 @@ namespace BusinessLogic
             return this.servList;
         }
 
+        /// <summary>
+        /// Calculates the price of the selected services for the interval
+        /// </summary>
+        /// <returns>returns the sum of the prices</returns>
         public decimal CalculateServicePrice()
         {
             int dayCount = this.CalculateDays();
@@ -120,6 +146,10 @@ namespace BusinessLogic
             return serviceprice;
         }
 
+        /// <summary>
+        /// Calculates the days between the dates
+        /// </summary>
+        /// <returns>returns the day count</returns>
         public int CalculateDays()
         {
             TimeSpan days = this.dateRange[1] - this.dateRange[0];
@@ -130,6 +160,9 @@ namespace BusinessLogic
             return dayCount;
         }
 
+        /// <summary>
+        /// Calculates the final price: sum of car prices and services price
+        /// </summary>
         public void CalculateFinalPrice()
         {
             int price = (int)(this.carPrice + this.CalculateServicePrice());
@@ -138,6 +171,9 @@ namespace BusinessLogic
             this.finalPrice = price - this.clientDiscount;
         }
 
+        /// <summary>
+        /// Finishes the new order, by inserting it in the database
+        /// </summary>
         public void FinishOrder()
         {
             Rental newRental = new Rental

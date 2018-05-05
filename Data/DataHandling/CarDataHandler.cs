@@ -11,6 +11,9 @@ namespace Data.DataHandling
     using System.Threading.Tasks;
     using Data.Exceptions;
 
+    /// <summary>
+    /// attribute to search in database
+    /// </summary>
     public enum CarAttributeType
     {
         CarType,
@@ -35,23 +38,41 @@ namespace Data.DataHandling
 
         }
 
+        /// <summary>
+        /// Deletes a Car object from db
+        /// </summary>
+        /// <param name="deletableItem">Car object to be deleted</param>
         public void Delete(object deletableItem)
         {
             this.database.Cars.Remove((Car)deletableItem);
             this.database.SaveChanges();
         }
 
+        /// <summary>
+        /// Gets all the entries from db
+        /// </summary>
+        /// <returns>List containing all the Car objects</returns>
         public object GetAll()
         {
             return this.database.Cars;
         }
 
+        /// <summary>
+        /// Inserts new entry in db
+        /// </summary>
+        /// <param name="newItem">Car object to be inserted</param>
         public void Insert(object newItem)
         {
             this.database.Cars.Add((Car)newItem);
             this.database.SaveChanges();
         }
 
+        /// <summary>
+        /// Selects item from db by unique attribute type
+        /// </summary>
+        /// <param name="attributeType">attribute type for search</param>
+        /// <param name="attributeValue">attribute value</param>
+        /// <returns>single item</returns>
         public object Select(object attributeType, object attributeValue)
         {
             // CarType will be unique, only one car will exist with a specific CarType
@@ -71,6 +92,12 @@ namespace Data.DataHandling
             }
         }
 
+        /// <summary>
+        /// Selects more item from db by a search attribute
+        /// </summary>
+        /// <param name="attributeType">attribute type for search</param>
+        /// <param name="attributeValue">attribute value</param>
+        /// <returns>list containing all the resulting objects</returns>
         public object SelectMore(object attributeType, object attributeValue)
         {
             CarAttributeType attribute = (CarAttributeType)attributeType;
@@ -119,6 +146,9 @@ namespace Data.DataHandling
             }
         }
 
+        /// <summary>
+        /// Saves database changes
+        /// </summary>
         public void Update()
         {
             this.database.SaveChanges();

@@ -11,6 +11,9 @@ namespace Data.DataHandling
     using System.Threading.Tasks;
     using Data.Exceptions;
 
+    /// <summary>
+    /// Interface, that defines all the methods for database handling
+    /// </summary>
     public interface IDataBase
     {
         void Insert(object newItem);

@@ -1,4 +1,8 @@
-﻿namespace BusinessLogic
+﻿// <copyright file="CarHandlingLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace BusinessLogic
 {
     using System;
     using System.Collections.Generic;
@@ -9,6 +13,9 @@
     using Data.DataHandling;
     using Interfaces;
 
+    /// <summary>
+    /// Class, that contains all the methods connecting to car handling
+    /// </summary>
     public class CarHandlingLogic : ICarHandlingLogic
     {
         private readonly CarDataHandler carDBHandler;
@@ -24,6 +31,10 @@
 
         public event EventHandler CarListChanged;
 
+        /// <summary>
+        /// Collects all the cars, that could be rent
+        /// </summary>
+        /// <returns>a List containing all the Car objects</returns>
         public IList<Car> GetAllCarList()
         {
             var cars = this.carDBHandler.GetAll();
@@ -31,6 +42,10 @@
             return ((IQueryable<Car>)cars).ToList();
         }
 
+        /// <summary>
+        /// Method, called for deleting a Car from database
+        /// </summary>
+        /// <param name="selectedCar">Car object, that will be deleted</param>
         public void DeleteCar(Car selectedCar)
         {
             IQueryable<Rental> carRentals = (IQueryable<Rental>)this.rentalDBHandler.SelectMore(RentalAttributeType.CarID, selectedCar.CarID);
@@ -40,6 +55,10 @@
             this.OnCarListChanged();
         }
 
+        /// <summary>
+        /// Deletes all the connected Rentals to a Car object, before the Car will be deleted
+        /// </summary>
+        /// <param name="rentals">List, that contains all the rentals, in which the Car is included</param>
         public void DeleteCarOrders(IQueryable<Rental> rentals)
         {
             List<Rental> rentalList = rentals.ToList();
@@ -55,6 +74,9 @@
             }
         }
 
+        /// <summary>
+        /// Calles the database savechange for Car DB and fires an event to notify GUI about the change in the list
+        /// </summary>
         public void UpdateCar()
         {
             this.carDBHandler.Update();
@@ -62,19 +84,19 @@
             this.OnCarListChanged();
         }
 
+        /// <summary>
+        /// Its not really used, and not really working
+        /// </summary>
+        /// <param name="newCar">a Car...</param>
+        /// <param name="photoPath">an ImageSource</param>
         public void AddNewCar(Car newCar, string photoPath)
         {
-            newCar.CarPhotoPath = photoPath;
-
-            // ez még átmeneti --> véglegesíteni
-            newCar.CoordLat = 3;
-            newCar.CoordLong = 4;
-
-            this.carDBHandler.Insert(newCar);
-
-            this.OnCarListChanged();
+            Console.WriteLine("Easter egg..");
         }
 
+        /// <summary>
+        /// Method, that fires an event for car list changing
+        /// </summary>
         private void OnCarListChanged()
         {
             this.CarListChanged?.Invoke(this, EventArgs.Empty);

@@ -113,8 +113,6 @@
     <Compile Include="AdminWindowViewModel.cs" />
     <Compile Include="Bindable.cs" />
     <Compile Include="ClientWindowViewModel.cs" />
-    <Compile Include="Interfaces\IAdminWindowViewModel.cs" />
-    <Compile Include="ViewModel.cs" />
     <Page Include="AdminWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -181,6 +179,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="stylecop.json" />
     <Resource Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>

@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data.DataHandling;
-using Data;
+﻿// <copyright file="UserClientRegistration.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace BusinessLogic
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Data;
+    using Data.DataHandling;
+
     public class UserClientRegistration
     {
         private ClientDataHandler clientHandler;
@@ -21,6 +25,15 @@ namespace BusinessLogic
             this.passwordCreator = new LoginAuthentication();
         }
 
+        /// <summary>
+        /// Add a new user to the database (also adds the client object, if the new user is a client and not admin)
+        /// </summary>
+        /// <param name="userName">input username</param>
+        /// <param name="fullName">input name</param>
+        /// <param name="password">raw password which will be encoded</param>
+        /// <param name="address">input address</param>
+        /// <param name="email">input email</param>
+        /// <param name="isClient">Y/N value, whether the new user is a Client (Y)</param>
         public void AddNewUser(string userName, string fullName, string password, string address, string email, string isClient)
         {
             var user = new User
