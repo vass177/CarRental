@@ -22,7 +22,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public List<int> ServPriceList { get; private set; }
 
-
+        public int VoidMethodCalls { get; private set; } = 0;
 
         public int CalculateDays()
         {
@@ -36,7 +36,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public void CalculateFinalPrice()
         {
-            throw new NotImplementedException();
+            this.VoidMethodCalls++;
         }
 
         public decimal CalculateServicePrice()
