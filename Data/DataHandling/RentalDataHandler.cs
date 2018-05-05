@@ -74,7 +74,9 @@ namespace Data.DataHandling
             if (attribute == RentalAttributeType.RentalDateInterval)
             {
                 dateRange1 = ((DateTime[])attributeValue)[0];
+                Console.WriteLine(dateRange1);
                 dateRange2 = ((DateTime[])attributeValue)[1];
+                Console.WriteLine(dateRange2);
             }
 
             // for RentalPrice, attributvalue will be a decimal[] array
