@@ -36,45 +36,13 @@ namespace CarRentalManager
         {
             this.InitializeComponent();
             this.passwordValid = false;
-
-            /*CarDataHandler carHander = new CarDataHandler();
-            Car c1 = new Car
-            {
-                CarCapacity = 2,
-                CarHorsepower = 70,
-                CarMotorcode = "ABGFDGFD3232",
-                CarCategory = "A",
-                CarPhotoPath = "images/smart.jpg",
-                CarQuantity = 5,
-                CarRentalPrice = 120000,
-                CarType = "Smart",
-                CoordLat = 0.136566m,
-                CoordLong = 0.122213m
-            };
-            carHander.Insert(c1);
-
-            IQueryable<Car> carList = (IQueryable<Car>)carHander.GetAll();
-            foreach (Car item in carList)
-            {
-                Console.WriteLine(item.CarType+" "+item.CarHorsepower+" "+item.CarPhotoPath);
-            }
-            Console.WriteLine(" ");
-            Car opel=(Car)carHander.Select(CarAttributeType.CarType, "Opel Astra OPC");
-            Console.WriteLine(opel.CarRentalPrice+" "+opel.CarPhotoPath);
-
-            IQueryable<Car> carHPList = (IQueryable<Car>)carHander.SelectMore(CarAttributeType.CarHorsePower, new decimal[] { 60, 154 });
-            foreach (Car item in carHPList)
-            {
-                Console.WriteLine(item.CarType + " " + item.CarHorsepower + " " + item.CarPhotoPath);
-            }*/
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ClientWindow clientWindow = new ClientWindow("valaki");
-            clientWindow.Show();
-        }
-
+        /// <summary>
+        /// Checks if password containst lower case letter
+        /// </summary>
+        /// <param name="text">input password</param>
+        /// <returns>true, if contains</returns>
         private bool ContainsLowerCase(string text)
         {
             foreach (char c in text)
@@ -89,6 +57,11 @@ namespace CarRentalManager
             return false;
         }
 
+        /// <summary>
+        /// Checks if password containst upper case letter
+        /// </summary>
+        /// <param name="text">input password</param>
+        /// <returns>true, if contains</returns>
         private bool ContainsUpperCase(string text)
         {
             foreach (char c in text)
@@ -103,6 +76,11 @@ namespace CarRentalManager
             return false;
         }
 
+        /// <summary>
+        /// Checks if password containst special character
+        /// </summary>
+        /// <param name="text">input password</param>
+        /// <returns>true, if contains</returns>
         private bool ContainsSpecialChar(string text)
         {
             foreach (char c in text)
@@ -117,6 +95,11 @@ namespace CarRentalManager
             return false;
         }
 
+        /// <summary>
+        /// Login button event
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
         private async void Login_ButtonClickAsync(object sender, RoutedEventArgs e)
         {
             LoginAuthentication loginAuthentication = new LoginAuthentication();
@@ -146,6 +129,11 @@ namespace CarRentalManager
             }
         }
 
+        /// <summary>
+        /// Registration button event
+        /// </summary>
+        /// <param name="sender">.</param>
+        /// <param name="e">..</param>
         private async void Registration_ButtonAsync(object sender, RoutedEventArgs e)
         {
             if (this.passwordValid)
@@ -209,12 +197,6 @@ namespace CarRentalManager
                     this.passwordValid = false;
                 }
             }
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            AdminWindow adminWindow = new AdminWindow();
-            adminWindow.Show();
         }
     }
 }

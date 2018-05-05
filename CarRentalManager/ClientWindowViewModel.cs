@@ -177,6 +177,9 @@ namespace CarRentalManager
             }
         }
 
+        /// <summary>
+        /// Refreshing order list
+        /// </summary>
         public void RefreshOrderList()
         {
             this.rental = this.clientOrderHandling.GetAllRentalList();
@@ -184,11 +187,18 @@ namespace CarRentalManager
             this.OnPropertyChanged(nameof(this.Rental));
         }
 
+        /// <summary>
+        /// Refresh logged in client object
+        /// </summary>
         public void RefreshClient()
         {
             this.OnPropertyChanged(nameof(this.LoggedInClient));
         }
 
+        /// <summary>
+        /// Select a car object by image source
+        /// </summary>
+        /// <param name="imageSource">Choosen image source</param>
         public void SelectACar(string imageSource)
         {
             this.orderHandling.SelectCar(imageSource);
@@ -196,6 +206,12 @@ namespace CarRentalManager
             this.OnPropertyChanged(nameof(this.SelectedCar));
         }
 
+        /// <summary>
+        /// Check if car is available between the two dates
+        /// </summary>
+        /// <param name="startDate">choosen starting date</param>
+        /// <param name="endDate">choosen ending date</param>
+        /// <returns>returns True, if car is available</returns>
         public bool CheckDates(DateTime startDate, DateTime endDate)
         {
             this.StartDate = startDate;
@@ -203,6 +219,10 @@ namespace CarRentalManager
             return this.orderHandling.CheckCarAvailibility(startDate, endDate);
         }
 
+        /// <summary>
+        /// Fills a list with selected services and calculates the price
+        /// </summary>
+        /// <param name="serivceList">service list countaining service names in string</param>
         public void SelectService(List<string> serivceList)
         {
             this.ServiceList = this.orderHandling.SearchSelectedServices(serivceList);
@@ -213,22 +233,39 @@ namespace CarRentalManager
             this.TotalPrice = this.orderHandling.FinalPrice;
         }
 
+        /// <summary>
+        /// Calling BL's finish order method to insert Rental into database
+        /// </summary>
         public void FinishOrder()
         {
             this.orderHandling.FinishOrder();
             this.RefreshOrderList();
         }
 
+        /// <summary>
+        /// Gets client payments statistics
+        /// </summary>
+        /// <returns>return a list of payments by year</returns>
         public List<int> GetClientStatistics()
         {
             return this.clientOrderHandling.OrderRevenue(true);
         }
 
+        /// <summary>
+        /// Rental list changed event
+        /// </summary>
+        /// <param name="sender">....</param>
+        /// <param name="e">...</param>
         private void ClientOrderHandling_RentalListChanged(object sender, EventArgs e)
         {
             this.RefreshOrderList();
         }
 
+        /// <summary>
+        /// Client log in event
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private void ClientLogic_ClientLoggedIn(object sender, EventArgs e)
         {
             this.RefreshClient();

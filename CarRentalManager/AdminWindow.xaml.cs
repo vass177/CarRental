@@ -41,6 +41,9 @@ namespace CarRentalManager
 
         public SeriesCollection MySeries { get; set; }
 
+        /// <summary>
+        /// Loads admin window statistics
+        /// </summary>
         public void LoadAdminStatistics()
         {
             Dictionary<string, int> myCarsList = new Dictionary<string, int>();
@@ -94,16 +97,13 @@ namespace CarRentalManager
                 // Adds the pushpin to the map.
                 this.carMap.Children.Add(pin);
             }
-
-            /*Location myloc =new Location(42.32460,-071.069970);
-            var pushpin = new Pushpin()
-            {
-                Background = new SolidColorBrush(Color.FromRgb(244,244,32))
-            };
-            MapLayer.SetPosition(pushpin, myloc);
-            carMap.Children.Add(pushpin);*/
         }
 
+        /// <summary>
+        /// resizing buttons after changing window size
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             this.button1.Height = this.adminGrid.ActualHeight / 4;
@@ -112,6 +112,11 @@ namespace CarRentalManager
             this.button4.Height = this.adminGrid.ActualHeight / 4 * 1.1;
         }
 
+        /// <summary>
+        /// initializing the view model
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // MessageBox.Show(File.ReadAllLines("C:/Users/Franciska/source/repos/oenik_szt2_2018tavasz_pm4j60_gk607o_ilnrw96Q/ListCarHP.sql").ToString());
@@ -119,39 +124,54 @@ namespace CarRentalManager
 
             this.LoadAdminStatistics();
 
-            /*SeriesCollection mySeries = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Title = "dummy",
-                    Values = new ChartValues<int>{10, 20, 5, 2, 30}
-                }
-            };
-            IncomeChart.Series = mySeries;*/
-
             this.DataContext = this.adminWindowViewModel;
         }
 
+        /// <summary>
+        /// button click to delete client
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private void DeleteClientClick(object sender, RoutedEventArgs e)
         {
             this.adminWindowViewModel.DeleteClient();
         }
 
+        /// <summary>
+        /// button click to update client
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private void UpdateClientClick(object sender, RoutedEventArgs e)
         {
             this.adminWindowViewModel.UpdateClient();
         }
 
+        /// <summary>
+        /// handling mouseover and mouseleave on side buttons
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private void MetroTabControl_MouseLeave(object sender, MouseEventArgs e)
         {
             this.tabControl.TabStripMargin = new Thickness(0, 0, 20, 0);
         }
 
+        /// <summary>
+        /// handling mouseover and mouseleave on side buttons
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private void MetroTabControl_MouseEnter(object sender, MouseEventArgs e)
         {
             this.tabControl.TabStripMargin = new Thickness(0, 0, 0, 0);
         }
 
+        /// <summary>
+        /// ???
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private void Statistics_Loaded(object sender, RoutedEventArgs e)
         {
             this.adminWindowViewModel.CarSumma = 0;
@@ -159,11 +179,13 @@ namespace CarRentalManager
             {
                 this.adminWindowViewModel.CarSumma++;
             }
-
-            // MessageBox.Show(adminWindowViewModel.CarSumma.ToString());
-            // CarSumma_Label.Content = adminWindowViewModel.CarSumma.ToString();
         }
 
+        /// <summary>
+        /// car modification message
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private async void ModifyCar_ClickAsync(object sender, RoutedEventArgs e)
         {
             this.adminWindowViewModel.UpdateCar();
@@ -172,6 +194,11 @@ namespace CarRentalManager
             await this.ShowMessageAsync("Update car", "Car has been changed...");
         }
 
+        /// <summary>
+        /// delete car message
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private async void DeleteCar_ClickAsync(object sender, RoutedEventArgs e)
         {
             this.adminWindowViewModel.DeleteCar();
@@ -180,6 +207,11 @@ namespace CarRentalManager
             await this.ShowMessageAsync("Delete car", "Car has been deleted...");
         }
 
+        /// <summary>
+        /// car listbox selection changed event to show Delete and Modify buttons
+        /// </summary>
+        /// <param name="sender">...</param>
+        /// <param name="e">....</param>
         private void CarsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.carsListBox.SelectedItem != null)
