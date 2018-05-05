@@ -25,6 +25,15 @@ namespace BusinessLogic
             this.passwordCreator = new LoginAuthentication();
         }
 
+        /// <summary>
+        /// Add a new user to the database (also adds the client object, if the new user is a client and not admin)
+        /// </summary>
+        /// <param name="userName">input username</param>
+        /// <param name="fullName">input name</param>
+        /// <param name="password">raw password which will be encoded</param>
+        /// <param name="address">input address</param>
+        /// <param name="email">input email</param>
+        /// <param name="isClient">Y/N value, whether the new user is a Client (Y)</param>
         public void AddNewUser(string userName, string fullName, string password, string address, string email, string isClient)
         {
             var user = new User

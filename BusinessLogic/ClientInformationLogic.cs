@@ -31,6 +31,10 @@ namespace BusinessLogic
 
         public event EventHandler ClientLoggedIn;
 
+        /// <summary>
+        /// Method, that gets all the clients in the database
+        /// </summary>
+        /// <returns>a List, containing all the clients</returns>
         public IList<Client> GetAllClientList()
         {
             var clients = this.clientDBHandler.GetAll();
@@ -38,6 +42,10 @@ namespace BusinessLogic
             return ((IQueryable<Client>)clients).ToList();
         }
 
+        /// <summary>
+        /// Deletes a client with the connected user and rentals
+        /// </summary>
+        /// <param name="selectedClient">deletable client</param>
         public void DeleteClient(Client selectedClient)
         {
             IQueryable<Rental> clientRentals = (IQueryable<Rental>)this.rentalDBHandler.SelectMore(RentalAttributeType.UserName, selectedClient.UserName);
@@ -52,6 +60,10 @@ namespace BusinessLogic
             this.OnClientListChanged();
         }
 
+        /// <summary>
+        /// Deletes the rentals connected to a client
+        /// </summary>
+        /// <param name="rentals">List containing the rentals for a client</param>
         public void DeleteClientOrders(IQueryable<Rental> rentals)
         {
             List<Rental> rentalList = rentals.ToList();
@@ -67,6 +79,9 @@ namespace BusinessLogic
             }
         }
 
+        /// <summary>
+        /// Updates the client database after modifications
+        /// </summary>
         public void UpdateClient()
         {
             this.clientDBHandler.Update();
@@ -74,17 +89,28 @@ namespace BusinessLogic
             this.OnClientListChanged();
         }
 
+        /// <summary>
+        /// Returns a client (who logged in) from database by the username
+        /// </summary>
+        /// <param name="userName">Username, who has logged in</param>
+        /// <returns>Client object who logged in</returns>
         public Client GetLoggedInClient(string userName)
         {
             Client loggedIn = (Client)this.clientDBHandler.Select(ClientAttributeType.UserName, userName);
             return loggedIn;
         }
 
+        /// <summary>
+        /// Fires an event, that the clientlist has changed
+        /// </summary>
         private void OnClientListChanged()
         {
             this.ClientListChanged?.Invoke(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Fires an event, when the login happens
+        /// </summary>
         private void OnLogIn()
         {
             this.ClientLoggedIn?.Invoke(this, EventArgs.Empty);
