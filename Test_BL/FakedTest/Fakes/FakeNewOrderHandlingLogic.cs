@@ -12,6 +12,8 @@ namespace Test_BL.FakedTest.Fakes
     {
         private DateTime[] dateArray = new DateTime[2];
 
+        public IList<Service> Services { get; set; }
+
         public int CarPrice { get; private set; }
 
         public int ClientDiscount { get; private set; }
@@ -58,7 +60,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public void FinishOrder()
         {
-            throw new NotImplementedException();
+            this.VoidMethodCalls++;
         }
 
         public List<Service> SearchSelectedServices(List<string> serviceList)
