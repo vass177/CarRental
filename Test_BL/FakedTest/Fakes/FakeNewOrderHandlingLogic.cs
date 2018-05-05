@@ -77,6 +77,7 @@ namespace Test_BL.FakedTest.Fakes
                     sum += 10;
                 }
 
+                this.FinalPrice = this.CarPrice + sum;
                 return s;
             }
 
