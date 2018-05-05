@@ -50,7 +50,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public void UpdateCar()
         {
-            
+            this.UpdatedTimes++;
         }
     }
 }
