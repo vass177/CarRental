@@ -11,8 +11,9 @@ namespace CarRentalManager
     using System.Threading.Tasks;
     using BusinessLogic;
     using Data;
+    using Interfaces;
 
-    public class AdminWindowViewModel : Bindable
+    public class AdminWindowViewModel : Bindable, IAdminWindowViewModel
     {
         private OrderHandling adminOrderhandling;
 
