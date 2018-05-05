@@ -32,7 +32,5 @@ namespace BusinessLogic.Interfaces
         void CalculateFinalPrice();
 
         void FinishOrder();
-
-
     }
 }
