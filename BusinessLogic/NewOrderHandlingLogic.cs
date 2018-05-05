@@ -8,8 +8,9 @@ namespace BusinessLogic
     using System.Threading.Tasks;
     using Data;
     using Data.DataHandling;
+    using Interfaces;
 
-    public class NewOrderHandlingLogic
+    public class NewOrderHandlingLogic : INewOrderHandlingLogic
     {
         private readonly RentalDataHandler rentalDBHandler;
         private readonly ServiceDataHandler serviceDBHandler;
