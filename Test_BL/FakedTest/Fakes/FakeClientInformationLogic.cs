@@ -41,13 +41,20 @@ namespace Test_BL.FakedTest.Fakes
 
         public Client GetLoggedInClient(string userName)
         {
-            
-            throw new NotImplementedException();
+            foreach (Client item in this.Clients)
+            {
+                if (item.UserName.Equals(userName))
+                {
+                    return item;
+                }
+            }
+
+            return null;
         }
 
         public void UpdateClient()
         {
-            throw new NotImplementedException();
+            this.UpdatedTimes++;
         }
     }
 }
