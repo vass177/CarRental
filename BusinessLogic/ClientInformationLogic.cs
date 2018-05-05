@@ -8,8 +8,9 @@ namespace BusinessLogic
     using System.Threading.Tasks;
     using Data;
     using Data.DataHandling;
+    using Interfaces;
 
-    public class ClientInformationLogic
+    public class ClientInformationLogic : IClientInformationLogic
     {
         private readonly ClientDataHandler clientDBHandler;
         private readonly RentalDataHandler rentalDBHandler;
