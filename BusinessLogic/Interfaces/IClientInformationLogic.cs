@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,14 @@ namespace BusinessLogic.Interfaces
 {
     public interface IClientInformationLogic
     {
-    }
+        IList<Client> GetAllClientList();
+
+        void DeleteClient(Client selectedClient);
+
+        void DeleteClientOrders(IQueryable<Rental> rentals);
+
+        void UpdateClient();
+
+        Client GetLoggedInClient(string userName);
+     }
 }
