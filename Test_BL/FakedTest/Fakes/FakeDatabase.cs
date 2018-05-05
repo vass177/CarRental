@@ -21,10 +21,10 @@ namespace Test_BL.FakedTest.Fakes
     /// Simple generic database model
     /// All methods except Update are implemented
     /// with somewhat meaningful logic
+    /// <type name="T">T is an EntityFramework generated class type</type>
     /// </summary>
     internal class FakeDatabase<T> : IFakeDataBase<T>
     {
-        
         /// <summary>
         /// Initializes a new instance of the <see cref="FakeDatabase{T}"/> class.
         /// Constructor for dummy database handler for testing purposes
@@ -33,14 +33,6 @@ namespace Test_BL.FakedTest.Fakes
         {
             this.Objects = new List<T>();
         }
-        public IList<T> Objects { get; private set; } = new List<T>();
-
-        public IList<T> DeletedObjects { get; private set; } = new List<T>();
-
-        public IList<T> SelectedObjects { get; private set; } = new List<T>();
-
-        public IList<T> InsertedObjects { get; private set; } = new List<T>();
-
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FakeDatabase{T}"/> class.
@@ -52,6 +44,14 @@ namespace Test_BL.FakedTest.Fakes
         {
             this.Objects = (IList<T>)mycollection;
         }
+
+        public IList<T> Objects { get; private set; } = new List<T>();
+
+        public IList<T> DeletedObjects { get; private set; } = new List<T>();
+
+        public IList<T> SelectedObjects { get; private set; } = new List<T>();
+
+        public IList<T> InsertedObjects { get; private set; } = new List<T>();
 
         /// <summary>
         /// Adds argument to the DeletedObjects (class property) collecton 
