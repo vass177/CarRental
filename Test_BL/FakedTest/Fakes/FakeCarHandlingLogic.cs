@@ -27,7 +27,10 @@ namespace Test_BL.FakedTest.Fakes
 
         public void DeleteCar(Car selectedCar)
         {
-            
+            if (this.Cars.Contains(selectedCar))
+            {
+                this.Cars.Remove(selectedCar);
+            }
         }
 
         public void DeleteCarOrders(IQueryable<Rental> rentals)
