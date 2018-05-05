@@ -28,7 +28,10 @@ namespace Test_BL.FakedTest.Fakes
 
         public void DeleteClientOrders(IQueryable<Rental> rentals)
         {
-            throw new NotImplementedException();
+            foreach (Rental item in rentals)
+            {
+                this.Rentals.Remove(item);
+            }
         }
 
         public IList<Client> GetAllClientList()
