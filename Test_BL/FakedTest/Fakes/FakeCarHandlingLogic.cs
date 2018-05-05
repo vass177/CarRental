@@ -19,7 +19,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public IList<Rental> Rentals { get; set; }
 
-        public int UpdatedTimes { get; private set; }
+        public int UpdatedTimes { get; private set; } = 0;
 
         public void AddNewCar(Car newCar, string photoPath)
         {
