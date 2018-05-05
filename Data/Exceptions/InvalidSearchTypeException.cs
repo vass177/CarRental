@@ -10,6 +10,9 @@ namespace Data.Exceptions
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// exception for invalid search attribute in a specific context
+    /// </summary>
     public class InvalidSearchTypeException : Exception
     {
         public InvalidSearchTypeException(string message)

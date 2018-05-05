@@ -11,6 +11,9 @@ namespace Data.DataHandling
     using System.Threading.Tasks;
     using Data.Exceptions;
 
+    /// <summary>
+    /// attribute to search in database
+    /// </summary>
     public enum ClientAttributeType
     {
         UserName,
@@ -27,23 +30,41 @@ namespace Data.DataHandling
             this.database = new RentalDBEntities();
         }
 
+        /// <summary>
+        /// Deletes a Client object from db
+        /// </summary>
+        /// <param name="deletableItem">Client object to be deleted</param>
         public void Delete(object deletableItem)
         {
             this.database.Clients.Remove((Client)deletableItem);
             this.database.SaveChanges();
         }
 
+        /// <summary>
+        /// Gets all the entries from db
+        /// </summary>
+        /// <returns>List containing all the Client objects</returns>
         public object GetAll()
         {
             return this.database.Clients;
         }
 
+        /// <summary>
+        /// Inserts new entry in db
+        /// </summary>
+        /// <param name="newItem">Client object to be inserted</param>
         public void Insert(object newItem)
         {
             this.database.Clients.Add((Client)newItem);
             this.database.SaveChanges();
         }
 
+        /// <summary>
+        /// Selects item from db by unique attribute type
+        /// </summary>
+        /// <param name="attributeType">attribute type for search</param>
+        /// <param name="attributeValue">attribute value</param>
+        /// <returns>single item</returns>
         public object Select(object attributeType, object attributeValue)
         {
             if (!((ClientAttributeType)attributeType == ClientAttributeType.UserName))
@@ -62,6 +83,12 @@ namespace Data.DataHandling
             }
         }
 
+        /// <summary>
+        /// Selects more item from db by a search attribute
+        /// </summary>
+        /// <param name="attributeType">attribute type for search</param>
+        /// <param name="attributeValue">attribute value</param>
+        /// <returns>list containing all the resulting objects</returns>
         public object SelectMore(object attributeType, object attributeValue)
         {
             ClientAttributeType attribute = (ClientAttributeType)attributeType;
@@ -86,6 +113,9 @@ namespace Data.DataHandling
             }
         }
 
+        /// <summary>
+        /// Saves database changes
+        /// </summary>
         public void Update()
         {
             this.database.SaveChanges();
