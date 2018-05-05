@@ -11,11 +11,12 @@ namespace BusinessLogic
     using System.Threading.Tasks;
     using Data;
     using Data.DataHandling;
+    using Interfaces;
 
     /// <summary>
     /// Class, that handles the process of a new order
     /// </summary>
-    public class NewOrderHandlingLogic
+    public class NewOrderHandlingLogic : INewOrderHandlingLogic
     {
         private readonly RentalDataHandler rentalDBHandler;
         private readonly ServiceDataHandler serviceDBHandler;
