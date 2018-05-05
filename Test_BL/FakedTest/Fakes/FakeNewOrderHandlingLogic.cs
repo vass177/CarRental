@@ -73,8 +73,9 @@ namespace Test_BL.FakedTest.Fakes
                     s.Add(this.Services.Single(x => x.ServiceName == item));
                 }
 
-                return s; 
+                return s;
             }
+
             return null;
         }
 
