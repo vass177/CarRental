@@ -22,5 +22,10 @@ namespace Test_BL.FakedTest
         private List<Service> myServiceDS;
         private IList<Tuple<Rental, IList<Service>>> myRentalsWithServicesDS;
 
+        [OneTimeSetUp]
+        public void SetUp()
+        {
+
+        }
     }
 }
