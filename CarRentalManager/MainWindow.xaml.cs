@@ -185,8 +185,8 @@ namespace CarRentalManager
         /// <summary>
         /// This method checks after every change in the PasswordBox, whether it is valid or not
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Name of sender</param>
+        /// <param name="e">Name of e</param>
         private void TextBox_TextChanged(object sender, RoutedEventArgs e)
         {
             PasswordBox passwordBox = (PasswordBox)sender;
