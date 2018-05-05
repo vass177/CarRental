@@ -28,7 +28,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public List<int> HowMuchCarID()
         {
-            throw new NotImplementedException();
+            return new List<int> { 0, 0 };
         }
 
         public int NumberOfRental(Car car)
