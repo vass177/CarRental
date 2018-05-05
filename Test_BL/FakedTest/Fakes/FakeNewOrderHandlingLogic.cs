@@ -40,7 +40,6 @@ namespace Test_BL.FakedTest.Fakes
         public void CalculateFinalPrice()
         {
             this.FinalPrice = this.CarPrice + this.servicePrice;
-            this.VoidMethodCalls++;
         }
 
         public decimal CalculateServicePrice()
@@ -64,7 +63,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public void FinishOrder()
         {
-            this.VoidMethodCalls++;
+            this.CalculateFinalPrice();
         }
 
         public List<Service> SearchSelectedServices(List<string> serviceList)
