@@ -14,7 +14,7 @@ namespace Test_BL.FakedTest.Fakes
 
         public IList<Rental> Rentals { get; set; }
 
-        public Dictionary<Client, string> LoggedInClients { get; set; }
+        public Client LoggedInClient { get; private set; }
 
         public int UpdatedTimes { get; private set; } = 0;
 
@@ -36,11 +36,12 @@ namespace Test_BL.FakedTest.Fakes
 
         public IList<Client> GetAllClientList()
         {
-            throw new NotImplementedException();
+            return this.Clients;
         }
 
         public Client GetLoggedInClient(string userName)
         {
+            
             throw new NotImplementedException();
         }
 
