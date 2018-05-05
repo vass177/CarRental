@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Data;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,13 @@ namespace Test_BL.FakedTest
     [TestFixture]
     public class TestIXXXLogicFakes
     {
-        
+        private static Random rnd = new Random();
+
+        private List<Car> myCarDS;
+        private List<Client> myClientDS;
+        private List<Rental> myRentalDS;
+        private List<Service> myServiceDS;
+        private IList<Tuple<Rental, IList<Service>>> myRentalsWithServicesDS;
+
     }
 }
